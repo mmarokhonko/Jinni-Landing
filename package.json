@@ -9,6 +9,9 @@
     "analyze": "webpack --env.NODE_ENV=production --env.ANALYZE_BUNDLE=true --progress -p"
   },
   "dependencies": {
+    "moment": "^2.20.1",
+    "prop-types": "^15.6.1",
+    "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
   "devDependencies": {

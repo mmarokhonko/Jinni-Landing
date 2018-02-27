@@ -1,0 +1,40 @@
+.help {
+    margin-top: 80px;
+}
+
+.help_title {
+    font-size: 35px;
+    line-height: 53px;
+    text-align: center;  
+}
+
+.help_subwrap {
+    display: flex;
+    justify-content: space-between;
+}
+
+.help_arrow {
+    transform: translateY(-15%);
+}
+
+.help_step {
+    margin-top: 41px;
+    max-width: 357px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.help_step_title {
+    margin-top: 27px;
+    text-transform: uppercase;
+    font-size: 22px;
+    line-height: 33px;
+}
+
+.help_step_text {
+    margin-top: 16px;
+    font-size: 16px;
+    line-height: 25px;
+}

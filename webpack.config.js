@@ -9,6 +9,7 @@ module.exports = env => {
         new webpack.DefinePlugin({
             "process.env.NODE_ENV": JSON.stringify(env.NODE_ENV)
         }),
+        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     ];
 
 
@@ -89,7 +90,7 @@ module.exports = env => {
             hot: true,
             port: 9000,
             historyApiFallback: true,
-        },
+        }
     };
 
 };

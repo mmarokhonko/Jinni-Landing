@@ -1,1 +1,8 @@
 @import "./scss/tools/reset.scss";
+
+@import "./scss/general/general.scss";
+@import "./scss/static-sections/top-bar.scss";
+@import "./scss/static-sections/footer.scss";
+
+@import "./scss/components/Fact/Fact.scss";
+@import "./scss/components/Help/Help.scss";
