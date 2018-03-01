@@ -78,9 +78,9 @@ class DynamicHeader extends Component {
           <header className="header" style={{ backgroundImage: `url(${lottoData.bg})` }}>
               <img src={lottoData.people} alt="" className="header_people" />
               <div className="cont-zone">
-                  <h1 className="header_title -with-logo">
+                  <h2 className="header_title -with-logo">
             Play the next <img src={lottoData.logo} alt={lotto} /> draw for FREE
-                  </h1>
+                  </h2>
                   <div className="header_jackpot" dangerouslySetInnerHTML={{__html:this.constructJackpot(jackpot)}}></div>
               </div>
           </header>
