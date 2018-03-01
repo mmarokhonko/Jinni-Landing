@@ -12,3 +12,35 @@ h1,h2,h3,h4,h5 {
     max-width: 1140px;
     margin: 0 auto;
 }
+
+.main {
+    padding: 28px 0 60px;
+    background-image: url("./assets/bg/bg_big.png");
+}
+
+.main_title {
+    font-size: 35px;
+    line-height: 53px;
+    text-align: center;
+    & > u {
+        position: relative;
+        font-size: 44px;
+        font-weight: 400;
+        text-decoration: none;
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            right: 0;
+            display: block;
+            height: 2px;
+            background-color: black;
+        }
+    }
+}
+
+.main_subwrap {
+    margin-top: 40px;
+    display: flex;
+}
