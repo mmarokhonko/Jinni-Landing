@@ -6,6 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --env.NODE_ENV=development -d",
     "build": "webpack --env.NODE_ENV=production --progress -p",
+    "deploy": "webpack --env.NODE_ENV=production --progress -p && firebase deploy",
     "analyze": "webpack --env.NODE_ENV=production --env.ANALYZE_BUNDLE=true --progress -p"
   },
   "dependencies": {
@@ -19,6 +20,7 @@
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
     "babel-loader": "^7.1.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.10",
