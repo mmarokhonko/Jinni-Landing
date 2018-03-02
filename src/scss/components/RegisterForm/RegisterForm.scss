@@ -1,0 +1,161 @@
+.form_frame-vert {
+  margin-left: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  flex: 1;
+}
+
+.form_row {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form_row_title {
+  margin-right: 33px;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  max-width: 120px;
+  flex: 1;
+}
+
+.form_row_subwrap {
+  display: flex;
+  flex: 1;
+  margin-left: -10px;
+}
+
+.form_confirm-btn {
+  margin-top: 25px;
+  display: block;
+  margin-left: auto;
+  height: 50px;
+  width: 180px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 26px;
+}
+
+.inpwi_wrap {
+  flex: 1;
+  margin-left: 10px;
+}
+
+.inpwi {
+  height: 50px;
+  width: 100%;
+  padding-left: calc(20px + 32px);
+  font-size: 14px;
+  line-height: 21px;
+  background-repeat: no-repeat;
+  background-position: 17px center;
+  box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.1), 0 2px 10px 0 rgba(127, 177, 223, 0.1);
+  border: 1px solid #d4dfec;
+  border-radius: 5px;
+  font-family: "Poppins";
+  &.-no-icon {
+    padding-left: 4%;
+  }
+  &:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 100px white inset;
+  }
+}
+
+.selwi_wrap {
+  cursor: pointer;
+  position: relative;
+}
+
+.selwi_value {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  padding-left: calc(20px + 32px);
+  font-size: 14px;
+  line-height: 21px;
+  background-repeat: no-repeat;
+  background-position: 17px center;
+  border-radius: 5px 0 0 5px;
+  box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.1), 0 2px 10px 0 rgba(127, 177, 223, 0.1);
+  border: 1px solid #d4dfec;
+  &:after {
+    content: "";
+    position: absolute;
+    right: 15px;
+    top: 22px;
+    display: block;
+    width: 13px;
+    height: 8px;
+    background-image: url("./assets/RegisterForm/icons/down-arrow.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+
+.selwi_options {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-color: white;
+  box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.1), 0 2px 10px 0 rgba(127, 177, 223, 0.1);
+  border: 1px solid #d4dfec;
+  border-top-width: 0;
+  border-radius: 0 0 5px 5px;
+  li {
+    cursor: pointer;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding-left: 17px;
+    transition: background-color 0.3s;
+    &:not(:last-child) {
+      border-bottom: 1px solid #d4dfec;
+    }
+    &:hover {
+      background-color: #efefef;
+    }
+  }
+}
+
+.selwi_wrap.-open {
+  .selwi_value {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .selwi_options {
+    display: block;
+  }
+}
+
+.select-title {
+  margin-left: 10px;
+  max-width: 113px;
+  flex: 1;
+  & + .inpwi_wrap {
+    margin-left: 0;
+    .inpwi {
+      border-radius: 0 5px 5px 0;
+    }
+  }
+  .selwi_value {
+    border-right-width: 0;
+  }
+}
+
+.form_jinni {
+  margin: 24px auto 0;
+  width: 120px;
+  p {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 18px;
+    text-align: center;
+  }
+}

@@ -1,34 +1,48 @@
-import React, {Component} from "react";
-import {string} from "prop-types";
+import React, { Component } from "react";
+import { string } from "prop-types";
 import moment from "moment";
 
 class Timer extends Component {
-    constructor(props) {
-        super(props);
+  state = {
+      drawDate: moment(this.props.drawDate, "YYYY-MM-DD HH:mm:ss ZZ").local(),
+      currDate: moment(),
+      timeRemains: "HH:MM:SS"
+  };
 
-        this.state = {
-            drawDate: moment(props.drawDate, "YYYY-MM-DD HH:mm:ss ZZ").local()
-        }
-    }
+  componentDidMount() {
+      this.tick();
+      this.interal = setInterval(this.tick, 1000);
+  }
 
-    componentDidMount() {
+  componentWillUnmount() {
+      clearInterval(this.interal);
+  }
 
-    }
+  tick = () => {
+      const { drawDate, currDate } = this.state;
+      let diff = drawDate.diff(currDate);
+      diff = moment.duration(diff);
+      const timeRemains = `${diff.days() * 24 + diff.hours()}:${diff.minutes()}:${diff.seconds()}`;
+      this.setState({
+          timeRemains,
+          currDate:moment()
+      })
+  };
 
-    render() {
-        const {drawDate} = this.state;
-        const date = drawDate.format("DD MMMM YYYY")
+  render() {
+      const {timeRemains} = this.state;  
 
-        return(
-            <p className="help_step_text">
-              Mega Millions draws are held twice a week. To find out if you’re a winner, check the
-              results after the next draw on <span className="help_timer">{date}</span>.</p>       
-        )
-    }
+      return (
+          <p className="help_step_text">
+        Mega Millions draws are held twice a week. To find out if you’re a winner, check the results
+        after the next draw in <span className="help_timer">{timeRemains}</span>.
+          </p>
+      );
+  }
 }
 
 Timer.propTypes = {
     drawDate: string.isRequired
-}
+};
 
 export default Timer;

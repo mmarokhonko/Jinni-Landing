@@ -4,6 +4,7 @@ import DynamicHeader from "./components/DynamicHeader/DynamicHeader";
 import Help from "./components/Help/Help";
 import Fact from "./components/Fact/Fact";
 import NumberPicker from "./components/NumberPicker/NumberPicker";
+import RegisterForm from "./components/RegisterForm/RegisterForm";
 
 class App extends Component {
     render() {
@@ -15,6 +16,7 @@ class App extends Component {
                         <h1 className="main_title">Get your <u>FREE</u> bet line here:</h1>
                         <div className="main_subwrap">
                             <NumberPicker />
+                            <RegisterForm />
                         </div>                        
                     </div>
                 </main>

@@ -41,8 +41,9 @@ h1,h2,h3,h4,h5 {
 }
 
 .main_subwrap {
-    margin-top: 40px;
+    margin: 40px auto 0;
     display: flex;
+    max-width: 989px;
 }
 
 .frame {
@@ -53,8 +54,10 @@ h1,h2,h3,h4,h5 {
 }
 
 .frame_title {
+    margin-bottom: 19px;
     font-size: 22px;
     line-height: 26px;
+    min-height: 52px;
     text-align: center;
 }
 
