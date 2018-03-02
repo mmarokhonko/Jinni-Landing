@@ -34,7 +34,7 @@ const Help = () => {
                     <div className="help_step">
                         <img src={iconCollect} alt="" className="help_step_icon" />
                         <h4 className="help_step_title">Collect your winnings</h4>
-                        <Timer drawDate="2018-04-27 19:30:00 UTC+11"/>
+                        <Timer drawDate="2018-04-27 19:30:00 +11:00"/>
                     </div>
                 </div>
             </div>

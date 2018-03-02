@@ -44,3 +44,33 @@ h1,h2,h3,h4,h5 {
     margin-top: 40px;
     display: flex;
 }
+
+.frame {
+    padding: 30px;
+    box-shadow: 0 5px 15px 0 #E2EEFF;
+    background-color: white;
+    border-radius: 4px;
+}
+
+.frame_title {
+    font-size: 22px;
+    line-height: 26px;
+    text-align: center;
+}
+
+.btn-green {
+    cursor: pointer;
+    border-radius: 16px;
+    background-color: #31CE03;
+    text-transform: uppercase;
+    font-size: 14px;
+    line-height: 21px;
+    color:white;
+    border: none;
+    font-weight: 400;
+    transition: background-color 0.3s;
+    &:hover, &:focus {
+        background-color: #2cb703;
+        outline:none;
+    }
+}

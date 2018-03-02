@@ -56,7 +56,6 @@ class DynamicHeader extends Component {
           let htmlString = "";
           const pos = index + 1;
           if (pos % 3 === 0) {
-              console.log(pos);
               htmlString = htmlString.concat(`<img class="header_jackpot_symbol -comma" src="${this.state.symbols["comma"]}" alt=","/>`);
           }
           htmlString = htmlString.concat(

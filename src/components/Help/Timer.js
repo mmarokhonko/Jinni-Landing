@@ -7,7 +7,7 @@ class Timer extends Component {
         super(props);
 
         this.state = {
-            drawDate: moment(props.drawDate).local()
+            drawDate: moment(props.drawDate, "YYYY-MM-DD HH:mm:ss ZZ").local()
         }
     }
 
