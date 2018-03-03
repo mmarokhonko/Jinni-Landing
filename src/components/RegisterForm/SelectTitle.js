@@ -17,6 +17,10 @@ class SelectTitle extends Component {
         ]
     }
 
+    componentDidMount() {
+        this.selectHandler(this.state.options[0])
+    }
+
     selectHandler = option => {
         this.props.selectHandler(this.props.name, option);
     }
@@ -34,7 +38,7 @@ class SelectTitle extends Component {
 }
 
 SelectTitle.propTypes = {
-    value: string.isRequired,
+    value: string,
     selectHandler: func.isRequired,
     name: string.isRequired
 }

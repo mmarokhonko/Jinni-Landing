@@ -94,9 +94,19 @@
 }
 
 .picker_bonus {
+  position: relative;
   border-top: 1px solid #f6b192;
   padding: 20px 22px 21px;
   background-color: rgba(246, 177, 146, 0.53);
+  &::before {
+    content:"";
+    position: absolute;
+    top: -10px;
+    left: calc(50% - 10px);
+    height: 19px;
+    width: 19px;
+    background-image: url("./assets/NumberPicker/icon/icon_star-small.png");
+  }
 }
 
 .picker_bonus_subwrap {

@@ -33,9 +33,11 @@ class SelectWithIcon extends Component {
         return(
             <ClickOutHandler onClickOut={this.ClickOutClose}> 
                 <div className={`selwi_wrap ${open ? "-open" : ""}`}>
-                    <div className="selwi_value" onClick={this.toggleOpen} style={{backgroundImage: `url(${icon})`}}>{value}</div>
+                    <div className={`selwi_value ${icon ? "-icon" : ""}`} onClick={this.toggleOpen} style={{backgroundImage: `url(${icon})`}}>{value}</div>
                     <ul className="selwi_options">
-                        {options.map((option, i) => <li onClick={() => this.selectHandler(option)} key={i}>{option.label}</li>)}
+                        {options.map((option, i) => <li
+                            style={{backgroundImage: `url(${options.icon ? option.icon : "none"})`}} 
+                            onClick={() => this.selectHandler(option)} key={i}>{option.label}</li>)}
                     </ul>
                 </div>
             </ClickOutHandler>
@@ -44,7 +46,7 @@ class SelectWithIcon extends Component {
 }
 
 SelectWithIcon.propTypes = {
-    value: string.isRequired,
+    value: string,
     options: array.isRequired,
     icon: string,
     selectHandler: func.isRequired
