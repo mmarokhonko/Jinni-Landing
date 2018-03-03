@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { string, func, object } from "prop-types";
 
-import SelectWithIcon from "./SelectWithIcon";
+import SelectWithIcon from "./generalComponents/SelectWithIcon";
 import allCountries from "./data/countries.json";
 import { restrictedCountries } from "./data/restrictedCountries.json";
 

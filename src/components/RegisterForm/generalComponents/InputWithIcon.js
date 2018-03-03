@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { string, number, func, oneOfType } from "prop-types";
 
-import geoIcon from "../../assets/RegisterForm/icons/geo.png";
-import mailIcon from "../../assets/RegisterForm/icons/mail.png";
-import lockIcon from "../../assets/RegisterForm/icons/lock.png";
-import profileIcon from "../../assets/RegisterForm/icons/profile.png";
-import phoneIcon from "../../assets/RegisterForm/icons/phone.png";
+import geoIcon from "../../../assets/RegisterForm/icons/geo.png";
+import mailIcon from "../../../assets/RegisterForm/icons/mail.png";
+import lockIcon from "../../../assets/RegisterForm/icons/lock.png";
+import profileIcon from "../../../assets/RegisterForm/icons/profile.png";
+import phoneIcon from "../../../assets/RegisterForm/icons/phone.png";
 
 class InputWithIcon extends Component {
   state = {

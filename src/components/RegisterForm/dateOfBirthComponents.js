@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { string, func, object } from "prop-types";
 
-import SelectWithIcon from "./SelectWithIcon";
+import SelectWithIcon from "./generalComponents/SelectWithIcon";
 
 import bithdayIcon from "../../assets/RegisterForm/icons/birthday.png";
 
@@ -26,8 +26,8 @@ class SelectDayOfBirth extends Component {
   };
 
   componentDidMount() {
-    this.selectHandler(this.state.options[0])
-}
+      this.selectHandler(this.state.options[0]);
+  }
 
   selectHandler = option => {
       this.props.selectHandler(this.props.name, option);
@@ -81,8 +81,8 @@ class SelectMonthOfBirth extends Component {
   };
 
   componentDidMount() {
-    this.selectHandler(this.state.options[0])
-}
+      this.selectHandler(this.state.options[0]);
+  }
 
   selectHandler = option => {
       this.props.selectHandler(this.props.name, option);
@@ -92,13 +92,7 @@ class SelectMonthOfBirth extends Component {
       const { value } = this.props;
       const { options } = this.state;
 
-      return (
-          <SelectWithIcon
-              value={value}
-              options={options}
-              selectHandler={this.selectHandler}
-          />
-      );
+      return <SelectWithIcon value={value} options={options} selectHandler={this.selectHandler} />;
   }
 }
 
@@ -115,7 +109,7 @@ const generateYearOfBirthOptions = () => {
     for (let x = currYear - 18; x >= currYear - 100; x--) {
         const value = x.toString();
 
-        options.push({label: value, value});
+        options.push({ label: value, value });
     }
 
     return options;
@@ -127,7 +121,7 @@ class SelectYearOfBirth extends Component {
   };
 
   componentDidMount() {
-      this.selectHandler(this.state.options[0])
+      this.selectHandler(this.state.options[0]);
   }
 
   selectHandler = option => {
@@ -138,13 +132,7 @@ class SelectYearOfBirth extends Component {
       const { value } = this.props;
       const { options } = this.state;
 
-      return (
-          <SelectWithIcon
-              value={value}
-              options={options}
-              selectHandler={this.selectHandler}
-          />
-      );
+      return <SelectWithIcon value={value} options={options} selectHandler={this.selectHandler} />;
   }
 }
 
@@ -153,7 +141,6 @@ SelectYearOfBirth.propTypes = {
     selectHandler: func.isRequired,
     name: string.isRequired
 };
-
 
 module.exports = {
     SelectDayOfBirth,

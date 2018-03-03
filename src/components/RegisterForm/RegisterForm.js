@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import InputWithIcon from "./InputWithIcon";
+import InputWithIcon from "./generalComponents/InputWithIcon";
 import SelectTitle from "./SelectTitle";
 import { SelectDayOfBirth, SelectMonthOfBirth, SelectYearOfBirth } from "./dateOfBirthComponents";
 import {SelectCountry, SelectPhoneCode} from "./countryComponents";
