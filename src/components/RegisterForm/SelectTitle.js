@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {string, func} from "prop-types";
+import {string, func, object} from "prop-types";
 
 import SelectWithIcon from "./SelectWithIcon";
 
@@ -38,7 +38,7 @@ class SelectTitle extends Component {
 }
 
 SelectTitle.propTypes = {
-    value: string,
+    value: object,
     selectHandler: func.isRequired,
     name: string.isRequired
 }

@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {string, array, func} from "prop-types";
+import {string, array, func, object} from "prop-types";
 import ClickOutHandler from "react-onclickout";
 
 class SelectWithIcon extends Component {
@@ -27,16 +27,36 @@ class SelectWithIcon extends Component {
         });
     }
 
+    generateValueClasses = () => {
+        const {value, icon} = this.props;
+
+        let classString = "selwi_value";
+
+        if(!icon) {
+            return classString;
+        }
+
+        if (icon === "flag" && value.countryCode) {
+            const code = value.countryCode.toLowerCase();
+            return classString.concat(` -flag-icon flag flag-${code}`);
+        }
+        else {
+            return classString.concat(" -icon");
+        }
+    }
+
     render() {
         const {value, options, icon} = this.props;
         const {open} = this.state;
+
         return(
             <ClickOutHandler onClickOut={this.ClickOutClose}> 
                 <div className={`selwi_wrap ${open ? "-open" : ""}`}>
-                    <div className={`selwi_value ${icon ? "-icon" : ""}`} onClick={this.toggleOpen} style={{backgroundImage: `url(${icon})`}}>{value}</div>
+                    <div className={this.generateValueClasses()} onClick={this.toggleOpen} 
+                        style={icon === "flag" ? {} : {backgroundImage: `url(${icon})`}}>{value.label}</div>
                     <ul className="selwi_options">
                         {options.map((option, i) => <li
-                            style={{backgroundImage: `url(${options.icon ? option.icon : "none"})`}} 
+                            className={option.countryCode ? `-flag-icon flag flag-${option.countryCode.toLowerCase()}` : ""}
                             onClick={() => this.selectHandler(option)} key={i}>{option.label}</li>)}
                     </ul>
                 </div>
@@ -46,7 +66,7 @@ class SelectWithIcon extends Component {
 }
 
 SelectWithIcon.propTypes = {
-    value: string,
+    value: object,
     options: array.isRequired,
     icon: string,
     selectHandler: func.isRequired

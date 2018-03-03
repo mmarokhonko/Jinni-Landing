@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import InputWithIcon from "./InputWithIcon";
 import SelectTitle from "./SelectTitle";
 import { SelectDayOfBirth, SelectMonthOfBirth, SelectYearOfBirth } from "./dateOfBirthComponents";
+import {SelectCountry, SelectPhoneCode} from "./countryComponents";
 
 import jinniImg from "../../assets/RegisterForm/img/jinni.png";
 
@@ -14,14 +15,14 @@ class RegisterFrom extends Component {
           lastName: "",
           email: "",
           password: "",
-          country: "United Kingdom",
+          country: {},
           city: "",
           code: "",
           street: "",
           dayOfBirth: {},
           monthOfBirth: {},
           yearOfBirth: {},
-          phoneCode: "",
+          phoneCode: {},
           phoneNumber: "",
           termsAgreed: false
       },
@@ -74,7 +75,7 @@ class RegisterFrom extends Component {
                           <h5 className="form_row_title">Title and Name</h5>
                           <div className="form_row_subwrap">
                               <SelectTitle
-                                  value={fields.title.label}
+                                  value={fields.title}
                                   name="title"
                                   selectHandler={this.selectHandler}
                               />
@@ -139,7 +140,13 @@ class RegisterFrom extends Component {
                   <form className="form" autoComplete="false">
                       <div className="form_row">
                           <h5 className="form_row_title">Country</h5>
-                          <div className="form_row_subwrap" />
+                          <div className="form_row_subwrap">
+                              <SelectCountry
+                                  value={fields.country}
+                                  name="country"
+                                  selectHandler={this.selectHandler}
+                              />
+                          </div>
                       </div>
                       <div className="form_row">
                           <h5 className="form_row_title">City and Code</h5>
@@ -176,17 +183,17 @@ class RegisterFrom extends Component {
                           <h5 className="form_row_title">Date of Birth</h5>
                           <div className="form_row_subwrap">
                               <SelectDayOfBirth
-                                  value={fields.dayOfBirth.label}
+                                  value={fields.dayOfBirth}
                                   name="dayOfBirth"
                                   selectHandler={this.selectHandler}
                               />
                               <SelectMonthOfBirth
-                                  value={fields.monthOfBirth.label}
+                                  value={fields.monthOfBirth}
                                   name="monthOfBirth"
                                   selectHandler={this.selectHandler}
                               />
                               <SelectYearOfBirth
-                                  value={fields.yearOfBirth.label}
+                                  value={fields.yearOfBirth}
                                   name="yearOfBirth"
                                   selectHandler={this.selectHandler}
                               />
@@ -195,6 +202,11 @@ class RegisterFrom extends Component {
                       <div className="form_row">
                           <h5 className="form_row_title">Phone Number</h5>
                           <div className="form_row_subwrap">
+                              <SelectPhoneCode
+                                  value={fields.phoneCode}
+                                  name="phoneCode"
+                                  selectHandler={this.selectHandler}
+                              />  
                               <InputWithIcon
                                   inputHandler={this.inputHandler}
                                   type="text"

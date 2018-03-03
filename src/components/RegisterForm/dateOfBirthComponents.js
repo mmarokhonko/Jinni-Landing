@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { string, func } from "prop-types";
+import { string, func, object } from "prop-types";
 
 import SelectWithIcon from "./SelectWithIcon";
 
@@ -49,7 +49,7 @@ class SelectDayOfBirth extends Component {
 }
 
 SelectDayOfBirth.propTypes = {
-    value: string,
+    value: object,
     selectHandler: func.isRequired,
     name: string.isRequired
 };
@@ -103,7 +103,7 @@ class SelectMonthOfBirth extends Component {
 }
 
 SelectMonthOfBirth.propTypes = {
-    value: string,
+    value: object,
     selectHandler: func.isRequired,
     name: string.isRequired
 };
@@ -149,7 +149,7 @@ class SelectYearOfBirth extends Component {
 }
 
 SelectYearOfBirth.propTypes = {
-    value: string,
+    value: object,
     selectHandler: func.isRequired,
     name: string.isRequired
 };
