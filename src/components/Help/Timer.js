@@ -22,7 +22,11 @@ class Timer extends Component {
       const { drawDate, currDate } = this.state;
       let diff = drawDate.diff(currDate);
       diff = moment.duration(diff);
-      const timeRemains = `${diff.days() * 24 + diff.hours()}:${diff.minutes()}:${diff.seconds()}`;
+      const timeRemains = `
+      ${diff.days() != 0 ? diff.days() + "d" : ""} 
+      ${diff.hours() != 0 ? diff.hours() + "h" : ""}
+      ${diff.minutes() != 0 ? diff.minutes() + "m" : ""}
+      ${diff.seconds() != 0 ? diff.seconds() + "s" : ""}`;
       this.setState({
           timeRemains,
           currDate:moment()
