@@ -4,6 +4,7 @@ import InputWithIcon from "./generalComponents/InputWithIcon";
 import SelectTitle from "./SelectTitle";
 import { SelectDayOfBirth, SelectMonthOfBirth, SelectYearOfBirth } from "./dateOfBirthComponents";
 import {SelectCountry, SelectPhoneCode} from "./countryComponents";
+import {isFieldError} from "./tools/validateFunctions";
 
 import jinniImg from "../../assets/RegisterForm/img/jinni.png";
 
@@ -26,6 +27,50 @@ class RegisterFrom extends Component {
           phoneNumber: "",
           termsAgreed: false
       },
+      errorObjects: {
+          firstNameError: {
+              text: "Sorry, this field is not",
+              active: false
+          },
+          lastNameError: {
+              text: "Sorry, this field is not",
+              active: false
+          },
+          emailError: {
+              text: "Sorry, this doesn’t look like a valid email",
+              active: false
+          },
+          passwordError: {
+              text: "Sorry, this field is not",
+              active: false
+          },
+          cityError: {
+              text: "Sorry, this field is not",
+              active: false
+          },
+          codeError: {
+              text: "Sorry, this field is not",
+              active: false
+          },
+          streetError: {
+              text: "Sorry, this field is not",
+              active: false
+          },
+          phoneNumberError: {
+              text: "Sorry, this field is not",
+              active: false
+          },
+          termsAgreedError: {
+              text: "Sorry, this field is not",
+              active: false
+          }
+      },
+      firstStepInputs: [
+          "firstName", "lastName", "email", "password"
+      ],
+      secondStepInputs: [
+          "city", "code", "street", "phoneNumber", "termsAgreed"  
+      ],
       step2: false
   };
 
@@ -57,14 +102,63 @@ class RegisterFrom extends Component {
           fields: newFields
       });
   };
-  changeStep = () => {
+
+  resetErrors = callback => {
+      let errorObjects = this.state.errorObjects;
+      Object.keys(errorObjects).forEach(fieldErrorObject => {
+          errorObjects[fieldErrorObject].active = false
+      })
+
       this.setState({
-          step2: true
-      });
+          errorObjects
+      }, () => callback());
+  }
+
+  validateFields = (inputsArray, callback) => {
+      let {fields, errorObjects} = this.state;
+
+      let errorFound = false;
+
+      inputsArray.forEach(fieldName => {
+          let isError = isFieldError(fieldName, fields[fieldName]);
+          if (isError) {
+              errorObjects[`${fieldName}Error`].active = true;
+              errorFound = true;                
+          }
+      })
+
+      if (errorFound) {
+          this.setState({
+              errorObjects
+          })
+      }
+
+      else {
+          callback(); 
+      }      
+  }
+
+  changeStep = () => {
+      this.resetErrors(() => {
+          this.validateFields(this.state.firstStepInputs, () => {
+              this.setState({
+                  step2: true
+              });
+          })
+      })  
   };
 
+  submitHandler = e => {
+      e.preventDefault();
+      this.resetErrors(() => {
+          this.validateFields(this.state.secondStepInputs, () => {
+              console.log("all clear");
+          })
+      })   
+  }
+
   render() {
-      const { step2, fields } = this.state;
+      const { step2, fields, errorObjects } = this.state;
 
       if (!step2)
           return (
@@ -84,6 +178,7 @@ class RegisterFrom extends Component {
                                   type="text"
                                   name="firstName"
                                   value={fields.firstName}
+                                  error={errorObjects.firstNameError}
                               />
                           </div>
                       </div>
@@ -96,6 +191,7 @@ class RegisterFrom extends Component {
                                   icon="profile"
                                   name="lastName"
                                   value={fields.lastName}
+                                  error={errorObjects.lastNameError}
                               />
                           </div>
                       </div>
@@ -108,6 +204,7 @@ class RegisterFrom extends Component {
                                   icon="email"
                                   name="email"
                                   value={fields.email}
+                                  error={errorObjects.emailError}
                               />
                           </div>
                       </div>
@@ -120,6 +217,7 @@ class RegisterFrom extends Component {
                                   icon="lock"
                                   name="password"
                                   value={fields.password}
+                                  error={errorObjects.passwordError}
                               />
                           </div>
                       </div>
@@ -137,7 +235,7 @@ class RegisterFrom extends Component {
           return (
               <div className="frame form_frame-vert">
                   <h4 className="frame_title">Register to place FREE bet</h4>
-                  <form className="form" autoComplete="false">
+                  <form className="form" autoComplete="false" onSubmit={e => this.submitHandler(e)}>
                       <div className="form_row">
                           <h5 className="form_row_title">Country</h5>
                           <div className="form_row_subwrap">
@@ -157,6 +255,7 @@ class RegisterFrom extends Component {
                                   name="city"
                                   icon="geo"
                                   value={fields.city}
+                                  error={errorObjects.cityError}
                               />
                               <InputWithIcon
                                   inputHandler={this.inputHandler}
@@ -164,6 +263,7 @@ class RegisterFrom extends Component {
                                   name="code"
                                   icon="geo"
                                   value={fields.code}
+                                  error={errorObjects.codeError}
                               />
                           </div>
                       </div>
@@ -176,6 +276,7 @@ class RegisterFrom extends Component {
                                   name="street"
                                   icon="geo"
                                   value={fields.street}
+                                  error={errorObjects.streetError}
                               />
                           </div>
                       </div>
@@ -210,9 +311,10 @@ class RegisterFrom extends Component {
                               <InputWithIcon
                                   inputHandler={this.inputHandler}
                                   type="text"
-                                  name="phone"
+                                  name="phoneNumber"
                                   icon="phone"
                                   value={fields.phoneNumber}
+                                  error={errorObjects.phoneNumberError}
                               />
                           </div>
                       </div>

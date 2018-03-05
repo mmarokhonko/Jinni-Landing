@@ -63,6 +63,26 @@
     -webkit-box-shadow: 0 0 0 100px white inset;
     box-shadow: 0 0 0 100px white inset;
   }
+  &.-error {
+    border-color: #FA3232;
+  } 
+}
+
+.inpwi_error-text {
+  margin-top: 4px;
+  color: #FA3232;
+  font-size: 12px;	
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  &:before {
+    content: "";
+    display: block;
+    height: 7px;
+    width: 7px;
+    background-image: url("./assets/RegisterForm/icons/icon_error.png");
+    margin-right: 10px;
+  }
 }
 
 .selwi_wrap {

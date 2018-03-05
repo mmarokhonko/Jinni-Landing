@@ -10,11 +10,14 @@
     "analyze": "webpack --env.NODE_ENV=production --env.ANALYZE_BUNDLE=true --progress -p"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "js-cookie": "^2.2.0",
     "moment": "^2.21.0",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-onclickout": "^2.0.8"
+    "react-onclickout": "^2.0.8",
+    "validator": "^9.4.1"
   },
   "devDependencies": {
     "autoprefixer": "^8.1.0",

@@ -12,6 +12,9 @@ class SelectTitle extends Component {
                 label: "Mr.", value:"Mr."
             },
             {
+                label: "Mrs.", value:"Mrs."
+            },
+            {
                 label: "Ms.", value:"Ms."
             }
         ]

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { string, number, func, oneOfType } from "prop-types";
+import { string, number, func, oneOfType, object } from "prop-types";
 
 import geoIcon from "../../../assets/RegisterForm/icons/geo.png";
 import mailIcon from "../../../assets/RegisterForm/icons/mail.png";
@@ -15,12 +15,19 @@ class InputWithIcon extends Component {
           lock: lockIcon,
           profile: profileIcon,
           phone: phoneIcon
-      }
+      },
+      error: this.props.error
   };
+
+  componentWillReceiveProps(newProps) {
+      this.setState({
+          error: newProps.error
+      })
+  }
 
   render() {
       const { type, icon, value, name, inputHandler } = this.props;
-      const { icons } = this.state;
+      const { icons, error } = this.state;
 
       return (
           <div className="inpwi_wrap">
@@ -29,10 +36,11 @@ class InputWithIcon extends Component {
                   onChange={e => inputHandler(name, e)}
                   value={value}
                   name={name}
-                  className={`inpwi ${!icon ? "-no-icon" : ""}`}
+                  className={`inpwi${!icon ? " -no-icon" : ""}${error.active ? " -error" : ""}`}
                   type={type}
                   style={{ backgroundImage: `url(${icons[icon]})` }}
               />
+              {error.active && <p className="inpwi_error-text">{error.text}</p>}
           </div>
       );
   }
@@ -43,7 +51,8 @@ InputWithIcon.propTypes = {
     icon: string,
     name: string.isRequired,
     value: oneOfType([string, number]).isRequired,
-    inputHandler: func.isRequired
+    inputHandler: func.isRequired,
+    error: object
 };
 
 export default InputWithIcon;

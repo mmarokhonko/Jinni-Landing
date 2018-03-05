@@ -13,7 +13,7 @@ const filteredCountries = allCountries
 const generateCountryOptions = () => {
     const options = filteredCountries.map(country => ({
         label: country.name,
-        value: country.name,
+        value: country.alpha2,
         countryCode: country.alpha2
     }));
     return options;
