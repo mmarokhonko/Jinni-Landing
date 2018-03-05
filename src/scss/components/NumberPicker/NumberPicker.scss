@@ -24,6 +24,18 @@
   width: 114px;
 }
 
+.picker_done {
+  margin: 0 auto;
+  height: 32px;
+  width: 32px;
+  border-radius: 100%;
+  background-color: #31CE03;
+  background-image: url("./assets/NumberPicker/icon/check.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 15px 15px;   
+}
+
 .picker_clear-btn {
   cursor: pointer;
   position: absolute;

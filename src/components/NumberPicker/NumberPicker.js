@@ -52,6 +52,26 @@ class NumberPicker extends Component {
         })
     }
 
+    genNumbersHeader = () => {
+        if (this.state.pickedNums.length === 5) {
+            return "Line completed"
+        }
+        else {
+            const diff = 5 - this.state.pickedNums.length;
+            if (diff === 1) {
+                return "Select 1 number"
+            }
+            return `Select ${diff} numbers`
+        }
+    }
+
+    genBonusHeader = () => {
+        if(this.state.pickedBonus){
+            return "All done here!"
+        }
+        return "Select 1 number"
+    }
+
     genRandomNumber = () => {
         let {maxNumber, pickedNums, quickPickDelay} = this.state;
 
@@ -121,24 +141,30 @@ class NumberPicker extends Component {
     }
 
     render(){
-        const {maxNumber, maxBonus} = this.state;
+        const {maxNumber, maxBonus, pickedNums, pickedBonus} = this.state;
+
+        const done = pickedNums.length === 5 && pickedBonus ? true : false;
 
         return(
             <div className="frame picker_frame-vert">
                 <h4 className="frame_title">Pick 5 numbers <br/>& 1 bonus number</h4>
                 <div className="picker">
                     <div className="picker_head">
-                        <button className="btn-green picker_quick-btn" onClick={this.quickPick}>Quick Pick</button>
+                        {
+                            !done ?
+                                <button className="btn-green picker_quick-btn" onClick={this.quickPick}>Quick Pick</button>
+                                : <div className="picker_done"></div>
+                        }
                         <button className="picker_clear-btn" onClick={this.clearNums}/>
                     </div>
                     <div className="picker_nums">
-                        <h5 className="picker_nums_title">Select 5 numbers</h5>
+                        <h5 className="picker_nums_title">{this.genNumbersHeader()}</h5>
                         <div className="picker_nums_subwrap">
                             {this.generateNumbers(maxNumber)}
                         </div>
                     </div>
                     <div className="picker_bonus">
-                        <h5 className="picker_nums_title">Select 1 number</h5>
+                        <h5 className="picker_nums_title">{this.genBonusHeader()}</h5>
                         <div className="picker_bonus_subwrap">
                             {this.generateBonusNums(maxBonus)}
                         </div>
