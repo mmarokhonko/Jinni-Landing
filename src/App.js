@@ -10,7 +10,7 @@ class App extends Component {
     render() {
         return(
             <Fragment>
-                <DynamicHeader lotto="megamillions" jackpot="1234567890" />
+                <DynamicHeader lotto="megamillions" jackpot="49003414" />
                 <main className="main">
                     <div className="cont-zone">
                         <h1 className="main_title">Get your <u>FREE</u> bet line here:</h1>
