@@ -234,10 +234,9 @@ class RegisterFrom extends Component {
                           <p>
                 I certify that I am at least 18 years old, or the legal minimum age in my country of
                 residence. I accept that the customer funds protection rating is ‘Medium’ as
-                outlined in the <a>Terms and Conditions</a> which I accept, along with the{" "}
-                              <a>Privacy Policy</a>. We believe in responsible gambling. You can set your deposit
-                limit and preferences
-                              <a>here</a>.
+                outlined in the <a href="http://jinnilotto.com/terms-conditions/">Terms and Conditions</a> which I accept, along with the{" "}
+                              <a href="http://jinnilotto.com/privacy">Privacy Policy</a>. We believe in responsible gambling. You can set your deposit
+                limit and preferences <a href="http://jinnilotto.com/responsible-gaming">here</a>.
                           </p>
                       </div>
                   </form>
