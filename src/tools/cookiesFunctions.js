@@ -7,7 +7,7 @@ const setBTagCookie = bTag => {
         return
     }
 
-    if(bTag.length > 1) {
+    if(bTag.length) {
         console.log(`bTag ${bTag} is saved`);
         return Cookies.set("bTag", bTag);
     }
