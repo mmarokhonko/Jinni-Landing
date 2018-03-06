@@ -70,7 +70,7 @@ const generateMonthOfBirthOptions = () => {
         "Dec"
     ];
 
-    const options = months.map(value => ({ label: value, value }));
+    const options = months.map((value, index) => ({ label: value, value: index+1 }));
 
     return options;
 };

@@ -9,13 +9,13 @@ class SelectTitle extends Component {
     state = {
         options: [
             {
-                label: "Mr.", value:"Mr."
+                label: "Mr.", value:"male"
             },
             {
-                label: "Mrs.", value:"Mrs."
+                label: "Mrs.", value:"female"
             },
             {
-                label: "Ms.", value:"Ms."
+                label: "Ms.", value:"female"
             }
         ]
     }

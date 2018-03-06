@@ -1,14 +1,15 @@
 import React, { Component } from "react";
+import {func} from "prop-types";
 
 import InputWithIcon from "./generalComponents/InputWithIcon";
 import SelectTitle from "./SelectTitle";
 import { SelectDayOfBirth, SelectMonthOfBirth, SelectYearOfBirth } from "./dateOfBirthComponents";
-import {SelectCountry, SelectPhoneCode} from "./countryComponents";
-import {isFieldError} from "./tools/validateFunctions";
+import { SelectCountry, SelectPhoneCode } from "./countryComponents";
+import { isFieldError } from "./tools/validateFunctions";
 
 import jinniImg from "../../assets/RegisterForm/img/jinni.png";
 
-class RegisterFrom extends Component {
+class RegisterForm extends Component {
   state = {
       fields: {
           title: {},
@@ -65,12 +66,8 @@ class RegisterFrom extends Component {
               active: false
           }
       },
-      firstStepInputs: [
-          "firstName", "lastName", "email", "password"
-      ],
-      secondStepInputs: [
-          "city", "code", "street", "phoneNumber", "termsAgreed"  
-      ],
+      firstStepInputs: ["firstName", "lastName", "email", "password"],
+      secondStepInputs: ["city", "code", "street", "phoneNumber", "termsAgreed"],
       step2: false
   };
 
@@ -106,16 +103,19 @@ class RegisterFrom extends Component {
   resetErrors = callback => {
       let errorObjects = this.state.errorObjects;
       Object.keys(errorObjects).forEach(fieldErrorObject => {
-          errorObjects[fieldErrorObject].active = false
-      })
+          errorObjects[fieldErrorObject].active = false;
+      });
 
-      this.setState({
-          errorObjects
-      }, () => callback());
-  }
+      this.setState(
+          {
+              errorObjects
+          },
+          () => callback()
+      );
+  };
 
   validateFields = (inputsArray, callback) => {
-      let {fields, errorObjects} = this.state;
+      let { fields, errorObjects } = this.state;
 
       let errorFound = false;
 
@@ -123,20 +123,18 @@ class RegisterFrom extends Component {
           let isError = isFieldError(fieldName, fields[fieldName]);
           if (isError) {
               errorObjects[`${fieldName}Error`].active = true;
-              errorFound = true;                
+              errorFound = true;
           }
-      })
+      });
 
       if (errorFound) {
           this.setState({
               errorObjects
-          })
+          });
+      } else {
+          callback();
       }
-
-      else {
-          callback(); 
-      }      
-  }
+  };
 
   changeStep = () => {
       this.resetErrors(() => {
@@ -144,18 +142,61 @@ class RegisterFrom extends Component {
               this.setState({
                   step2: true
               });
-          })
-      })  
+          });
+      });
   };
 
   submitHandler = e => {
       e.preventDefault();
       this.resetErrors(() => {
           this.validateFields(this.state.secondStepInputs, () => {
-              console.log("all clear");
-          })
-      })   
-  }
+              const formData = this.formatAndSendDataUpwards();
+              this.props.submitHandler(formData);                  
+          });
+      });
+  };
+
+  formatAndSendDataUpwards = () => {
+      const { fields } = this.state;
+      const simpleSelects = ["title"];
+      
+      let formData = {};
+      Object.keys(fields).forEach(fieldName => {
+          const field = fields[fieldName];
+
+          switch (true) {
+          case(fieldName === "title"): {
+              formData.gender = field.value;                            
+              break;
+          }
+          case(fieldName === "country"): {
+              formData.country = field.label;
+              formData.countryCode = field.countryCode;                            
+              break;
+          }
+          case(fieldName.includes("OfBirth") || fieldName === "termsAgreed" || fieldName === "code" || fieldName === "street" || fieldName === "phoneCode" || fieldName === "phoneNumber"): {                         
+              break;
+          }        
+          case(simpleSelects.indexOf(fieldName) !== -1): {
+              formData[fieldName] = field.value;              
+              break;
+          }  
+          default: {
+              formData[fieldName] = field;
+              break;
+          }
+          }
+      });
+      const dayOfBirth = fields.dayOfBirth.value,
+          monthOfBirth = fields.monthOfBirth.value,
+          yearOfBirth = fields.yearOfBirth.value;
+      formData.birthDate = `${yearOfBirth}/${monthOfBirth}/${dayOfBirth}`;
+          
+      formData.address = `${fields.city}, ${fields.street}, ${fields.code}`;
+      formData.phoneNumber = `${fields.phoneCode.value}-${fields.phoneNumber}`;
+
+      return formData;
+  };
 
   render() {
       const { step2, fields, errorObjects } = this.state;
@@ -168,11 +209,7 @@ class RegisterFrom extends Component {
                       <div className="form_row">
                           <h5 className="form_row_title">Title and Name</h5>
                           <div className="form_row_subwrap">
-                              <SelectTitle
-                                  value={fields.title}
-                                  name="title"
-                                  selectHandler={this.selectHandler}
-                              />
+                              <SelectTitle value={fields.title} name="title" selectHandler={this.selectHandler} />
                               <InputWithIcon
                                   inputHandler={this.inputHandler}
                                   type="text"
@@ -307,7 +344,7 @@ class RegisterFrom extends Component {
                                   value={fields.phoneCode}
                                   name="phoneCode"
                                   selectHandler={this.selectHandler}
-                              />  
+                              />
                               <InputWithIcon
                                   inputHandler={this.inputHandler}
                                   type="text"
@@ -336,9 +373,11 @@ class RegisterFrom extends Component {
                           <p>
                 I certify that I am at least 18 years old, or the legal minimum age in my country of
                 residence. I accept that the customer funds protection rating is ‘Medium’ as
-                outlined in the <a href="http://jinnilotto.com/terms-conditions/">Terms and Conditions</a> which I accept, along with the{" "}
-                              <a href="http://jinnilotto.com/privacy">Privacy Policy</a>. We believe in responsible gambling. You can set your deposit
-                limit and preferences <a href="http://jinnilotto.com/responsible-gaming">here</a>.
+                outlined in the{" "}
+                              <a href="http://jinnilotto.com/terms-conditions/">Terms and Conditions</a> which I
+                accept, along with the <a href="http://jinnilotto.com/privacy">Privacy Policy</a>.
+                We believe in responsible gambling. You can set your deposit limit and preferences{" "}
+                              <a href="http://jinnilotto.com/responsible-gaming">here</a>.
                           </p>
                       </div>
                   </form>
@@ -347,4 +386,8 @@ class RegisterFrom extends Component {
   }
 }
 
-export default RegisterFrom;
+RegisterForm.propTypes = {
+    submitHandler: func.isRequired
+}
+
+export default RegisterForm;
