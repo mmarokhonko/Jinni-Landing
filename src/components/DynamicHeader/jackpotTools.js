@@ -14,7 +14,7 @@ import symbolL from "../../assets/Header/jackpot-font/L.png";
 import symbolO from "../../assets/Header/jackpot-font/O.png";
 import symbolN from "../../assets/Header/jackpot-font/N.png";
 import symbolS from "../../assets/Header/jackpot-font/S.png";
-import symbolComma from "../../assets/Header/jackpot-font/Comma.png";
+import symbolDot from "../../assets/Header/jackpot-font/Dot.png";
 import symbolEuro from "../../assets/Header/jackpot-font/Euro.png";
 
 const symbols = {
@@ -34,7 +34,7 @@ const symbols = {
     o: symbolO,
     n: symbolN,
     s: symbolS,
-    comma: symbolComma,
+    dot: symbolDot,
     euro: symbolEuro
 }
 
@@ -68,11 +68,11 @@ const mapStringToImages = string => {
         let htmlString = "";
       
         if(symbol === ".") {
-            symbol = "comma"
+            symbol = "dot"
         }  
 
         return htmlString.concat(
-            `<img class="header_jackpot_symbol ${symbol === "comma" ? "-comma" : "-number"}" 
+            `<img class="header_jackpot_symbol ${symbol === "dot" ? "-dot" : "-number"}" 
             src="${symbols[symbol]}" alt="${symbol}"/>`);
     });
 

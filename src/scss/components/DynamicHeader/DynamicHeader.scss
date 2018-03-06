@@ -42,11 +42,11 @@
 .header_jackpot_symbol {
     height: 75px;
 
-    &.-comma {
-        margin-left: -5px;
-        margin-right: 5px;
-        height: 30px;
-        transform: translateY(15px)
+    &.-dot {
+        margin-left: -7px;
+        margin-right: 3px;
+        height: 15px;
+        transform: translateY(10px)
     }
     &.-currency {
         margin-right: 20px;

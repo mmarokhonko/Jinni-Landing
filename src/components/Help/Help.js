@@ -1,4 +1,5 @@
 import React from "react";
+import {string} from "prop-types";
 
 import Timer from "./Timer";
 
@@ -7,7 +8,7 @@ import iconPick from "../../assets/Help/icons/ic_pick.svg";
 import iconGet from "../../assets/Help/icons/ic_get.svg";
 import iconCollect from "../../assets/Help/icons/ic_collect.svg";
 
-const Help = () => {
+const Help = ({drawDate}) => {
     return (
         <section className="help">
             <div className="cont-zone">
@@ -34,12 +35,16 @@ const Help = () => {
                     <div className="help_step">
                         <img src={iconCollect} alt="" className="help_step_icon" />
                         <h4 className="help_step_title">Collect your winnings</h4>
-                        <Timer drawDate="2018-03-8 19:30:00 +11:00"/>
+                        <Timer drawDate={drawDate}/>
                     </div>
                 </div>
             </div>
         </section>
     );
 };
+
+Help.propTypes = {
+    drawDate: string.isRequired
+}
 
 export default Help;

@@ -33,7 +33,7 @@ module.exports = env => {
 
     return {
         context: path.resolve(__dirname, "./src"),
-        entry: "./index.js",
+        entry: ["../node_modules/regenerator-runtime/runtime.js", "./index.js"],
         output: {
             path: path.resolve(__dirname, "./dist"),
             filename: "main.js",

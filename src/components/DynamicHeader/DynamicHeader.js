@@ -10,7 +10,7 @@ import megaLogo from "../../assets/Header/logo/megamillions.png";
 class DynamicHeader extends Component {
   state = {
       lottoData: {
-          megamillions: {
+          ["Mega Millions"]: {
               bg: megaBG,
               people: megaPeople,
               logo: megaLogo
