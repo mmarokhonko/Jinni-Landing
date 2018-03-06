@@ -16,15 +16,15 @@ const sendDataModule = {
 
     sendData: function(data) {
         console.log(JSON.stringify(data));
-        // axios.post("https://api.jinnilotto.com/affiliate", data)
-        //     .then(resp => {
-        //         console.log(resp);
-        //         alert("Succesfully sent! Check console");
-        //     })
-        //     .catch(err => {
-        //         console.log(err);
-        //         alert("Error while sending! Check console");
-        //     });
+        axios.post("https://api.jinnilotto.com/affiliate", data)
+            .then(resp => {
+                console.log(resp);
+                alert("Succesfully sent! Check console");
+            })
+            .catch(err => {
+                console.log(err);
+                alert("Error while sending! Check console");
+            });
     },
 
     getUserData: async function () {
