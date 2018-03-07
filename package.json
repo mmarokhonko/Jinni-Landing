@@ -21,7 +21,6 @@
     "react-onclickout": "^2.0.8",
     "regenerator": "^0.12.3",
     "shallow-equal": "^1.0.0",
-    "shortid": "^2.2.8",
     "validator": "^9.4.1"
   },
   "devDependencies": {

@@ -6,7 +6,7 @@ import Fact from "./components/Fact/Fact";
 import NumberPicker from "./components/NumberPicker/NumberPicker";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 
-import { getQueryStringValue, getFeedData, setBTagCookie } from "./tools/toolFunctions";
+import { getFeedData, getParamFromCookieOrUrl } from "./tools/toolFunctions";
 import sendDataModule from "./tools/sendDataModule";
 
 class App extends Component {
@@ -26,9 +26,7 @@ class App extends Component {
           couponCode: undefined,
           affiliateId: undefined,
           incentiveCode: "free_ticket_mm",
-          redirectUrl: "https://jinnilotto.com/cart",
-          mc: "",
-          jlpd: ""
+          redirectUrl: "https://jinnilotto.com/?init=lp&redirectUrl=/cart ",
       }
   };
 
@@ -47,16 +45,17 @@ class App extends Component {
   };
 
   setUrlData = () => {
-      const bTag = getQueryStringValue("bTag");
-      const campaign = getQueryStringValue("campaign");
-      const couponCode = getQueryStringValue("couponCode");
-      const referral = window.location.href;
-      const affiliateId = bTag ? bTag.substring(0, bTag.indexOf("_")) : "";	
-			
-      const actualBTag = setBTagCookie(bTag);
+      const bTag = getParamFromCookieOrUrl("btag"),
+          campaign = getParamFromCookieOrUrl("campaign"),
+          couponCode = getParamFromCookieOrUrl("couponCode"),
+          referral = getParamFromCookieOrUrl("referral"),
+          mc = getParamFromCookieOrUrl("mc"),
+          jlpid = getParamFromCookieOrUrl("jlpid"),
+          affiliateId = bTag.length > 0 ? bTag.substring(0, bTag.indexOf("_")) : "";	
 									
       const urlData = {
-          bTag: actualBTag, couponCode, referral, campaign, affiliateId
+          bTag, couponCode, campaign, affiliateId, mc, jlpid,
+          referral: referral.length > 0 ? referral : window.location.href, 
       }
 			
       const newUrlData = Object.assign({}, this.state.urlData, urlData)

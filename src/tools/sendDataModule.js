@@ -1,7 +1,6 @@
 import axios from "axios";
 import currentDevice from "current-device";
 import {detect} from "detect-browser";
-import shortid from "shortid";
 
 
 const sendDataModule = {
@@ -16,7 +15,7 @@ const sendDataModule = {
 
     sendData: function(data) {
         console.log(JSON.stringify(data));
-        axios.post("https://api.jinnilotto.com/affiliate", data)
+        axios.post("https://api.jinnilotto.com/affiliate/welcome/response.json", JSON.stringify(data))
             .then(resp => {
                 console.log(resp);
                 alert("Succesfully sent! Check console");

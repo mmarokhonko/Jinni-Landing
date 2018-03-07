@@ -14,28 +14,27 @@ const getQueryStringValue = key => {
     return value;
 };
 
-const setBTagCookie = bTag => {
-    let bTagCookie = Cookies.get("bTag");
-    if (bTagCookie) {
-        console.log("bTag already exists");
-        return bTagCookie;
+const getParamFromCookieOrUrl = key => {
+    let cookieValue = Cookies.get(key);
+    if(cookieValue) {
+        console.log(`${key} cookie exists and is ${cookieValue}`)
+        return cookieValue;
     }
-
-    if (bTag.length) {
-        console.log(`bTag ${bTag} is saved`);
-        Cookies.set("bTag", bTag);
-        return bTag;
+    let urlValue = getQueryStringValue(key);
+    if(urlValue.length === 0) {
+        console.log(`${key} is not provided in url`);
+        return urlValue;
     }
-
-    return console.log("bTag is not set");
-};
+    Cookies.set(key, urlValue);
+    console.log(`${key} ${urlValue} was saved`);
+    return urlValue;
+}
 
 const getFeedData = () => {
     return axios.get("https://feed.jinnilotto.com/feed.json");
 };
 
 module.exports = {
-    getQueryStringValue,
-    setBTagCookie,
+    getParamFromCookieOrUrl,
     getFeedData
 };
