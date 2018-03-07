@@ -6,7 +6,7 @@ import Fact from "./components/Fact/Fact";
 import NumberPicker from "./components/NumberPicker/NumberPicker";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 
-import { getFeedData, getParamFromCookieOrUrl } from "./tools/toolFunctions";
+import { getFeedData, getParamFromCookieOrUrl, getParamFromURL } from "./tools/toolFunctions";
 import sendDataModule from "./tools/sendDataModule";
 
 class App extends Component {
@@ -51,10 +51,13 @@ class App extends Component {
           referral = getParamFromCookieOrUrl("referral"),
           mc = getParamFromCookieOrUrl("mc"),
           jlpid = getParamFromCookieOrUrl("jlpid"),
+          lotteryOrientation = getParamFromURL("lottery"),
+          lang = getParamFromURL("lang"),
+          offer = getParamFromURL("offer"),
           affiliateId = bTag.length > 0 ? bTag.substring(0, bTag.indexOf("_")) : "";	
 									
       const urlData = {
-          bTag, couponCode, campaign, affiliateId, mc, jlpid,
+          bTag, couponCode, campaign, affiliateId, mc, jlpid, lotteryOrientation, lang, offer,
           referral: referral.length > 0 ? referral : window.location.href, 
       }
 			
@@ -85,7 +88,7 @@ class App extends Component {
 
       const data = Object.assign({},
           formData, 
-          {lotteryId:lottoData.LotteryID, lotteryOrientation: "MegaMillions", picksData}, 
+          {lotteryId:lottoData.LotteryID, lotteryOrientation: "Mega Millions", picksData}, 
           urlData);
       sendDataModule.prepareDataToSend(data);
   }

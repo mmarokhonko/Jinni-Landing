@@ -190,7 +190,7 @@ class RegisterForm extends Component {
       const dayOfBirth = fields.dayOfBirth.value,
           monthOfBirth = fields.monthOfBirth.value,
           yearOfBirth = fields.yearOfBirth.value;
-      formData.birthDate = `${yearOfBirth}/${monthOfBirth}/${dayOfBirth}`;
+      formData.birthDate = `${yearOfBirth}-${monthOfBirth}-${dayOfBirth}`;
           
       formData.address = `${fields.city}, ${fields.street}, ${fields.code}`;
       formData.phoneNumber = `${fields.phoneCode.value}-${fields.phoneNumber}`;

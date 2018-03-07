@@ -9,11 +9,12 @@ const generateDayOfBirthOptions = () => {
     let options = [];
 
     for (let x = 1; x <= 31; x++) {
-        const value = x.toString();
+        const label = x.toString();
+        const number = x >=10 ? x.toString() : `0${x.toString()}`;
 
         options.push({
-            label: value,
-            value
+            label: label,
+            value: number
         });
     }
 
@@ -70,7 +71,10 @@ const generateMonthOfBirthOptions = () => {
         "Dec"
     ];
 
-    const options = months.map((value, index) => ({ label: value, value: index+1 }));
+    const options = months.map((value, index) => {
+        let mothnNumber = index+1 >=10 ? (index+1).toString() : `0${(index+1).toString()}`;
+        return {label: value, value: mothnNumber}
+    });
 
     return options;
 };
