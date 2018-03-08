@@ -27,8 +27,7 @@
   margin-left: -10px;
 }
 
-.form_confirm-btn {
-  margin-top: 25px;
+.form_btn {
   display: block;
   margin-left: auto;
   height: 50px;
@@ -37,6 +36,10 @@
   font-size: 16px;
   font-weight: bold;
   line-height: 26px;
+}
+
+.form_confirm-btn {
+  margin-top: 25px;
 }
 
 .inpwi_wrap {
@@ -64,14 +67,14 @@
     box-shadow: 0 0 0 100px white inset;
   }
   &.-error {
-    border-color: #FA3232;
-  } 
+    border-color: #fa3232;
+  }
 }
 
 .inpwi_error-text {
   margin-top: 4px;
-  color: #FA3232;
-  font-size: 12px;	
+  color: #fa3232;
+  font-size: 12px;
   line-height: 16px;
   display: flex;
   align-items: center;
@@ -80,7 +83,10 @@
     display: block;
     height: 7px;
     width: 7px;
+    flex-shrink: 0;
     background-image: url("./assets/RegisterForm/icons/icon_error.png");
+    background-size: contain;
+    background-repeat: no-repeat;
     margin-right: 10px;
   }
 }
@@ -198,7 +204,7 @@
 
 .select-phone-code {
   max-width: 130px;
-  flex:1;
+  flex: 1;
 }
 
 .form_jinni {
@@ -215,15 +221,15 @@
 
 .form_terms {
   margin-top: 30px;
-  border-top: 1px solid #D7E7FF;
+  border-top: 1px solid #d7e7ff;
   padding-top: 25px;
   display: flex;
   & > p {
-    color: #97A5B8;
+    color: #97a5b8;
     font-size: 12px;
     line-height: 16px;
     a {
-      color: #46CF00;
+      color: #46cf00;
       transform: color 0.3s;
       &:hover {
         color: #2cb703;
@@ -246,12 +252,43 @@
     height: 22px;
     width: 22px;
     border-radius: 2px;
-    border: 1px solid #31CE03;
+    border: 1px solid #31ce03;
   }
   & > input:checked + label {
-    background-color: #31CE03;
+    background-color: #31ce03;
     background-image: url("./assets/RegisterForm/icons/check.png");
     background-repeat: no-repeat;
     background-position: center;
+  }
+}
+
+.form_step2_bottom {
+  margin-top: 25px;
+  display: flex;
+  .form_btn {
+    flex-shrink: 0;
+  }
+}
+
+.form_step2_bottom_error {
+  align-items: center;
+  color: #fa3232;
+  font-size: 12px;
+  line-height: 16px;
+  max-width: 80%;
+  display: none;
+  &:before {
+    content: "";
+    display: block;
+    height: 7px;
+    width: 7px;
+    flex-shrink: 0;
+    background-image: url("./assets/RegisterForm/icons/icon_error.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 10px;
+  }
+  &.-shown {
+    display: flex;
   }
 }

@@ -40,7 +40,7 @@ class InputWithIcon extends Component {
                   type={type}
                   style={{ backgroundImage: `url(${icons[icon]})` }}
               />
-              {error.active && <p className="inpwi_error-text">{error.text}</p>}
+              {(error.active && !error.justEmpty) && <div className="inpwi_error-text"><p>{error.text}</p></div>}
           </div>
       );
   }

@@ -30,40 +30,49 @@ class RegisterForm extends Component {
       },
       errorObjects: {
           firstNameError: {
-              text: "Sorry, this field is not",
-              active: false
+              text: "First name must contain a minimum of 2 and a maximum of 24 characters. It must also not contain any numbers or special characters",
+              active: false,
+              justEmpty: false
           },
           lastNameError: {
-              text: "Sorry, this field is not",
-              active: false
+              text: "Last name must contain a minimum of 2 and a maximum of 24 characters. It must also not contain any numbers or special characters",
+              active: false,
+              justEmpty: false
           },
           emailError: {
-              text: "Sorry, this doesn’t look like a valid email",
-              active: false
+              text: "Hmmm, this doesn't look like a valid email. Please double check.",
+              active: false,
+              justEmpty: false
           },
           passwordError: {
-              text: "Sorry, this field is not",
-              active: false
+              text: "For your security your password must have at least 8 characters",
+              active: false,
+              justEmpty: false
           },
           cityError: {
-              text: "Sorry, this field is not",
-              active: false
+              text: "Sorry, this field is not valid",
+              active: false,
+              justEmpty: false
           },
           codeError: {
-              text: "Sorry, this field is not",
-              active: false
+              text: "Sorry, this field is not valid",
+              active: false,
+              justEmpty: false
           },
           streetError: {
-              text: "Sorry, this field is not",
-              active: false
+              text: "Sorry, this field is not valid",
+              active: false,
+              justEmpty: false
           },
           phoneNumberError: {
-              text: "Sorry, this field is not",
-              active: false
+              text: "Sorry, this field is not valid",
+              active: false,
+              justEmpty: false
           },
           termsAgreedError: {
-              text: "Sorry, this field is not",
-              active: false
+              text: "Sorry, we know you're in a hurry to play but you have to accept our terms and conditions to register",
+              active: false,
+              justEmpty: false
           }
       },
       firstStepInputs: ["firstName", "lastName", "email", "password"],
@@ -104,6 +113,7 @@ class RegisterForm extends Component {
       let errorObjects = this.state.errorObjects;
       Object.keys(errorObjects).forEach(fieldErrorObject => {
           errorObjects[fieldErrorObject].active = false;
+          errorObjects[fieldErrorObject].justEmpty = false;
       });
 
       this.setState(
@@ -124,6 +134,9 @@ class RegisterForm extends Component {
           if (isError) {
               errorObjects[`${fieldName}Error`].active = true;
               errorFound = true;
+          }
+          if (isError instanceof Object) {
+              errorObjects[`${fieldName}Error`].justEmpty = true;      
           }
       });
 
@@ -151,7 +164,7 @@ class RegisterForm extends Component {
       this.resetErrors(() => {
           this.validateFields(this.state.secondStepInputs, () => {
               const formData = this.formatAndSendDataUpwards();
-              this.props.submitHandler(formData);                  
+              this.props.submitHandler(formData, this.errorNode);                  
           });
       });
   };
@@ -159,6 +172,7 @@ class RegisterForm extends Component {
   formatAndSendDataUpwards = () => {
       const { fields } = this.state;
       const simpleSelects = ["title"];
+      const fieldsWithSpecialHandling = ["termsAgreed", "code", "street", "phoneCode", "phoneNumber"]
       
       let formData = {};
       Object.keys(fields).forEach(fieldName => {
@@ -174,7 +188,7 @@ class RegisterForm extends Component {
               formData.countryCode = field.countryCode;                            
               break;
           }
-          case(fieldName.includes("OfBirth") || fieldName === "termsAgreed" || fieldName === "code" || fieldName === "street" || fieldName === "phoneCode" || fieldName === "phoneNumber"): {                         
+          case(fieldName.includes("OfBirth") || fieldsWithSpecialHandling.indexOf(fieldName) !== -1): {                         
               break;
           }        
           case(simpleSelects.indexOf(fieldName) !== -1): {
@@ -258,7 +272,7 @@ class RegisterForm extends Component {
                               />
                           </div>
                       </div>
-                      <button type="button" className="btn-green form_confirm-btn" onClick={this.changeStep}>
+                      <button type="button" className="btn-green form_btn form_confirm-btn" onClick={this.changeStep}>
               Next
                       </button>
                   </form>
@@ -355,11 +369,16 @@ class RegisterForm extends Component {
                               />
                           </div>
                       </div>
-
-                      <button type="submit" className="btn-green form_confirm-btn">
-              Claim Free Bet
-                      </button>
-
+                      <div className="form_step2_bottom">
+                          <p 
+                              className={`form_step2_bottom_error ${errorObjects.termsAgreedError.active ? "-shown" : ""}`} 
+                              ref={text => this.errorNode = text}>
+                              {errorObjects.termsAgreedError.active ? errorObjects.termsAgreedError.text : ""}
+                          </p>
+                          <button type="submit" className="btn-green form_btn">
+                          Claim free bet
+                          </button>
+                      </div>
                       <div className="form_terms">
                           <div className="form_terms_checkbox">
                               <input

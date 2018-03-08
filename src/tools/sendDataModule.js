@@ -3,16 +3,17 @@ import currentDevice from "current-device";
 import { detect } from "detect-browser";
 
 const sendDataModule = {
-    prepareDataToSend: async function(data) {
+    prepareDataToSend: async function(data, errorNode) {
+        errorNode.classList.remove("-shown");            
+
         let userData = await this.getUserData();
         const orderData = this.parseOrder(data.picksData, data.lotteryId);
         delete data.picksData;
         delete data.lotteryId;
         const preparedData = Object.assign({}, data, userData, { orderData });
-        // this.sendData(preparedData);
         console.log(preparedData);
         const headersObject = this.parseDataToHeaders(preparedData);
-        this.sendData(headersObject);
+        this.sendData(headersObject, errorNode);
     },
 
     parseDataToHeaders: function(data) {
@@ -21,38 +22,50 @@ const sendDataModule = {
             if (name === "orderData") {
                 return;
             }
+            if (name === "incentiveCode") {
+                headersObject.cookieValue = data[name];
+                return;
+            }
             headersObject[name] = data[name];
         });
 
         data.orderData.forEach((item, index) => {
-            headersObject[`orderData[${index}][packageId]`] = `[${item.packageId}]`;
-            headersObject[`orderData[${index}][lotteryId]`] = `[${item.lotteryId}]`;
-            headersObject[`orderData[${index}][drawCount]`] = `[${item.drawCount}]`;
-            headersObject[`orderData[${index}][isSubscription]`] = `[${item.isSubscription}]`;
-            headersObject[`orderData[${index}][billingPeriod]`] = `[${item.billingPeriod}]`;
+            // console.log(item.packageId);
+            headersObject[`orderData[${index}][packageId]`] = item.packageId;
+            headersObject[`orderData[${index}][lotteryId]`] = item.lotteryId;
+            headersObject[`orderData[${index}][drawCount]`] = item.drawCount;
+            headersObject[`orderData[${index}][isSubscription]`] = item.isSubscription;
+            headersObject[`orderData[${index}][billingPeriod]`] = item.billingPeriod;
             headersObject[`orderData[${index}][picks][base][]`] = `[${item.picks.base}]`;
             headersObject[`orderData[${index}][picks][extra][]`] = `[${item.picks.extra}]`;
         });
 
         let formData = new FormData();
         Object.keys(headersObject).forEach(key => {
-            formData.append(key, data[key]);
+            formData.append(key, headersObject[key]);
         })
 
         return formData;
     },
 
-    sendData: function(data) {
+    sendData: function(data, errorNode) {
         // axios.post("https://api.jinnilotto.com/affiliate/welcome/response.json", JSON.stringify(data))
+        console.log(errorNode);
+        for (let pair of data.entries()) {
+            console.log(pair[0]+ ", " + pair[1]); 
+        }
         axios({
             url: "https://api.jinnilotto.com/affiliate/welcome/response.json",
             method: "post",
             data,
-            headers: { 'Content-Type': 'multipart/form-data' }
+            headers: { "Content-Type": "multipart/form-data" }
         })
             .then(resp => {
-                console.log(resp);
-                alert("Succesfully sent! Check console");
+                console.log(resp.data);              
+                if (resp.data.ErrorID) {
+                    return this.handleBackendError(resp.data.ErrorID, errorNode)
+                }
+                return window.location = `https://stage.jinnilotto.com/?init=lp&redirectUrl=%2Fcart&memberId=${resp.data.MemberID}&sessionId=${resp.data.SessionID}`;
             })
             .catch(err => {
                 console.log(err);
@@ -69,9 +82,24 @@ const sendDataModule = {
         const browserDetected = detect(),
             browser = `${browserDetected.name} ${browserDetected.version}`;
 
-        const userData = { language, device, ip, browser };
+        const userData = { device, ip, browser };
 
         return userData;
+    },
+
+    handleBackendError: function (errorId, errorNode) {
+        errorNode.classList.add("-shown");
+        switch (errorId) {
+        case "073":
+            errorNode.innerHTML = `The email address you have chosen is already in use. 
+            Try logging in with it. If you can't remember your password, just request a reset.`    
+            break;
+        
+        default:
+            errorNode.innerHTML = `Whoops, an error occurred during registration. 
+            Please try again so we can start making your wishes come true.`    
+            break;
+        }
     },
 
     //Temporary Implementation

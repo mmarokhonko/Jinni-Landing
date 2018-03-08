@@ -11,16 +11,24 @@ class Timer extends Component {
 
   componentDidMount() {
       this.tick();
-      this.interal = setInterval(this.tick, 1000);
+      this.interval = setInterval(this.tick, 1000);
   }
 
   componentWillUnmount() {
-      clearInterval(this.interal);
+      clearInterval(this.interval);
   }
 
   tick = () => {
       const { drawDate, currDate } = this.state;
       let diff = drawDate.diff(currDate);
+      if (diff <= 0) {
+          clearInterval(this.interval);          
+          return this.setState({
+              timeRemains: "",
+              currDate:moment()
+          })
+      }
+
       diff = moment.duration(diff);
       const timeRemains = `
       ${diff.days() != 0 ? diff.days() + "d" : ""} 
@@ -28,7 +36,7 @@ class Timer extends Component {
       ${diff.minutes() != 0 ? diff.minutes() + "m" : ""}
       ${diff.seconds() != 0 ? diff.seconds() + "s" : ""}`;
       this.setState({
-          timeRemains,
+          timeRemains: ` in ${timeRemains}`,
           currDate:moment()
       })
   };
@@ -39,7 +47,7 @@ class Timer extends Component {
       return (
           <p className="help_step_text">
         Mega Millions draws are held twice a week. To find out if you’re a winner, check the results
-        after the next draw in <span className="help_timer">{timeRemains}</span>.
+        after the next draw<span className="help_timer">{timeRemains}</span>.
           </p>
       );
   }

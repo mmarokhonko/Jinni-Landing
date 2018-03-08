@@ -38,7 +38,7 @@ class App extends Component {
   }
 
   selectLottoData = data => {
-      let lottoData = data.filter(object => object.LotteryName === this.state.lotteryOrientation)[0];
+      let lottoData = data.filter(object => object.LotteryName === this.state.urlData.lotteryOrientation)[0];
       this.setState({
           lottoData
       });
@@ -51,9 +51,9 @@ class App extends Component {
           referral = getParamFromCookieOrUrl("referral"),
           mc = getParamFromCookieOrUrl("mc"),
           jlpid = getParamFromCookieOrUrl("jlpid"),
-          lotteryOrientation = getParamFromURL("lottery"),
-          lang = getParamFromURL("lang"),
-          offer = getParamFromURL("offer"),
+          lotteryOrientation = getParamFromURL("lottery") || "Mega Millions",
+          lang = getParamFromURL("lang") || "EN",
+          offer = getParamFromURL("offer") || "free_ticket_em",
           affiliateId = bTag.length > 0 ? bTag.substring(0, bTag.indexOf("_")) : "";	
 									
       const urlData = {
@@ -78,8 +78,8 @@ class App extends Component {
       });
   };
 	
-  passDataToSendModule = formData => {
-      const {lottoData, urlData, lotteryOrientation, picksData} = this.state;
+  passDataToSendModule = (formData, errorNode) => {
+      const {lottoData, urlData, picksData} = this.state;
 			
       if(picksData[0].pickedNums.length < 5 || !picksData[0].pickedBonus) {
           return alert("Pick numbers!")
@@ -88,9 +88,9 @@ class App extends Component {
 
       const data = Object.assign({},
           formData, 
-          {lotteryId:lottoData.LotteryID, lotteryOrientation: "Mega Millions", picksData}, 
+          {lotteryId:lottoData.LotteryID, lotteryOrientation: urlData.lotteryOrientation, picksData}, 
           urlData);
-      sendDataModule.prepareDataToSend(data);
+      sendDataModule.prepareDataToSend(data, errorNode);
   }
 
   render() {

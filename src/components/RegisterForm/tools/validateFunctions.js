@@ -5,6 +5,17 @@ import isNumeric from "validator/lib/isNumeric";
 import isAlpha from "validator/lib/isAlpha";
 
 const isFieldError = (name, value) => {
+    if(name === "termsAgreed") {
+        return !value;
+    }
+
+    if (isEmpty(value)) {
+        return {
+            active: true,
+            justEmpty: true
+        }
+    }
+
     switch (name) {
     case "email":
         return !isEmail(value);
@@ -19,13 +30,7 @@ const isFieldError = (name, value) => {
         return !isLength(value, {min:8});
 
     case "phoneNumber":
-        return !isNumeric(value);
-
-    case "termsAgreed":
-        return !value;    
-
-    default:
-        return isEmpty(value);    
+        return !isNumeric(value);    
     }
 };
 
