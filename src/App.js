@@ -38,7 +38,7 @@ class App extends Component {
   }
 
   selectLottoData = data => {
-      let lottoData = data.filter(object => object.LotteryName === this.state.urlData.lotteryOrientation)[0];
+      let lottoData = data.filter(object => object.LotteryName.toLowerCase() === this.state.urlData.lotteryOrientation.toLowerCase())[0];
       this.setState({
           lottoData
       });

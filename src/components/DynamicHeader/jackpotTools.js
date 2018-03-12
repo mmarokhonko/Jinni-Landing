@@ -80,8 +80,8 @@ const mapStringToImages = string => {
         `<img class="header_jackpot_symbol -currency" src="${symbols["euro"]}" alt="euro"/>`
     );
 
-    for (let x = 0; x < "millions".length; x++) {
-        const letter = "millions".charAt(x);
+    for (let x = 0; x < "million".length; x++) {
+        const letter = "million".charAt(x);
         mappedSymbols.unshift(
             `<img class="header_jackpot_symbol -number ${x === 0 ? "-first-letter" : ""}" 
           src="${symbols[letter]}" alt="${letter}"/>`

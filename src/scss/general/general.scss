@@ -16,6 +16,8 @@ h1,h2,h3,h4,h5 {
 .main {
     padding: 28px 0 60px;
     background-image: url("./assets/bg/bg_big.png");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .main_title {
