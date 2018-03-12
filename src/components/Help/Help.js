@@ -18,9 +18,8 @@ const Help = ({drawDate}) => {
                         <img src={iconPick} alt="" className="help_step_icon" />
                         <h4 className="help_step_title">Pick your lucky numbers</h4>
                         <p className="help_step_text">
-              Select 5 numbers from 1-70 + a bonus number from 1-25. Or we can randomly choose for
-              you when you click “Quick Pick.”
-                        </p>
+                        Choose 5 numbers + 1 bonus number or simply click &quot;QUick Pick&quot;
+                        for a random selection </p>
                     </div>
                     <img src={iconArrow} alt="next" className="help_arrow" />
                     <div className="help_step">
