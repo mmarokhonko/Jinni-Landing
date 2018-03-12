@@ -16,7 +16,12 @@ const generateCountryOptions = () => {
         value: country.alpha2,
         countryCode: country.alpha2
     }));
-    return options;
+
+    const sortedOptions = options.sort((a,b) => {
+        return a.label.toLowerCase().localeCompare(b.label.toLowerCase());
+    });
+
+    return sortedOptions;
 };
 
 class SelectCountry extends Component {
@@ -58,11 +63,15 @@ const generatePhoneCodeOptions = () => {
 
     filteredCountries.forEach(country => {
         country.countryCallingCodes.forEach(code => {
-            options.push({ value: code, label: code, countryCode: country.alpha2 });
+            options.push({ value: code, label: code, country: country.name, countryCode: country.alpha2 });
         });
     });
 
-    return options;
+    const sortedOptions = options.sort((a,b) => {
+        return a.country.toLowerCase().localeCompare(b.country.toLowerCase());
+    });
+
+    return sortedOptions;
 };
 
 class SelectPhoneCode extends Component {
