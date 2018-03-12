@@ -77,7 +77,7 @@ class RegisterForm extends Component {
       },
       firstStepInputs: ["firstName", "lastName", "email", "password"],
       secondStepInputs: ["city", "code", "street", "phoneNumber", "termsAgreed"],
-      step2: false
+      step2: true
   };
 
   inputHandler = (name, e) => {
@@ -149,7 +149,7 @@ class RegisterForm extends Component {
       }
   };
 
-  changeStep = () => {
+  moveTo2ndStep = () => {
       this.resetErrors(() => {
           this.validateFields(this.state.firstStepInputs, () => {
               this.setState({
@@ -158,6 +158,12 @@ class RegisterForm extends Component {
           });
       });
   };
+
+  moveTo1stStep = () => {
+      this.setState({
+          step2: false
+      });
+  }
 
   submitHandler = e => {
       e.preventDefault();
@@ -272,7 +278,7 @@ class RegisterForm extends Component {
                               />
                           </div>
                       </div>
-                      <button type="button" className="btn-green form_btn form_confirm-btn" onClick={this.changeStep}>
+                      <button type="button" className="btn-green form_submit-btn form_confirm-btn" onClick={this.moveTo2ndStep}>
               Next
                       </button>
                   </form>
@@ -370,14 +376,17 @@ class RegisterForm extends Component {
                           </div>
                       </div>
                       <div className="form_step2_bottom">
+                          <button type="button" className="btn-general btn-green-empty form_back-btn" onClick={this.moveTo1stStep}>
+                          Back
+                          </button>
+                          <button type="submit" className="btn-general btn-green form_submit-btn">
+                          Claim free bet
+                          </button>
                           <p 
                               className={`form_step2_bottom_error ${errorObjects.termsAgreedError.active ? "-shown" : ""}`} 
                               ref={text => this.errorNode = text}>
                               {errorObjects.termsAgreedError.active ? errorObjects.termsAgreedError.text : ""}
                           </p>
-                          <button type="submit" className="btn-green form_btn">
-                          Claim free bet
-                          </button>
                       </div>
                       <div className="form_terms">
                           <div className="form_terms_checkbox">
