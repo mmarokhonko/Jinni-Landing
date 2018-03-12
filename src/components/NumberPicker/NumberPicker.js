@@ -205,7 +205,7 @@ class NumberPicker extends Component {
               <div className="picker">
                   <div className="picker_head">
                       {!done ? (
-                          <button className="btn-green picker_quick-btn" onClick={this.quickPick}>
+                          <button className="btn-general btn-green picker_quick-btn" onClick={this.quickPick}>
                 Quick Pick
                           </button>
                       ) : (

@@ -278,7 +278,7 @@ class RegisterForm extends Component {
                               />
                           </div>
                       </div>
-                      <button type="button" className="btn-green form_submit-btn form_confirm-btn" onClick={this.moveTo2ndStep}>
+                      <button type="button" className="btn-general btn-green form_submit-btn form_confirm-btn" onClick={this.moveTo2ndStep}>
               Next
                       </button>
                   </form>
