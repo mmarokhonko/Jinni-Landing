@@ -145,9 +145,29 @@
   }
 }
 
+.selwi_filter-input {
+  display: none;
+  position: absolute;
+  z-index: 8;
+  top:calc(100% - 1px);
+  left: 0;
+  right: 0;
+  background-color: white;  
+  input {
+    padding: 5px 0 5px 17px;
+    height: 40px;
+    width: 100%;
+    border: 1px solid #d4dfec;
+    font-family: "Poppins";
+    outline: none;
+    background-color: white;
+  }
+}
+
 .selwi_options {
   display: none;
   position: absolute;
+  top: 89px;
   left: 0;
   right: 0;
   z-index: 3;
@@ -188,7 +208,8 @@
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
-  .selwi_options {
+  .selwi_options,
+  .selwi_filter-input {
     display: block;
   }
 }
