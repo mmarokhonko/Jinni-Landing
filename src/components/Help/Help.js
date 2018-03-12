@@ -25,10 +25,10 @@ const Help = ({drawDate}) => {
                     <img src={iconArrow} alt="next" className="help_arrow" />
                     <div className="help_step">
                         <img src={iconGet} alt="" className="help_step_icon" />
-                        <h4 className="help_step_title">GET 3 FREE BET LINES</h4>
+                        <h4 className="help_step_title">GET YOUR BET LINE FOR FREE</h4>
                         <p className="help_step_text">
-              Submit the form to place 4 bet lines <br/> 
-              for the price of 1.
+                        Fill out the short form and then click &quot;Claim<br/>
+                        Free Bet&quot; to secure your bet line for free 
                         </p>
                     </div>
                     <img src={iconArrow} alt="next" className="help_arrow" />
