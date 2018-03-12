@@ -77,7 +77,7 @@ class RegisterForm extends Component {
       },
       firstStepInputs: ["firstName", "lastName", "email", "password"],
       secondStepInputs: ["city", "code", "street", "phoneNumber", "termsAgreed"],
-      step2: true
+      step2: false
   };
 
   inputHandler = (name, e) => {
