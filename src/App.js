@@ -53,7 +53,7 @@ class App extends Component {
           jlpid = getParamFromCookieOrUrl("jlpid"),
           lotteryOrientation = getParamFromURL("lottery") || "Mega Millions",
           lang = getParamFromURL("lang") || "EN",
-          offer = getParamFromURL("offer") || "free_ticket_em",
+          offer = getParamFromURL("offer") || "freeTicket",
           affiliateId = bTag.length > 0 ? bTag.substring(0, bTag.indexOf("_")) : "";	
 									
       const urlData = {
@@ -82,7 +82,9 @@ class App extends Component {
       const {lottoData, urlData, picksData} = this.state;
 			
       if(picksData[0].pickedNums.length < 5 || !picksData[0].pickedBonus) {
-          return alert("Pick numbers!")
+          errorNode.classList.add("-shown");
+          errorNode.innerHTML = "Whoops! You’ve forgotten the most important part – filling up your bonus tickets"; 
+          return
       }
 
 

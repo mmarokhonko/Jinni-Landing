@@ -26,9 +26,7 @@ class NumberPicker extends Component {
       return false;
   }
 
-  componentDidUpdate(prevProps, prevState) {
-      const { pickedNums, pickedBonus } = this.state;
-
+  componentDidUpdate() {
       this.sendActualNumbersUpwards();
   }
 

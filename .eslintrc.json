@@ -28,9 +28,9 @@
         ],
         "indent": [
             "warn",
-            4
+            2
         ],
-        "no-mixed-spaces-and-tabs":"warn"
+        "no-mixed-spaces-and-tabs":"off"
     },
     "extends": [
         "eslint:recommended",

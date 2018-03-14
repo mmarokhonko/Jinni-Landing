@@ -3,15 +3,14 @@ import currentDevice from "current-device";
 import { detect } from "detect-browser";
 
 const sendDataModule = {
-    prepareDataToSend: async function(data, errorNode) {
+    prepareDataToSend: function(data, errorNode) {
         errorNode.classList.remove("-shown");            
 
-        let userData = await this.getUserData();
+        let userData = this.getUserData();
         const orderData = this.parseOrder(data.picksData, data.lotteryId);
         delete data.picksData;
         delete data.lotteryId;
         const preparedData = Object.assign({}, data, userData, { orderData });
-        console.log(preparedData);
         const headersObject = this.parseDataToHeaders(preparedData);
         this.sendData(headersObject, errorNode);
     },
@@ -30,7 +29,6 @@ const sendDataModule = {
         });
 
         data.orderData.forEach((item, index) => {
-            // console.log(item.packageId);
             headersObject[`orderData[${index}][packageId]`] = item.packageId;
             headersObject[`orderData[${index}][lotteryId]`] = item.lotteryId;
             headersObject[`orderData[${index}][drawCount]`] = item.drawCount;
@@ -50,7 +48,6 @@ const sendDataModule = {
 
     sendData: function(data, errorNode) {
         // axios.post("https://api.jinnilotto.com/affiliate/welcome/response.json", JSON.stringify(data))
-        console.log(errorNode);
         for (let pair of data.entries()) {
             console.log(pair[0]+ ", " + pair[1]); 
         }
@@ -73,16 +70,13 @@ const sendDataModule = {
             });
     },
 
-    getUserData: async function() {
+    getUserData: function() {
         const device = `${currentDevice.type} ${currentDevice.os}`;
-
-        const ipObject = await axios.get("https://api.ipify.org/?format=json"),
-            ip = ipObject.data.ip;
 
         const browserDetected = detect(),
             browser = `${browserDetected.name} ${browserDetected.version}`;
 
-        const userData = { device, ip, browser };
+        const userData = { device, browser };
 
         return userData;
     },

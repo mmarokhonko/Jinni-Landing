@@ -38,7 +38,6 @@ class SelectWithIcon extends Component {
     filterOptions = () => {
         let newOptions = this.props.options;
         const {filterString} = this.state;
-        console.log(filterString);
         newOptions = newOptions.filter(option => option.label.toLowerCase().includes(filterString.toLowerCase()));
         this.setState({
             options:newOptions
