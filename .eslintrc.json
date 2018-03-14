@@ -28,7 +28,7 @@
         ],
         "indent": [
             "warn",
-            2
+            4
         ],
         "no-mixed-spaces-and-tabs":"off"
     },
