@@ -19,7 +19,7 @@ class Fact extends Component {
                 <div className="cont-zone">
                     <img src={iconQuestion} alt="" className="fact_icon"/>
                     <h4 className="fact_title">Did you know?</h4>
-                    <p className="fact_text">T{text}</p>
+                    <p className="fact_text">{text}</p>
                 </div>
             </section>
         )

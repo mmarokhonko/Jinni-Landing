@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { string } from "prop-types";
 import moment from "moment";
+import Media from "react-media";
 
 class Timer extends Component {
   state = {
@@ -22,33 +23,46 @@ class Timer extends Component {
       const { drawDate, currDate } = this.state;
       let diff = drawDate.diff(currDate);
       if (diff <= 0) {
-          clearInterval(this.interval);          
+          clearInterval(this.interval);
           return this.setState({
               timeRemains: "",
-              currDate:moment()
-          })
+              currDate: moment()
+          });
       }
 
       diff = moment.duration(diff);
       const timeRemains = `
-      ${diff.days() != 0 ? diff.days() + "d" : ""} 
-      ${diff.hours() != 0 ? diff.hours() + "h" : ""}
-      ${diff.minutes() != 0 ? diff.minutes() + "m" : ""}
-      ${diff.seconds() != 0 ? diff.seconds() + "s" : ""}`;
+			${diff.days() != 0 ? diff.days() + "d" : ""} 
+			${diff.hours() != 0 ? diff.hours() + "h" : ""}
+			${diff.minutes() != 0 ? diff.minutes() + "m" : ""}
+			${diff.seconds() != 0 ? diff.seconds() + "s" : ""}`;
       this.setState({
-          timeRemains: ` in ${timeRemains}`,
-          currDate:moment()
-      })
+          timeRemains: timeRemains,
+          currDate: moment()
+      });
   };
 
   render() {
-      const {timeRemains} = this.state;  
+      const { timeRemains } = this.state;
 
       return (
-          <p className="help_step_text">
-        Mega Millions draws are held twice a week. To find out if you’re a winner, check the results
-        after the next draw<span className="help_timer">{timeRemains}</span>.
-          </p>
+          <Media query="(min-width: 768px)">
+              {matches =>
+                  matches ? (
+                      <p className="help_step_text">
+              Mega Millions draws are held twice a week. To find out if you’re a winner, check the
+              results after the next draw in <span className="help_timer">{timeRemains}</span>.
+                      </p>
+                  ) : (
+                      <p className="help_step_text">
+              Wait for the upcoming draw that <br/> 
+			  will take place in: <br/>
+			  <span className="help_timer">{timeRemains}</span> <br/>
+			  to see how much you won.
+                      </p>
+                  )
+              }
+          </Media>
       );
   }
 }

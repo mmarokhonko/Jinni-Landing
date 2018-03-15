@@ -1,8 +1,19 @@
 .top-bar {
     background-color: white;
-    height: 86px;
+	height: 86px;
+	@media(max-width: 768px) {
+		height: 50px;
+		.cont-zone {
+			display: flex;
+			justify-content: center;
+		}
+	}
 }
 
 .top-bar_logo {
-    margin-top: 15px;
+	margin-top: 15px;
+	@media(max-width: 768px) {
+		margin-top: 9px;
+		height: 32px;
+	}
 }

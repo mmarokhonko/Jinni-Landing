@@ -1,16 +1,34 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500&amp;subset=latin-ext");
 
 body {
-    font-family: "Poppins";
+	font-family: "Poppins";
+	@media(max-width: 768px) {
+		background-color: #F4F8FD;
+	}
 }
 
 h1,h2,h3,h4,h5 {
     font-weight: 500;
 }
 
+.hide-sm {
+	@media(max-width: 768px) {
+		display: none;
+	}
+}
+
+.hide-big {
+	@media(min-width: 768px) {
+		display: none;
+	}
+}
+
 .cont-zone {
     max-width: 1140px;
-    margin: 0 auto;
+	margin: 0 auto;
+	@media(min-width: 768px) {
+		padding: 0 15px;
+	}
 }
 
 .main {

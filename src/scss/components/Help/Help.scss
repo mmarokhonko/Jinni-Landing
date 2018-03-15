@@ -1,20 +1,35 @@
 .help {
-    margin-top: 80px;
+	margin-top: 80px;
+	@media(max-width:768px) {
+		margin-top: 0;
+	}
 }
 
 .help_title {
     font-size: 35px;
     line-height: 53px;
-    text-align: center;  
+	text-align: center;
+	@media(max-width: 768px) {
+		font-size: 16px;
+		line-height: 25px;
+		font-weight: 600;
+	}  
 }
 
 .help_subwrap {
     display: flex;
-    justify-content: space-between;
+	justify-content: space-between;
+	@media(max-width: 768px) {
+		flex-direction: column;
+		align-items: center;
+	}
 }
 
 .help_arrow {
-    transform: translateY(-15%);
+	transform: translateY(-15%);
+	@media(max-width: 768px) {
+		display: none;
+	}
 }
 
 .help_step {
@@ -23,18 +38,42 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
+	text-align: center;
+	@media(max-width: 768px) {
+		margin-top: 27px;
+		max-width: 260px;
+		&:not(:first-child) {
+			margin-top: 50px;
+		}
+	}
 }
 
 .help_step_title {
     margin-top: 27px;
     text-transform: uppercase;
     font-size: 22px;
-    line-height: 33px;
+	line-height: 33px;
+	@media(max-width: 768px) {
+		margin-top: 20px;
+		font-size: 16px;
+		line-height: 18px;
+		text-transform: none;
+	}
 }
 
 .help_step_text {
     margin-top: 16px;
     font-size: 16px;
-    line-height: 25px;
+	line-height: 25px;
+	@media(max-width: 768px) {
+		margin-top: 10px;
+		font-size: 14px;
+		line-break: 22px;
+	}
+}
+
+.help_timer {
+	@media(max-width: 768px) {
+		font-weight: 500;
+	}
 }
