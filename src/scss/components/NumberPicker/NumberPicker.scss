@@ -1,6 +1,9 @@
 .picker_frame-vert {
   max-width: 433px;
   flex: 1;
+  @media (max-width:768px) {
+	  max-width: unset;
+  }
 }
 
 .picker {

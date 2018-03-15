@@ -1,21 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import {roundDecimal, roundMillions, reverseString, mapStringToImages} from "./jackpotTools";
+import allLottoData from "./allLottoData";
 
-import megaBG from "../../assets/Header/bg/megamillions.png";
-import megaPeople from "../../assets/Header/people/megamillions.png";
-import megaLogo from "../../assets/Header/logo/megamillions.png";
+import {roundDecimal, roundMillions, reverseString, mapStringToImages} from "./jackpotTools";
 
 class DynamicHeader extends Component {
   state = {
-      lottoData: {
-          ["Mega Millions"]: {
-              bg: megaBG,
-              people: megaPeople,
-              logo: megaLogo
-          }
-      }
+      lottoData: allLottoData[this.props.lotto]
   };
 
   constructJackpot = jackpot => {
@@ -44,7 +36,7 @@ class DynamicHeader extends Component {
 
   render() {
       const { lotto, jackpot } = this.props;
-      const lottoData = this.state.lottoData[lotto];
+      const lottoData = this.state.lottoData;
 
       this.constructJackpot(jackpot);
 

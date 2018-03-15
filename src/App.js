@@ -90,6 +90,8 @@ class App extends Component {
       });
   };
 
+  clearNumbers = () => this.numberPicker.clearNums();
+
   passDataToSendModule = (formData, errorNode) => {
       const { lottoData, urlData, picksData } = this.state;
 
@@ -110,7 +112,7 @@ class App extends Component {
   };
 
   render() {
-      const { lottoData } = this.state;
+      const { lottoData, picksData } = this.state;
 
       return (
           <Fragment>
@@ -125,7 +127,9 @@ class App extends Component {
                           ) : (
                               <DynamicMobileHeader
                                   lotto={lottoData.LotteryName}
-                                  jackpot={lottoData.Jackpot.toString()}
+								  jackpot={lottoData.Jackpot.toString()}
+								  picksData={picksData}
+								  clearHandler={this.clearNumbers}
                               />
                           )
                       }
@@ -137,7 +141,7 @@ class App extends Component {
               Get your <u>FREE</u> bet line here:
                       </h1>
                       <div className="main_subwrap">
-                          <NumberPicker setAppNumbers={this.setNumbers} />
+                          <NumberPicker setAppNumbers={this.setNumbers} ref={picker => this.numberPicker = picker} />
                           <RegisterForm submitHandler={this.passDataToSendModule} />
                       </div>
                   </div>

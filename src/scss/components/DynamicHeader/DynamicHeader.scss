@@ -65,35 +65,99 @@
   background-size: cover;
   background-repeat: no-repeat;
   .cont-zone {
+    padding: 0 8px 10px;
     display: flex;
     flex-direction: column;
-	align-items: center;
-	color: white;
-	padding-bottom: 10px;
+    align-items: center;
+    color: white;
   }
 }
 
 .mob-header_logo {
-	margin-top: 18px;
-	height: 60px;
-	width: 60px;
+  margin-top: 18px;
+  height: 60px;
+  width: 60px;
 }
 
 .mob-header_title {
-	margin-top: 8px;
-	font-size: 16px;
-	line-height: 26px;
-	font-weight: 400;
-	span {
-		text-transform: uppercase;
-		font-size: 22px;
-		line-height: 26px;
-		font-weight: 500;
-	}
+  margin-top: 8px;
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 400;
+  span {
+    text-transform: uppercase;
+    font-size: 22px;
+    line-height: 26px;
+    font-weight: 500;
+  }
 }
 
 .mob-header_jackpot {
-	margin-top: 15px;
-	font-size: 28px;
-	line-height: 18px;
+  margin-top: 15px;
+  font-size: 28px;
+  line-height: 18px;
+}
+
+.numbers-widget {
+  padding: 0 7px;
+  margin-top: 20px;
+  height: 50px;
+  max-width: 305px;
+  width: 100%;
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.numbers-widget_circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 100%;
+  color: black;
+  font-size: 11px;
+  line-height: 14px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+  &:not(:last-of-type) {
+    margin-right: 8px;
+  }
+  &.-num-circle {
+	background-color: #e4e6f4;
+	&.-filled {
+		background-image: url("./assets/Header/icons/ball_blue.png");
+		box-shadow: 1px 5px 10px 0 rgba(57,119,202,0.15), 0 0 60px 0 #F6EFFF;		
+	}
+  }
+  &.-bonus-circle {
+	background-color: #AFB6D2;
+	&.-filled {
+		background-image: url("./assets/Header/icons/ball_yellow.png");
+		box-shadow: 1px 5px 10px 0 rgba(57,119,202,0.15), 0 0 60px 0 #F6EFFF;		
+	}
+  }
+}
+
+.numbers-widget_btn {
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+  flex-shrink: 0;
+  &.-edit-btn {
+    margin-left: 19px;
+    background-image: url("./assets/Header/icons/edit.png");
+  }
+  &.-clear-btn {
+    margin-left: 11px;
+    background-image: url("./assets/NumberPicker/icon/icon_trash.png");
+  }
 }
