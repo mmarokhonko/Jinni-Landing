@@ -61,6 +61,13 @@
 	}
 }
 
+.help_step_icon {
+	@media (max-width: 768px) {
+		height: 102px;
+		width: 102px;
+	}
+}
+
 .help_step_text {
     margin-top: 16px;
     font-size: 16px;

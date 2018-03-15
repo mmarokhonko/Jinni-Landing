@@ -41,7 +41,7 @@ class SelectDayOfBirth extends Component {
       return (
           <SelectWithIcon
               value={value}
-              icon={bithdayIcon}
+              icon={window.innderWidth <= 768 && bithdayIcon}
               options={options}
               selectHandler={this.selectHandler}
           />

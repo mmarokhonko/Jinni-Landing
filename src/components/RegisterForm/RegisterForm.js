@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { func } from "prop-types";
+import Media from "react-media";
 
 import InputWithIcon from "./generalComponents/InputWithIcon";
 import SelectTitle from "./SelectTitle";
@@ -270,7 +271,8 @@ class RegisterForm extends Component {
                               <InputWithIcon
                                   inputHandler={this.inputHandler}
                                   type="text"
-                                  name="firstName"
+								  name="firstName"
+								  placeholder="Name"								  
                                   value={fields.firstName}
                                   error={errorObjects.firstNameError}
                               />
@@ -283,7 +285,8 @@ class RegisterForm extends Component {
                                   inputHandler={this.inputHandler}
                                   type="text"
                                   icon="profile"
-                                  name="lastName"
+								  name="lastName"
+								  placeholder="Last Name"								  
                                   value={fields.lastName}
                                   error={errorObjects.lastNameError}
                               />
@@ -296,7 +299,8 @@ class RegisterForm extends Component {
                                   inputHandler={this.inputHandler}
                                   type="email"
                                   icon="email"
-                                  name="email"
+								  name="email"
+								  placeholder="email"
                                   value={fields.email}
                                   error={errorObjects.emailError}
                               />
@@ -308,20 +312,22 @@ class RegisterForm extends Component {
                               <InputWithIcon
                                   inputHandler={this.inputHandler}
                                   type="password"
-                                  icon="lock"
+                                  icon={window.innerWidth <= 768 ? "lockMob" : "lock"}
                                   name="password"
                                   value={fields.password}
                                   error={errorObjects.passwordError}
                               />
                           </div>
                       </div>
-                      <button
-                          type="button"
-                          className="btn-general btn-green form_submit-btn form_confirm-btn"
-                          onClick={this.moveTo2ndStep}
-                      >
-              Next
-                      </button>
+                      <div className="form_btn_wrap">
+                          <button
+                              type="button"
+                              className="btn-general btn-green form_submit-btn form_confirm-btn"
+                              onClick={this.moveTo2ndStep}
+                          >
+                			Next
+                          </button>
+                      </div>
                   </form>
                   <div className="form_jinni">
                       <img src={jinniImg} alt="" />
@@ -352,7 +358,8 @@ class RegisterForm extends Component {
                                   inputHandler={this.inputHandler}
                                   type="text"
                                   name="city"
-                                  icon="geo"
+								  icon="geo"
+								  placeholder="City"								  
                                   value={fields.city}
                                   error={errorObjects.cityError}
                               />
@@ -360,7 +367,8 @@ class RegisterForm extends Component {
                                   inputHandler={this.inputHandler}
                                   type="text"
                                   name="code"
-                                  icon="geo"
+								  icon="geo"
+								  placeholder="Code"								  
                                   value={fields.code}
                                   error={errorObjects.codeError}
                               />
@@ -373,7 +381,8 @@ class RegisterForm extends Component {
                                   inputHandler={this.inputHandler}
                                   type="text"
                                   name="street"
-                                  icon="geo"
+								  icon="geo"
+								  placeholder="Address"
                                   value={fields.street}
                                   error={errorObjects.streetError}
                               />
@@ -412,22 +421,32 @@ class RegisterForm extends Component {
                                   inputHandler={this.inputHandler}
                                   type="text"
                                   name="phoneNumber"
-                                  icon="phone"
+								  icon="phone"
+								  placeholder="Phone"
                                   value={fields.phoneNumber}
                                   error={errorObjects.phoneNumberError}
                               />
                           </div>
                       </div>
                       <div className="form_step2_bottom">
-                          <button
-                              type="button"
-                              className="btn-general btn-green-empty form_back-btn"
-                              onClick={this.moveTo1stStep}
-                          >
-                Back
-                          </button>
+					  <Media query="(min-width: 768px)">
+                              {matches =>
+                                  matches ? (
+                                      <button
+                                          type="button"
+                                          className="btn-general btn-green-empty form_back-btn"
+                                          onClick={this.moveTo1stStep}
+                                      >
+								  		Back
+                                      </button>
+                                  ) : (
+                                      <button onClick={this.moveTo1stStep} type="button" className="form_back-btn-mobile"></button>
+                                  )
+                              }
+                          </Media>
+                          
                           <button type="submit" className="btn-general btn-green form_submit-btn">
-                Claim free bet
+                			Claim free bet
                           </button>
                           <p
                               className={`form_step2_bottom_error ${

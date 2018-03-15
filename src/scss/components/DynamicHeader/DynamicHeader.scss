@@ -1,62 +1,99 @@
 .header {
+  position: relative;
+  width: 100%;
+  height: 287px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  .cont-zone {
     position: relative;
-    width: 100%;
-    height: 287px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    .cont-zone {
-        position: relative;
-        z-index: 1;
-        height: 100%;
-    }
+    z-index: 1;
+    height: 100%;
+  }
 }
 
 .header_people {
-    position: absolute;
-    top: 0;
-    right:10%;
-    height: 287px;
+  position: absolute;
+  top: 0;
+  right: 10%;
+  height: 287px;
 }
 
 .header_title {
-    font-size: 35px;
-    line-height: 53px;
-    color: white;
-    font-weight: 400;
-    &.-with-logo {
-        padding-top: 35px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        img {
-            margin: 0 18px;
-        }
+  font-size: 35px;
+  line-height: 53px;
+  color: white;
+  font-weight: 400;
+  &.-with-logo {
+    padding-top: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      margin: 0 18px;
     }
+  }
 }
 
 .header_jackpot {
-    padding-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 
 .header_jackpot_symbol {
-    height: 75px;
+  height: 75px;
 
-    &.-dot {
-        margin-left: -7px;
-        margin-right: 3px;
-        height: 15px;
-        transform: translateY(10px)
-    }
-    &.-currency {
-        margin-right: 20px;
-    }
-    &.-first-letter {
-        margin-left: 20px;
-    }
-    &.-number:not(:last-child) {
-        margin-right: 5px;
-    }
+  &.-dot {
+    margin-left: -7px;
+    margin-right: 3px;
+    height: 15px;
+    transform: translateY(10px);
+  }
+  &.-currency {
+    margin-right: 20px;
+  }
+  &.-first-letter {
+    margin-left: 20px;
+  }
+  &.-number:not(:last-child) {
+    margin-right: 5px;
+  }
+}
+
+.mob-header {
+  background-size: cover;
+  background-repeat: no-repeat;
+  .cont-zone {
+    display: flex;
+    flex-direction: column;
+	align-items: center;
+	color: white;
+	padding-bottom: 10px;
+  }
+}
+
+.mob-header_logo {
+	margin-top: 18px;
+	height: 60px;
+	width: 60px;
+}
+
+.mob-header_title {
+	margin-top: 8px;
+	font-size: 16px;
+	line-height: 26px;
+	font-weight: 400;
+	span {
+		text-transform: uppercase;
+		font-size: 22px;
+		line-height: 26px;
+		font-weight: 500;
+	}
+}
+
+.mob-header_jackpot {
+	margin-top: 15px;
+	font-size: 28px;
+	line-height: 18px;
 }
