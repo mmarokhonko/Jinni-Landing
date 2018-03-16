@@ -30,15 +30,17 @@ class SelectCountry extends Component {
   };
 
   async componentDidMount() {
-      const { userCountryCode } = this.props;
-      const { options } = this.state;
+      const { userCountryCode, value } = this.props;
+	  const { options } = this.state;
+	  const firstOption = options[0];	  
 
-      const firstOption = options[0];
-      if (firstOption && !userCountryCode) {
-          return this.selectHandler(firstOption);
-      } else {
-          this.selectUserCountry(userCountryCode);
-      }
+	  if (Object.keys(value).length === 0) {
+          if (firstOption && !userCountryCode) {
+              return this.selectHandler(firstOption);
+          } else {
+              this.selectUserCountry(userCountryCode);
+          }
+	  }      
   }
 
   componentDidUpdate(prevProps) {
@@ -113,15 +115,18 @@ class SelectPhoneCode extends Component {
   };
 
   async componentDidMount() {
-      const { userCountryCode } = this.props;
-      const { options } = this.state;
+      const { userCountryCode, value } = this.props;
+	  const { options } = this.state;
 
-      const firstOption = options[0];
-      if (firstOption && !userCountryCode) {
-          return this.selectHandler(firstOption);
-      } else {
-          this.selectUserCountry(userCountryCode);
-      }
+	  const firstOption = options[0];
+	  
+	  if (Object.keys(value).length === 0) {
+          if (firstOption && !userCountryCode) {
+              return this.selectHandler(firstOption);
+          } else {
+              this.selectUserCountry(userCountryCode);
+          }
+	  }
   }
 
   componentDidUpdate(prevProps) {

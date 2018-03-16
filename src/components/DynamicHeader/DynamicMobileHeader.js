@@ -14,8 +14,6 @@ class DynamicMobileHeader extends Component {
       
       const decimalString = jackpotReversed.slice(4,6);
 	  const roundedDecimalString = roundDecimal(decimalString);
-	  
-	  console.log(roundedDecimalString);
 
       if (jackpotReversed.length > 6) {
           const millionsString = jackpotReversed.slice(6);

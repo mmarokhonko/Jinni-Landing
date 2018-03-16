@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {string, array, func, object} from "prop-types";
+import {string, array, func, object, bool, oneOfType} from "prop-types";
 import ClickOutHandler from "react-onclickout";
 
 class SelectWithIcon extends Component {
@@ -88,7 +88,7 @@ class SelectWithIcon extends Component {
 SelectWithIcon.propTypes = {
     value: object,
     options: array.isRequired,
-    icon: string,
+    icon: oneOfType([string, bool]),
     selectHandler: func.isRequired
 }
 
