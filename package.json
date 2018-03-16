@@ -37,7 +37,7 @@
     "extract-text-webpack-plugin": "^4.0.0-alpha.0",
     "file-loader": "^1.1.11",
     "json-loader": "^0.5.7",
-    "node-sass": "^4.8.1",
+    "node-sass": "^4.8.2",
     "postcss-import": "^11.1.0",
     "postcss-loader": "^2.1.1",
     "sass-loader": "^6.0.7",
@@ -45,7 +45,7 @@
     "url-loader": "^1.0.1",
     "webpack": "^4.1.1",
     "webpack-bundle-analyzer": "^2.11.1",
-    "webpack-cli": "^2.0.11",
+    "webpack-cli": "^2.0.12",
     "webpack-dev-server": "^3.1.1"
   }
 }
