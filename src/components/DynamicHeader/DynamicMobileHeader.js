@@ -67,7 +67,7 @@ class DynamicMobileHeader extends Component {
   }
 
   render() {
-      const { lotto, jackpot, picksData, clearHandler } = this.props;
+      const { lotto, jackpot, picksData, clearHandler, modalOpenHandler } = this.props;
       const lottoData = this.state.lottoData;
 	  const jackpotString = this.formatJackpot(jackpot);
 	  
@@ -85,7 +85,7 @@ class DynamicMobileHeader extends Component {
                   <div className="numbers-widget">
 				  	{this.generateNumsCircles(pickedNumbers).map(circle => circle)}
 				  	{this.generateBonusCircles(pickedBonus).map(circle => circle)}
-                      <button className="numbers-widget_btn -edit-btn" />
+                      <button className="numbers-widget_btn -edit-btn" onClick={modalOpenHandler} />
                       <button className="numbers-widget_btn -clear-btn" onClick={clearHandler} />
                   </div>
               </div>
@@ -98,7 +98,8 @@ DynamicMobileHeader.propTypes = {
     lotto: string.isRequired,
     jackpot: string.isRequired,
     picksData: array.isRequired,
-    clearHandler: func.isRequired
+    clearHandler: func.isRequired,
+    modalOpenHandler: func.isRequired
 };
 
 export default DynamicMobileHeader;

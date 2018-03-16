@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import shallowEqualArrays from "shallow-equal/arrays";
-import {func} from "prop-types";
+import { func } from "prop-types";
+import Media from "react-media";
+import noScroll from "no-scroll";
 
 import NumberPicker from "./NumberPicker";
+import NumberPickerMobile from "./NumberPickerMobile";
 
 class PickerContainer extends Component {
   state = {
@@ -10,7 +13,8 @@ class PickerContainer extends Component {
       maxBonus: 25,
       pickedNums: [],
       pickedBonus: null,
-      quickPickDelay: 150
+	  quickPickDelay: 150,
+	  isMobileModalOpen: false
   };
 
   componentDidMount() {
@@ -18,13 +22,19 @@ class PickerContainer extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-      const { pickedNums, pickedBonus } = this.state;
+	  const { pickedNums, pickedBonus, isMobileModalOpen } = this.state;
+	  
       if (
           !shallowEqualArrays(pickedNums, nextState.pickedNums) ||
       pickedBonus !== nextState.pickedBonus
       ) {
           return true;
-      }
+	  }
+	  
+	  if(isMobileModalOpen !== nextState.isMobileModalOpen) {
+		  return true
+	  }
+
       return false;
   }
 
@@ -96,11 +106,31 @@ class PickerContainer extends Component {
       }
   };
 
+  genNumbersMobileHeader = () => {
+      const numCircles = [];
+  
+      for(let x = 0; x <=4; x++) {
+          const number = this.state.pickedNums[x];
+          const classString = `picker-mob_nums_head_circle -num-circle${number ? " -filled" : ""}`;
+          numCircles.push(<div key={`n-${x}`} className={classString}>{number}</div>)
+      }
+  
+      const bonusCircles = [];
+  
+      for(let x = 0; x <=0; x++) {
+          const number = this.state.pickedBonus;
+          const classString = `picker-mob_nums_head_circle -bonus-circle${number ? " -filled" : ""}`;
+          bonusCircles.push(<div key={`b-${x}`} className={classString}>{number}</div>)
+	  }
+	  
+	  return numCircles.concat(bonusCircles);
+  };
+
   genBonusHeader = () => {
       if (this.state.pickedBonus) {
           return "All done here!";
       }
-      return "Select 1 number";
+      return "Select 1 Bonus Number";
   };
 
   genRandomNumber = () => {
@@ -154,7 +184,6 @@ class PickerContainer extends Component {
       );
   };
 
-
   generateNumbers = maxNumber => {
       let nums = [];
       const pickedNums = this.state.pickedNums;
@@ -193,28 +222,62 @@ class PickerContainer extends Component {
       return bonuses;
   };
 
+  openMobileModal = () => {
+	  noScroll.on();
+	  this.setState({
+          isMobileModalOpen: true
+	  }, () => console.log(this.state.isMobileModalOpen))
+  };
+
+  closeMobileModal = () => {
+	  noScroll.off();
+	  this.setState({
+          isMobileModalOpen: false
+	  })
+  }
+
   pickerMethods = {
-	  quickPick: this.quickPick,
-	  clearNums: this.clearNums,
+      quickPick: this.quickPick,
+      clearNums: this.clearNums,
       genNumbersHeader: this.genNumbersHeader,
       generateNumbers: () => this.generateNumbers(this.state.maxNumber),
       genBonusHeader: this.genBonusHeader,
       generateBonusNums: () => this.generateBonusNums(this.state.maxBonus)
   };
 
-  render() {
-	  return(
-		  <NumberPicker 
-		  pickerMethods={this.pickerMethods}
-		  pickedNums={this.state.pickedNums}
-		  pickedBonus={this.state.pickedBonus}/>
-	  )
+  pickerMobileMethods = {
+      genNumbersMobileHeader: this.genNumbersMobileHeader,
+      openMobileModal: this.openMobileModal,
+      closeMobileModal: this.closeMobileModal	
   }
 
+  render() {
+      return (
+          <Media query="(min-width: 768px)">
+              {matcher =>
+                  matcher ? (
+                      <NumberPicker
+                          pickerMethods={this.pickerMethods}
+                          pickedNums={this.state.pickedNums}
+                          pickedBonus={this.state.pickedBonus}
+                      />
+                  ) : (
+                      <NumberPickerMobile
+                          pickerMethods={this.pickerMethods}
+                          pickerMobileMethods={this.pickerMobileMethods}
+                          pickedNums={this.state.pickedNums}
+						  pickedBonus={this.state.pickedBonus}
+						  modalOpen={this.state.isMobileModalOpen}
+                      />
+                  )
+              }
+          </Media>
+      );
+  }
 }
 
 PickerContainer.propTypes = {
     setAppNumbers: func.isRequired
-}
+};
 
 export default PickerContainer;

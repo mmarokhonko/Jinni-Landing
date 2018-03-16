@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import {number, object, array} from "prop-types";
 
 const NumberPicker = (props) => {

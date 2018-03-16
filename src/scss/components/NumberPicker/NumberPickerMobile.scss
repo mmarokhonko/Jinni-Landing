@@ -1,0 +1,208 @@
+.picker-mob_frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 24px 23px;
+  .frame_title {
+    border-bottom: none;
+    padding-bottom: 10px;
+  }
+
+  .picker_quick-btn {
+    width: 180px;
+    height: 50px;
+    font-style: 16px;
+    line-height: 25px;
+    font-weight: 600;
+  }
+}
+
+.picker-mob_frame_bottom {
+  margin-top: 15px;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 600;
+  color: #97a5b8;
+}
+
+.picker-mob_pick-btn {
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 600;
+  color: #46cf00;
+}
+
+.picker-mob_modal {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  background-color: #f4f8fd;
+  overflow-y: auto;
+}
+
+.picker-mob_modal_head {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  width: 100%;
+  height: 50px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 15px 0 rgba(127, 177, 223, 0.3);
+  img {
+    height: 12px;
+    width: 12px;
+  }
+  p {
+    font-size: 16px;
+    line-height: 14px;
+    text-transform: uppercase;
+    opacity: 0.2;
+  }
+}
+
+.picker-mob_modal_body {
+  padding: 25px 26px 27px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.picker-mob_head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .picker_quick-btn {
+    margin-top: 7px;
+    width: 180px;
+    height: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 25px;
+  }
+}
+
+.picker-mob_head_title {
+  font-size: 16px;
+  line-height: 22px;
+  color: #201b3a;
+  text-align: center;
+}
+
+.picker-mob_head_pale-text {
+  margin-top: 5px;
+  color: #97a5b8;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.picker-mob_modal_frame {
+  margin-top: 27px;
+  max-width: 268px;
+  border-radius: 5px;
+  border: 3px solid #34b3ff;
+  box-shadow: 0 10px 15px 0 rgba(226, 238, 255, 0.9);
+}
+
+.picker-mob_modal_frame > .picker_nums,
+.picker-mob_modal_frame > .picker_bonus {
+  background: none;
+  border: none;
+}
+
+.picker-mob_modal_frame > .picker_nums {
+  padding: 15px 19px 20px;
+}
+
+.picker-mob_modal_frame > .picker_nums .picker_nums_num {
+  color: #201b3a;
+  border: none;
+  height: 30px;
+  width: 30px;
+  &.-picked {
+    color: white;
+    background-color: #34b3ff;
+  }
+}
+
+.picker-mob_nums_head {
+  height: 61px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #d7e7ff;
+}
+
+.picker-mob_nums_head_circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  line-height: 14px;
+  height: 28px;
+  width: 28px;
+  border-radius: 100%;
+  &:not(:last-of-type) {
+    margin-right: 5px;
+  }
+  &.-num-circle {
+    background-color: #e4e6f4;
+    &.-filled {
+      background-image: url("./assets/Header/icons/ball_blue.png");
+      box-shadow: 1px 5px 10px 0 rgba(57, 119, 202, 0.15), 0 0 60px 0 #f6efff;
+    }
+  }
+  &.-bonus-circle {
+    background-color: #afb6d2;
+    &.-filled {
+      background-image: url("./assets/Header/icons/ball_yellow.png");
+      box-shadow: 1px 5px 10px 0 rgba(57, 119, 202, 0.15), 0 0 60px 0 #f6efff;
+    }
+  }
+}
+
+.picker-mob_modal_frame > .picker_bonus {
+  border-top: 1px solid #d7e7ff;
+  padding: 16px 19px 26px;
+  .picker_nums_title {
+    color: #201b3a;
+    font-size: 14px;
+    line-height: 22px;
+  }
+  .picker_bonus_subwrap {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  &:before {
+    background-image: url("./assets/NumberPicker/icon/star-small_mob.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 12px;
+    width: 11px;
+    left: calc(50% - 5px);
+    top: -6px;
+  }
+}
+
+.picker-mob_modal_frame > .picker_bonus .picker_bonus_num {
+  width: 32px;
+  height: 31px;
+  color: #201b3a;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14px;
+  background-image: url("./assets/NumberPicker/icon/star_mob.png");
+  &.-picked {
+    color: white;
+    background-image: url("./assets/NumberPicker/icon/star-fill_mob.png");
+  }
+}

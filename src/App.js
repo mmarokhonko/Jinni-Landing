@@ -91,6 +91,7 @@ class App extends Component {
   };
 
   clearNumbers = () => this.numberPicker.clearNums();
+  openModal = () => this.numberPicker.openMobileModal();
 
   passDataToSendModule = (formData, errorNode) => {
       const { lottoData, urlData, picksData } = this.state;
@@ -130,6 +131,7 @@ class App extends Component {
 								  jackpot={lottoData.Jackpot.toString()}
 								  picksData={picksData}
 								  clearHandler={this.clearNumbers}
+								  modalOpenHandler={this.openModal}
                               />
                           )
                       }
