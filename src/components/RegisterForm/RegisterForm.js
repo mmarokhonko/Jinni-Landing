@@ -313,7 +313,8 @@ class RegisterForm extends Component {
                                   inputHandler={this.inputHandler}
                                   type="password"
                                   icon={window.innerWidth <= 768 ? "lockMob" : "lock"}
-                                  name="password"
+								  name="password"
+								  placeholder="Password"
                                   value={fields.password}
                                   error={errorObjects.passwordError}
                               />

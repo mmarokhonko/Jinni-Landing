@@ -6,7 +6,7 @@
   @media (max-width: 768px) {
     padding-left: 15px;
     padding-right: 15px;
-    margin-left: 15px;
+	margin-left: 15px;
   }
 }
 
@@ -90,14 +90,14 @@
 
 .form_btn_wrap {
   @media (max-width: 768px) {
-    padding-top: 20px;
-  }
-  &:before {
-    content: "";
-    display: block;
-    background-color: #d7e7ff;
-    height: 1px;
-    width: 100%;
+	padding-top: 20px;
+	&:before {
+		content: "";
+		display: block;
+		background-color: #d7e7ff;
+		height: 1px;
+		width: 100%;
+	  }
   }
 }
 

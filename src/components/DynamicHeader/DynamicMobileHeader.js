@@ -2,11 +2,37 @@ import React, { Component } from "react";
 import {string, array, func} from "prop-types";
 
 import allLottoData from "./allLottoData";
+import {roundDecimal, roundMillions, reverseString} from "./jackpotTools";
 
 class DynamicMobileHeader extends Component {
   state = {
       lottoData: allLottoData[this.props.lotto]
   };
+
+  formatJackpot = jackpot => {
+      let jackpotReversed = reverseString(jackpot);
+      
+      const decimalString = jackpotReversed.slice(4,6);
+	  const roundedDecimalString = roundDecimal(decimalString);
+	  
+	  console.log(roundedDecimalString);
+
+      if (jackpotReversed.length > 6) {
+          const millionsString = jackpotReversed.slice(6);
+
+          if (millionsString.length >= 3 || Number(roundedDecimalString) >= 10 || Number(roundedDecimalString) === 0) {
+			  const roundedMillionsString = roundMillions(millionsString, roundedDecimalString);
+			  return(`${reverseString(roundedMillionsString)} million`);
+          }
+
+          else {
+              return `${reverseString(roundedDecimalString.charAt(0) + "." + millionsString)} million`;
+          }
+      }
+      else {
+          return `${reverseString(roundedDecimalString.charAt(0) + ".0")} million`;
+      }
+  }
 
   formatJackpotString = jackpotString => {
       let reversedJackpotArray = jackpotString.split("").reverse();
@@ -45,7 +71,7 @@ class DynamicMobileHeader extends Component {
   render() {
       const { lotto, jackpot, picksData, clearHandler } = this.props;
       const lottoData = this.state.lottoData;
-	  const jackpotString = this.formatJackpotString(jackpot);
+	  const jackpotString = this.formatJackpot(jackpot);
 	  
 	  const pickedNumbers = picksData[0].pickedNums;
 	  const pickedBonus = picksData[0].pickedBonus;

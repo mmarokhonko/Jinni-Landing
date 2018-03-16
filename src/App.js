@@ -5,7 +5,7 @@ import DynamicHeader from "./components/DynamicHeader/DynamicHeader";
 import DynamicMobileHeader from "./components/DynamicHeader/DynamicMobileHeader";
 import Help from "./components/Help/Help";
 import Fact from "./components/Fact/Fact";
-import NumberPicker from "./components/NumberPicker/NumberPicker";
+import NumberPicker from "./components/NumberPicker/PickerContainer";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 
 import { getFeedData, getParamFromCookieOrUrl, getParamFromURL } from "./tools/toolFunctions";
