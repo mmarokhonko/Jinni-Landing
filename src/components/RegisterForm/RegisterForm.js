@@ -416,7 +416,8 @@ class RegisterForm extends Component {
                                   value={fields.phoneCode}
                                   name="phoneCode"
                                   selectHandler={this.selectHandler}
-                                  userCountryCode={userCountryCode}
+								  userCountryCode={userCountryCode}
+								  selectedCountryCode={fields.country.countryCode}
                               />
                               <InputWithIcon
                                   inputHandler={this.inputHandler}

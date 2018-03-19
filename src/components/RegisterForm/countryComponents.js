@@ -130,11 +130,18 @@ class SelectPhoneCode extends Component {
   }
 
   componentDidUpdate(prevProps) {
-      const { userCountryCode } = this.props;
+      const { userCountryCode, selectedCountryCode } = this.props;
 
       if (userCountryCode && prevProps.userCountryCode !== userCountryCode) {
           this.selectUserCountry(userCountryCode);
-      }
+	  }
+	  
+	  if(selectedCountryCode && prevProps.selectedCountryCode !== selectedCountryCode) {
+		  const firstAlignedPhoneCode = this.state.options.filter(option => option.countryCode === selectedCountryCode)[0];
+		  if(firstAlignedPhoneCode) {
+			  this.selectHandler(firstAlignedPhoneCode);
+		  }
+	  }
   }
 
   selectUserCountry = code => {
@@ -172,7 +179,8 @@ SelectPhoneCode.propTypes = {
     value: object,
     selectHandler: func.isRequired,
     name: string.isRequired,
-    userCountryCode: string
+    userCountryCode: string,
+    selectedCountryCode : string
 };
 
 module.exports = {
