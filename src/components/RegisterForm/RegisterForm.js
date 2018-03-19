@@ -435,10 +435,10 @@ class RegisterForm extends Component {
                                   matches ? (
                                       <button
                                           type="button"
-                                          className="btn-general btn-green-empty form_back-btn"
+                                          className="form_back-btn"
                                           onClick={this.moveTo1stStep}
                                       >
-								  		Back
+								  		back
                                       </button>
                                   ) : (
                                       <button onClick={this.moveTo1stStep} type="button" className="form_back-btn-mobile"></button>

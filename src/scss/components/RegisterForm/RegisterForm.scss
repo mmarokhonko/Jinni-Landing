@@ -6,7 +6,7 @@
   @media (max-width: 768px) {
     padding-left: 15px;
     padding-right: 15px;
-	margin-left: 15px;
+    margin-left: 15px;
   }
 }
 
@@ -43,29 +43,49 @@
 }
 
 .form_back-btn {
-  height: 50px;
-  width: 120px;
+  cursor: pointer;
+  height: 26px;
+  display: flex;
+  align-items: center;
   margin-right: auto;
+  color: #31ce03;
+  font-weight: 600;
   font-size: 16px;
-  font-weight: bold;
   line-height: 26px;
-  @media(max-width:768px) {
-	  display: none;
+  border: none;
+  background: none;
+  transition: filter 0.3s;
+  @media (max-width: 768px) {
+    display: none;
+  }
+  &:before {
+    content: "";
+    margin-right: 16px;
+    display: block;
+    height: 12px;
+    width: 12px;
+    background-image: url("./assets/RegisterForm/icons/back-arrow_btn.svg");
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 12px 12px;
+  }
+  &:hover {
+	  filter: brightness(90%);
   }
 }
 
 .form_back-btn-mobile {
-	cursor: pointer;
-	display: block;
-	align-self: center;
-	transform: translateY(50%);
-	width: 19px;
-	height: 18px;
-	background-image: url("./assets/RegisterForm/icons/back-arrow_btn.svg");
-	background-color: transparent;
-	background-repeat: no-repeat;
-	background-size: contain;
-	border: none;
+  cursor: pointer;
+  display: block;
+  align-self: center;
+  transform: translateY(50%);
+  width: 19px;
+  height: 18px;
+  background-image: url("./assets/RegisterForm/icons/back-arrow_btn.svg");
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
 }
 
 .form_submit-btn {
@@ -90,14 +110,14 @@
 
 .form_btn_wrap {
   @media (max-width: 768px) {
-	padding-top: 20px;
-	&:before {
-		content: "";
-		display: block;
-		background-color: #d7e7ff;
-		height: 1px;
-		width: 100%;
-	  }
+    padding-top: 20px;
+    &:before {
+      content: "";
+      display: block;
+      background-color: #d7e7ff;
+      height: 1px;
+      width: 100%;
+    }
   }
 }
 
@@ -384,13 +404,14 @@
 .form_step2_bottom {
   margin-top: 25px;
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   .form_submit-btn {
     flex-shrink: 0;
   }
   @media (max-width: 768px) {
-	order: 2;
-	border-top: 1px solid #D7E7FF;
+    order: 2;
+    border-top: 1px solid #d7e7ff;
   }
 }
 
