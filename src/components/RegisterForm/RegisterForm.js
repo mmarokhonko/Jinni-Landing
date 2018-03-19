@@ -262,7 +262,7 @@ class RegisterForm extends Component {
       if (!step2)
           return (
               <div className="frame form_frame-vert">
-                  <h4 className="frame_title">Register to place FREE bet</h4>
+                  <h4 className="frame_title">Register to place <span>FREE</span> bet</h4>
                   <form className="form" autoComplete="false">
                       <div className="form_row">
                           <h5 className="form_row_title">Title and Name</h5>

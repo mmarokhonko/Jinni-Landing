@@ -4,37 +4,48 @@
   height: 287px;
   background-repeat: no-repeat;
   background-size: cover;
+  //   background-position-x: 110px;
   .cont-zone {
     position: relative;
     z-index: 1;
-    height: 100%;
+	height: 100%;
   }
 }
 
 .header_people {
   position: absolute;
   top: 0;
-  right: 10%;
+  right: 9%;
   height: 287px;
 }
 
 .header_title {
+  margin-left: 57px;
   font-size: 35px;
-  line-height: 53px;
+  line-height: 57px;
   color: white;
   font-weight: 400;
   &.-with-logo {
-    padding-top: 35px;
+    padding-top: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     img {
-      margin: 0 18px;
+      margin: 0 28px 0 18px;
+      height: 100px;
+      width: 100px;
     }
+  }
+  span {
+    margin-left: 10px;
+    font-size: 44px;
+    font-weight: 600;
+    line-height: 50px;
   }
 }
 
 .header_jackpot {
+	margin-left: 38px;
   padding-top: 20px;
   display: flex;
   justify-content: center;
@@ -80,7 +91,7 @@
 }
 
 .mob-header_title {
-  margin-top: 8px;
+  margin-top: 10px;
   font-size: 16px;
   line-height: 26px;
   font-weight: 400;
@@ -93,7 +104,8 @@
 }
 
 .mob-header_jackpot {
-  margin-top: 15px;
+  margin-top: 12px;
+  margin-left: -6px;
   font-size: 28px;
   line-height: 18px;
 }
@@ -128,18 +140,18 @@
     margin-right: 8px;
   }
   &.-num-circle {
-	background-color: #e4e6f4;
-	&.-filled {
-		background-image: url("./assets/Header/icons/ball_blue.png");
-		box-shadow: 1px 5px 10px 0 rgba(57,119,202,0.15), 0 0 60px 0 #F6EFFF;		
-	}
+    background-color: #e4e6f4;
+    &.-filled {
+      background-image: url("./assets/Header/icons/ball_blue.png");
+      box-shadow: 1px 5px 10px 0 rgba(57, 119, 202, 0.15), 0 0 60px 0 #f6efff;
+    }
   }
   &.-bonus-circle {
-	background-color: #AFB6D2;
-	&.-filled {
-		background-image: url("./assets/Header/icons/ball_yellow.png");
-		box-shadow: 1px 5px 10px 0 rgba(57,119,202,0.15), 0 0 60px 0 #F6EFFF;		
-	}
+    background-color: #afb6d2;
+    &.-filled {
+      background-image: url("./assets/Header/icons/ball_yellow.png");
+      box-shadow: 1px 5px 10px 0 rgba(57, 119, 202, 0.15), 0 0 60px 0 #f6efff;
+    }
   }
 }
 

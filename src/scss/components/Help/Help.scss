@@ -1,15 +1,17 @@
 .help {
-	margin-top: 80px;
+	margin-top: 72px;
 	@media(max-width:768px) {
 		margin-top: 0;
 	}
 }
 
 .help_title {
+	margin-left: 15px;
     font-size: 35px;
     line-height: 53px;
 	text-align: center;
 	@media(max-width: 768px) {
+		margin-left: 0;
 		font-size: 16px;
 		line-height: 25px;
 		font-weight: 600;
@@ -40,21 +42,21 @@
     align-items: center;
 	text-align: center;
 	@media(max-width: 768px) {
-		margin-top: 27px;
+		margin-top: 20px;
 		max-width: 260px;
 		&:not(:first-child) {
-			margin-top: 50px;
+			margin-top: 42px;
 		}
 	}
 }
 
 .help_step_title {
-    margin-top: 27px;
+    margin-top: 26px;
     text-transform: uppercase;
     font-size: 22px;
 	line-height: 33px;
 	@media(max-width: 768px) {
-		margin-top: 20px;
+		margin-top: 24px;
 		font-size: 16px;
 		line-height: 18px;
 		text-transform: none;
@@ -62,6 +64,7 @@
 }
 
 .help_step_icon {
+	margin-top: 7px;
 	@media (max-width: 768px) {
 		height: 102px;
 		width: 102px;
@@ -69,13 +72,15 @@
 }
 
 .help_step_text {
-    margin-top: 16px;
+    margin-top: 14px;
     font-size: 16px;
 	line-height: 25px;
 	@media(max-width: 768px) {
-		margin-top: 10px;
+		margin-top: 8px;
 		font-size: 14px;
 		line-break: 22px;
+		line-height: 22px;
+		letter-spacing: 0.5px;
 	}
 }
 

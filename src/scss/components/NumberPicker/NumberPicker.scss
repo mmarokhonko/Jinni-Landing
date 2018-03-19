@@ -1,8 +1,9 @@
 .picker_frame-vert {
-  max-width: 433px;
+  max-width: 426px;
+//   margin-left: 34px;
   flex: 1;
-  @media (max-width:768px) {
-	  max-width: unset;
+  @media (max-width: 768px) {
+    max-width: unset;
   }
 }
 
@@ -32,11 +33,11 @@
   height: 32px;
   width: 32px;
   border-radius: 100%;
-  background-color: #31CE03;
+  background-color: #31ce03;
   background-image: url("./assets/NumberPicker/icon/check.png");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 15px 15px;   
+  background-size: 15px 15px;
 }
 
 .picker_clear-btn {
@@ -54,15 +55,16 @@
   background-size: 15px 15px;
   background-repeat: no-repeat;
   transition: box-shadow 0.3s;
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     box-shadow: 0 0 5px 2px #d6dbea;
-    outline:none;    
+    outline: none;
   }
 }
 
 .picker_nums {
   border-top: 1px solid #f6b192;
-  padding: 16px 22px 20px;
+  padding: 13px 15px 20px 22px;
   background-color: rgba(246, 177, 146, 0.22);
 }
 
@@ -91,7 +93,7 @@
   justify-content: center;
   height: 25px;
   width: 25px;
-  border: 1.56px solid #f6b192;
+  border: 2px solid #f6b192;
   border-radius: 5px;
   background-color: #ffffff;
   box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.1), 0 0 23px 0 rgba(212, 219, 245, 0.47);
@@ -111,10 +113,10 @@
 .picker_bonus {
   position: relative;
   border-top: 1px solid #f6b192;
-  padding: 20px 22px 21px;
+  padding: 20px 13px 21px 20px;
   background-color: rgba(246, 177, 146, 0.53);
   &::before {
-    content:"";
+    content: "";
     position: absolute;
     top: -10px;
     left: calc(50% - 10px);
@@ -127,12 +129,12 @@
 .picker_bonus_subwrap {
   margin-top: 7px;
   display: flex;
-  margin-left: -1px;
   flex-wrap: wrap;
+  margin-left: -1px;
 }
 
 .picker_bonus_num {
-  margin-top: 6px;
+  margin-top: 5px;
   margin-left: 1px;
   cursor: pointer;
   font-size: 14px;
@@ -141,17 +143,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 31px;
-  width: 31px;
+  height: 30px;
+  width: 32px;
   background-image: url("./assets/NumberPicker/icon/icon_star-big.png");
   background-position: center top;
   background-size: 31px 30px;
   background-repeat: no-repeat;
   color: #eb6326;
 
-   &:hover {
+  &:hover {
     font-size: 16px;
-   } 
+  }
 
   &.-picked {
     background-image: url("./assets/NumberPicker/icon/icon_star-fill.png");

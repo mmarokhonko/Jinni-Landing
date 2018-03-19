@@ -45,7 +45,7 @@ class DynamicHeader extends Component {
               <img src={lottoData.people} alt="" className="header_people" />
               <div className="cont-zone">
                   <h2 className="header_title -with-logo">
-            Play the next <img src={lottoData.logo} alt={lotto} /> draw for FREE
+            Play the next <img src={lottoData.logo} alt={lotto} /> draw for <span>FREE</span>
                   </h2>
                   <div
                       className="header_jackpot"
