@@ -260,7 +260,7 @@
 .selwi_options {
   display: none;
   position: absolute;
-  top: 89px;
+  top: 50px;
   left: 0;
   right: 0;
   z-index: 3;
@@ -294,6 +294,10 @@
       }
     }
   }
+}
+
+.selwi_filter-input + .selwi_options {
+	top: 89px;
 }
 
 .selwi_wrap.-open {
