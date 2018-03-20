@@ -36,12 +36,12 @@ class SelectDayOfBirth extends Component {
 
   render() {
       const { value } = this.props;
-      const { options } = this.state;
-
+	  const { options } = this.state;
+	  
       return (
           <SelectWithIcon
               value={value}
-              icon={window.innderWidth <= 768 && bithdayIcon}
+              icon={window.innerWidth >= 768 && bithdayIcon}
               options={options}
               selectHandler={this.selectHandler}
           />

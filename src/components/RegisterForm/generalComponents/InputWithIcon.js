@@ -36,7 +36,7 @@ class InputWithIcon extends Component {
       return (
           <div className="inpwi_wrap">
               <input
-                  auto-complete={`${name}-new`}
+                  autoComplete={`new-${name}`}
                   onChange={e => inputHandler(name, e)}
                   value={value}
                   name={name}

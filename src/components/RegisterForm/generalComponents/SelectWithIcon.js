@@ -68,7 +68,7 @@ class SelectWithIcon extends Component {
 
   render() {
       const { value, icon } = this.props;
-      const { open, options, filterString } = this.state;
+	  const { open, options, filterString } = this.state;
 
       return (
           <ClickOutHandler onClickOut={this.ClickOutClose}>
