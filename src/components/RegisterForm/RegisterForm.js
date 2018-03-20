@@ -7,7 +7,7 @@ import InputWithIcon from "./generalComponents/InputWithIcon";
 import SelectTitle from "./SelectTitle";
 import { SelectDayOfBirth, SelectMonthOfBirth, SelectYearOfBirth } from "./dateOfBirthComponents";
 import { SelectCountry, SelectPhoneCode } from "./countryComponents";
-import { isFieldError } from "./tools/validateFunctions";
+import { isFieldError } from "./tools/validationFunctions";
 
 import { restrictedCountries } from "./data/restrictedCountries.json";
 

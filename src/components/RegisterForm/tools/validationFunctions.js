@@ -30,7 +30,7 @@ const isFieldError = (name, value) => {
         return !isLength(value, {min:8});
 
     case "phoneNumber":
-        return !isNumeric(value);    
+        return !isNumeric(value) || !isLength(value, {min:4, max:12});    
     }
 };
 
