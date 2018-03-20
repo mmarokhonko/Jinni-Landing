@@ -6,7 +6,8 @@ class SelectWithIcon extends Component {
   state = {
       open: false,
       options: this.props.options || [],
-      filterString: ""
+	  filterString: "",
+	  allowFilter: this.props.options.length > 5
   };
 
   toggleOpen = () => {
@@ -40,11 +41,12 @@ class SelectWithIcon extends Component {
 
   filterOptions = () => {
       let newOptions = this.props.options;
-      const { filterString } = this.state;
+	  const { filterString } = this.state;
+	  
       newOptions = newOptions.filter(option =>
           option.label.toLowerCase().includes(filterString.toLowerCase())
-      );
-      this.setState({
+	  );
+	  this.setState({
           options: newOptions
       });
   };
@@ -68,7 +70,7 @@ class SelectWithIcon extends Component {
 
   render() {
       const { value, icon } = this.props;
-	  const { open, options, filterString } = this.state;
+	  const { open, options, filterString, allowFilter } = this.state;
 
       return (
           <ClickOutHandler onClickOut={this.ClickOutClose}>
@@ -80,7 +82,7 @@ class SelectWithIcon extends Component {
                   >
                       {value.label}
                   </div>
-                  {options.length > 5 && (
+                  {allowFilter && (
                       <div className="selwi_filter-input">
                           <input
                               placeholder="Filter"
