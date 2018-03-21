@@ -162,7 +162,7 @@ class App extends Component {
                       </div>
                   </div>
               </main>
-              {lottoData && <Help lotto={lottoName} drawDate={lottoData.DrawDate + " " + lottoData.TimeZone} />}
+              {lottoData && <Help lotto={lottoData.LotteryName} drawDate={lottoData.DrawDate + " " + lottoData.TimeZone} />}
               <Fact lotto={lottoName} />
           </Fragment>
       );
