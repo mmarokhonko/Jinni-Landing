@@ -11,9 +11,12 @@ import NumberPickerMobile from "./NumberPickerMobile";
 class PickerContainer extends Component {
   state = {
       maxNumber: lottoData[this.props.lotto].maxNumber,
-      maxBonus: lottoData[this.props.lotto].maxBonus,
+	  maxBonus: lottoData[this.props.lotto].maxBonus,
+	  numbersAmount: lottoData[this.props.lotto].numbersAmount,
+	  bonusAmount: lottoData[this.props.lotto].bonusAmount,
+	  bonusName: lottoData[this.props.lotto].bonusName,
       pickedNums: [],
-      pickedBonus: null,
+      pickedBonus: [],
 	  quickPickDelay: 150,
 	  isMobileModalOpen: false
   };
@@ -53,6 +56,7 @@ class PickerContainer extends Component {
   };
 
   toggleNum = num => {
+	  const {numbersAmount} = this.state;
       let pickedNums = this.state.pickedNums.slice();
       if (pickedNums.indexOf(num) !== -1) {
           pickedNums = pickedNums.filter(item => item !== num);
@@ -62,7 +66,7 @@ class PickerContainer extends Component {
           return;
       }
 
-      if (pickedNums.length === 5) {
+      if (pickedNums.length === numbersAmount) {
           return;
       }
 
@@ -73,16 +77,21 @@ class PickerContainer extends Component {
   };
 
   toggleBonus = bonus => {
-      let pickedBonus = this.state.pickedBonus;
-      if (pickedBonus === bonus) {
-          pickedBonus = null;
+      const {bonusAmount} = this.state;
+      let pickedBonus = this.state.pickedBonus.slice();
+      if (pickedBonus.indexOf(bonus) !== -1) {
+          pickedBonus = pickedBonus.filter(item => item !== bonus);
           this.setState({
               pickedBonus
           });
           return;
       }
 
-      pickedBonus = bonus;
+      if (pickedBonus.length === bonusAmount) {
+          return;
+      }
+
+      pickedBonus.push(bonus);
       this.setState({
           pickedBonus
       });
@@ -91,15 +100,16 @@ class PickerContainer extends Component {
   clearNums = () => {
       this.setState({
           pickedNums: [],
-          pickedBonus: null
+          pickedBonus: []
       });
   };
 
   genNumbersHeader = () => {
-      if (this.state.pickedNums.length === 5) {
+      const {numbersAmount} = this.state;	  
+      if (this.state.pickedNums.length === numbersAmount) {
           return "Line completed";
       } else {
-          const diff = 5 - this.state.pickedNums.length;
+          const diff = numbersAmount - this.state.pickedNums.length;
           if (diff === 1) {
               return "Select 1 number";
           }
@@ -108,9 +118,10 @@ class PickerContainer extends Component {
   };
 
   genNumbersMobileHeader = () => {
-      const numCircles = [];
+	  const numCircles = [];
+	  const {numbersAmount, bonusAmount} = this.state;
   
-      for(let x = 0; x <=4; x++) {
+      for(let x = 0; x <= numbersAmount - 1; x++) {
           const number = this.state.pickedNums[x];
           const classString = `picker-mob_nums_head_circle -num-circle${number ? " -filled" : ""}`;
           numCircles.push(<div key={`n-${x}`} className={classString}>{number}</div>)
@@ -118,8 +129,8 @@ class PickerContainer extends Component {
   
       const bonusCircles = [];
   
-      for(let x = 0; x <=0; x++) {
-          const number = this.state.pickedBonus;
+      for(let x = 0; x <=bonusAmount - 1; x++) {
+		  const number = this.state.pickedBonus[x];
           const classString = `picker-mob_nums_head_circle -bonus-circle${number ? " -filled" : ""}`;
           bonusCircles.push(<div key={`b-${x}`} className={classString}>{number}</div>)
 	  }
@@ -128,17 +139,25 @@ class PickerContainer extends Component {
   };
 
   genBonusHeader = () => {
-      if (this.state.pickedBonus) {
+	  const {bonusAmount, pickedBonus, bonusName} = this.state;
+	  
+      if (pickedBonus.length === bonusAmount) {
           return "All done here!";
-      }
-      return "Select 1 Bonus Number";
+      } else {
+          const diff = bonusAmount - pickedBonus.length;
+          if (diff === 1) {
+              return `Select 1 ${bonusName}`;
+          }
+          return `Select ${diff} ${bonusName}s!`;
+      }	
   };
 
   genRandomNumber = () => {
+      const {numbersAmount} = this.state;	  
       let { maxNumber, quickPickDelay } = this.state;
       let pickedNums = this.state.pickedNums.slice();
 
-      if (pickedNums.length !== 5) {
+      if (pickedNums.length !== numbersAmount) {
           let ranNumber = Math.floor(Math.random() * maxNumber) + 1;
           if (pickedNums.indexOf(ranNumber) !== -1) {
               return this.genRandomNumber();
@@ -150,7 +169,7 @@ class PickerContainer extends Component {
                   },
                   () => {
                       setTimeout(() => {
-                          this.state.pickedNums.length === 5 ? this.genRandomBonus() : this.genRandomNumber();
+                          this.state.pickedNums.length === numbersAmount ? this.genRandomBonus() : this.genRandomNumber();
                       }, quickPickDelay);
                   }
               );
@@ -159,25 +178,34 @@ class PickerContainer extends Component {
   };
 
   genRandomBonus = () => {
-      let { maxBonus, pickedBonus } = this.state;
-      if (!pickedBonus) {
+      let { maxBonus, pickedBonus, bonusAmount, quickPickDelay } = this.state;
+      let pickedBonuses = pickedBonus.slice();
+
+      if (pickedBonuses.length !== bonusAmount) {
           let ranBonus = Math.floor(Math.random() * maxBonus) + 1;
-          if (pickedBonus === ranBonus) {
+          if (pickedBonuses.indexOf(ranBonus) !== -1) {
               return this.genRandomBonus();
           } else {
-              pickedBonus = ranBonus;
-              this.setState({
-                  pickedBonus
-              });
+              pickedBonuses.push(ranBonus);
+              this.setState(
+                  {
+                      pickedBonus: pickedBonuses
+                  },
+                  () => {
+                      setTimeout(() => {
+                          this.state.pickedNums.length === bonusAmount ? true : this.genRandomBonus();
+                      }, quickPickDelay);
+                  }
+              );
           }
-      }
+      }	
   };
 
   quickPick = () => {
       this.setState(
           {
               pickedNums: [],
-              pickedBonus: null
+              pickedBonus: []
           },
           () => {
               this.genRandomNumber();
@@ -208,7 +236,7 @@ class PickerContainer extends Component {
       let bonuses = [];
       const pickedBonus = this.state.pickedBonus;
       for (let bonus = 1; bonus <= maxBonus; bonus++) {
-          const picked = pickedBonus === bonus;
+          const picked = pickedBonus.indexOf(bonus) !== -1;
           const numHtml = (
               <div
                   key={bonus}
@@ -227,7 +255,7 @@ class PickerContainer extends Component {
 	  noScroll.on();
 	  this.setState({
           isMobileModalOpen: true
-	  }, () => console.log(this.state.isMobileModalOpen))
+	  })
   };
 
   closeMobileModal = () => {
@@ -260,7 +288,10 @@ class PickerContainer extends Component {
                       <NumberPicker
                           pickerMethods={this.pickerMethods}
                           pickedNums={this.state.pickedNums}
-                          pickedBonus={this.state.pickedBonus}
+						  pickedBonus={this.state.pickedBonus}
+						  numbersAmount={this.state.numbersAmount}
+						  bonusAmount={this.state.bonusAmount}
+						  bonusName={this.state.bonusName}
                       />
                   ) : (
                       <NumberPickerMobile
@@ -268,6 +299,10 @@ class PickerContainer extends Component {
                           pickerMobileMethods={this.pickerMobileMethods}
                           pickedNums={this.state.pickedNums}
 						  pickedBonus={this.state.pickedBonus}
+						  numbersAmount={this.state.numbersAmount}
+						  bonusAmount={this.state.bonusAmount}
+						  maxNumber={this.state.maxNumber}						  						  
+						  maxBonus={this.state.maxBonus}
 						  modalOpen={this.state.isMobileModalOpen}
                       />
                   )

@@ -2,12 +2,16 @@ const lottoData = {
     "mega millions": {
         maxNumber: 70,
         maxBonus: 25,
-        bonusAmount: 1	
+        numbersAmount: 5,
+        bonusAmount: 1,
+        bonusName: "Bonus Number"	
     },
     "euromillions": {
         maxNumber: 50,
         maxBonus: 12,
-        bonusAmount: 2
+        numbersAmount: 5,
+        bonusAmount: 2,
+        bonusName: "Lucky Star"
     }
 }
 

@@ -9,17 +9,19 @@ import NumberPicker from "./components/NumberPicker/PickerContainer";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 
 import lottoParamsData from "./tools/lottoParamsData";
+import allPickerLottoData from "./components/NumberPicker/pickerLottoData";
 import { getFeedData, getParamFromCookieOrUrl, getParamFromURL } from "./tools/toolFunctions";
 import sendDataModule from "./tools/sendDataModule";
 
 class App extends Component {
   state = {
-      lotteryOrientation: "Mega Millions",
+	  lotteryOrientation: "Mega Millions",
+	  pickerLottoData: null,
       lottoData: null,
       picksData: [
           {
               pickedNums: [],
-              pickedBonus: null
+              pickedBonus: []
           }
       ],
       urlData: {
@@ -45,8 +47,10 @@ class App extends Component {
           object =>
               object.LotteryName.toLowerCase() === this.state.urlData.lotteryOrientation
 	  )[0];
+	  let pickerLottoData = allPickerLottoData[this.state.urlData.lotteryOrientation];
       this.setState({
-          lottoData
+		  lottoData,
+		  pickerLottoData
       });
   };
 
@@ -96,10 +100,11 @@ class App extends Component {
   clearNumbers = () => this.numberPicker.clearNums();
   openModal = () => this.numberPicker.openMobileModal();
 
-  passDataToSendModule = (formData, errorNode) => {
-      const { lottoData, urlData, picksData } = this.state;
+  passDataToSendingModule = (formData, errorNode) => {
+	  const { lottoData, urlData, picksData, pickerLottoData } = this.state;
+	  const {numbersAmount, bonusAmount} = pickerLottoData;
 
-      if (picksData[0].pickedNums.length < 5 || !picksData[0].pickedBonus) {
+      if (picksData[0].pickedNums.length < numbersAmount || picksData[0].pickedBonus.length < bonusAmount) {
           errorNode.classList.add("-shown");
           errorNode.innerHTML =
         "Whoops! You’ve forgotten the most important part – filling up your bonus tickets";
@@ -153,7 +158,7 @@ class App extends Component {
                       </h1>
                       <div className="main_subwrap">
                           <NumberPicker lotto={lottoName} setAppNumbers={this.setNumbers} ref={picker => this.numberPicker = picker} />
-                          <RegisterForm submitHandler={this.passDataToSendModule} />
+                          <RegisterForm submitHandler={this.passDataToSendingModule} />
                       </div>
                   </div>
               </main>

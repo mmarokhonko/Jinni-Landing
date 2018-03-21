@@ -5,6 +5,7 @@ import Media from "react-media";
 import Timer from "./Timer";
 
 import pickerLottoData from "../NumberPicker/pickerLottoData";
+import helpLottoData from "./helpLottoData";
 
 import iconArrow from "../../assets/Help/icons/ic_arrow.svg";
 import iconPick from "../../assets/Help/icons/ic_pick.svg";
@@ -12,7 +13,8 @@ import iconGet from "../../assets/Help/icons/ic_get.svg";
 import iconCollect from "../../assets/Help/icons/ic_collect.svg";
 
 const Help = ({ drawDate, lotto }) => {
-    const maxNumsAndBonus = pickerLottoData[lotto];
+    const currHelpLottoData = helpLottoData[lotto];
+    const currPickerLottoData = pickerLottoData[lotto];
     return (
         <section className="help">
             <div className="cont-zone">
@@ -21,14 +23,7 @@ const Help = ({ drawDate, lotto }) => {
                     <div className="help_step">
                         <img src={iconPick} alt="" className="help_step_icon" />
                         <h4 className="help_step_title">Pick your lucky numbers</h4>
-                        <Media query="(min-width: 768px)">
-                            <p className="help_step_text">
-                Select 5 numbers from 1-{maxNumsAndBonus.maxNumber} <br className="hide-big"/>
-                + a bonus number from 1-{maxNumsAndBonus.maxBonus}. <br className="hide-big"/>
-                Or we can randomly choose for <br className="hide-big"/>
-                you when you click “Quick Pick”
-                            </p>
-                        </Media>
+                        {currHelpLottoData.firstStep(currPickerLottoData)}
                     </div>
                     <img src={iconArrow} alt="next" className="help_arrow" />
                     <div className="help_step">
@@ -43,7 +38,7 @@ const Help = ({ drawDate, lotto }) => {
                                     </p>
                                 ) : (
                                     <p className="help_step_text">
-                    To place your bet for free, just fill <br />
+                    To place your bet for free, just fill <br className="hide-sm" />
                     out the short form and click <br />
                     “Claim Free Bet”
                                     </p>

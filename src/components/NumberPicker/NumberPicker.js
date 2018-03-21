@@ -1,15 +1,15 @@
 import React from "react";
-import {number, object, array} from "prop-types";
+import {number, object, array, string} from "prop-types";
 
 const NumberPicker = (props) => {
-    const { pickedNums, pickedBonus, pickerMethods } = props;
+    const { pickedNums, pickedBonus, pickerMethods, numbersAmount, bonusAmount, bonusName } = props;
 
-    const done = pickedNums.length === 5 && pickedBonus ? true : false;
+    const done = pickedNums.length === numbersAmount && pickedBonus.length === bonusAmount;
 
     return (
         <div className="frame picker_frame-vert">
             <h4 className="frame_title">
-          Pick 5 numbers <br />& 1 bonus number
+          Pick {numbersAmount} numbers <br />& {bonusAmount} {bonusName}{bonusAmount > 1 ? "s" : ""}
             </h4>
             <div className="picker">
                 <div className="picker_head">
@@ -37,8 +37,11 @@ const NumberPicker = (props) => {
 
 NumberPicker.propTypes = {
     pickedNums: array,
-    pickedBonus: number,
-    pickerMethods: object.isRequired
+    pickedBonus: array,
+    pickerMethods: object.isRequired,
+    numbersAmount: number.isRequired,
+    bonusAmount: number.isRequired,
+    bonusName: string.isRequired
 }
 
 export default NumberPicker;

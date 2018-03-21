@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import {string, array, func} from "prop-types";
 
-import allLottoData from "./headerLottoData";
+import headerLottoData from "./headerLottoData";
+import pickerLottoData from "../NumberPicker/pickerLottoData";
 import {roundDecimal, roundMillions, reverseString} from "./jackpotTools";
 
 class DynamicMobileHeader extends Component {
   state = {
-      lottoData: allLottoData[this.props.lotto]
+	  lottoData: headerLottoData[this.props.lotto],
+	  pickerLottoData: pickerLottoData[this.props.lotto]
   };
 
   formatJackpot = jackpot => {
@@ -43,11 +45,12 @@ class DynamicMobileHeader extends Component {
       });
       return reversedJackpotArray.reverse().join("");
   };
-
+  
   generateNumsCircles = pickedNums => {
 	  const numCircles = [];
+      const {numbersAmount} = this.state.pickerLottoData;	  
 
-	  for(let x = 0; x <=4; x++) {
+	  for(let x = 0; x <=numbersAmount-1; x++) {
 		  const number = pickedNums[x];
 		  const classString = `numbers-widget_circle -num-circle${number ? " -filled" : ""}`;
 		  numCircles.push(<div key={x} className={classString}>{number}</div>)
@@ -56,10 +59,11 @@ class DynamicMobileHeader extends Component {
   }
 
   generateBonusCircles = pickedBonus => {
-      const numCircles = [];
+	  const numCircles = [];
+      const {bonusAmount} = this.state.pickerLottoData;	  	  
 
-      for(let x = 0; x <=0; x++) {
-          const number = pickedBonus;
+      for(let x = 0; x <= bonusAmount - 1; x++) {
+          const number = pickedBonus[x];
           const classString = `numbers-widget_circle -bonus-circle${number ? " -filled" : ""}`;
           numCircles.push(<div key={x} className={classString}>{number}</div>)
       }

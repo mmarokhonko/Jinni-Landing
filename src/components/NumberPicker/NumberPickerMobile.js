@@ -4,13 +4,13 @@ import { number, object, array, bool } from "prop-types";
 import closeIcon from "../../assets/NumberPicker/icon/close.png";
 
 const NumberPickerMobile = props => {
-    const { pickerMethods, pickerMobileMethods, modalOpen } = props;
+    const { pickerMethods, pickerMobileMethods, modalOpen, numbersAmount, bonusAmount, maxNumber, maxBonus } = props;
 
     return (
         <Fragment>
             <div className="frame picker-mob_frame">
                 <h4 className="frame_title">
-          Pick 5 numbers from 1-70<br />& 1 bonus number from 1-25
+				Pick {numbersAmount} numbers from 1-{maxNumber}<br />& {bonusAmount} bonus number{bonusAmount > 1 ? "s" : ""} from 1-{maxBonus}
                 </h4>
                 <button
                     className="btn-general btn-green picker_quick-btn"
@@ -60,9 +60,13 @@ const NumberPickerMobile = props => {
 
 NumberPickerMobile.propTypes = {
     pickedNums: array,
-    pickedBonus: number,
+    pickedBonus: array,
     pickerMethods: object.isRequired,
     pickerMobileMethods: object.isRequired,
+    numbersAmount: number.isRequired,
+    bonusAmount: number.isRequired,
+    maxNumber: number.isRequired,
+    maxBonus: number.isRequired,
     modalOpen: bool
 };
 
