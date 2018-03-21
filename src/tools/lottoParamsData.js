@@ -10,10 +10,14 @@ const lottoData = {
     "eurojackpot": {
         packageId: 258,
         incentiveCode: "free_ticket_ej"
-	},
-	"powerball": {
+    },
+    "powerball": {
         packageId: 257,
         incentiveCode: "free_ticket_pb"
+    },
+    "6 aus 49": {
+        packageId: 259,
+        incentiveCode: "free_ticket_6aus49"
     }
 }
 

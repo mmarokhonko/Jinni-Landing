@@ -66,8 +66,8 @@ NumberPickerMobile.propTypes = {
     numbersAmount: number.isRequired,
     bonusAmount: number.isRequired,
     maxNumber: number.isRequired,
-	maxBonus: number.isRequired,
-	ballsTheme: string.isRequired,
+    maxBonus: number.isRequired,
+    ballsTheme: string.isRequired,
     modalOpen: bool
 };
 

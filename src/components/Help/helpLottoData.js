@@ -95,6 +95,28 @@ const lottoData = {
 		 to see how much you won. 
             </p>
         )
+    },
+    ["6 aus 49"]: {
+        firstStep: pickerData => (
+            <p className="help_step_text">
+			  Select {pickerData.numbersAmount} lucky numbers +
+			  a {pickerData.bonusName} or 
+			  click "Quick Pick" for a random selection
+            </p>
+        ),
+        desktop: timeRemains => (
+            <p className="help_step_text">
+        	Don't miss the next of two weekly draws on <br/>
+                <span className="help_timer">{timeRemains}</span> to see if you’re a winner.
+            </p>
+        ),
+        mobile: timeRemains => (
+            <p className="help_step_text">
+        Wait for the upcoming draw that
+		will take place in <br/> <span className="help_timer">{timeRemains}</span><br/>    
+		 to see how much you won. 
+            </p>
+        )
     }
 };
 

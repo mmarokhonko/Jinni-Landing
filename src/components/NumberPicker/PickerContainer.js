@@ -16,6 +16,7 @@ class PickerContainer extends Component {
 	  bonusAmount: lottoData[this.props.lotto].bonusAmount,
 	  bonusName: lottoData[this.props.lotto].bonusName,
 	  ballsTheme: lottoData[this.props.lotto].ballsTheme,
+	  includeZeroBonusNumber: lottoData[this.props.lotto].includeZeroBonusNumber,	  
       pickedNums: [],
       pickedBonus: [],
 	  quickPickDelay: 150,
@@ -179,11 +180,12 @@ class PickerContainer extends Component {
   };
 
   genRandomBonus = () => {
-      let { maxBonus, pickedBonus, bonusAmount, quickPickDelay } = this.state;
+      let { maxBonus, pickedBonus, bonusAmount, quickPickDelay, includeZeroBonusNumber } = this.state;
       let pickedBonuses = pickedBonus.slice();
+	  let startingBonusNumber = includeZeroBonusNumber ? 0 : 1;	
 
       if (pickedBonuses.length !== bonusAmount) {
-          let ranBonus = Math.floor(Math.random() * maxBonus) + 1;
+          let ranBonus = Math.floor(Math.random() * maxBonus) + startingBonusNumber;
           if (pickedBonuses.indexOf(ranBonus) !== -1) {
               return this.genRandomBonus();
           } else {
@@ -234,9 +236,11 @@ class PickerContainer extends Component {
   };
 
   generateBonusNums = maxBonus => {
-      let bonuses = [];
+      let { includeZeroBonusNumber } = this.state;
+	  let bonuses = [];
+	  let startingBonusNumber = includeZeroBonusNumber ? 0 : 1;		  
       const pickedBonus = this.state.pickedBonus;
-      for (let bonus = 1; bonus <= maxBonus; bonus++) {
+      for (let bonus = startingBonusNumber; bonus <= maxBonus; bonus++) {
           const picked = pickedBonus.indexOf(bonus) !== -1;
           const numHtml = (
               <div

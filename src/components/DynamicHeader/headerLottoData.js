@@ -18,6 +18,11 @@ import powerballBGMob from "../../assets/Header/mob-bg/powerball.png";
 import powerballPeople from "../../assets/Header/people/powerball.png";
 import powerballLogo from "../../assets/Header/logo/powerball.png";
 
+import lotto6aus49BG from "../../assets/Header/bg/6aus49.png";
+import lotto6aus49BGMob from "../../assets/Header/mob-bg/powerball.png";
+import lotto6aus49People from "../../assets/Header/people/6aus49.png";
+import lotto6aus49Logo from "../../assets/Header/logo/6aus49.png";
+
 const allLottoData = {
     ["mega millions"]: {
         bg: megaBG,
@@ -46,6 +51,13 @@ const allLottoData = {
         currency: "€",
         bgMob: powerballBGMob,
         people: powerballPeople
+    },
+    ["6 aus 49"]: {
+        bg: lotto6aus49BG,
+        logo: lotto6aus49Logo,
+        currency: "€",
+        bgMob: lotto6aus49BGMob,
+        people: lotto6aus49People
     },
 }
 

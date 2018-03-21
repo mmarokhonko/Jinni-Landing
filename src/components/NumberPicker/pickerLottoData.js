@@ -30,6 +30,15 @@ const lottoData = {
         bonusAmount: 1,
         bonusName: "bonus number",
         ballsTheme: "red-yellow"			
+    },
+    "6 aus 49": {
+        maxNumber: 49,
+        maxBonus: 9,
+        numbersAmount: 6,
+        bonusAmount: 1,
+        bonusName: "Superball",
+        ballsTheme: "red-yellow",
+        includeZeroBonusNumber: true			
     }
 }
 
