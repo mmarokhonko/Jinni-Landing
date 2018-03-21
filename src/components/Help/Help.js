@@ -4,12 +4,15 @@ import Media from "react-media";
 
 import Timer from "./Timer";
 
+import pickerLottoData from "../NumberPicker/pickerLottoData";
+
 import iconArrow from "../../assets/Help/icons/ic_arrow.svg";
 import iconPick from "../../assets/Help/icons/ic_pick.svg";
 import iconGet from "../../assets/Help/icons/ic_get.svg";
 import iconCollect from "../../assets/Help/icons/ic_collect.svg";
 
-const Help = ({ drawDate }) => {
+const Help = ({ drawDate, lotto }) => {
+    const maxNumsAndBonus = pickerLottoData[lotto];
     return (
         <section className="help">
             <div className="cont-zone">
@@ -19,21 +22,12 @@ const Help = ({ drawDate }) => {
                         <img src={iconPick} alt="" className="help_step_icon" />
                         <h4 className="help_step_title">Pick your lucky numbers</h4>
                         <Media query="(min-width: 768px)">
-                            {matches =>
-                                matches ? (
-                                    <p className="help_step_text">
-                    Choose 5 numbers + 1 bonus number or simply click &quot;Quick Pick&quot; for a
-                    random selection
-                                    </p>
-                                ) : (
-                                    <p className="help_step_text">
-                    Select 5 numbers from 1-70 <br />
-                    + a bonus number from 1-25. <br />
-                    Or we can randomly choose for <br />
-                    you when you click “Quick Pick”
-                                    </p>
-                                )
-                            }
+                            <p className="help_step_text">
+                Select 5 numbers from 1-{maxNumsAndBonus.maxNumber} <br className="hide-big"/>
+                + a bonus number from 1-{maxNumsAndBonus.maxBonus}. <br className="hide-big"/>
+                Or we can randomly choose for <br className="hide-big"/>
+                you when you click “Quick Pick”
+                            </p>
                         </Media>
                     </div>
                     <img src={iconArrow} alt="next" className="help_arrow" />
@@ -61,7 +55,7 @@ const Help = ({ drawDate }) => {
                     <div className="help_step">
                         <img src={iconCollect} alt="" className="help_step_icon" />
                         <h4 className="help_step_title">Collect your winnings</h4>
-                        <Timer drawDate={drawDate} />
+                        <Timer lotto={lotto} drawDate={drawDate} />
                     </div>
                 </div>
             </div>
@@ -70,7 +64,8 @@ const Help = ({ drawDate }) => {
 };
 
 Help.propTypes = {
-    drawDate: string.isRequired
+    drawDate: string.isRequired,
+    lotto: string.isRequired
 };
 
 export default Help;

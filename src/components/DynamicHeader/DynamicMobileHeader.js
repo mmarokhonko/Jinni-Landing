@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {string, array, func} from "prop-types";
 
-import allLottoData from "./allLottoData";
+import allLottoData from "./headerLottoData";
 import {roundDecimal, roundMillions, reverseString} from "./jackpotTools";
 
 class DynamicMobileHeader extends Component {

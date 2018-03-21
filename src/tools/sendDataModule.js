@@ -2,12 +2,14 @@ import axios from "axios";
 import currentDevice from "current-device";
 import { detect } from "detect-browser";
 
+import lottoParamsData from "./lottoParamsData";
+
 const sendDataModule = {
     prepareDataToSend: function(data, errorNode) {
         errorNode.classList.remove("-shown");            
 
         let userData = this.getUserData();
-        const orderData = this.parseOrder(data.picksData, data.lotteryId);
+        const orderData = this.parseOrder(data.picksData, data.lotteryId, data.lotteryOrientation);
         delete data.picksData;
         delete data.lotteryId;
         const preparedData = Object.assign({}, data, userData, { orderData });
@@ -47,27 +49,26 @@ const sendDataModule = {
     },
 
     sendData: function(data, errorNode) {
-        // axios.post("https://api.jinnilotto.com/affiliate/welcome/response.json", JSON.stringify(data))
         for (let pair of data.entries()) {
             console.log(pair[0]+ ", " + pair[1]); 
         }
-        axios({
-            url: "https://api.jinnilotto.com/affiliate/welcome/response.json",
-            method: "post",
-            data,
-            headers: { "Content-Type": "multipart/form-data" }
-        })
-            .then(resp => {
-                console.log(resp.data);              
-                if (resp.data.ErrorID) {
-                    return this.handleBackendError(resp.data.ErrorID, errorNode)
-                }
-                return window.location = `https://stage.jinnilotto.com/?init=lp&redirectUrl=%2Fcart&memberId=${resp.data.MemberID}&sessionId=${resp.data.SessionID}`;
-            })
-            .catch(err => {
-                console.log(err);
-                alert("Error while sending! Check console");
-            });
+        // axios({
+        //     url: "https://api.jinnilotto.com/affiliate/welcome/response.json",
+        //     method: "post",
+        //     data,
+        //     headers: { "Content-Type": "multipart/form-data" }
+        // })
+        //     .then(resp => {
+        //         console.log(resp.data);              
+        //         if (resp.data.ErrorID) {
+        //             return this.handleBackendError(resp.data.ErrorID, errorNode)
+        //         }
+        //         return window.location = `https://stage.jinnilotto.com/?init=lp&redirectUrl=%2Fcart&memberId=${resp.data.MemberID}&sessionId=${resp.data.SessionID}`;
+        //     })
+        //     .catch(err => {
+        //         console.log(err);
+        //         alert("Error while sending! Check console");
+        //     });
     },
 
     getUserData: function() {
@@ -97,8 +98,8 @@ const sendDataModule = {
     },
 
     //Temporary Implementation
-    parseOrder: function(picksData, lottoId) {
-        const packageId = "256",
+    parseOrder: function(picksData, lottoId, lottoName) {
+        const packageId = lottoParamsData[lottoName].packageId,
             lotteryId = lottoId,
             drawCount = 1,
             isSubscription = 0,

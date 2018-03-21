@@ -3,11 +3,14 @@ import { string } from "prop-types";
 import moment from "moment";
 import Media from "react-media";
 
+import lottoData from "./helpLottoData";
+
 class Timer extends Component {
   state = {
       drawDate: moment(this.props.drawDate, "YYYY-MM-DD HH:mm:ss ZZ").local(),
       currDate: moment(),
-      timeRemains: "HH:MM:SS"
+	  timeRemains: "HH:MM:SS",
+	  lottoData: lottoData[this.props.lotto]
   };
 
   componentDidMount() {
@@ -43,24 +46,13 @@ class Timer extends Component {
   };
 
   render() {
-      const { timeRemains } = this.state;
+	  const { timeRemains, lottoData } = this.state;
 
       return (
           <Media query="(min-width: 768px)">
               {matches =>
-                  matches ? (
-                      <p className="help_step_text">
-              Mega Millions draws are held twice a week. To find out if you’re a winner, check the
-              results after the next draw in <span className="help_timer">{timeRemains}</span>.
-                      </p>
-                  ) : (
-                      <p className="help_step_text">
-              Wait for the upcoming draw that <br/> 
-			  will take place in: <br/>
-			  <span className="help_timer">{timeRemains}</span> <br/>
-			  to see how much you won.
-                      </p>
-                  )
+				  matches ? lottoData.desktop(timeRemains)
+				  : lottoData.mobile(timeRemains)
               }
           </Media>
       );
@@ -68,7 +60,8 @@ class Timer extends Component {
 }
 
 Timer.propTypes = {
-    drawDate: string.isRequired
+    drawDate: string.isRequired,
+    lotto: string.isRequired	
 };
 
 export default Timer;

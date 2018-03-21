@@ -8,6 +8,7 @@ import Fact from "./components/Fact/Fact";
 import NumberPicker from "./components/NumberPicker/PickerContainer";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 
+import lottoParamsData from "./tools/lottoParamsData";
 import { getFeedData, getParamFromCookieOrUrl, getParamFromURL } from "./tools/toolFunctions";
 import sendDataModule from "./tools/sendDataModule";
 
@@ -27,7 +28,7 @@ class App extends Component {
           campaign: undefined,
           couponCode: undefined,
           affiliateId: undefined,
-          incentiveCode: "free_ticket_mm",
+          incentiveCode: undefined,
           redirectUrl: "https://jinnilotto.com/?init=lp&redirectUrl=/cart "
       }
   };
@@ -42,8 +43,8 @@ class App extends Component {
   selectLottoData = data => {
       let lottoData = data.filter(
           object =>
-              object.LotteryName.toLowerCase() === this.state.urlData.lotteryOrientation.toLowerCase()
-      )[0];
+              object.LotteryName.toLowerCase() === this.state.urlData.lotteryOrientation
+	  )[0];
       this.setState({
           lottoData
       });
@@ -56,10 +57,11 @@ class App extends Component {
           referral = getParamFromCookieOrUrl("referral"),
           mc = getParamFromCookieOrUrl("mc"),
           jlpid = getParamFromCookieOrUrl("jlpid"),
-          lotteryOrientation = getParamFromURL("lottery") || "Mega Millions",
-          lang = getParamFromURL("lang") || "EN",
+          lotteryOrientation = getParamFromURL("lottery").toLowerCase() || "euromillions",
+		  lang = getParamFromURL("lang") || "EN",
           offer = getParamFromURL("offer") || "freeTicket",
-          affiliateId = bTag.length > 0 ? bTag.substring(0, bTag.indexOf("_")) : "";
+		  affiliateId = bTag.length > 0 ? bTag.substring(0, bTag.indexOf("_")) : "",
+		  incentiveCode = lottoParamsData[lotteryOrientation.toLowerCase()].incentiveCode || "free_ticket_em";
 
       const urlData = {
           bTag,
@@ -70,7 +72,8 @@ class App extends Component {
           jlpid,
           lotteryOrientation,
           lang,
-          offer,
+		  offer,
+		  incentiveCode,
           referral: referral.length > 0 ? referral : window.location.href
       };
 
@@ -113,43 +116,49 @@ class App extends Component {
   };
 
   render() {
-      const { lottoData, picksData } = this.state;
+	  const { lottoData, picksData } = this.state;
+	  if(!lottoData) {
+		  return(
+			  <div></div>
+		  )
+	  }
+
+	  const lottoName = lottoData.LotteryName.toLowerCase();	  
+
 
       return (
           <Fragment>
-              {lottoData && (
-                  <Media query="(min-width: 768px)">
-                      {matches =>
-                          matches ? (
-                              <DynamicHeader
-                                  lotto={lottoData.LotteryName}
-                                  jackpot={lottoData.Jackpot.toString()}
-                              />
-                          ) : (
-                              <DynamicMobileHeader
-                                  lotto={lottoData.LotteryName}
+              <Media query="(min-width: 768px)">
+                  {matches =>
+                      matches ? (
+                          <DynamicHeader
+                              lotto={lottoName}
+                              jackpot={lottoData.Jackpot.toString()}
+                          />
+                      ) : (
+                          <DynamicMobileHeader
+                              lotto={lottoName}
 								  jackpot={lottoData.Jackpot.toString()}
 								  picksData={picksData}
 								  clearHandler={this.clearNumbers}
 								  modalOpenHandler={this.openModal}
-                              />
-                          )
-                      }
-                  </Media>
-              )}
+                          />
+                      )
+                  }
+              </Media>
               <main className="main">
                   <div className="cont-zone">
                       <h1 className="main_title">
               Get your <u>FREE</u> bet line here:
                       </h1>
                       <div className="main_subwrap">
-                          <NumberPicker setAppNumbers={this.setNumbers} ref={picker => this.numberPicker = picker} />
+                          <NumberPicker lotto={lottoName} setAppNumbers={this.setNumbers} ref={picker => this.numberPicker = picker} />
                           <RegisterForm submitHandler={this.passDataToSendModule} />
                       </div>
                   </div>
               </main>
-              {lottoData && <Help drawDate={lottoData.DrawDate + " " + lottoData.TimeZone} />}
-              <Fact />
+              {lottoData && <Help lotto={lottoName} drawDate={lottoData.DrawDate + " " + lottoData.TimeZone} />}
+              <Fact lotto={lottoName} />
           </Fragment>
       );
   }

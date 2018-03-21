@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import allLottoData from "./allLottoData";
+import allLottoData from "./headerLottoData";
 
 import {roundDecimal, roundMillions, reverseString, mapStringToImages} from "./jackpotTools";
 

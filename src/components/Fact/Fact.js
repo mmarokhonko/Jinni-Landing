@@ -1,15 +1,14 @@
 import React, {Component} from "react";
+import {string} from "prop-types";
+
+import lottoDataFacts from "./factLottoData";
 
 import iconQuestion from "../../assets/Fact/icon/icon_question.svg"
 
 class Fact extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            text: "The largest Mega Millions jackpot was a life-changing $656 million."
-        };
-    }
+    state = {
+        text: lottoDataFacts[this.props.lotto][0]
+    };
 
     render() {
         const {text} = this.state;
@@ -24,6 +23,10 @@ class Fact extends Component {
             </section>
         )
     }
+}
+
+Fact.propTypes = {
+    lotto: string.isRequired
 }
 
 export default Fact;

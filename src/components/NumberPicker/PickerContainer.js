@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 import shallowEqualArrays from "shallow-equal/arrays";
-import { func } from "prop-types";
+import { string, func } from "prop-types";
 import Media from "react-media";
 import noScroll from "no-scroll";
 
+import lottoData from "./pickerLottoData";
 import NumberPicker from "./NumberPicker";
 import NumberPickerMobile from "./NumberPickerMobile";
 
 class PickerContainer extends Component {
   state = {
-      maxNumber: 70,
-      maxBonus: 25,
+      maxNumber: lottoData[this.props.lotto].maxNumber,
+      maxBonus: lottoData[this.props.lotto].maxBonus,
       pickedNums: [],
       pickedBonus: null,
 	  quickPickDelay: 150,
@@ -277,7 +278,8 @@ class PickerContainer extends Component {
 }
 
 PickerContainer.propTypes = {
-    setAppNumbers: func.isRequired
+    setAppNumbers: func.isRequired,
+    lotto: string.isRequired
 };
 
 export default PickerContainer;
