@@ -142,17 +142,33 @@
   &.-num-circle {
     background-color: #e4e6f4;
     &.-filled {
-      background-image: url("./assets/Header/icons/ball_blue.png");
       box-shadow: 1px 5px 10px 0 rgba(57, 119, 202, 0.15), 0 0 60px 0 #f6efff;
     }
   }
   &.-bonus-circle {
     background-color: #afb6d2;
     &.-filled {
-      background-image: url("./assets/Header/icons/ball_yellow.png");
       box-shadow: 1px 5px 10px 0 rgba(57, 119, 202, 0.15), 0 0 60px 0 #f6efff;
     }
   }
+}
+
+.numbers-widget.-theme_blue-yellow  {
+	.-num-circle.-filled {
+		background-image: url("./assets/Header/icons/ball_blue.png");
+	}
+	.-bonus-circle.-filled {
+		background-image: url("./assets/Header/icons/ball_yellow.png");
+	}
+}
+
+.numbers-widget.-theme_yellow-red  {
+	.-num-circle.-filled {
+		background-image: url("./assets/Header/icons/ball_yellow.png");
+	}
+	.-bonus-circle.-filled {
+		background-image: url("./assets/Header/icons/ball_red.png");
+	}
 }
 
 .numbers-widget_btn {

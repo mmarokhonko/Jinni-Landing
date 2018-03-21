@@ -1,8 +1,8 @@
 import React from "react";
 
 const lottoData = {
-	/* eslint-disable react/display-name */
-	/* eslint-disable react/no-unescaped-entities*/
+    /* eslint-disable react/display-name */
+    /* eslint-disable react/no-unescaped-entities*/
     "mega millions": {
         firstStep: pickerData => (
             <p className="help_step_text">
@@ -46,6 +46,31 @@ const lottoData = {
             <p className="help_step_text">
         There are two EuroMillions draws every week. Be sure to check the results Follow the results
         of the next Euromillions draw on <span className="help_timer">{timeRemains}</span> to find out if you’re a winner. 
+            </p>
+        )
+    },
+    eurojackpot: {
+        firstStep: pickerData => (
+            <p className="help_step_text">
+			  Choose {pickerData.numbersAmount} numbers between 1 
+			  and {pickerData.maxNumber} and {pickerData.bonusAmount} {pickerData.bonusName}{pickerData.bonusAmount > 1 ? "s" : ""} between 
+			  1 and {pickerData.bonusAmount} or simply
+			  click "Quick Pick" for a random selection
+            </p>
+        ),
+        desktop: timeRemains => (
+            <p className="help_step_text">
+        Follow the results of the next EuroJackpot <br/>
+        draw on <span className="help_timer">{timeRemains}</span> to find out if you’re <br/> 
+		a winner.
+            </p>
+        ),
+        mobile: timeRemains => (
+            <p className="help_step_text">
+        Follow the results of the next <br/>
+        EuroJackpot draw on<br/> 
+                <span className="help_timer">{timeRemains}</span><br/>
+		 to find out if you’re a winner. 
             </p>
         )
     }

@@ -8,6 +8,11 @@ import euroMillBGMob from "../../assets/Header/mob-bg/euromillions.png";
 import euroMillPeople from "../../assets/Header/people/euromillions.png";
 import euroMillLogo from "../../assets/Header/logo/euromillions.png";
 
+import euroJackBG from "../../assets/Header/bg/eurojackpot.png";
+import euroJackBGMob from "../../assets/Header/mob-bg/eurojackpot.png";
+import euroJackPeople from "../../assets/Header/people/eurojackpot.png";
+import euroJackLogo from "../../assets/Header/logo/eurojackpot.png";
+
 const allLottoData = {
     ["mega millions"]: {
         bg: megaBG,
@@ -22,6 +27,13 @@ const allLottoData = {
         currency: "€",
         bgMob: euroMillBGMob,
         people: euroMillPeople
+	},
+	["eurojackpot"]: {
+        bg: euroJackBG,
+        logo: euroJackLogo,
+        currency: "€",
+        bgMob: euroJackBGMob,
+        people: euroJackPeople
     }
 }
 

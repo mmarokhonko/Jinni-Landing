@@ -72,7 +72,7 @@ class DynamicMobileHeader extends Component {
 
   render() {
       const { lotto, jackpot, picksData, clearHandler, modalOpenHandler } = this.props;
-      const lottoData = this.state.lottoData;
+      const {lottoData, pickerLottoData} = this.state;
 	  const jackpotString = this.formatJackpot(jackpot);
 	  
 	  const pickedNumbers = picksData[0].pickedNums;
@@ -86,7 +86,7 @@ class DynamicMobileHeader extends Component {
             Play the next draw for <span>FREE</span>
                   </h2>
                   <h3 className="mob-header_jackpot">{`${lottoData.currency}${jackpotString}`}</h3>
-                  <div className="numbers-widget">
+                  <div className={`numbers-widget -theme_${pickerLottoData.ballsTheme}`}>
 				  	{this.generateNumsCircles(pickedNumbers).map(circle => circle)}
 				  	{this.generateBonusCircles(pickedBonus).map(circle => circle)}
                       <button className="numbers-widget_btn -edit-btn" onClick={modalOpenHandler} />
