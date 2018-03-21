@@ -73,6 +73,28 @@ const lottoData = {
 		 to find out if you’re a winner. 
             </p>
         )
+    },
+    powerball: {
+        firstStep: pickerData => (
+            <p className="help_step_text">
+			  Choose {pickerData.numbersAmount} numbers between 1 
+			  and {pickerData.maxNumber} and a Bonus or click
+			  "Quick Pick" for a random selection
+            </p>
+        ),
+        desktop: timeRemains => (
+            <p className="help_step_text">
+        	Wait for the next Powerball on <br/>
+                <span className="help_timer">{timeRemains}</span> to see if you’re a winner.
+            </p>
+        ),
+        mobile: timeRemains => (
+            <p className="help_step_text">
+        Wait for the upcoming draw that
+		will take place in <br/> <span className="help_timer">{timeRemains}</span><br/>    
+		 to see how much you won. 
+            </p>
+        )
     }
 };
 

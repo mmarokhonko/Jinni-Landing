@@ -15,6 +15,7 @@ class PickerContainer extends Component {
 	  numbersAmount: lottoData[this.props.lotto].numbersAmount,
 	  bonusAmount: lottoData[this.props.lotto].bonusAmount,
 	  bonusName: lottoData[this.props.lotto].bonusName,
+	  ballsTheme: lottoData[this.props.lotto].ballsTheme,
       pickedNums: [],
       pickedBonus: [],
 	  quickPickDelay: 150,
@@ -303,6 +304,7 @@ class PickerContainer extends Component {
 						  bonusAmount={this.state.bonusAmount}
 						  maxNumber={this.state.maxNumber}						  						  
 						  maxBonus={this.state.maxBonus}
+						  ballsTheme={this.state.ballsTheme}
 						  modalOpen={this.state.isMobileModalOpen}
                       />
                   )

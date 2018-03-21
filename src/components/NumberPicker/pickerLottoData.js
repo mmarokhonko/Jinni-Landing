@@ -22,6 +22,14 @@ const lottoData = {
         bonusAmount: 2,
         bonusName: "Euro Ball",
         ballsTheme: "yellow-red"			
+    },
+    "powerball": {
+        maxNumber: 69,
+        maxBonus: 26,
+        numbersAmount: 5,
+        bonusAmount: 1,
+        bonusName: "bonus number",
+        ballsTheme: "red-yellow"			
     }
 }
 

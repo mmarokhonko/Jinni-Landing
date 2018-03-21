@@ -13,6 +13,11 @@ import euroJackBGMob from "../../assets/Header/mob-bg/eurojackpot.png";
 import euroJackPeople from "../../assets/Header/people/eurojackpot.png";
 import euroJackLogo from "../../assets/Header/logo/eurojackpot.png";
 
+import powerballBG from "../../assets/Header/bg/powerball.png";
+import powerballBGMob from "../../assets/Header/mob-bg/powerball.png";
+import powerballPeople from "../../assets/Header/people/powerball.png";
+import powerballLogo from "../../assets/Header/logo/powerball.png";
+
 const allLottoData = {
     ["mega millions"]: {
         bg: megaBG,
@@ -27,14 +32,21 @@ const allLottoData = {
         currency: "€",
         bgMob: euroMillBGMob,
         people: euroMillPeople
-	},
-	["eurojackpot"]: {
+    },
+    ["eurojackpot"]: {
         bg: euroJackBG,
         logo: euroJackLogo,
         currency: "€",
         bgMob: euroJackBGMob,
         people: euroJackPeople
-    }
+    },
+    ["powerball"]: {
+        bg: powerballBG,
+        logo: powerballLogo,
+        currency: "€",
+        bgMob: powerballBGMob,
+        people: powerballPeople
+    },
 }
 
 export default allLottoData;

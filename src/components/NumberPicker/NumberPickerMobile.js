@@ -1,10 +1,10 @@
 import React, { Fragment, Component } from "react";
-import { number, object, array, bool } from "prop-types";
+import { number, object, array, bool, string } from "prop-types";
 
 import closeIcon from "../../assets/NumberPicker/icon/close.png";
 
 const NumberPickerMobile = props => {
-    const { pickerMethods, pickerMobileMethods, modalOpen, numbersAmount, bonusAmount, maxNumber, maxBonus } = props;
+    const { pickerMethods, pickerMobileMethods, modalOpen, numbersAmount, bonusAmount, maxNumber, maxBonus, ballsTheme } = props;
 
     return (
         <Fragment>
@@ -41,7 +41,7 @@ const NumberPickerMobile = props => {
                 			Quick Pick
                             </button>
                         </div>
-                        <div className="picker-mob_modal_frame">
+                        <div className={`picker-mob_modal_frame -theme_${ballsTheme}`}>
                             <div className="picker_nums">
                                 <div className="picker-mob_nums_head">{pickerMobileMethods.genNumbersMobileHeader().map(item => item)}</div>
                                 <div className="picker_nums_subwrap">{pickerMethods.generateNumbers()}</div>
@@ -66,7 +66,8 @@ NumberPickerMobile.propTypes = {
     numbersAmount: number.isRequired,
     bonusAmount: number.isRequired,
     maxNumber: number.isRequired,
-    maxBonus: number.isRequired,
+	maxBonus: number.isRequired,
+	ballsTheme: string.isRequired,
     modalOpen: bool
 };
 
