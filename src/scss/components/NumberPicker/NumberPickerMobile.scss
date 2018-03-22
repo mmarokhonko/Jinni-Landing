@@ -46,9 +46,9 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 100vh;
-  background-color: #f4f8fd;
-  overflow-y: auto;
+  height: 100%;
+  background-color: white;
+  overflow: scroll;
 }
 
 .picker-mob_modal_head {
@@ -74,11 +74,17 @@
 }
 
 .picker-mob_modal_body {
-  padding: 25px 26px 27px;
+  padding: 25px 26px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+  &:after {
+	content: "";
+	display: block;
+	height: 27px;
+	width: 100%;
+  }
 }
 
 .picker-mob_head {
@@ -115,6 +121,12 @@
   border-radius: 5px;
   border: 3px solid #34b3ff;
   box-shadow: 0 10px 15px 0 rgba(226, 238, 255, 0.9);
+  &:after {
+	content: "";
+    display: block;
+	height: 26px;
+	width: 100%;
+  }
 }
 
 .picker-mob_modal_frame > .picker_nums,
@@ -218,7 +230,7 @@
 
 .picker-mob_modal_frame > .picker_bonus {
   border-top: 1px solid #d7e7ff;
-  padding: 16px 19px 26px;
+  padding: 16px 19px 0;
   .picker_nums_title {
     color: #201b3a;
     font-size: 14px;
