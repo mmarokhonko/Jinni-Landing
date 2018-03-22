@@ -31,7 +31,7 @@ class App extends Component {
           couponCode: undefined,
           affiliateId: undefined,
           incentiveCode: undefined,
-          redirectUrl: "https://jinnilotto.com/?init=lp&redirectUrl=/cart "
+          redirectUrl: "https://stage.jinnilotto.com/?init=lp&redirectUrl=/cart"
       }
   };
 

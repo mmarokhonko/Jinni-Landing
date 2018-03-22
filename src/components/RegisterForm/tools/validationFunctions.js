@@ -3,6 +3,7 @@ import isLength from "validator/lib/isLength";
 import isEmpty from "validator/lib/isEmpty";
 import isNumeric from "validator/lib/isNumeric";
 import isAlpha from "validator/lib/isAlpha";
+import moment from "moment";
 
 const isFieldError = (name, value) => {
     if(name === "termsAgreed") {
@@ -30,7 +31,14 @@ const isFieldError = (name, value) => {
         return !isLength(value, {min:8});
 
     case "phoneNumber":
-        return !isNumeric(value) || !isLength(value, {min:4, max:12});    
+        return !isNumeric(value) || !isLength(value, {min:4, max:12});
+		   
+    case "dateOfBirth": {
+        const date = moment(value, "YYYY-MM-DD");
+        const currDate = moment();
+        const diff = moment.duration(currDate.diff(date)).add(1, "days");
+        return diff.years() < 18
+    }	 
     }
 };
 

@@ -80,10 +80,16 @@ class RegisterForm extends Component {
           "Sorry, we know you're in a hurry to play but you have to accept our terms and conditions to register",
               active: false,
               justEmpty: false
+          },
+          dateOfBirthError: {
+              text:
+          "Your date of birth does not match our \"over the age of 18\" requirement. This is one wish that Jinni the Genie can't grant you.",
+              active: false,
+              justEmpty: false
           }
       },
       firstStepInputs: ["firstName", "lastName", "email", "password"],
-      secondStepInputs: ["city", "code", "street", "phoneNumber", "termsAgreed"],
+      secondStepInputs: ["city", "code", "street", "phoneNumber", "termsAgreed", "dateOfBirth"],
       userCountryCode: undefined,
       step2: false
   };
@@ -165,7 +171,22 @@ class RegisterForm extends Component {
       let errorFound = false;
 
       inputsArray.forEach(fieldName => {
-          let isError = isFieldError(fieldName, fields[fieldName]);
+          let isError = false;
+		  
+          if (fieldName === "dateOfBirth") {
+			  console.log("Picked up date");
+              const dayOfBirth = fields.dayOfBirth.value,
+                  monthOfBirth = fields.monthOfBirth.value,
+				  yearOfBirth = fields.yearOfBirth.value;
+
+              const birthDate = `${yearOfBirth}-${monthOfBirth}-${dayOfBirth}`;
+			
+			  isError = isFieldError("dateOfBirth", birthDate);
+		  }
+		  else {
+              isError = isFieldError(fieldName, fields[fieldName]);			
+		  }
+
           if (isError) {
               errorObjects[`${fieldName}Error`].active = true;
               errorFound = true;
@@ -246,6 +267,7 @@ class RegisterForm extends Component {
       const dayOfBirth = fields.dayOfBirth.value,
           monthOfBirth = fields.monthOfBirth.value,
           yearOfBirth = fields.yearOfBirth.value;
+
       formData.birthDate = `${yearOfBirth}-${monthOfBirth}-${dayOfBirth}`;
 
       formData.address = `${fields.city}, ${fields.street}, ${fields.code}`;
@@ -262,7 +284,9 @@ class RegisterForm extends Component {
       if (!step2)
           return (
               <div className="frame form_frame-vert">
-                  <h4 className="frame_title">Register to place <span>FREE</span> bet</h4>
+                  <h4 className="frame_title">
+            Register to place <span>FREE</span> bet
+                  </h4>
                   <form className="form" autoComplete="false">
                       <div className="form_row">
                           <h5 className="form_row_title">Title and Name</h5>
@@ -271,8 +295,8 @@ class RegisterForm extends Component {
                               <InputWithIcon
                                   inputHandler={this.inputHandler}
                                   type="text"
-								  name="firstName"
-								  placeholder="Name"								  
+                                  name="firstName"
+                                  placeholder="Name"
                                   value={fields.firstName}
                                   error={errorObjects.firstNameError}
                               />
@@ -285,8 +309,8 @@ class RegisterForm extends Component {
                                   inputHandler={this.inputHandler}
                                   type="text"
                                   icon="profile"
-								  name="lastName"
-								  placeholder="Last Name"								  
+                                  name="lastName"
+                                  placeholder="Last Name"
                                   value={fields.lastName}
                                   error={errorObjects.lastNameError}
                               />
@@ -299,8 +323,8 @@ class RegisterForm extends Component {
                                   inputHandler={this.inputHandler}
                                   type="email"
                                   icon="email"
-								  name="email"
-								  placeholder="email"
+                                  name="email"
+                                  placeholder="email"
                                   value={fields.email}
                                   error={errorObjects.emailError}
                               />
@@ -313,8 +337,8 @@ class RegisterForm extends Component {
                                   inputHandler={this.inputHandler}
                                   type="password"
                                   icon={window.innerWidth <= 768 ? "lockMob" : "lock"}
-								  name="password"
-								  placeholder="Password"
+                                  name="password"
+                                  placeholder="Password"
                                   value={fields.password}
                                   error={errorObjects.passwordError}
                               />
@@ -326,7 +350,7 @@ class RegisterForm extends Component {
                               className="btn-general btn-green form_submit-btn form_confirm-btn"
                               onClick={this.moveTo2ndStep}
                           >
-                			Next
+                Next
                           </button>
                       </div>
                   </form>
@@ -359,8 +383,8 @@ class RegisterForm extends Component {
                                   inputHandler={this.inputHandler}
                                   type="text"
                                   name="city"
-								  icon="geo"
-								  placeholder="City"								  
+                                  icon="geo"
+                                  placeholder="City"
                                   value={fields.city}
                                   error={errorObjects.cityError}
                               />
@@ -368,8 +392,8 @@ class RegisterForm extends Component {
                                   inputHandler={this.inputHandler}
                                   type="text"
                                   name="code"
-								  icon="geo"
-								  placeholder="Code"								  
+                                  icon="geo"
+                                  placeholder="Code"
                                   value={fields.code}
                                   error={errorObjects.codeError}
                               />
@@ -382,8 +406,8 @@ class RegisterForm extends Component {
                                   inputHandler={this.inputHandler}
                                   type="text"
                                   name="street"
-								  icon="geo"
-								  placeholder="Address"
+                                  icon="geo"
+                                  placeholder="Address"
                                   value={fields.street}
                                   error={errorObjects.streetError}
                               />
@@ -416,40 +440,41 @@ class RegisterForm extends Component {
                                   value={fields.phoneCode}
                                   name="phoneCode"
                                   selectHandler={this.selectHandler}
-								  userCountryCode={userCountryCode}
-								  selectedCountryCode={fields.country.countryCode}
+                                  userCountryCode={userCountryCode}
+                                  selectedCountryCode={fields.country.countryCode}
                               />
                               <InputWithIcon
                                   inputHandler={this.inputHandler}
                                   type="text"
                                   name="phoneNumber"
-								  icon="phone"
-								  placeholder="Phone"
+                                  icon="phone"
+                                  placeholder="Phone"
                                   value={fields.phoneNumber}
                                   error={errorObjects.phoneNumberError}
                               />
                           </div>
                       </div>
                       <div className="form_step2_bottom">
-					  <Media query="(min-width: 768px)">
+                          <Media query="(min-width: 768px)">
                               {matches =>
                                   matches ? (
-                                      <button
-                                          type="button"
-                                          className="form_back-btn"
-                                          onClick={this.moveTo1stStep}
-                                      >
-								  		back
+                                      <button type="button" className="form_back-btn" onClick={this.moveTo1stStep}>
+                      back
                                       </button>
                                   ) : (
-                                      <button onClick={this.moveTo1stStep} type="button" className="form_back-btn-mobile"></button>
+                                      <button
+                                          onClick={this.moveTo1stStep}
+                                          type="button"
+                                          className="form_back-btn-mobile"
+                                      />
                                   )
                               }
                           </Media>
-                          
+
                           <button type="submit" className="btn-general btn-green form_submit-btn">
-                			Claim free bet
+                Claim free bet
                           </button>
+						  {errorObjects.dateOfBirthError.active ? <p className="form_step2_bottom_error -shown">{errorObjects.dateOfBirthError.text}</p> : ""}						  
                           <p
                               className={`form_step2_bottom_error ${
                                   errorObjects.termsAgreedError.active ? "-shown" : ""
@@ -474,8 +499,9 @@ class RegisterForm extends Component {
                 residence. I accept that the customer funds protection rating is ‘Medium’ as
                 outlined in the{" "}
                               <a href="http://jinnilotto.com/terms-conditions/">Terms and Conditions</a> which I
-                accept, along with the <a href="https://jinnilotto.com/privacy-policy">Privacy Policy</a>.
-                We believe in responsible gambling. You can set your deposit limit and preferences{" "}
+                accept, along with the{" "}
+                              <a href="https://jinnilotto.com/privacy-policy">Privacy Policy</a>. We believe in
+                responsible gambling. You can set your deposit limit and preferences{" "}
                               <a href="https://jinnilotto.com/responsible-gaming-policy">here</a>.
                           </p>
                       </div>
