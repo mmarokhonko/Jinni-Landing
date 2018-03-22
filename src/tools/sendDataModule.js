@@ -59,11 +59,13 @@ const sendDataModule = {
             headers: { "Content-Type": "multipart/form-data" }
         })
             .then(resp => {
-                console.log(resp.data);              
+                console.log(resp.data); 
+                const redirectUrl = data.get("redirectUrl");
+                console.log(`Redirect url ${redirectUrl}`);            
                 if (resp.data.ErrorID) {
                     return this.handleBackendError(resp.data.ErrorID, errorNode)
                 }
-                return window.location = `https://stage.jinnilotto.com/?init=lp&redirectUrl=%2Fcart&memberId=${resp.data.MemberID}&sessionId=${resp.data.SessionID}`;
+                return window.location = `https://stage.jinnilotto.com${redirectUrl}?init=lp&redirectUrl=${redirectUrl}&memberId=${resp.data.MemberID}&sessionId=${resp.data.SessionID}`;
             })
             .catch(err => {
                 console.log(err);

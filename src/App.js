@@ -31,7 +31,7 @@ class App extends Component {
           couponCode: undefined,
           affiliateId: undefined,
           incentiveCode: undefined,
-          redirectUrl: "https://stage.jinnilotto.com/?init=lp&redirectUrl=/cart"
+          redirectUrl: "/cart"
       }
   };
 
@@ -63,7 +63,8 @@ class App extends Component {
           jlpid = getParamFromCookieOrUrl("jlpid"),
           lotteryOrientation = getParamFromURL("lottery").toLowerCase() || "euromillions",
 		  lang = getParamFromURL("lang") || "EN",
-          offer = getParamFromURL("offer") || "freeTicket",
+		  offer = getParamFromURL("offer") || "freeTicket",
+		  redirectUrl= getParamFromURL("redirectUrl") || "/cart",
 		  affiliateId = bTag.length > 0 ? bTag.substring(0, bTag.indexOf("_")) : "",
 		  incentiveCode = lottoParamsData[lotteryOrientation.toLowerCase()].incentiveCode || "free_ticket_em";
 
@@ -78,6 +79,7 @@ class App extends Component {
           lang,
 		  offer,
 		  incentiveCode,
+		  redirectUrl,
           referral: referral.length > 0 ? referral : window.location.href
       };
 
