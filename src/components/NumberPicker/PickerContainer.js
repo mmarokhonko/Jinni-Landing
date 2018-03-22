@@ -286,6 +286,10 @@ class PickerContainer extends Component {
   }
 
   render() {
+	  const {pickedNums, numbersAmount, pickedBonus, bonusAmount} = this.state;
+
+      const isDone = pickedNums.length === numbersAmount && pickedBonus.length === bonusAmount;
+	
       return (
           <Media query="(min-width: 768px)">
               {matcher =>
@@ -297,6 +301,7 @@ class PickerContainer extends Component {
 						  numbersAmount={this.state.numbersAmount}
 						  bonusAmount={this.state.bonusAmount}
 						  bonusName={this.state.bonusName}
+						  done={isDone}
                       />
                   ) : (
                       <NumberPickerMobile
@@ -310,6 +315,7 @@ class PickerContainer extends Component {
 						  maxBonus={this.state.maxBonus}
 						  ballsTheme={this.state.ballsTheme}
 						  modalOpen={this.state.isMobileModalOpen}
+						  done={isDone}						  
                       />
                   )
               }

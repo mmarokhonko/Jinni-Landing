@@ -4,7 +4,7 @@ import { number, object, array, bool, string } from "prop-types";
 import closeIcon from "../../assets/NumberPicker/icon/close.png";
 
 const NumberPickerMobile = props => {
-    const { pickerMethods, pickerMobileMethods, modalOpen, numbersAmount, bonusAmount, maxNumber, maxBonus, ballsTheme } = props;
+    const { pickerMethods, pickerMobileMethods, modalOpen, numbersAmount, bonusAmount, maxNumber, maxBonus, ballsTheme, done } = props;
 
     return (
         <Fragment>
@@ -26,7 +26,7 @@ const NumberPickerMobile = props => {
                 <div className="picker-mob_modal">
                     <div className="picker-mob_modal_head" onClick={pickerMobileMethods.closeMobileModal}>
                         <img src={closeIcon} alt="close modal" />
-                        <p>DONE</p>
+                        {done && <p>DONE</p>}
                     </div>
                     <div className="picker-mob_modal_body">
                         <div className="picker-mob_head">
@@ -68,7 +68,8 @@ NumberPickerMobile.propTypes = {
     maxNumber: number.isRequired,
     maxBonus: number.isRequired,
     ballsTheme: string.isRequired,
-    modalOpen: bool
+    modalOpen: bool,
+    done: bool
 };
 
 export default NumberPickerMobile;
