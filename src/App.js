@@ -8,6 +8,8 @@ import Fact from "./components/Fact/Fact";
 import NumberPicker from "./components/NumberPicker/PickerContainer";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 
+import MultipleTicketsPicker from "./components/MultipleTicketsPicker/PickerContainer";
+
 import lottoParamsData from "./tools/lottoParamsData";
 import allPickerLottoData from "./components/NumberPicker/pickerLottoData";
 import { getFeedData, getParamFromCookieOrUrl, getParamFromURL } from "./tools/toolFunctions";
@@ -63,7 +65,7 @@ class App extends Component {
           jlpid = getParamFromCookieOrUrl("jlpid"),
           lotteryOrientation = getParamFromURL("lottery").toLowerCase() || "euromillions",
 		  lang = getParamFromURL("lang") || "EN",
-		  offer = getParamFromURL("offer") || "freeTicket",
+		  offer = getParamFromURL("offer") || "4to1",
 		  redirectUrl= getParamFromURL("redirectUrl") || "/cart",
 		  affiliateId = bTag.length > 0 ? bTag.substring(0, bTag.indexOf("_")) : "",
 		  incentiveCode = lottoParamsData[lotteryOrientation.toLowerCase()].incentiveCode || "free_ticket_em";
@@ -123,12 +125,14 @@ class App extends Component {
   };
 
   render() {
-	  const { lottoData, picksData } = this.state;
+	  const { lottoData, picksData, urlData } = this.state;
 	  if(!lottoData) {
 		  return(
 			  <div></div>
 		  )
 	  }
+
+	  const {offer} = urlData;
 
 	  const lottoName = lottoData.LotteryName.toLowerCase();	  
 
@@ -158,8 +162,11 @@ class App extends Component {
                       <h1 className="main_title">
               Get your <u>FREE</u> bet line here:
                       </h1>
-                      <div className="main_subwrap">
-                          <NumberPicker lotto={lottoName} setAppNumbers={this.setNumbers} ref={picker => this.numberPicker = picker} />
+                      <div className={`main_subwrap ${offer !== "free ticket" ? "-vertical" : ""}`}>
+						  {offer !== "free ticket" 
+						  ? <MultipleTicketsPicker />
+                              : <NumberPicker lotto={lottoName} setAppNumbers={this.setNumbers} ref={picker => this.numberPicker = picker} />
+                          }
                           <RegisterForm submitHandler={this.passDataToSendingModule} />
                       </div>
                   </div>

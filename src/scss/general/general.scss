@@ -175,3 +175,21 @@ h5 {
     background-color: #2cb703;
   }
 }
+
+.main_subwrap.-vertical {
+  justify-content: flex-start;
+  padding-left: 0;
+  align-items: center;
+  flex-direction: column;
+  .frame {
+	  max-width: 643px;
+	  width: 100%;
+  }
+  .form_frame-vert {
+	  margin-top: 30px;
+	  margin-left: 0;
+	  .form_jinni {
+		  display: none;
+	  }
+  }
+}
