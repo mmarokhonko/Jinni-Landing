@@ -162,8 +162,8 @@ class App extends Component {
                       <h1 className="main_title">
               Get your <u>FREE</u> bet line here:
                       </h1>
-                      <div className={`main_subwrap ${offer !== "free ticket" ? "-vertical" : ""}`}>
-						  {offer !== "free ticket" 
+                      <div className={`main_subwrap ${offer !== "freeTicket" ? "-vertical" : ""}`}>
+						  {offer !== "freeTicket" 
 						  ? <MultipleTicketsPicker />
                               : <NumberPicker lotto={lottoName} setAppNumbers={this.setNumbers} ref={picker => this.numberPicker = picker} />
                           }
