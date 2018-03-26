@@ -148,7 +148,7 @@ class PickerContainer extends Component {
       } else {
           const diff = bonusAmount - pickedBonus.length;
           if (diff === 1) {
-              return `Select 1 ${bonusName}`;
+              return `Select 1 ${bonusName}!`;
           }
           return `Select ${diff} ${bonusName}s!`;
       }	

@@ -24,9 +24,9 @@ const NumberPickerMobile = props => {
             </div>
             {modalOpen && (
                 <div className="picker-mob_modal">
-                    <div className="picker-mob_modal_head" onClick={pickerMobileMethods.closeMobileModal}>
-                        <img src={closeIcon} alt="close modal" />
-                        {done && <p>DONE</p>}
+                    <div className="picker-mob_modal_head">
+                        <img src={closeIcon} alt="close modal" onClick={pickerMobileMethods.closeMobileModal} />
+                        {done && <p onClick={pickerMobileMethods.closeMobileModal}>DONE</p>}
                     </div>
                     <div className="picker-mob_modal_body">
                         <div className="picker-mob_head">
