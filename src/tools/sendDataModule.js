@@ -65,7 +65,7 @@ const sendDataModule = {
                 if (resp.data.ErrorID) {
                     return this.handleBackendError(resp.data.ErrorID, errorNode)
                 }
-                return window.location = `https://stage.jinnilotto.com${redirectUrl}?init=lp&redirectUrl=${redirectUrl}&memberId=${resp.data.MemberID}&sessionId=${resp.data.SessionID}`;
+                return window.location = `https://stage.jinnilotto.com/?init=lp&redirectUrl=${redirectUrl}&memberId=${resp.data.MemberID}&sessionId=${resp.data.SessionID}`;
             })
             .catch(err => {
                 console.log(err);
