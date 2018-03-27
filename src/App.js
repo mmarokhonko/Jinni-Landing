@@ -8,7 +8,7 @@ import Fact from "./components/Fact/Fact";
 import NumberPicker from "./components/NumberPicker/PickerContainer";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 
-import MultipleTicketsPicker from "./components/MultipleTicketsPicker/PickerContainer";
+import MultipleTicketsPicker from "./components/MultipleTicketsPicker/MultiPickerContainer";
 
 import lottoParamsData from "./tools/lottoParamsData";
 import allPickerLottoData from "./components/NumberPicker/pickerLottoData";

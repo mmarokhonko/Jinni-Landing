@@ -302,6 +302,7 @@ class PickerContainer extends Component {
 						  bonusAmount={this.state.bonusAmount}
 						  bonusName={this.state.bonusName}
 						  done={isDone}
+						  numberOfTickets={4}
                       />
                   ) : (
                       <NumberPickerMobile
