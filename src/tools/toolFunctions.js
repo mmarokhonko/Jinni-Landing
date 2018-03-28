@@ -1,6 +1,6 @@
 import axios from "axios";
 import Cookies from "js-cookie";
-import { inject, observer} from "mobx-react";
+import { inject, observer } from "mobx-react";
 
 const mobXConnect = storeName => component => inject([storeName])(observer(component));
 

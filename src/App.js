@@ -13,7 +13,7 @@ import MultipleTicketsPicker from "./components/MultipleTicketsPicker/MultiPicke
 
 import lottoParamsData from "./tools/lottoParamsData";
 import allPickerLottoData from "./components/NumberPicker/pickerLottoData";
-import { getFeedData, getParamFromCookieOrUrl, getParamFromURL } from "./tools/toolFunctions";
+import { getFeedData, getParamFromCookieOrUrl, getParamFromURL, mobXConnect } from "./tools/toolFunctions";
 import sendDataModule from "./tools/sendDataModule";
 
 class App extends Component {
@@ -21,12 +21,6 @@ class App extends Component {
 	  lotteryOrientation: "Mega Millions",
 	  pickerLottoData: null,
       lottoData: null,
-      picksData: [
-          {
-              pickedNums: [],
-              pickedBonus: []
-          }
-      ],
       urlData: {
           bTag: undefined,
           referral: undefined,
@@ -71,6 +65,9 @@ class App extends Component {
 		  affiliateId = bTag.length > 0 ? bTag.substring(0, bTag.indexOf("_")) : "",
 		  incentiveCode = lottoParamsData[lotteryOrientation.toLowerCase()].incentiveCode || "free_ticket_em";
 
+		  this.setNumberOfTicketsInStore(offer);
+		  this.setNumberOfNotFreeTickets(offer);
+
       const urlData = {
           bTag,
           couponCode,
@@ -93,16 +90,30 @@ class App extends Component {
       });
   };
 
-  setNumbers = numbersData => {
-      let { picksData } = this.state;
-      picksData[0] = numbersData;
+  setNumberOfTicketsInStore = offer => {
+	  const {setNumberOfEmptyTickets} = this.props.pickerStore;
+	  let number = 1;
+	
+	  if(offer !== "freeTicket") {
+          number = parseInt(offer.substring(0, offer.indexOf("to")));		
+	  }
+
+	  setNumberOfEmptyTickets(number);
+  }
+
+  setNumberOfNotFreeTickets = offer => {
+      const {setNumberOfEmptyTickets} = this.props.pickerStore;
+      let number = 0;
+  
+      if(offer !== "freeTicket") {
+          number = parseInt(offer.substring(offer.indexOf("to")+2));		
+      }
 
       this.setState({
-          picksData
-      });
-  };
+		  numberOfNotFree: number
+	  })
+  }
 
-  clearNumbers = () => this.numberPicker.clearNums();
   openModal = () => this.numberPicker.openMobileModal();
 
   passDataToSendingModule = (formData, errorNode) => {
@@ -152,8 +163,6 @@ class App extends Component {
                           <DynamicMobileHeader
                               lotto={lottoName}
 								  jackpot={lottoData.Jackpot.toString()}
-								  picksData={picksData}
-								  clearHandler={this.clearNumbers}
 								  modalOpenHandler={this.openModal}
                           />
                       )
@@ -166,8 +175,8 @@ class App extends Component {
                       </h1>
                       <div className={`main_subwrap ${offer !== "freeTicket" ? "-vertical" : ""}`}>
 						  {offer !== "freeTicket" 
-						  ? <MultipleTicketsPicker />
-                              : <NumberPicker lotto={lottoName} setAppNumbers={this.setNumbers} ref={picker => this.numberPicker = picker} />
+						  ? <MultipleTicketsPicker lotto={lottoName} numberOfNotFree={this.state.numberOfNotFree} />
+                              : <NumberPicker lotto={lottoName} ref={picker => this.numberPicker = picker} />
                           }
                           <RegisterForm submitHandler={this.passDataToSendingModule} />
                       </div>
@@ -180,4 +189,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default mobXConnect("pickerStore")(App);

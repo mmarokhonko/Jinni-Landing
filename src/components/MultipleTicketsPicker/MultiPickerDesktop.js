@@ -1,11 +1,11 @@
 import React from "react";
 
-const MultiPickerDesktop = ({ticketsData, numberOfNotFree, pickerMethods}) => {
+const MultiPickerDesktop = ({ticketsData, numberOfNotFree, pickerMethods, numbersAmount, bonusAmount, maxBonus, minBonus, maxNumber, minNumber, bonusName}) => {
     return(
         <div className="frame multi-picker">
             <h4 className="frame_title">
-			Pick 5 numbers from 1-70 and <br/>
-			1 bonus number from 1-25
+			Pick {numbersAmount} numbers from {minNumber}-{maxNumber} and <br/>
+                {bonusAmount} {bonusAmount > 1 ? bonusName : bonusName+"s"} from {minBonus}-{maxBonus}
             </h4>
             <div className="multi-picker_subwrap">
                 {ticketsData.map((ticket, index) => {
