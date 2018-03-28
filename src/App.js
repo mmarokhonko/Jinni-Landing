@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import Media from "react-media";
+import DevTools from "mobx-react-devtools";
 
 import DynamicHeader from "./components/DynamicHeader/DynamicHeader";
 import DynamicMobileHeader from "./components/DynamicHeader/DynamicMobileHeader";
@@ -139,6 +140,7 @@ class App extends Component {
 
       return (
           <Fragment>
+			  <DevTools />
               <Media query="(min-width: 768px)">
                   {matches =>
                       matches ? (

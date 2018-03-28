@@ -1,14 +1,9 @@
 import React, { Component } from "react";
 import MultiPickerDesktop from "./MultiPickerDesktop";
+import { mobXConnect } from "../../tools/toolFunctions";
 
 class MultipleTicketsPickerContainer extends Component {
   state = {
-      ticketsData: [
-          { pickedNums: [], pickedBonus: [] },
-          { pickedNums: [], pickedBonus: [] },
-          { pickedNums: [], pickedBonus: [] },
-          { pickedNums: [], pickedBonus: [] }
-      ],
       numberOfNotFree: 1,
       numbersAmount: 5,
       bonusAmount: 1,
@@ -21,24 +16,21 @@ class MultipleTicketsPickerContainer extends Component {
 
   onNumberChange = (event, ticketIndex, numberIndex) => {
       const value = event.target.value;
-      const { ticketsData } = this.state;
+	  const { addNumber } = this.props.pickerStore;
 
-      ticketsData[ticketIndex].pickedNums[numberIndex] = value;
-
-      this.setState({ ticketsData });
+      addNumber(ticketIndex, value, numberIndex);
   };
 
   onBonusChange = (event, ticketIndex, bonusIndex) => {
       const value = event.target.value;
-      const { ticketsData } = this.state;
+      const { addBonus } = this.props.pickerStore;
 
-      ticketsData[ticketIndex].pickedBonus[bonusIndex] = value;
-
-      this.setState({ ticketsData });
+	  addBonus(ticketIndex, value, bonusIndex);
   };
 
   validateValue = (valueType, value, event, ticketIndex) => {
-      const { maxNumber, minNumber, maxBonus, minBonus, ticketsData } = this.state;
+	  const { maxNumber, minNumber, maxBonus, minBonus} = this.state;
+	  const {ticketsData} = this.props.pickerStore;
       const inputNode = event.target;
       let isValid = true;
       switch (valueType) {
@@ -61,10 +53,11 @@ class MultipleTicketsPickerContainer extends Component {
 
   generateNumbers = ticketIndex => {
       const numsHtmlArray = [];
-      const { numbersAmount, ticketsData } = this.state;
+      const { numbersAmount } = this.state;
+      const {ticketsData} = this.props.pickerStore;
       const { pickedNums } = ticketsData[ticketIndex];
       for (let x = 1; x <= numbersAmount; x++) {
-          const value = pickedNums[x - 1];
+          const value = pickedNums.length >= x ? pickedNums[x - 1] : undefined;
           const numHtml = (
               <input
                   key={`ticket-${ticketIndex}-num-${x}`}
@@ -84,10 +77,11 @@ class MultipleTicketsPickerContainer extends Component {
 
   generateBonuses = ticketIndex => {
       const bonusHtmlArray = [];
-      const { bonusAmount, ticketsData } = this.state;
+	  const { bonusAmount} = this.state;
+      const {ticketsData} = this.props.pickerStore;	  
       const { pickedBonus } = ticketsData[ticketIndex];
       for (let x = 1; x <= bonusAmount; x++) {
-          const value = pickedBonus[x - 1];
+          const value = pickedBonus.length >= x ? pickedBonus[x - 1] : undefined;
           const bonusHtml = (
               <input
                   key={`ticket-${ticketIndex}-num-${x}`}
@@ -105,31 +99,17 @@ class MultipleTicketsPickerContainer extends Component {
       return bonusHtmlArray;
   };
 
-  clearTicket = (ticketIndex, callback) => {
-      let { ticketsData } = this.state;
-      let { pickedNums, pickedBonus } = ticketsData[ticketIndex];
-      pickedNums.splice(0, pickedNums.length);
-      pickedBonus.splice(0, pickedBonus.length);
-
-      ticketsData[ticketIndex].pickedNums = pickedNums;
-      ticketsData[ticketIndex].pickedBonus = pickedBonus;
-      this.setState(
-          {
-              ticketsData
-          },
-          () => callback && callback()
-      );
-  };
-
   quickPick = ticketIndex => {
-      this.clearTicket(ticketIndex, () => {
-          let singleTicketData = this.state.ticketsData[ticketIndex];
+	  const {clearTicket} = this.props.pickerStore;
+      clearTicket(ticketIndex, () => {
+          let singleTicketData = this.props.pickerStore.ticketsData[ticketIndex];
           this.quickPickNumber(singleTicketData, ticketIndex);
       });
   };
 
   quickPickNumber = (singleTicketData, ticketIndex) => {
-      const { maxNumber, minNumber, numbersAmount, quickPickDelay } = this.state;
+	  const { maxNumber, minNumber, numbersAmount, quickPickDelay } = this.state;
+	  const {addNumber} = this.props.pickerStore;
       if (singleTicketData.pickedNums.length === numbersAmount) {
           return this.quickPickBonus(singleTicketData, ticketIndex);
       }
@@ -139,24 +119,17 @@ class MultipleTicketsPickerContainer extends Component {
       if (singleTicketData.pickedNums.indexOf(newNumber) !== -1) {
           return this.quickPickNumber(singleTicketData, ticketIndex);
       }
-
-      singleTicketData.pickedNums.push(newNumber);
-      let { ticketsData } = this.state;
-      ticketsData[ticketIndex] = singleTicketData;
-      this.setState(
-          {
-              ticketsData
-          },
-          () => {
-              setTimeout(() => {
-                  this.quickPickNumber(singleTicketData, ticketIndex);
-              }, quickPickDelay);
-          }
-      );
+	  
+	  addNumber(ticketIndex, newNumber);
+	  setTimeout(() => {
+          this.quickPickNumber(singleTicketData, ticketIndex);
+      }, quickPickDelay);
   };
 
   quickPickBonus = (singleTicketData, ticketIndex) => {
-      const { maxBonus, minBonus, bonusAmount, quickPickDelay } = this.state;
+	  const { maxBonus, minBonus, bonusAmount, quickPickDelay } = this.state;
+	  const {addBonus} = this.props.pickerStore;
+	  
       if (singleTicketData.pickedBonus.length === bonusAmount) {
           return;
       }
@@ -165,21 +138,13 @@ class MultipleTicketsPickerContainer extends Component {
 
       if (singleTicketData.pickedBonus.indexOf(newBonus) !== -1) {
           return this.quickPickBonus(singleTicketData, ticketIndex);
-      }
+	  }
+	  
+	  addBonus(ticketIndex, newBonus);
 
-      singleTicketData.pickedBonus.push(newBonus);
-      let { ticketsData } = this.state;
-      ticketsData[ticketIndex] = singleTicketData;
-      this.setState(
-          {
-              ticketsData
-          },
-          () => {
-              setTimeout(() => {
-                  this.quickPickBonus(singleTicketData, ticketIndex);
-              }, quickPickDelay);
-          }
-      );
+      setTimeout(() => {
+          this.quickPickBonus(singleTicketData, ticketIndex);
+      }, quickPickDelay);
   };
 
   pickerMethods = {
@@ -190,9 +155,10 @@ class MultipleTicketsPickerContainer extends Component {
   };
 
   render() {
+	  const {ticketsData} = this.props.pickerStore;
       return (
           <MultiPickerDesktop
-              ticketsData={this.state.ticketsData}
+              ticketsData={ticketsData}
               numberOfNotFree={this.state.numberOfNotFree}
               numbersAmount={this.state.numbersAmount}
               bonusAmount={this.state.bonusAmount}
@@ -202,4 +168,4 @@ class MultipleTicketsPickerContainer extends Component {
   }
 }
 
-export default MultipleTicketsPickerContainer;
+export default mobXConnect("pickerStore")(MultipleTicketsPickerContainer);
