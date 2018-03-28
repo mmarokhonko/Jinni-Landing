@@ -265,7 +265,7 @@ class MultipleTicketsPickerContainer extends Component {
               <div
                   key={num}
                   className={`picker_nums_num ${picked ? "-picked" : ""}`}
-                  onClick={() => this.toggleNum(num)}
+                  onClick={() => this.toggleNum(num.toString())}
               >
                   {num}
               </div>
@@ -285,7 +285,7 @@ class MultipleTicketsPickerContainer extends Component {
               <div
                   key={bonus}
                   className={`picker_bonus_num ${picked ? "-picked" : ""}`}
-                  onClick={() => this.toggleBonus(bonus)}
+                  onClick={() => this.toggleBonus(bonus.toString())}
               >
                   {bonus}
               </div>
@@ -332,7 +332,8 @@ class MultipleTicketsPickerContainer extends Component {
                           maxNumber={this.state.maxNumber}
                           maxBonus={this.state.maxBonus}
                           minNumber={this.state.minNumber}
-                          bonusName={this.state.bonusName}
+						  bonusName={this.state.bonusName}
+                          ballsTheme={this.state.ballsTheme}						  
                       />
                   ) : (
                       <MultiPickerMobile

@@ -1,6 +1,6 @@
 import React from "react";
 
-const MultiPickerDesktop = ({ticketsData, numberOfNotFree, pickerMethods, numbersAmount, bonusAmount, maxBonus, minBonus, maxNumber, minNumber, bonusName}) => {
+const MultiPickerDesktop = ({ticketsData, numberOfNotFree, pickerMethods, numbersAmount, bonusAmount, maxBonus, minBonus, maxNumber, minNumber, bonusName, ballsTheme}) => {
     return(
         <div className="frame multi-picker">
             <h4 className="frame_title">
@@ -14,7 +14,7 @@ const MultiPickerDesktop = ({ticketsData, numberOfNotFree, pickerMethods, number
                             className="btn-general btn-green multi-picker_ticket_quick-btn"
                             onClick={() => pickerMethods.quickPick(index)}
                         >Quick pick</button>
-                        <div className="multi-picker_ticket_subwrap">
+                        <div className={`multi-picker_ticket_subwrap -theme_${ballsTheme}`}>
                             {pickerMethods.generateNumbers(index)}
                             {pickerMethods.generateBonuses(index)}
                         </div>

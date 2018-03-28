@@ -9,7 +9,7 @@ const sendDataModule = {
         errorNode.classList.remove("-shown");            
 
         let userData = this.getUserData();
-        const orderData = this.parseOrder(data.picksData, data.lotteryId, data.lotteryOrientation);
+        const orderData = this.parseOrder(data.ticketsData, data.lotteryId, data.lotteryOrientation);
         delete data.picksData;
         delete data.lotteryId;
         const preparedData = Object.assign({}, data, userData, { orderData });
@@ -100,7 +100,7 @@ const sendDataModule = {
     },
 
     //Temporary Implementation
-    parseOrder: function(picksData, lottoId, lottoName) {
+    parseOrder: function(ticketsData, lottoId, lottoName) {
         const packageId = lottoParamsData[lottoName].packageId,
             lotteryId = lottoId,
             drawCount = 1,
@@ -108,7 +108,7 @@ const sendDataModule = {
             billingPeriod = 0;
         let orderData = [];
 
-        picksData.forEach(pick => {
+        ticketsData.forEach(pick => {
             const picks = {
                 base: pick.pickedNums.join(","),
                 extra: pick.pickedBonus

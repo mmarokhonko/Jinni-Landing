@@ -119,27 +119,37 @@ class App extends Component {
 
 
   passDataToSendingModule = (formData, errorNode) => {
-	  const { lottoData, urlData, picksData, pickerLottoData } = this.state;
+	  const { lottoData, urlData, pickerLottoData } = this.state;
+	  const {ticketsData} = this.props.pickerStore;
 	  const {numbersAmount, bonusAmount} = pickerLottoData;
 
-      if (picksData[0].pickedNums.length < numbersAmount || picksData[0].pickedBonus.length < bonusAmount) {
+	  let ticketIsNotFilled = false;
+	  ticketsData.forEach(ticket => {
+		  if(ticketIsNotFilled) {
+			  return
+		  }
+          if (ticket.pickedNums.length < numbersAmount || ticket.pickedBonus.length < bonusAmount) {	
+              ticketIsNotFilled = true;
+          }
+	  })
+	  if(ticketIsNotFilled) {
           errorNode.classList.add("-shown");
           errorNode.innerHTML =
-        "Whoops! You’ve forgotten the most important part – filling up your bonus tickets";
+	"Whoops! You’ve forgotten the most important part – filling up your bonus tickets";
           return;
-      }
-
+	  }
+      
       const data = Object.assign(
           {},
           formData,
-          { lotteryId: lottoData.LotteryID, lotteryOrientation: urlData.lotteryOrientation, picksData },
+          { lotteryId: lottoData.LotteryID, lotteryOrientation: urlData.lotteryOrientation, ticketsData },
           urlData
       );
       sendDataModule.prepareDataToSend(data, errorNode);
   };
 
   render() {
-	  const { lottoData, picksData, urlData } = this.state;
+	  const { lottoData, urlData } = this.state;
 	  if(!lottoData) {
 		  return(
 			  <div></div>

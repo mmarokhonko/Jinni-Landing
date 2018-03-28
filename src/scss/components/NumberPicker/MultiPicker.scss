@@ -45,7 +45,7 @@
     margin: 0;
   }
   &.-filled:not(:focus) {
-	border:none;
+    border: none;
   }
 
   &:focus {
@@ -53,20 +53,43 @@
   }
 
   &.-num:focus {
-    border-color: #34b3ff;
-  }
-  &.-num.-filled:not(:focus) {
-	  background-image: url("./assets/Header/icons/ball_blue.png");
+	border-color: #34b3ff;
+	background-image: none !important;
   }
   &.-bonus:focus {
-    border-color: #eb6326;
+	border-color: #eb6326;
+	background-image: none !important;	
   }
-  &.-bonus.-filled:not(:focus) {
-	background-image: url("./assets/Header/icons/ball_yellow.png");
-}
   &.-invalid {
-	  border: 2px solid red !important;
-	  background-image: none !important;
+    border: 2px solid red !important;
+    background-image: none !important;
+  }
+}
+
+.multi-picker_ticket_subwrap.-theme_blue-yellow {
+	.-num.-filled {
+    background-image: url("./assets/Header/icons/ball_blue.png");
+  }
+  .-bonus.-filled {
+    background-image: url("./assets/Header/icons/ball_yellow.png");
+  }
+}
+
+.multi-picker_ticket_subwrap.-theme_yellow-red {
+  .-num.-filled {
+    background-image: url("./assets/Header/icons/ball_yellow.png");
+  }
+  .-bonus.-filled {
+    background-image: url("./assets/Header/icons/ball_red.png");
+  }
+}
+
+.multi-picker_ticket_subwrap.-theme_red-yellow {
+  .-num.-filled {
+    background-image: url("./assets/Header/icons/ball_red.png");
+  }
+  .-bonus.-filled {
+    background-image: url("./assets/Header/icons/ball_yellow.png");
   }
 }
 
@@ -88,8 +111,8 @@
     font-size: 16px;
     font-weight: 600;
     line-height: 26px;
-	text-align: right;
-	color:#97A5B8;
-	letter-spacing: 1px;
+    text-align: right;
+    color: #97a5b8;
+    letter-spacing: 1px;
   }
 }
