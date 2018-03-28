@@ -8,7 +8,7 @@
   .cont-zone {
     position: relative;
     z-index: 1;
-	height: 100%;
+    height: 100%;
   }
 }
 
@@ -45,7 +45,7 @@
 }
 
 .header_jackpot {
-	margin-left: 38px;
+  margin-left: 38px;
   padding-top: 20px;
   display: flex;
   justify-content: center;
@@ -121,6 +121,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  & + .numbers-widget {
+    margin-top: 8px;
+  }
 }
 
 .numbers-widget_circle {
@@ -153,31 +156,31 @@
   }
 }
 
-.numbers-widget.-theme_blue-yellow  {
-	.-num-circle.-filled {
-		background-image: url("./assets/Header/icons/ball_blue.png");
-	}
-	.-bonus-circle.-filled {
-		background-image: url("./assets/Header/icons/ball_yellow.png");
-	}
+.numbers-widget.-theme_blue-yellow {
+  .-num-circle.-filled {
+    background-image: url("./assets/Header/icons/ball_blue.png");
+  }
+  .-bonus-circle.-filled {
+    background-image: url("./assets/Header/icons/ball_yellow.png");
+  }
 }
 
-.numbers-widget.-theme_yellow-red  {
-	.-num-circle.-filled {
-		background-image: url("./assets/Header/icons/ball_yellow.png");
-	}
-	.-bonus-circle.-filled {
-		background-image: url("./assets/Header/icons/ball_red.png");
-	}
+.numbers-widget.-theme_yellow-red {
+  .-num-circle.-filled {
+    background-image: url("./assets/Header/icons/ball_yellow.png");
+  }
+  .-bonus-circle.-filled {
+    background-image: url("./assets/Header/icons/ball_red.png");
+  }
 }
 
-.numbers-widget.-theme_red-yellow  {
-	.-num-circle.-filled {
-		background-image: url("./assets/Header/icons/ball_red.png");
-	}
-	.-bonus-circle.-filled {
-		background-image: url("./assets/Header/icons/ball_yellow.png");
-	}
+.numbers-widget.-theme_red-yellow {
+  .-num-circle.-filled {
+    background-image: url("./assets/Header/icons/ball_red.png");
+  }
+  .-bonus-circle.-filled {
+    background-image: url("./assets/Header/icons/ball_yellow.png");
+  }
 }
 
 .numbers-widget_btn {
@@ -197,4 +200,14 @@
     margin-left: 11px;
     background-image: url("./assets/NumberPicker/icon/icon_trash.png");
   }
+}
+
+.numbers-widget_text {
+  width: 21px;
+  margin-left: 5px;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #afb6d2;
+  text-transform: uppercase;
 }

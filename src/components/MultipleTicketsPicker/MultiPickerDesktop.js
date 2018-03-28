@@ -5,7 +5,7 @@ const MultiPickerDesktop = ({ticketsData, numberOfNotFree, pickerMethods, number
         <div className="frame multi-picker">
             <h4 className="frame_title">
 			Pick {numbersAmount} numbers from {minNumber}-{maxNumber} and <br/>
-                {bonusAmount} {bonusAmount > 1 ? bonusName : bonusName+"s"} from {minBonus}-{maxBonus}
+                {bonusAmount} {bonusAmount === 1 ? bonusName : `${bonusName}s`} from {minBonus}-{maxBonus}
             </h4>
             <div className="multi-picker_subwrap">
                 {ticketsData.map((ticket, index) => {

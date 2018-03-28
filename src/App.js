@@ -29,7 +29,8 @@ class App extends Component {
           affiliateId: undefined,
           incentiveCode: undefined,
           redirectUrl: "/cart"
-      }
+	  },
+	  numberOfNotFree: null
   };
 
   async componentDidMount() {
@@ -114,7 +115,8 @@ class App extends Component {
 	  })
   }
 
-  openModal = () => this.numberPicker.openMobileModal();
+  openModal = index => this.numberPicker.wrappedInstance.openMobileModal(index);  
+
 
   passDataToSendingModule = (formData, errorNode) => {
 	  const { lottoData, urlData, picksData, pickerLottoData } = this.state;
@@ -164,6 +166,7 @@ class App extends Component {
                               lotto={lottoName}
 								  jackpot={lottoData.Jackpot.toString()}
 								  modalOpenHandler={this.openModal}
+								  numberOfNotFree={this.state.numberOfNotFree}
                           />
                       )
                   }
@@ -175,7 +178,7 @@ class App extends Component {
                       </h1>
                       <div className={`main_subwrap ${offer !== "freeTicket" ? "-vertical" : ""}`}>
 						  {offer !== "freeTicket" 
-						  ? <MultipleTicketsPicker lotto={lottoName} numberOfNotFree={this.state.numberOfNotFree} />
+						  ? <MultipleTicketsPicker lotto={lottoName} numberOfNotFree={this.state.numberOfNotFree} ref={picker => this.numberPicker = picker} />
                               : <NumberPicker lotto={lottoName} ref={picker => this.numberPicker = picker} />
                           }
                           <RegisterForm submitHandler={this.passDataToSendingModule} />

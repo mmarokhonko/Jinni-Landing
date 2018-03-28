@@ -3,8 +3,8 @@ import { number, object, array, bool, string } from "prop-types";
 
 import closeIcon from "../../assets/NumberPicker/icon/close.png";
 
-const NumberPickerMobile = props => {
-    const { pickerMethods, pickerMobileMethods, modalOpen, numbersAmount, bonusAmount, maxNumber, maxBonus, ballsTheme, done } = props;
+const MultiPickerMobile = props => {
+    const { ticketModalToOpenFor, pickerMethods, pickerMobileMethods, modalOpen, numbersAmount, bonusAmount, maxNumber, maxBonus, ballsTheme, done } = props;
 
     return (
         <Fragment>
@@ -14,7 +14,7 @@ const NumberPickerMobile = props => {
                 </h4>
                 <button
                     className="btn-general btn-green picker_quick-btn"
-                    onClick={pickerMethods.quickPick}
+                    onClick={pickerMobileMethods.quickPickForAllMobile}
                 >
           Quick Pick
                 </button>
@@ -36,7 +36,7 @@ const NumberPickerMobile = props => {
                             <p className="picker-mob_head_pale-text">or</p>
                             <button
                                 className="btn-general btn-green picker_quick-btn"
-                                onClick={pickerMethods.quickPick}
+                                onClick={() => pickerMethods.quickPick(ticketModalToOpenFor)}
                             >
                 			Quick Pick
                             </button>
@@ -44,11 +44,11 @@ const NumberPickerMobile = props => {
                         <div className={`picker-mob_modal_frame -theme_${ballsTheme}`}>
                             <div className="picker_nums">
                                 <div className="picker-mob_nums_head">{pickerMobileMethods.genNumbersMobileHeader().map(item => item)}</div>
-                                <div className="picker_nums_subwrap">{pickerMethods.generateNumbers()}</div>
+                                <div className="picker_nums_subwrap">{pickerMobileMethods.generateNumbersMobile(maxNumber)}</div>
                             </div>
                             <div className="picker_bonus">
-                                <h5 className="picker_nums_title">{pickerMethods.genBonusHeader()}</h5>
-                                <div className="picker_bonus_subwrap">{pickerMethods.generateBonusNums()}</div>
+                                {/* <h5 className="picker_nums_title">{pickerMethods.genBonusHeader()}</h5> */}
+                                <div className="picker_bonus_subwrap">{pickerMobileMethods.generateBonusNumsMobile(maxBonus)}</div>
                             </div>
                         </div>
                     </div>
@@ -58,7 +58,7 @@ const NumberPickerMobile = props => {
     );
 };
 
-NumberPickerMobile.propTypes = {
+MultiPickerMobile.propTypes = {
     pickedNums: array,
     pickedBonus: array,
     pickerMethods: object.isRequired,
@@ -72,4 +72,4 @@ NumberPickerMobile.propTypes = {
     done: bool
 };
 
-export default NumberPickerMobile;
+export default MultiPickerMobile;
