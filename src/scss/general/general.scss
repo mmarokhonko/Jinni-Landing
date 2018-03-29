@@ -89,6 +89,9 @@ h5 {
   display: flex;
   justify-content: center;
   max-width: 1060px;
+  &:first-child {
+	  margin-top: 0;
+  }
   @media (max-width: 768px) {
     margin-top: 0;
     padding-left: 0;
@@ -193,3 +196,4 @@ h5 {
 	  }
   }
 }
+

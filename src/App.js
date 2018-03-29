@@ -186,9 +186,7 @@ class App extends Component {
               </Media>
               <main className="main">
                   <div className="cont-zone">
-                      <h1 className="main_title">
-              Get your <u>FREE</u> bet line here:
-                      </h1>
+				  {offer === "freeTicket" && <h1 className="main_title">Get your <u>FREE</u> bet line here:</h1>}
                       <div className={`main_subwrap ${offer !== "freeTicket" ? "-vertical" : ""}`}>
 						  {offer !== "freeTicket" 
 						  ? <MultipleTicketsPicker lotto={lottoName} numberOfNotFree={this.state.numberOfNotFree} ref={picker => this.numberPicker = picker} />
