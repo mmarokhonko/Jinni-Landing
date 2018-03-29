@@ -150,7 +150,10 @@ class MultipleTicketsPickerContainer extends Component {
       const { addBonus } = this.props.pickerStore;
 
       if (singleTicketData.pickedBonus.length === bonusAmount) {
-          return this.checkIfErrorsPresent();
+		  if(window.innerWidth > 768) {
+              this.checkIfErrorsPresent();
+		  }
+          return ;
       }
 
       let newBonus = (Math.floor(Math.random() * maxBonus) + minBonus).toString();
@@ -205,13 +208,12 @@ class MultipleTicketsPickerContainer extends Component {
       });
   };
 
-  toggleNum = num => {
+  toggleNum = (num, ticketIndex) => {
       const { numbersAmount } = this.state;
       const { addNumber, removeNumber } = this.props.pickerStore;
-      let pickedNums = this.props.pickerStore.ticketsData[0].pickedNums.slice();
-      console.log(pickedNums);
+      let pickedNums = this.props.pickerStore.ticketsData[ticketIndex].pickedNums.slice();
       if (pickedNums.indexOf(num) !== -1) {
-          return removeNumber(num);
+          return removeNumber(num, ticketIndex);
       }
 
       if (pickedNums.length === numbersAmount) {
@@ -221,12 +223,12 @@ class MultipleTicketsPickerContainer extends Component {
       addNumber(num);
   };
 
-  toggleBonus = bonus => {
+  toggleBonus = (bonus, ticketIndex) => {
       const { bonusAmount } = this.state;
       const { addBonus, removeBonus } = this.props.pickerStore;
-      let pickedBonus = this.props.pickerStore.ticketsData[0].pickedBonus.slice();
+      let pickedBonus = this.props.pickerStore.ticketsData[ticketIndex].pickedBonus.slice();
       if (pickedBonus.indexOf(bonus) !== -1) {
-          return removeBonus(bonus);
+          return removeBonus(bonus, ticketIndex);
       }
 
       if (pickedBonus.length === bonusAmount) {
@@ -266,7 +268,7 @@ class MultipleTicketsPickerContainer extends Component {
       return numCircles.concat(bonusCircles);
   };
 
-  generateNumbersMobile = maxNumber => {
+  generateNumbersMobile = (maxNumber) => {
 	  const { minNumber, ticketModalToOpenFor } = this.state;
       let nums = [];
 	  const pickedNums = this.props.pickerStore.ticketsData[ticketModalToOpenFor].pickedNums;
@@ -276,7 +278,7 @@ class MultipleTicketsPickerContainer extends Component {
               <div
                   key={num}
                   className={`picker_nums_num ${picked ? "-picked" : ""}`}
-                  onClick={() => this.toggleNum(num.toString())}
+                  onClick={() => this.toggleNum(num.toString(), ticketModalToOpenFor)}
               >
                   {num}
               </div>
@@ -286,12 +288,12 @@ class MultipleTicketsPickerContainer extends Component {
       return nums;
   };
 
-  generateBonusNumsMobile = maxBonus => {
+  generateBonusNumsMobile = (maxBonus) => {
       const { minBonus, ticketModalToOpenFor } = this.state;
       let bonuses = [];
 	  const pickedBonus = this.props.pickerStore.ticketsData[ticketModalToOpenFor].pickedBonus;
       for (let bonus = minBonus; bonus <= maxBonus; bonus++) {
-          const picked = pickedBonus.indexOf(bonus.toString()) !== -1;
+          const picked = pickedBonus.indexOf(bonus.toString(), ticketModalToOpenFor) !== -1;
           const numHtml = (
               <div
                   key={bonus}
