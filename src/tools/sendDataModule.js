@@ -2,14 +2,12 @@ import axios from "axios";
 import currentDevice from "current-device";
 import { detect } from "detect-browser";
 
-import lottoParamsData from "./lottoParamsData";
-
 const sendDataModule = {
     prepareDataToSend: function(data, errorNode) {
         errorNode.classList.remove("-shown");            
 
         let userData = this.getUserData();
-        const orderData = this.parseOrder(data.ticketsData, data.lotteryId, data.lotteryOrientation);
+        const orderData = this.parseOrder(data.ticketsData, data.lotteryId, data.packageId);
         delete data.picksData;
         delete data.lotteryId;
         const preparedData = Object.assign({}, data, userData, { orderData });
@@ -100,8 +98,8 @@ const sendDataModule = {
     },
 
     //Temporary Implementation
-    parseOrder: function(ticketsData, lottoId, lottoName) {
-        const packageId = lottoParamsData[lottoName].packageId,
+    parseOrder: function(ticketsData, lottoId, packageID) {
+        const packageId = packageID,
             lotteryId = lottoId,
             drawCount = 1,
             isSubscription = 0,

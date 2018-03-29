@@ -64,7 +64,8 @@ class App extends Component {
 		  offer = getParamFromURL("offer") || "freeTicket",
 		  redirectUrl= getParamFromURL("redirectUrl") || "/cart",
 		  affiliateId = bTag.length > 0 ? bTag.substring(0, bTag.indexOf("_")) : "",
-		  incentiveCode = lottoParamsData[lotteryOrientation.toLowerCase()].incentiveCode || "free_ticket_em";
+		  incentiveCode = lottoParamsData[lotteryOrientation.toLowerCase()][`${offer}_incentiveCode`] || "free_ticket_em",
+		  packageId = lottoParamsData[lotteryOrientation.toLowerCase()][`${offer}_packageId`] || "255";
 
 		  this.setNumberOfTicketsInStore(offer);
 		  this.setNumberOfNotFreeTickets(offer);
@@ -80,6 +81,7 @@ class App extends Component {
           lang,
 		  offer,
 		  incentiveCode,
+		  packageId,
 		  redirectUrl,
           referral: referral.length > 0 ? referral : window.location.href
       };
@@ -96,7 +98,7 @@ class App extends Component {
 	  let number = 1;
 	
 	  if(offer !== "freeTicket") {
-          number = parseInt(offer.substring(0, offer.indexOf("to")));		
+          number = parseInt(offer.substring(0, offer.indexOf("for")));		
 	  }
 
 	  setNumberOfEmptyTickets(number);
@@ -107,7 +109,7 @@ class App extends Component {
       let number = 0;
   
       if(offer !== "freeTicket") {
-          number = parseInt(offer.substring(offer.indexOf("to")+2));		
+          number = parseInt(offer.substring(offer.indexOf("for")+3));		
       }
 
       this.setState({
