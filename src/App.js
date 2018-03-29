@@ -61,7 +61,7 @@ class App extends Component {
           jlpid = getParamFromCookieOrUrl("jlpid"),
           lotteryOrientation = getParamFromURL("lottery").toLowerCase() || "euromillions",
 		  lang = getParamFromURL("lang") || "EN",
-		  offer = getParamFromURL("offer") || "4to1",
+		  offer = getParamFromURL("offer") || "freeTicket",
 		  redirectUrl= getParamFromURL("redirectUrl") || "/cart",
 		  affiliateId = bTag.length > 0 ? bTag.substring(0, bTag.indexOf("_")) : "",
 		  incentiveCode = lottoParamsData[lotteryOrientation.toLowerCase()].incentiveCode || "free_ticket_em";
