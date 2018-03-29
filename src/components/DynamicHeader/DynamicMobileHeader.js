@@ -81,9 +81,15 @@ class DynamicMobileHeader extends Component {
           <header className="mob-header" style={{ backgroundImage: `url(${lottoData.bgMob})` }}>
               <div className="cont-zone">
                   <img className="mob-header_logo" src={lottoData.logo} alt={lotto} />
-                  <h2 className="mob-header_title">
-            Play the next draw for <span>FREE</span>
-                  </h2>
+				  {numberOfNotFree === 0 ? (
+					  <h2 className="mob-header_title">
+					  Play the next draw for <span>FREE</span>
+                      </h2>
+				  ) : (
+                      <h2 className="mob-header_title">
+					  Get <span>{ticketsData.length}</span> bet lines for the price of <span>{numberOfNotFree}</span> !
+                      </h2>
+				  )}
                   <h3 className="mob-header_jackpot">{`${lottoData.currency}${jackpotString}`}</h3>
 				  {ticketsData.map((ticket,index) => (
 					  <div key={`ticket-widget-${index}`} className={`numbers-widget -theme_${pickerLottoData.ballsTheme}`}>

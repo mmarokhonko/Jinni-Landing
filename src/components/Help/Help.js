@@ -27,7 +27,7 @@ const Help = ({ drawDate, lotto, offer, pickerStore, numberOfNotFree }) => {
                         {currHelpLottoData.firstStep(currPickerLottoData)}
                     </div>
                     <img src={iconArrow} alt="next" className="help_arrow" />
-                    {offer === "freeTicket" ? (
+                    {offer.indexOf("freeTicket") !== -1 ? (
                         <div className="help_step">
                             <img src={iconGet} alt="" className="help_step_icon" />
                             <h4 className="help_step_title">Get your bet line for free</h4>

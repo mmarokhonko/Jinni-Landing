@@ -97,7 +97,7 @@ class App extends Component {
 	  const {setNumberOfEmptyTickets} = this.props.pickerStore;
 	  let number = 1;
 	
-	  if(offer !== "freeTicket") {
+	  if(offer.indexOf("freeTicket") === -1) {
           number = parseInt(offer.substring(0, offer.indexOf("for")));		
 	  }
 
@@ -108,7 +108,7 @@ class App extends Component {
       const {setNumberOfEmptyTickets} = this.props.pickerStore;
       let number = 0;
   
-      if(offer !== "freeTicket") {
+      if(offer.indexOf("freeTicket") === -1) {
           number = parseInt(offer.substring(offer.indexOf("for")+3));		
       }
 
@@ -174,7 +174,9 @@ class App extends Component {
                       matches ? (
                           <DynamicHeader
                               lotto={lottoName}
-                              jackpot={lottoData.Jackpot.toString()}
+							  jackpot={lottoData.Jackpot.toString()}
+							  offer={offer}
+							  numberOfNotFree={this.state.numberOfNotFree}
                           />
                       ) : (
                           <DynamicMobileHeader
