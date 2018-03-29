@@ -41,7 +41,7 @@ class MultipleTicketsPickerContainer extends Component {
   validateValue = (valueType, value, event, ticketIndex) => {
       const { maxNumber, minNumber, maxBonus, minBonus } = this.state;
       const { ticketsData } = this.props.pickerStore;
-      const inputNode = event.target;
+	  const inputNode = event.target;
       let isValid = true;
       switch (valueType) {
       case "bonus":
@@ -57,7 +57,12 @@ class MultipleTicketsPickerContainer extends Component {
           value >= minNumber &&
           ticketsData[ticketIndex].pickedNums.indexOf(value) ===
             ticketsData[ticketIndex].pickedNums.lastIndexOf(value);
-      }
+	  }
+	  
+	  if(value.length === 0) {
+		  isValid = false;
+	  }
+
 	  isValid ? inputNode.classList.remove("-invalid") : inputNode.classList.add("-invalid");
 
 	  this.checkIfErrorsPresent();
