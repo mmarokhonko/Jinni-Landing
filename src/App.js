@@ -123,6 +123,10 @@ class App extends Component {
 	  const {ticketsData} = this.props.pickerStore;
 	  const {numbersAmount, bonusAmount} = pickerLottoData;
 
+	  if(this.numberPicker.wrappedInstance.state.hasError) {
+		  return;
+	  }
+
 	  let ticketIsNotFilled = false;
 	  ticketsData.forEach(ticket => {
 		  if(ticketIsNotFilled) {
@@ -195,7 +199,7 @@ class App extends Component {
                       </div>
                   </div>
               </main>
-              {lottoData && <Help lotto={lottoData.LotteryName} drawDate={lottoData.DrawDate + " " + lottoData.TimeZone} />}
+              <Help offer={offer} numberOfNotFree={this.state.numberOfNotFree} lotto={lottoData.LotteryName} drawDate={lottoData.DrawDate + " " + lottoData.TimeZone} />
               <Fact lotto={lottoName} />
           </Fragment>
       );

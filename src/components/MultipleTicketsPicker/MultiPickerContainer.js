@@ -19,7 +19,8 @@ class MultipleTicketsPickerContainer extends Component {
       ballsTheme: lottoData[this.props.lotto].ballsTheme,
       quickPickDelay: 150,
       numberOfNotFree: this.props.numberOfNotFree,
-      ticketModalToOpenFor: 0
+	  ticketModalToOpenFor: 0,
+	  hasError: false
   };
 
   onNumberChange = (event, ticketIndex, numberIndex) => {
@@ -56,8 +57,17 @@ class MultipleTicketsPickerContainer extends Component {
           ticketsData[ticketIndex].pickedNums.indexOf(value) ===
             ticketsData[ticketIndex].pickedNums.lastIndexOf(value);
       }
-      isValid ? inputNode.classList.remove("-invalid") : inputNode.classList.add("-invalid");
+	  isValid ? inputNode.classList.remove("-invalid") : inputNode.classList.add("-invalid");
+
+	  this.checkIfErrorsPresent();
   };
+
+  checkIfErrorsPresent() {
+	  let hasError = this.ballsWrap.querySelectorAll(".-invalid").length > 0;
+	  this.setState({
+		  hasError
+	  })
+  }
 
   generateNumbers = ticketIndex => {
       const numsHtmlArray = [];
@@ -139,7 +149,7 @@ class MultipleTicketsPickerContainer extends Component {
       const { addBonus } = this.props.pickerStore;
 
       if (singleTicketData.pickedBonus.length === bonusAmount) {
-          return;
+          return this.checkIfErrorsPresent();
       }
 
       let newBonus = (Math.floor(Math.random() * maxBonus) + minBonus).toString();
@@ -333,7 +343,9 @@ class MultipleTicketsPickerContainer extends Component {
                           maxBonus={this.state.maxBonus}
                           minNumber={this.state.minNumber}
 						  bonusName={this.state.bonusName}
-                          ballsTheme={this.state.ballsTheme}						  
+						  ballsTheme={this.state.ballsTheme}
+						  hasError={this.state.hasError}
+						  ballsWrapRef={node => this.ballsWrap = node}						  
                       />
                   ) : (
                       <MultiPickerMobile
