@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import shallowEqualArrays from "shallow-equal/arrays";
-import { string, func } from "prop-types";
+import { string, object } from "prop-types";
 import Media from "react-media";
 import noScroll from "no-scroll";
 
@@ -28,7 +28,6 @@ class PickerContainer extends Component {
 	  const {numbersAmount} = this.state;
 	  const {addNumber, removeNumber} = this.props.pickerStore;
 	  let pickedNums = this.props.pickerStore.ticketsData[0].pickedNums.slice();
-	  console.log(pickedNums);
       if (pickedNums.indexOf(num) !== -1) {
           return removeNumber(num);
       }
@@ -273,7 +272,8 @@ class PickerContainer extends Component {
 }
 
 PickerContainer.propTypes = {
-    lotto: string.isRequired
+	lotto: string.isRequired,
+	pickerStore: object.isRequired
 };
 
 export default mobXConnect("pickerStore")(PickerContainer);

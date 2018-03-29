@@ -4,7 +4,8 @@ import { number, object, array, bool, string } from "prop-types";
 import closeIcon from "../../assets/NumberPicker/icon/close.png";
 
 const MultiPickerMobile = props => {
-    const { ticketModalToOpenFor, pickerMethods, pickerMobileMethods, modalOpen, numbersAmount, bonusAmount, maxNumber, maxBonus, ballsTheme, done } = props;
+    const { ticketModalToOpenFor, pickerMethods, pickerMobileMethods, modalOpen, 
+        numbersAmount, bonusAmount, maxNumber, maxBonus, ballsTheme, done } = props;
 
     return (
         <Fragment>
@@ -69,7 +70,8 @@ MultiPickerMobile.propTypes = {
     maxBonus: number.isRequired,
     ballsTheme: string.isRequired,
     modalOpen: bool,
-    done: bool
+    done: bool,
+    ticketModalToOpenFor: number.isRequired
 };
 
 export default MultiPickerMobile;

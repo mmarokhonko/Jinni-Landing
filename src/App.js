@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import Media from "react-media";
-import DevTools from "mobx-react-devtools";
+import {object} from "prop-types";
 
 import DynamicHeader from "./components/DynamicHeader/DynamicHeader";
 import DynamicMobileHeader from "./components/DynamicHeader/DynamicMobileHeader";
@@ -167,7 +167,6 @@ class App extends Component {
 
       return (
           <Fragment>
-			  <DevTools />
               <Media query="(min-width: 768px)">
                   {matches =>
                       matches ? (
@@ -204,6 +203,10 @@ class App extends Component {
           </Fragment>
       );
   }
+}
+
+App.propTypes = {
+    pickerStore: object.isRequired
 }
 
 export default mobXConnect("pickerStore")(App);

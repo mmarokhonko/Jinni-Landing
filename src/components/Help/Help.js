@@ -1,5 +1,5 @@
 import React from "react";
-import { string } from "prop-types";
+import { string, number, object } from "prop-types";
 import Media from "react-media";
 import { mobXConnect } from "../../tools/toolFunctions";
 
@@ -41,8 +41,7 @@ const Help = ({ drawDate, lotto, offer, pickerStore, numberOfNotFree }) => {
                                     ) : (
                                         <p className="help_step_text">
                       To place your bet for free, just fill <br className="hide-sm" />
-                      out the short form and click <br />
-                      “Claim Free Bet”
+                      out the short form and click <br className="hide-sm" /> “Claim Free Bet”
                                         </p>
                                     )
                                 }
@@ -74,7 +73,10 @@ const Help = ({ drawDate, lotto, offer, pickerStore, numberOfNotFree }) => {
 
 Help.propTypes = {
     drawDate: string.isRequired,
-    lotto: string.isRequired
+    lotto: string.isRequired,
+    offer: string.isRequired,
+    pickerStore: object.isRequired,
+    numberOfNotFree: number.isRequired,
 };
 
 export default mobXConnect("pickerStore")(Help);

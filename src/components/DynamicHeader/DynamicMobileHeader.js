@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {string, array, func} from "prop-types";
+import {string, func, object, number} from "prop-types";
 
 import headerLottoData from "./headerLottoData";
 import pickerLottoData from "../NumberPicker/pickerLottoData";
@@ -72,7 +72,7 @@ class DynamicMobileHeader extends Component {
   }
 
   render() {
-	  const { lotto, jackpot, clearHandler, modalOpenHandler, numberOfNotFree } = this.props;
+	  const { lotto, jackpot, modalOpenHandler, numberOfNotFree } = this.props;
 	  const {ticketsData, clearTicket} = this.props.pickerStore;
       const {lottoData, pickerLottoData} = this.state;
 	  const jackpotString = this.formatJackpot(jackpot);
@@ -103,7 +103,9 @@ class DynamicMobileHeader extends Component {
 DynamicMobileHeader.propTypes = {
     lotto: string.isRequired,
     jackpot: string.isRequired,
-    modalOpenHandler: func.isRequired
+    modalOpenHandler: func.isRequired,
+    pickerStore: object.isRequired,
+    numberOfNotFree: number.isRequired
 };
 
 export default mobXConnect("pickerStore")(DynamicMobileHeader);

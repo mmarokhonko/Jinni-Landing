@@ -7,8 +7,8 @@ const lottoData = {
         firstStep: pickerData => (
             <p className="help_step_text">
               Select {pickerData.numbersAmount} numbers from 1-{pickerData.maxNumber} <br className="hide-big" />
-              + {pickerData.bonusAmount} {pickerData.bonusName}{pickerData.bonusAmount > 1 ? "s" : ""} 
-			  from 1-{pickerData.maxBonus}. <br className="hide-big" />
+              + {pickerData.bonusAmount} {pickerData.bonusName}{pickerData.bonusAmount > 1 ? "s" : ""} from 
+			  1-{pickerData.maxBonus}. <br className="hide-big" />
               Or we can randomly choose
 			  for you when you click <br className="hide-big" /> “Quick Pick”
             </p>
@@ -32,8 +32,8 @@ const lottoData = {
         firstStep: pickerData => (
             <p className="help_step_text">
               Select {pickerData.numbersAmount} numbers
-              + {pickerData.bonusAmount} {pickerData.bonusName}{pickerData.bonusAmount > 1 ? "s" : ""} or simply<br className="hide-sm" />
-			  click "Quick Pick" for a random selection
+			  + {pickerData.bonusAmount} {pickerData.bonusName}{pickerData.bonusAmount > 1 ? "s" : ""} or simply <br className="hide-sm" /> 
+              click "Quick Pick" for a random selection
             </p>
         ),
         desktop: timeRemains => (

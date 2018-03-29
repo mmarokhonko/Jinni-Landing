@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Media from "react-media";
 import noScroll from "no-scroll";
+import {object, string, number} from "prop-types";
 
 import MultiPickerDesktop from "./MultiPickerDesktop";
 import MultiPickerMobile from "./MultiPickerMobile";
@@ -366,6 +367,12 @@ class MultipleTicketsPickerContainer extends Component {
           </Media>
       );
   }
+}
+
+MultipleTicketsPickerContainer.propTypes = {
+    pickerStore: object.isRequired,
+    numberOfNotFree: number,
+    lotto: string.isRequired
 }
 
 export default mobXConnect("pickerStore")(MultipleTicketsPickerContainer);
