@@ -59,7 +59,7 @@ class MultipleTicketsPickerContainer extends Component {
             ticketsData[ticketIndex].pickedNums.lastIndexOf(value);
 	  }
 	  
-	  if(value.length === 0) {
+	  if(!value || value.length === 0) {
 		  isValid = false;
 	  }
 
