@@ -61,14 +61,14 @@ class App extends Component {
           jlpid = getParamFromCookieOrUrl("jlpid"),
           lotteryOrientation = getParamFromURL("lottery").toLowerCase() || "euromillions",
 		  lang = getParamFromURL("lang") || "EN",
-		  offer = getParamFromURL("offer") || "freeTicket",
+		  offer = getParamFromURL("offer").toLowerCase() || "freeticket",
 		  redirectUrl= getParamFromURL("redirectUrl") || "/cart",
 		  affiliateId = bTag.length > 0 ? bTag.substring(0, bTag.indexOf("_")) : "",
 		  incentiveCode = lottoParamsData[lotteryOrientation.toLowerCase()][`${offer}_incentiveCode`] || "free_ticket_em",
 		  packageId = lottoParamsData[lotteryOrientation.toLowerCase()][`${offer}_packageId`] || "255";
 
 		  this.setNumberOfTicketsInStore(offer);
-		  this.setNumberOfNotFreeTickets(offer);
+		  this.setNumberOfNotfreetickets(offer);
 
       const urlData = {
           bTag,
@@ -97,18 +97,18 @@ class App extends Component {
 	  const {setNumberOfEmptyTickets} = this.props.pickerStore;
 	  let number = 1;
 	
-	  if(offer.indexOf("freeTicket") === -1) {
+	  if(offer.indexOf("freeticket") === -1) {
           number = parseInt(offer.substring(0, offer.indexOf("for")));		
 	  }
 
 	  setNumberOfEmptyTickets(number);
   }
 
-  setNumberOfNotFreeTickets = offer => {
+  setNumberOfNotfreetickets = offer => {
       const {setNumberOfEmptyTickets} = this.props.pickerStore;
       let number = 0;
   
-      if(offer.indexOf("freeTicket") === -1) {
+      if(offer.indexOf("freeticket") === -1) {
           number = parseInt(offer.substring(offer.indexOf("for")+3));		
       }
 
@@ -190,9 +190,9 @@ class App extends Component {
               </Media>
               <main className="main">
                   <div className="cont-zone">
-				  {offer === "freeTicket" && <h1 className="main_title">Get your <u>FREE</u> bet line here:</h1>}
-                      <div className={`main_subwrap ${offer !== "freeTicket" ? "-vertical" : ""}`}>
-						  {offer !== "freeTicket" 
+				  {offer === "freeticket" && <h1 className="main_title">Get your <u>FREE</u> bet line here:</h1>}
+                      <div className={`main_subwrap ${offer !== "freeticket" ? "-vertical" : ""}`}>
+						  {offer !== "freeticket" 
 						  ? <MultipleTicketsPicker lotto={lottoName} numberOfNotFree={this.state.numberOfNotFree} ref={picker => this.numberPicker = picker} />
                               : <NumberPicker lotto={lottoName} ref={picker => this.numberPicker = picker} />
                           }
