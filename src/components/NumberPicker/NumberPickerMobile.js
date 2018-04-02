@@ -26,21 +26,40 @@ const NumberPickerMobile = props => {
                 <div className="picker-mob_modal">
                     <div className="picker-mob_modal_head">
                         <img src={closeIcon} alt="close modal" onClick={pickerMobileMethods.closeMobileModal} />
-                        {done && <p onClick={pickerMobileMethods.closeMobileModal}>DONE</p>}
+                        <p
+                            onClick={() => done ? pickerMobileMethods.closeMobileModal() : false}
+                            className={done ? "picker-mob_modal_head_done" : ""}
+                        >
+              			DONE
+                        </p>
                     </div>
                     <div className="picker-mob_modal_body">
-                        <div className="picker-mob_head">
-                            <h4 className="picker-mob_head_title">
-               				 Pick {numbersAmount} numbers <br />& {bonusAmount} bonus number{bonusAmount > 1 ? "s" : ""}
-                            </h4>
-                            <p className="picker-mob_head_pale-text">or</p>
-                            <button
-                                className="btn-general btn-green picker_quick-btn"
-                                onClick={pickerMethods.quickPick}
-                            >
-                			Quick Pick
-                            </button>
-                        </div>
+                        {!done ? (
+                            <div className="picker-mob_head">
+                                <h4 className="picker-mob_head_title">
+                  				Pick {numbersAmount} numbers <br />& {bonusAmount} bonus number{bonusAmount > 1
+                                        ? "s"
+                                        : ""}
+                                </h4>
+                                <p className="picker-mob_head_pale-text">or</p>
+                                <button
+                                    className="btn-general btn-green picker_quick-btn"
+                                    onClick={() => pickerMethods.quickPick()}
+                                >
+                  				Quick Pick
+                                </button>
+                            </div>
+                        ) : (
+                            <div className="picker-mob_head">
+                                <h4 className="picker-mob_head_title">All good here</h4>
+                                <button
+                                    className="btn-general btn-green picker_quick-btn"
+                                    onClick={pickerMobileMethods.closeMobileModal}
+                                >
+                  Done
+                                </button>
+                            </div>
+                        )}
                         <div className={`picker-mob_modal_frame -theme_${ballsTheme}`}>
                             <div className="picker_nums">
                                 <div className="picker-mob_nums_head">{pickerMobileMethods.genNumbersMobileHeader().map(item => item)}</div>
@@ -51,6 +70,7 @@ const NumberPickerMobile = props => {
                                 <div className="picker_bonus_subwrap">{pickerMethods.generateBonusNums()}</div>
                             </div>
                         </div>
+                        {done && <button onClick={pickerMobileMethods.closeMobileModal} className="picker-mob_modal_done-btn">DONE</button>}						
                     </div>
                 </div>
             )}

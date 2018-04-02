@@ -52,7 +52,6 @@
 }
 
 .picker-mob_modal_head {
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -62,6 +61,7 @@
   background-color: #ffffff;
   box-shadow: 0 2px 15px 0 rgba(127, 177, 223, 0.3);
   img {
+    cursor: pointer;
     height: 12px;
     width: 12px;
   }
@@ -69,21 +69,25 @@
     font-size: 16px;
     line-height: 14px;
     text-transform: uppercase;
-    opacity: 0.2;
+	opacity: 0.2;
+	&.picker-mob_modal_head_done {
+		opacity: 1;
+		cursor: pointer;		
+	  }
   }
 }
 
 .picker-mob_modal_body {
-  padding: 25px 26px 0;
+  padding: 25px 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   &:after {
-	content: "";
-	display: block;
-	height: 27px;
-	width: 100%;
+    // content: "";
+    display: block;
+    height: 27px;
+    width: 100%;
   }
 }
 
@@ -122,10 +126,10 @@
   border: 3px solid #34b3ff;
   box-shadow: 0 10px 15px 0 rgba(226, 238, 255, 0.9);
   &:after {
-	content: "";
+    content: "";
     display: block;
-	height: 26px;
-	width: 100%;
+    height: 26px;
+    width: 100%;
   }
 }
 
@@ -263,4 +267,15 @@
   &.-picked {
     color: white;
   }
+}
+
+.picker-mob_modal_done-btn {
+	margin: 50px 0 0;
+	width: 100%;
+	height: 50px;
+	font-size: 16px;
+	text-transform: uppercase;
+	border:none;
+	background-color: #46CF00;
+	color: #FFFFFF;
 }
