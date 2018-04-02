@@ -1,5 +1,5 @@
 const lottoData = {
-    "mega millions": {
+    "megamillions": {
         maxNumber: 70,
         maxBonus: 25,
         minNumber: 1,
@@ -39,7 +39,7 @@ const lottoData = {
         bonusName: "bonus number",
         ballsTheme: "red-yellow"			
     },
-    "6 aus 49": {
+    "6aus49": {
         maxNumber: 49,
         maxBonus: 9,
         minNumber: 1,

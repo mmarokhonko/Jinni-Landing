@@ -1,5 +1,5 @@
 const lottoData = {
-    "mega millions": {
+    "megamillions": {
         freeticket_packageId: 256,
         freeticket_incentiveCode: "free_ticket_mm",
         freeticketv2_packageId: 256,
@@ -31,7 +31,7 @@ const lottoData = {
         "4for1_packageId": 250,
         "4for1_incentiveCode": "4f1_pb"
     },
-    "6 aus 49": {
+    "6aus49": {
         freeticket_packageId: 259,
         freeticket_incentiveCode: "free_ticket_6aus49",
         freeticketv2_packageId: 259,

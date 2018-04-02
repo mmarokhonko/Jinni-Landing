@@ -3,7 +3,7 @@ import React from "react";
 const lottoData = {
     /* eslint-disable react/display-name */
     /* eslint-disable react/no-unescaped-entities*/
-    "mega millions": {
+    "megamillions": {
         firstStep: pickerData => (
             <p className="help_step_text">
               Select {pickerData.numbersAmount} numbers from 1-{pickerData.maxNumber} <br className="hide-big" />
@@ -15,7 +15,7 @@ const lottoData = {
         ),
         desktop: timeRemains => (
             <p className="help_step_text">
-        Mega Millions draws are held twice a week. To find out if you’re a winner, check the results
+        megamillions draws are held twice a week. To find out if you’re a winner, check the results
         after the next draw in <span className="help_timer">{timeRemains}</span>.
             </p>
         ),
@@ -96,7 +96,7 @@ const lottoData = {
             </p>
         )
     },
-    ["6 aus 49"]: {
+    ["6aus49"]: {
         firstStep: pickerData => (
             <p className="help_step_text">
 			  Select {pickerData.numbersAmount} lucky numbers +

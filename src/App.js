@@ -18,7 +18,7 @@ import sendDataModule from "./tools/sendDataModule";
 
 class App extends Component {
   state = {
-	  lotteryOrientation: "Mega Millions",
+	  lotteryOrientation: "megamillions",
 	  pickerLottoData: null,
       lottoData: null,
       urlData: {

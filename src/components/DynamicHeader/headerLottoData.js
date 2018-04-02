@@ -24,7 +24,7 @@ import lotto6aus49People from "../../assets/Header/people/6aus49.png";
 import lotto6aus49Logo from "../../assets/Header/logo/6aus49.png";
 
 const allLottoData = {
-    ["mega millions"]: {
+    ["megamillions"]: {
         bg: megaBG,
         logo: megaLogo,
         currency: "$",
@@ -52,7 +52,7 @@ const allLottoData = {
         bgMob: powerballBGMob,
         people: powerballPeople
     },
-    ["6 aus 49"]: {
+    ["6aus49"]: {
         bg: lotto6aus49BG,
         logo: lotto6aus49Logo,
         currency: "€",
