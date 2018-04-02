@@ -111,8 +111,7 @@ class RegisterForm extends Component {
   };
 
   async componentDidMount() {
-    //   let userIpAndCountryCode = await this.fetchUserCountryCode();
-      let userIpAndCountryCode = {};
+      let userIpAndCountryCode = await this.fetchUserCountryCode();
       const userCountryCode = userIpAndCountryCode.countryCode;
       const userIp = userIpAndCountryCode.ip;
 

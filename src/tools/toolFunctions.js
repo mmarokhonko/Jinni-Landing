@@ -42,13 +42,8 @@ const getParamFromCookieOrUrl = key => {
     return urlValue;
 }
 
-const getFeedData = () => {
-    return axios.get("https://feed.jinnilotto.com/feed.json");
-};
-
 module.exports = {
     getParamFromCookieOrUrl,
     getParamFromURL,
-    getFeedData,
     mobXConnect
 };

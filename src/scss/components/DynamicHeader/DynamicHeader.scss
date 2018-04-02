@@ -72,10 +72,10 @@
   }
 
   &.-number[alt="7"] + &.-dot {
-	margin-left: -10px;
+    margin-left: -10px;
   }
-  &.-number[alt="1"] + &.-dot {
-	margin-left: 0;
+  &.-number[alt="1"] + &.-dot, &.-number[alt="2"] + &.-dot {
+	margin-left: 0;	
   }
 }
 

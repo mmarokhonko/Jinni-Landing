@@ -42,7 +42,12 @@ class MultipleTicketsPickerContainer extends Component {
       const { maxNumber, minNumber, maxBonus, minBonus } = this.state;
       const { ticketsData } = this.props.pickerStore;
 	  const inputNode = event.target;
-      let isValid = true;
+	  let isValid = true;
+
+	  if(!value || value.length === 0) {
+	  return this.checkIfErrorsPresent();
+	  }
+
       switch (valueType) {
       case "bonus":
           isValid =
@@ -57,10 +62,6 @@ class MultipleTicketsPickerContainer extends Component {
           value >= minNumber &&
           ticketsData[ticketIndex].pickedNums.indexOf(value) ===
             ticketsData[ticketIndex].pickedNums.lastIndexOf(value);
-	  }
-	  
-	  if(!value || value.length === 0) {
-		  isValid = false;
 	  }
 
 	  isValid ? inputNode.classList.remove("-invalid") : inputNode.classList.add("-invalid");
@@ -214,7 +215,7 @@ class MultipleTicketsPickerContainer extends Component {
   };
 
   toggleNum = (num, ticketIndex) => {
-      const { numbersAmount } = this.state;
+	  const { numbersAmount } = this.state;
       const { addNumber, removeNumber } = this.props.pickerStore;
       let pickedNums = this.props.pickerStore.ticketsData[ticketIndex].pickedNums.slice();
       if (pickedNums.indexOf(num) !== -1) {
@@ -225,12 +226,12 @@ class MultipleTicketsPickerContainer extends Component {
           return;
       }
 
-      addNumber(num);
+      addNumber(num, ticketIndex);
   };
 
   toggleBonus = (bonus, ticketIndex) => {
       const { bonusAmount } = this.state;
-      const { addBonus, removeBonus } = this.props.pickerStore;
+	  const { addBonus, removeBonus } = this.props.pickerStore;
       let pickedBonus = this.props.pickerStore.ticketsData[ticketIndex].pickedBonus.slice();
       if (pickedBonus.indexOf(bonus) !== -1) {
           return removeBonus(bonus, ticketIndex);
@@ -240,16 +241,16 @@ class MultipleTicketsPickerContainer extends Component {
           return;
       }
 
-      addBonus(bonus);
+      addBonus(bonus, ticketIndex);
   };
 
   genNumbersMobileHeader = () => {
       const numCircles = [];
       const { numbersAmount, bonusAmount, ticketModalToOpenFor } = this.state;
-      const { pickedNums, pickedBonus } = this.props.pickerStore.ticketsData[ticketModalToOpenFor];
+	  const { pickedNums, pickedBonus } = this.props.pickerStore.ticketsData[ticketModalToOpenFor];
 
       for (let x = 1; x <= numbersAmount; x++) {
-          const number = pickedNums.length >= x && pickedNums[x - 1];
+          const number = pickedNums.length >= x ? pickedNums[x - 1] : undefined;
           const classString = `picker-mob_nums_head_circle -num-circle${number ? " -filled" : ""}`;
           numCircles.push(
               <div key={`n-${x}`} className={classString}>
@@ -258,10 +259,10 @@ class MultipleTicketsPickerContainer extends Component {
           );
       }
 
-      const bonusCircles = [];
+	  const bonusCircles = [];
 
       for (let x = 1; x <= bonusAmount; x++) {
-          const number = pickedBonus.length >= x && pickedBonus[x - 1];
+		  const number = pickedBonus.length >= x ? pickedBonus[x - 1] : undefined;
           const classString = `picker-mob_nums_head_circle -bonus-circle${number ? " -filled" : ""}`;
           bonusCircles.push(
               <div key={`b-${x}`} className={classString}>
@@ -298,12 +299,12 @@ class MultipleTicketsPickerContainer extends Component {
       let bonuses = [];
 	  const pickedBonus = this.props.pickerStore.ticketsData[ticketModalToOpenFor].pickedBonus;
       for (let bonus = minBonus; bonus <= maxBonus; bonus++) {
-          const picked = pickedBonus.indexOf(bonus.toString(), ticketModalToOpenFor) !== -1;
+          const picked = pickedBonus.indexOf(bonus.toString()) !== -1;
           const numHtml = (
               <div
                   key={bonus}
                   className={`picker_bonus_num ${picked ? "-picked" : ""}`}
-                  onClick={() => this.toggleBonus(bonus.toString())}
+                  onClick={() => this.toggleBonus(bonus.toString(), ticketModalToOpenFor)}
               >
                   {bonus}
               </div>
