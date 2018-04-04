@@ -4,28 +4,20 @@ import { string, object } from "prop-types";
 import Media from "react-media";
 import noScroll from "no-scroll";
 
-import lottoData from "./pickerLottoData";
+import pickerLottoData from "./pickerLottoData";
 import NumberPicker from "./NumberPicker";
 import NumberPickerMobile from "./NumberPickerMobile";
 import { mobXConnect } from "../../tools/toolFunctions";
 
 class PickerContainer extends Component {
   state = {
-      maxNumber: lottoData[this.props.lotto].maxNumber,
-	  maxBonus: lottoData[this.props.lotto].maxBonus,
-      minNumber: lottoData[this.props.lotto].minNumber,	  
-      minBonus: lottoData[this.props.lotto].minBonus,	  
-	  numbersAmount: lottoData[this.props.lotto].numbersAmount,
-	  bonusAmount: lottoData[this.props.lotto].bonusAmount,
-	  bonusName: lottoData[this.props.lotto].bonusName,
-	  ballsTheme: lottoData[this.props.lotto].ballsTheme,
-	  includeZeroBonusNumber: lottoData[this.props.lotto].includeZeroBonusNumber,	  
+      pickerLottoData: pickerLottoData[this.props.lotto],
 	  quickPickDelay: 150,
 	  isMobileModalOpen: false
   };
 
   toggleNum = num => {
-	  const {numbersAmount} = this.state;
+	  const {numbersAmount} = this.state.pickerLottoData;
 	  const {addNumber, removeNumber} = this.props.pickerStore;
 	  let pickedNums = this.props.pickerStore.ticketsData[0].pickedNums.slice();
       if (pickedNums.indexOf(num) !== -1) {
@@ -40,7 +32,7 @@ class PickerContainer extends Component {
   };
 
   toggleBonus = bonus => {
-	  const {bonusAmount} = this.state;
+	  const {bonusAmount} = this.state.pickerLottoData;
 	  const {addBonus, removeBonus} = this.props.pickerStore;
       let pickedBonus = this.props.pickerStore.ticketsData[0].pickedBonus.slice();
       if (pickedBonus.indexOf(bonus) !== -1) {
@@ -60,7 +52,7 @@ class PickerContainer extends Component {
   };
 
   genNumbersHeader = () => {
-	  const {numbersAmount} = this.state;
+	  const {numbersAmount} = this.state.pickerLottoData;
 	  const {pickedNums} = this.props.pickerStore.ticketsData[0];
 
       if (pickedNums.length === numbersAmount) {
@@ -76,7 +68,7 @@ class PickerContainer extends Component {
 
   genNumbersMobileHeader = () => {
 	  const numCircles = [];
-	  const {numbersAmount, bonusAmount} = this.state;
+	  const {numbersAmount, bonusAmount} = this.state.pickerLottoData;
 	  const {pickedNums, pickedBonus} = this.props.pickerStore.ticketsData[0];
   
       for(let x = 1; x <= numbersAmount; x++) {
@@ -97,7 +89,7 @@ class PickerContainer extends Component {
   };
 
   genBonusHeader = () => {
-	  const {bonusAmount, bonusName} = this.state;
+	  const {bonusAmount, bonusName} = this.state.pickerLottoData;
 	  const {pickedBonus} = this.props.pickerStore.ticketsData[0];	  
 	  
       if (pickedBonus.length === bonusAmount) {
@@ -111,9 +103,9 @@ class PickerContainer extends Component {
       }	
   };
 
-  genRandomNumber = () => {
-      const {numbersAmount} = this.state;	  
-	  let { maxNumber, quickPickDelay, minNumber } = this.state;
+  genRandomNumber = () => { 
+	  const { maxNumber, minNumber, numbersAmount } = this.state.pickerLottoData;
+	  const {quickPickDelay} = this.state;
 	  let {addNumber} = this.props.pickerStore;
 	  let pickedNums = this.props.pickerStore.ticketsData[0].pickedNums.slice();
 	  
@@ -133,7 +125,8 @@ class PickerContainer extends Component {
   };
 
   genRandomBonus = () => {
-	  let { maxBonus, bonusAmount, quickPickDelay, minBonus } = this.state;
+	  const { maxBonus, bonusAmount, minBonus } = this.state.pickerLottoData;
+	  const {quickPickDelay} = this.state;
 	  let {addBonus} = this.props.pickerStore;	  
 	  let {pickedBonus} = this.props.pickerStore.ticketsData[0];	  
 	  let pickedBonuses = pickedBonus.slice();
@@ -161,8 +154,8 @@ class PickerContainer extends Component {
       });
   };
 
-  generateNumbers = maxNumber => {
-      const { minNumber} = this.state;	  
+  generateNumbers = () => {
+      const { minNumber, maxNumber } = this.state.pickerLottoData;	  
       let nums = [];
       const pickedNums = this.props.pickerStore.ticketsData[0].pickedNums;
       for (let num = minNumber; num <= maxNumber; num++) {
@@ -177,12 +170,12 @@ class PickerContainer extends Component {
               </div>
           );
           nums.push(numHtml);
-      }
+	  }
       return nums;
   };
 
-  generateBonusNums = maxBonus => {
-	  const { minBonus} = this.state;
+  generateBonusNums = () => {
+	  const { minBonus, maxBonus } = this.state.pickerLottoData;
 	  let bonuses = [];	  
       const pickedBonus = this.props.pickerStore.ticketsData[0].pickedBonus;
       for (let bonus = minBonus; bonus <= maxBonus; bonus++) {
@@ -231,7 +224,7 @@ class PickerContainer extends Component {
   }
 
   render() {
-	  const { numbersAmount, bonusAmount} = this.state;
+	  const { numbersAmount, bonusAmount, bonusName, maxBonus, maxNumber, ballsTheme} = this.state.pickerLottoData;
 	  const {pickedNums, pickedBonus} = this.props.pickerStore.ticketsData[0];
 
       const isDone = pickedNums.length === numbersAmount && pickedBonus.length === bonusAmount;
@@ -242,11 +235,11 @@ class PickerContainer extends Component {
                   matcher ? (
                       <NumberPicker
                           pickerMethods={this.pickerMethods}
-                          pickedNums={this.state.pickedNums}
-						  pickedBonus={this.state.pickedBonus}
-						  numbersAmount={this.state.numbersAmount}
-						  bonusAmount={this.state.bonusAmount}
-						  bonusName={this.state.bonusName}
+                          pickedNums={pickedNums}
+						  pickedBonus={pickedBonus}
+						  numbersAmount={numbersAmount}
+						  bonusAmount={bonusAmount}
+						  bonusName={bonusName}
 						  done={isDone}
 						  numberOfTickets={4}
                       />
@@ -254,13 +247,13 @@ class PickerContainer extends Component {
                       <NumberPickerMobile
                           pickerMethods={this.pickerMethods}
                           pickerMobileMethods={this.pickerMobileMethods}
-                          pickedNums={this.state.pickedNums}
-						  pickedBonus={this.state.pickedBonus}
-						  numbersAmount={this.state.numbersAmount}
-						  bonusAmount={this.state.bonusAmount}
-						  maxNumber={this.state.maxNumber}						  						  
-						  maxBonus={this.state.maxBonus}
-						  ballsTheme={this.state.ballsTheme}
+                          pickedNums={pickedNums}
+						  pickedBonus={pickedBonus}
+						  numbersAmount={numbersAmount}
+						  bonusAmount={bonusAmount}
+						  maxNumber={maxNumber}						  						  
+						  maxBonus={maxBonus}
+						  ballsTheme={ballsTheme}
 						  modalOpen={this.state.isMobileModalOpen}
 						  done={isDone}						  
                       />
@@ -272,8 +265,8 @@ class PickerContainer extends Component {
 }
 
 PickerContainer.propTypes = {
-	lotto: string.isRequired,
-	pickerStore: object.isRequired
+    lotto: string.isRequired,
+    pickerStore: object.isRequired
 };
 
 export default mobXConnect("pickerStore")(PickerContainer);

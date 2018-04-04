@@ -1,5 +1,5 @@
 import React from "react";
-import {number, object, array, string, bool} from "prop-types";
+import {number, object, array, string, bool, oneOfType} from "prop-types";
 
 const NumberPicker = (props) => {
     const { pickedNums, pickedBonus, pickerMethods, numbersAmount, bonusAmount, bonusName, done } = props;
@@ -34,8 +34,8 @@ const NumberPicker = (props) => {
 }
 
 NumberPicker.propTypes = {
-    pickedNums: array,
-    pickedBonus: array,
+    pickedNums: oneOfType([array, object]),
+    pickedBonus: oneOfType([array, object]),
     pickerMethods: object.isRequired,
     numbersAmount: number.isRequired,
     bonusAmount: number.isRequired,

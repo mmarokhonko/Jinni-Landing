@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { number, object, array, bool, string } from "prop-types";
+import { number, object, array, bool, string, oneOfType } from "prop-types";
 
 import closeIcon from "../../assets/NumberPicker/icon/close.png";
 
@@ -79,8 +79,8 @@ const NumberPickerMobile = props => {
 };
 
 NumberPickerMobile.propTypes = {
-    pickedNums: array,
-    pickedBonus: array,
+    pickedNums: oneOfType([array, object]),
+    pickedBonus: oneOfType([array, object]),
     pickerMethods: object.isRequired,
     pickerMobileMethods: object.isRequired,
     numbersAmount: number.isRequired,

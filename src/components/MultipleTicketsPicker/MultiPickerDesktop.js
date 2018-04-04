@@ -2,7 +2,7 @@ import React from "react";
 import {string, number, bool, func, object} from "prop-types";
 
 const MultiPickerDesktop = ({ticketsData, numberOfNotFree, pickerMethods, numbersAmount, 
-    bonusAmount, maxBonus, minBonus, maxNumber, minNumber, bonusName, ballsTheme, hasError, ballsWrapRef}) => {
+    bonusAmount, maxBonus, minBonus, maxNumber, minNumber, bonusName, ballsTheme, hasError, ballsWrapRef, price}) => {
     return(
         <div className="frame multi-picker">
             <h4 className="frame_title">
@@ -22,7 +22,7 @@ const MultiPickerDesktop = ({ticketsData, numberOfNotFree, pickerMethods, number
                         </div>
                         {index+1 <= numberOfNotFree ? (
                             <div className="multi-picker_ticket_price_wrap">
-                                <p className="multi-picker_ticket_price -not-free">€3.7</p>
+                                <p className="multi-picker_ticket_price -not-free">{price}</p>
                             </div>
                         ) : (
                             <div className="multi-picker_ticket_price_wrap">
@@ -50,6 +50,7 @@ MultiPickerDesktop.propTypes = {
     minNumber: number.isRequired,
     bonusName: string.isRequired,
     ballsTheme: string.isRequired,
+    price: string.isRequired,
     hasError: bool.isRequired,
     ballsWrapRef: func.isRequired
 }

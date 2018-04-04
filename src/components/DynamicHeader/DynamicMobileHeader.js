@@ -97,7 +97,7 @@ class DynamicMobileHeader extends Component {
 				  		{this.generateBonusCircles(ticket.pickedBonus).map(circle => circle)}
                           <button className="numbers-widget_btn -edit-btn" onClick={() => modalOpenHandler(index)} />
 						  {numberOfNotFree === 0 ? <button className="numbers-widget_btn -clear-btn" onClick={() => clearTicket(index)} />
-						  : (index+1 > numberOfNotFree ? <p className="numbers-widget_text">FREE</p> : <p className="numbers-widget_text"></p>)}
+						  : (index+1 > numberOfNotFree ? <p className="numbers-widget_text">FREE</p> : <p className="numbers-widget_text">{pickerLottoData.price}</p>)}
                       </div>
 				  ))}
               </div>

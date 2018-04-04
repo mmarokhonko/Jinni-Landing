@@ -191,14 +191,14 @@ class App extends Component {
                   {matches =>
                       matches ? (
                           <DynamicHeader
-                              lotto={lottoName}
+							  lotto={lottoName}
                               jackpot={lottoData.Jackpot.toString()}
                               offer={offer}
                               numberOfNotFree={this.state.numberOfNotFree}
                           />
                       ) : (
                           <DynamicMobileHeader
-                              lotto={lottoName}
+							  lotto={lottoName}
                               jackpot={lottoData.Jackpot.toString()}
                               modalOpenHandler={this.openModal}
                               numberOfNotFree={this.state.numberOfNotFree}
