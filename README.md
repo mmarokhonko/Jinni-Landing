@@ -29,6 +29,9 @@ The multipicker takes number of tickets directly from the parameter, so only thi
 ### HOW TO change displayed price on not free tickets.
 Just change *price* property of a lottery's object in */src/components/NumberPicker/pickerLottoData.js*
 
+### HOW TO apply changes.
+Rebuild the app with _npm run build_ command and copy */dist* folder contents to the hosting. 
+
 ### npm scripts
 - _npm start_ - start Webpack Dev Server on port 9000.
 - _npm run build_ - builds bundle.js and styles.css for production.
