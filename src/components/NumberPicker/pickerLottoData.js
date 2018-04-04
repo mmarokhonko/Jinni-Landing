@@ -52,7 +52,6 @@ const lottoData = {
         bonusAmount: 1,
         bonusName: "Superball",
         ballsTheme: "red-yellow",
-        includeZeroBonusNumber: true,
         price: "€3.7"			
     }
 }
