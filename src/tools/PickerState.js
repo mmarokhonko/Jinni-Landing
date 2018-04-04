@@ -19,14 +19,17 @@ class PickerState {
   };
 
   addNumber = (value, ticketIndex = 0, positionIndex) => {
-      let ticketsData = [...this.ticketsData];
-      let ticket = Object.assign({}, this.ticketsData[ticketIndex]);
+	  let ticketsData = [...this.ticketsData];
+	  let ticket = this.ticketsData[ticketIndex];
+      let pickedNums = [...ticket.pickedNums];
 
       if (positionIndex || positionIndex === 0) {
-          ticket.pickedNums[positionIndex] = value;
+          pickedNums[positionIndex] = value;
       } else {
-          ticket.pickedNums.push(value);
-      }
+          pickedNums.push(value);
+	  }
+	  
+	  ticket.pickedNums = pickedNums;
 
       this.ticketsData = [
           ...ticketsData.slice(0, ticketIndex),
@@ -36,11 +39,15 @@ class PickerState {
   };
 
   removeNumber = (value, ticketIndex = 0) => {
-      let ticketsData = [...this.ticketsData];
-      let ticket = Object.assign({}, this.ticketsData[ticketIndex]);
+	  let ticketsData = [...this.ticketsData];
+	  let ticket = this.ticketsData[ticketIndex];
+      let pickedNums = [...ticket.pickedNums];
 
-      const index = ticket.pickedNums.indexOf(value);
-      ticket.pickedNums.splice(index, 1);
+      const index = pickedNums.indexOf(value);
+	  pickedNums.splice(index, 1);
+	  
+	  ticket.pickedNums = pickedNums;	  
+
       this.ticketsData = [
           ...ticketsData.slice(0, ticketIndex),
           ticket,
@@ -50,13 +57,16 @@ class PickerState {
 
   addBonus = (value, ticketIndex = 0, positionIndex) => {
 	  let ticketsData = [...this.ticketsData];
-      let ticket = Object.assign({}, ticketsData[ticketIndex]);
+      let ticket = this.ticketsData[ticketIndex];
+      let pickedBonus = [...ticket.pickedBonus];
 
       if (positionIndex || positionIndex === 0) {
-          ticket.pickedBonus[positionIndex] = value;
+          pickedBonus[positionIndex] = value;
       } else {
-          ticket.pickedBonus.push(value);
-      }
+          pickedBonus.push(value);
+	  }
+	  
+	  ticket.pickedBonus = pickedBonus;	  	  
 
       this.ticketsData = [
           ...ticketsData.slice(0, ticketIndex),
@@ -67,10 +77,14 @@ class PickerState {
 
   removeBonus = (value, ticketIndex = 0) => {
       let ticketsData = [...this.ticketsData];
-      let ticket = Object.assign({}, this.ticketsData[ticketIndex]);
+      let ticket = this.ticketsData[ticketIndex];
+      let pickedBonus = [...ticket.pickedBonus];
 
-      const index = ticket.pickedBonus.indexOf(value);
-      ticket.pickedBonus.splice(index, 1);
+      const index = pickedBonus.indexOf(value);
+	  pickedBonus.splice(index, 1);
+	  
+	  ticket.pickedBonus = pickedBonus;	  	  
+	  
       this.ticketsData = [
           ...ticketsData.slice(0, ticketIndex),
           ticket,

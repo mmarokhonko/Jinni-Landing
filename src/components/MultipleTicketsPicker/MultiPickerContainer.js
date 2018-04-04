@@ -43,7 +43,7 @@ class MultipleTicketsPickerContainer extends Component {
       const { ticketsData } = this.props.pickerStore;
 	  const inputNode = event.target;
 	  let isValid = true;
-
+	  
 	  if(!value || value.length === 0) {
 	  return this.checkIfErrorsPresent();
 	  }
@@ -52,14 +52,16 @@ class MultipleTicketsPickerContainer extends Component {
       case "bonus":
           isValid =
           value <= maxBonus &&
-          value >= minBonus &&
+		  value >= minBonus &&
+		  value.match(/^\d+$/) &&
           ticketsData[ticketIndex].pickedBonus.indexOf(value) ===
             ticketsData[ticketIndex].pickedBonus.lastIndexOf(value);
           break;
       default:
           isValid =
           value <= maxNumber &&
-          value >= minNumber &&
+		  value >= minNumber &&
+		  value.match(/^\d+$/) &&		  
           ticketsData[ticketIndex].pickedNums.indexOf(value) ===
             ticketsData[ticketIndex].pickedNums.lastIndexOf(value);
 	  }
@@ -86,7 +88,7 @@ class MultipleTicketsPickerContainer extends Component {
           const numHtml = (
               <input
                   key={`ticket-${ticketIndex}-num-${x}`}
-                  type="number"
+                  type="text"
                   max="70"
                   min="1"
                   className={`multi-picker_ticket_input -num ${value && "-filled"}`}
@@ -110,7 +112,7 @@ class MultipleTicketsPickerContainer extends Component {
           const bonusHtml = (
               <input
                   key={`ticket-${ticketIndex}-num-${x}`}
-                  type="number"
+                  type="text"
                   max="70"
                   min="1"
                   className={`multi-picker_ticket_input -bonus ${value && "-filled"}`}
