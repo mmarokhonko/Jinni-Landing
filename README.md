@@ -15,7 +15,7 @@ To add new lottery to the supported list following files should be modified:<br>
 3. */src/components/NumberPicker/pickerLottoData.js* - contains data to determine picker look and functionality and mobile header tickets data. <br>
 *max/minNumber* and *max/minBonus* are self-explanatory;<br> *numbersAmount* and *bonusAmount* determine maximum number of picked numbers and bonuses accordingly;<br>
 *bonusName* - bonus name to display on picker specific for a lottery;<br>
-*ballsTheme* - color theme for picker balls. Implemented values are ***blue-yellow***, ***red-yellow***, ***yellow-red***. To add new themes add new classes ***-theme_THEME-NAME*** in files MultiPicker.scss, NumberPickerMobile.scss and DynamicHeader.scss<br>
+*ballsTheme* - color theme for picker balls. Implemented values are ***blue-yellow***, ***red-yellow***, ***yellow-red***. To add new themes support, add new classes ***-theme_THEME-NAME*** in files MultiPicker.scss, NumberPickerMobile.scss and DynamicHeader.scss<br>
 *price* - price string to show on not free tickets in the multipicker.
 4. */src/components/Fact/factLottoData.js* - contains fact about lotteries to show in "Did you know" section
 5. */src/components/Help/helpLottoData.js* - contains lottery-specific texts in "How to play" section. <br> 
