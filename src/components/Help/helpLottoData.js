@@ -16,7 +16,7 @@ const lottoData = {
         desktop: timeRemains => (
             <p className="help_step_text">
         megamillions draws are held twice a week. To find out if you’re a winner, check the results
-        after the next draw in <span className="help_timer">{timeRemains}</span>.
+        after the next draw in <span className="help_timer">{timeRemains}</span>
             </p>
         ),
         mobile: timeRemains => (
@@ -24,7 +24,7 @@ const lottoData = {
         Wait for the upcoming draw that <br />
         will take place in: <br />
                 <span className="help_timer">{timeRemains}</span> <br />
-        to see how much you won.
+        to see how much you won
             </p>
         )
     },
@@ -39,13 +39,13 @@ const lottoData = {
         desktop: timeRemains => (
             <p className="help_step_text">
         There are two EuroMillions draws every week. Be sure to check the results Follow the results
-        of the next Euromillions draw on <span className="help_timer">{timeRemains}</span> to find out if you’re a winner.
+        of the next Euromillions draw on <span className="help_timer">{timeRemains}</span> to find out if you’re a winner
             </p>
         ),
         mobile: timeRemains => (
             <p className="help_step_text">
         There are two EuroMillions draws every week. Be sure to check the results Follow the results
-        of the next Euromillions draw on <span className="help_timer">{timeRemains}</span> to find out if you’re a winner. 
+        of the next Euromillions draw on <span className="help_timer">{timeRemains}</span> to find out if you’re a winner 
             </p>
         )
     },
@@ -62,7 +62,7 @@ const lottoData = {
             <p className="help_step_text">
         Follow the results of the next EuroJackpot <br/>
         draw on <span className="help_timer">{timeRemains}</span> to find out if you’re <br/> 
-		a winner.
+		a winner
             </p>
         ),
         mobile: timeRemains => (
@@ -70,7 +70,7 @@ const lottoData = {
         Follow the results of the next <br/>
         EuroJackpot draw on<br/> 
                 <span className="help_timer">{timeRemains}</span><br/>
-		 to find out if you’re a winner. 
+		 to find out if you’re a winner 
             </p>
         )
     },
@@ -85,14 +85,14 @@ const lottoData = {
         desktop: timeRemains => (
             <p className="help_step_text">
         	Wait for the next Powerball on <br/>
-                <span className="help_timer">{timeRemains}</span> to see if you’re a winner.
+                <span className="help_timer">{timeRemains}</span> to see if you’re a winner
             </p>
         ),
         mobile: timeRemains => (
             <p className="help_step_text">
         Wait for the upcoming draw that
 		will take place in <br/> <span className="help_timer">{timeRemains}</span><br/>    
-		 to see how much you won. 
+		 to see how much you won
             </p>
         )
     },
@@ -107,14 +107,14 @@ const lottoData = {
         desktop: timeRemains => (
             <p className="help_step_text">
         	Don't miss the next of two weekly draws on <br/>
-                <span className="help_timer">{timeRemains}</span> to see if you’re a winner.
+                <span className="help_timer">{timeRemains}</span> to see if you’re a winner
             </p>
         ),
         mobile: timeRemains => (
             <p className="help_step_text">
         Wait for the upcoming draw that
 		will take place in <br/> <span className="help_timer">{timeRemains}</span><br/>    
-		 to see how much you won. 
+		 to see how much you won 
             </p>
         )
     }
