@@ -82,7 +82,7 @@ class PickerState {
 
       const index = pickedBonus.indexOf(value);
 	  pickedBonus.splice(index, 1);
-	  
+
 	  ticket.pickedBonus = pickedBonus;	  	  
 	  
       this.ticketsData = [
@@ -94,11 +94,15 @@ class PickerState {
 
   clearTicket = (ticketIndex = 0, callback) => {
       let ticketsData = [...this.ticketsData];
-      let ticket = Object.assign({}, ticketsData[ticketIndex]);
-      let { pickedNums, pickedBonus } = ticket;
+	  let ticket = Object.assign({}, ticketsData[ticketIndex]);
+      let pickedNums = [...ticket.pickedNums];
+	  let pickedBonus = [...ticket.pickedBonus];
 
       pickedNums.splice(0, pickedNums.length);
-      pickedBonus.splice(0, pickedBonus.length);
+	  pickedBonus.splice(0, pickedBonus.length);
+	  
+	  ticket.pickedNums = pickedNums;
+	  ticket.pickedBonus = pickedBonus;
 
       this.ticketsData = [
           ...ticketsData.slice(0, ticketIndex),

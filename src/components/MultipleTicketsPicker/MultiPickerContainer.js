@@ -31,7 +31,7 @@ class MultipleTicketsPickerContainer extends Component {
       addBonus(value, ticketIndex, bonusIndex);
   };
 
-  validateValue = (valueType, value, event, ticketIndex) => {
+  validateValue = (valueType, value, ticketIndex, event) => {
       const { maxNumber, minNumber, maxBonus, minBonus } = this.state.pickerLottoData;
       const { ticketsData } = this.props.pickerStore;
       const inputNode = event.target;
@@ -87,9 +87,9 @@ class MultipleTicketsPickerContainer extends Component {
                   className={`multi-picker_ticket_input -num ${value && "-filled"}`}
                   value={value ? value : ""}
                   onChange={e => this.onNumberChange(e, ticketIndex, x - 1)}
-                  onBlur={e => this.validateValue("number", value, e, ticketIndex)}
+                  onBlur={e => this.validateValue("number", value, ticketIndex, e)}
               />
-          );
+		  );
           numsHtmlArray.push(numHtml);
       }
       return numsHtmlArray;
@@ -111,7 +111,7 @@ class MultipleTicketsPickerContainer extends Component {
                   className={`multi-picker_ticket_input -bonus ${value && "-filled"}`}
                   value={value ? value : ""}
                   onChange={e => this.onBonusChange(e, ticketIndex, x - 1)}
-                  onBlur={e => this.validateValue("bonus", value, e, ticketIndex)}
+                  onBlur={e => this.validateValue("bonus", value, ticketIndex, e)}
               />
           );
           bonusHtmlArray.push(bonusHtml);
@@ -120,10 +120,13 @@ class MultipleTicketsPickerContainer extends Component {
   };
 
   quickPick = ticketIndex => {
-      const { clearTicket } = this.props.pickerStore;
+	  const { clearTicket } = this.props.pickerStore;
+	  const {quickPickDelay} = this.state;	  
       clearTicket(ticketIndex, () => {
-          let singleTicketData = this.props.pickerStore.ticketsData[ticketIndex];
-          this.quickPickNumber(singleTicketData, ticketIndex);
+		  setTimeout(() => {
+              let singleTicketData = this.props.pickerStore.ticketsData[ticketIndex];
+              this.quickPickNumber(singleTicketData, ticketIndex);
+		  }, quickPickDelay);
       });
   };
 
