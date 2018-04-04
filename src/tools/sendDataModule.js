@@ -27,15 +27,17 @@ const sendDataModule = {
             }
             headersObject[name] = data[name];
         });
+		
+        headersObject["orderData[0][packageId]"] = data.orderData[0].packageId;
+        headersObject["orderData[0][lotteryId]"] = data.orderData[0].lotteryId;
+        headersObject["orderData[0][drawCount]"] = data.orderData[0].drawCount;
+        headersObject["orderData[0][isSubscription]"] = data.orderData[0].isSubscription;
+        headersObject["orderData[0][billingPeriod]"] = data.orderData[0].billingPeriod;
+        headersObject["orderData[0][type]"] = data.orderData.length > 1 ? "Bundle" : "Single";
 
         data.orderData.forEach((item, index) => {
-            headersObject[`orderData[${index}][packageId]`] = item.packageId;
-            headersObject[`orderData[${index}][lotteryId]`] = item.lotteryId;
-            headersObject[`orderData[${index}][drawCount]`] = item.drawCount;
-            headersObject[`orderData[${index}][isSubscription]`] = item.isSubscription;
-            headersObject[`orderData[${index}][billingPeriod]`] = item.billingPeriod;
-            headersObject[`orderData[${index}][picks][base][]`] = `[${item.picks.base}]`;
-            headersObject[`orderData[${index}][picks][extra][]`] = `[${item.picks.extra}]`;
+            headersObject[`orderData[0][picks][0][${index}][base]`] = `[${item.picks.base}]`;
+            headersObject[`orderData[0][picks][0][${index}][extra]`] = `[${item.picks.extra}]`;
         });
 
         let formData = new FormData();
