@@ -9,7 +9,6 @@ const sendDataModule = {
         let userData = this.getUserData();
         const orderData = this.parseOrder(data.ticketsData, data.lotteryId, data.packageId);
         delete data.picksData;
-        delete data.lotteryId;
         const preparedData = Object.assign({}, data, userData, { orderData });
         const headersObject = this.parseDataToHeaders(preparedData);
         this.sendData(headersObject, errorNode);
@@ -28,11 +27,11 @@ const sendDataModule = {
             headersObject[name] = data[name];
         });
 		
-        headersObject["orderData[0][packageId]"] = data.orderData[0].packageId;
-        headersObject["orderData[0][lotteryId]"] = data.orderData[0].lotteryId;
-        headersObject["orderData[0][drawCount]"] = data.orderData[0].drawCount;
-        headersObject["orderData[0][isSubscription]"] = data.orderData[0].isSubscription;
-        headersObject["orderData[0][billingPeriod]"] = data.orderData[0].billingPeriod;
+        headersObject["orderData[0][packageId]"] = data.packageId;
+        headersObject["orderData[0][lotteryId]"] = data.lotteryId;
+        headersObject["orderData[0][drawCount]"] = 1;
+        headersObject["orderData[0][isSubscription]"] = 0;
+        headersObject["orderData[0][billingPeriod]"] = 0;
         headersObject["orderData[0][type]"] = data.orderData.length > 1 ? "Bundle" : "Single";
 
         data.orderData.forEach((item, index) => {
@@ -100,12 +99,7 @@ const sendDataModule = {
     },
 
     //Temporary Implementation
-    parseOrder: function(ticketsData, lottoId, packageID) {
-        const packageId = packageID,
-            lotteryId = lottoId,
-            drawCount = 1,
-            isSubscription = 0,
-            billingPeriod = 0;
+    parseOrder: function(ticketsData) {
         let orderData = [];
 
         ticketsData.forEach(pick => {
@@ -114,11 +108,6 @@ const sendDataModule = {
                 extra: pick.pickedBonus
             };
             orderData.push({
-                packageId,
-                lotteryId,
-                drawCount,
-                isSubscription,
-                billingPeriod,
                 picks
             });
         });
