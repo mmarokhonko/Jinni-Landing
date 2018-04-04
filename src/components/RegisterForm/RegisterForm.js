@@ -95,16 +95,13 @@ class RegisterForm extends Component {
   };
 
   fetchUserCountryCode = async () => {
-      let ipObject = await axios.get("https://api.ipify.org/?format=json");
-      const ip = ipObject.data.ip;
-      console.log(`USER IP: ${ip}`);
-      let countryObject = await axios.get(
-          `https://cors-anywhere.herokuapp.com/http://www.geoplugin.net/json.gp?ip=${ip}`
-      );
-      const userCountryCode = countryObject.data.geoplugin_countryCode;
+      let ipAndCountryObject = await axios.get("https://api.jinnilotto.com/affiliate/getCountry/response.json");
+      const ip = ipAndCountryObject.data.ip;
+	  console.log(`USER IP: ${ip}`);
+      const userCountryCode = ipAndCountryObject.data.countryCode;
       console.log(`COUNTRY CODE: ${userCountryCode}`);
       const countryCode =
-      userCountryCode && restrictedCountries.indexOf(userCountryCode) === -1
+      userCountryCode && restrictedCountries.indexOf(userCountryCode) === -1 && restrictedCountries !== "banned"
           ? userCountryCode
           : undefined;
       return { countryCode, ip };

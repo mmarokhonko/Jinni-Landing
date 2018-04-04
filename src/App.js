@@ -45,7 +45,10 @@ class App extends Component {
       axios.get("https://feed.jinnilotto.com/feed.json").then(response => {
           feedObject = response;
           this.selectLottoData(feedObject.data);
-      });
+      }).catch(error => {
+		  console.log("feed.json retrieving error")
+          console.log(error);
+	  });
   }
 
   selectLottoData = data => {
