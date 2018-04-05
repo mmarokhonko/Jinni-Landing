@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { func } from "prop-types";
+import { func, string } from "prop-types";
 import Media from "react-media";
 
 import InputWithIcon from "./generalComponents/InputWithIcon";
@@ -276,7 +276,8 @@ class RegisterForm extends Component {
   };
 
   render() {
-      const { step2, fields, errorObjects, userCountryCode } = this.state;
+	  const { step2, fields, errorObjects, userCountryCode } = this.state;
+	  const {offer} = this.props;
 
       if (!step2)
           return (
@@ -469,7 +470,7 @@ class RegisterForm extends Component {
                           </Media>
 
                           <button type="submit" className="btn-general btn-green form_submit-btn">
-                Claim free bet
+                              {offer.indexOf("freeticket") !== -1 ? "Claim free bet" : "Play Now"}
                           </button>
 						  {errorObjects.dateOfBirthError.active ? <p className="form_step2_bottom_error -shown">{errorObjects.dateOfBirthError.text}</p> : ""}						  
                           <p
@@ -494,12 +495,12 @@ class RegisterForm extends Component {
                           <p>
                 I certify that I am at least 18 years old, or the legal minimum age in my country of
                 residence. I accept that the customer funds protection rating is ‘Medium’ as
-                outlined in the
-                              <a rel="noopener noreferrer" target="_blank" href="http://jinnilotto.com/terms-conditions/">Terms and Conditions</a> which I
+                outlined in the 
+								&nbsp;<a rel="noopener noreferrer" target="_blank" href="http://jinnilotto.com/terms-conditions/">Terms and Conditions</a> which I
                 				accept, along with the
-                              <a rel="noopener noreferrer" target="_blank" href="https://jinnilotto.com/privacy-policy">Privacy Policy</a>. We believe in
+								&nbsp;<a rel="noopener noreferrer" target="_blank" href="https://jinnilotto.com/privacy-policy">Privacy Policy</a>. We believe in
                 				responsible gambling. You can set your deposit limit and preferences
-                              <a rel="noopener noreferrer" target="_blank" href="https://jinnilotto.com/responsible-gaming-policy">here</a>.
+								&nbsp;<a rel="noopener noreferrer" target="_blank" href="https://jinnilotto.com/responsible-gaming-policy">here</a>.
                           </p>
                       </div>
                   </form>
@@ -509,7 +510,8 @@ class RegisterForm extends Component {
 }
 
 RegisterForm.propTypes = {
-    submitHandler: func.isRequired
+	submitHandler: func.isRequired,
+	offer: string.isRequired
 };
 
 export default RegisterForm;

@@ -15,7 +15,7 @@ const lottoData = {
         ),
         desktop: timeRemains => (
             <p className="help_step_text">
-        megamillions draws are held twice a week. To find out if you’re a winner, check the results
+        MegaMillions draws are held twice a week. To find out if you’re a winner, check the results
         after the next draw in <span className="help_timer">{timeRemains}</span>
             </p>
         ),

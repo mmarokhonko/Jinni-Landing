@@ -3,35 +3,28 @@ import { number, object, array, bool, string } from "prop-types";
 
 import closeIcon from "../../assets/NumberPicker/icon/close.png";
 
-const MultiPickerMobile = props => {
-    const {
-        ticketModalToOpenFor,
-        pickerMethods,
-        pickerMobileMethods,
-        modalOpen,
-        numbersAmount,
-        bonusAmount,
-        maxNumber,
-        maxBonus,
-        ballsTheme,
-        done
-    } = props;
-
+const MultiPickerMobile = ({
+    ticketModalToOpenFor,
+    pickerMethods,
+    pickerMobileMethods,
+    modalOpen,
+    numbersAmount,
+    bonusAmount,
+    maxNumber,
+    maxBonus,
+    ballsTheme,
+    done}) => {
     return (
         <Fragment>
             <div className="frame picker-mob_frame">
                 <h4 className="frame_title">
-          Pick {numbersAmount} numbers from 1-{maxNumber}
+         		Pick {numbersAmount} numbers from 1-{maxNumber}
                     <br />& {bonusAmount} bonus number{bonusAmount > 1 ? "s" : ""} from 1-{maxBonus}
                 </h4>
-                <button
-                    className="btn-general btn-green picker_quick-btn"
-                    onClick={pickerMobileMethods.quickPickForAllMobile}
-                >
-          Quick Pick
-                </button>
+                <button className="btn-general btn-green picker_quick-btn" onClick={pickerMobileMethods.quickPickForAllMobile}> 
+				Quick Pick</button>
                 <div className="picker-mob_frame_bottom">
-          or{" "}
+          			or{" "}
                     <button
                         className="picker-mob_pick-btn"
                         onClick={() => pickerMobileMethods.openMobileModal()}
@@ -45,10 +38,10 @@ const MultiPickerMobile = props => {
                     <div className="picker-mob_modal_head">
                         <img src={closeIcon} alt="close modal" onClick={pickerMobileMethods.closeMobileModal} />
                         <p
-                            onClick={() => done ? pickerMobileMethods.closeMobileModal() : false}
+                            onClick={() => (done ? pickerMobileMethods.closeMobileModal() : false)}
                             className={done ? "picker-mob_modal_head_done" : ""}
                         >
-              			DONE
+              				DONE
                         </p>
                     </div>
                     <div className="picker-mob_modal_body">
@@ -74,7 +67,7 @@ const MultiPickerMobile = props => {
                                     className="btn-general btn-green picker_quick-btn"
                                     onClick={pickerMobileMethods.closeMobileModal}
                                 >
-                  Done
+                  				Done
                                 </button>
                             </div>
                         )}
@@ -95,7 +88,14 @@ const MultiPickerMobile = props => {
                                 </div>
                             </div>
                         </div>
-                        {done && <button onClick={pickerMobileMethods.closeMobileModal} className="picker-mob_modal_done-btn">DONE</button>}
+                        {done && (
+                            <button
+                                onClick={pickerMobileMethods.closeMobileModal}
+                                className="picker-mob_modal_done-btn"
+                            >
+                			DONE
+                            </button>
+                        )}
                     </div>
                 </div>
             )}

@@ -31,7 +31,7 @@ const isFieldError = (name, value) => {
         return !isLength(value, {min:8});
 
     case "phoneNumber":
-        return !isNumeric(value) || !isLength(value, {min:4, max:12});
+        return !isNumeric(value) || !isLength(value, {min:5, max:12});
 		   
     case "dateOfBirth": {
         const date = moment(value, "YYYY-MM-DD");

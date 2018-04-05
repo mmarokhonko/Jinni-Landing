@@ -1,8 +1,21 @@
 import React from "react";
 import {string, number, bool, func, object} from "prop-types";
 
-const MultiPickerDesktop = ({ticketsData, numberOfNotFree, pickerMethods, numbersAmount, 
-    bonusAmount, maxBonus, minBonus, maxNumber, minNumber, bonusName, ballsTheme, hasError, ballsWrapRef, price}) => {
+const MultiPickerDesktop = ({
+    ticketsData, 
+    numberOfNotFree, 
+    pickerMethods, 
+    numbersAmount, 
+    bonusAmount, 
+    maxBonus, 
+    minBonus, 
+    maxNumber, 
+    minNumber, 
+    bonusName, 
+    ballsTheme, 
+    hasError, 
+    ballsWrapRef, 
+    price}) => {
     return(
         <div className="frame multi-picker">
             <h4 className="frame_title">

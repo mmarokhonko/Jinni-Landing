@@ -3,9 +3,16 @@ import { number, object, array, bool, string, oneOfType } from "prop-types";
 
 import closeIcon from "../../assets/NumberPicker/icon/close.png";
 
-const NumberPickerMobile = props => {
-    const { pickerMethods, pickerMobileMethods, modalOpen, numbersAmount, bonusAmount, maxNumber, maxBonus, ballsTheme, done } = props;
-
+const NumberPickerMobile = ({ 
+    pickerMethods, 
+    pickerMobileMethods, 
+    modalOpen, 
+    numbersAmount, 
+    bonusAmount, 
+    maxNumber, 
+    maxBonus, 
+    ballsTheme, 
+    done }) => {
     return (
         <Fragment>
             <div className="frame picker-mob_frame">

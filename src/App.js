@@ -223,7 +223,7 @@ class App extends Component {
                           ) : (
                               <NumberPicker lotto={lottoName} ref={picker => (this.numberPicker = picker)} />
                           )}
-                          <RegisterForm submitHandler={this.passDataToSendingModule} />
+                          <RegisterForm offer={offer} submitHandler={this.passDataToSendingModule} />
                       </div>
                   </div>
               </main>

@@ -1,9 +1,14 @@
 import React from "react";
 import {number, object, array, string, bool, oneOfType} from "prop-types";
 
-const NumberPicker = (props) => {
-    const { pickedNums, pickedBonus, pickerMethods, numbersAmount, bonusAmount, bonusName, done } = props;
-	
+const NumberPicker = ({ 
+    pickedNums, 
+    pickedBonus, 
+    pickerMethods, 
+    numbersAmount, 
+    bonusAmount, 
+    bonusName, 
+    done }) => {	
     return (
         <div className="frame picker_frame-vert">
             <h4 className="frame_title">
