@@ -34,10 +34,18 @@ const sendDataModule = {
         headersObject["orderData[0][billingPeriod]"] = 0;
         headersObject["orderData[0][type]"] = data.orderData.length > 1 ? "Bundle" : "Single";
 
-        data.orderData.forEach((item, index) => {
-            headersObject[`orderData[0][picks][0][${index}][base]`] = `[${item.picks.base}]`;
-            headersObject[`orderData[0][picks][0][${index}][extra]`] = `[${item.picks.extra}]`;
-        });
+        if(data.orderData.length > 1 ) {
+            data.orderData.forEach((item, index) => {
+                headersObject[`orderData[0][picks][0][${index}][base]`] = `[${item.picks.base}]`;
+                headersObject[`orderData[0][picks][0][${index}][extra]`] = `[${item.picks.extra}]`;
+            });
+        }
+		
+        else {
+            const item = data.orderData[0];
+            headersObject["orderData[0][picks][base][]"] = `[${item.picks.base}]`;
+            headersObject["orderData[0][picks][extra][]"] = `[${item.picks.extra}]`;
+        }
 
         let formData = new FormData();
         Object.keys(headersObject).forEach(key => {
