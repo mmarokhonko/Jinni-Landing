@@ -1,6 +1,7 @@
 import axios from "axios";
 import currentDevice from "current-device";
 import { detect } from "detect-browser";
+import "formdata-polyfill";
 
 const sendDataModule = {
     prepareDataToSend: function(data, errorNode) {
@@ -56,8 +57,10 @@ const sendDataModule = {
     },
 
     sendData: function(data, errorNode) {
-        for (let pair of data.entries()) {
-            console.log(pair[0]+ ", " + pair[1]); 
+        if(data.entries) {
+            for (let pair of data.entries()) {
+                console.log(pair[0]+ ", " + pair[1]); 
+            }
         }
         axios({
             url: "https://api.jinnilotto.com/affiliate/welcome/response.json",

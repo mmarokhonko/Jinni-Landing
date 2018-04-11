@@ -95,13 +95,17 @@ class RegisterForm extends Component {
   };
 
   fetchUserCountryCode = async () => {
-      let ipAndCountryObject = await axios.get("https://api.jinnilotto.com/affiliate/getCountry/response.json");
+      let ipAndCountryObject = await axios.get(
+          "https://api.jinnilotto.com/affiliate/getCountry/response.json"
+      );
       const ip = ipAndCountryObject.data.ip;
-	  console.log(`USER IP: ${ip}`);
+      console.log(`USER IP: ${ip}`);
       const userCountryCode = ipAndCountryObject.data.countryCode;
       console.log(`COUNTRY CODE: ${userCountryCode}`);
       const countryCode =
-      userCountryCode && restrictedCountries.indexOf(userCountryCode) === -1 && restrictedCountries !== "banned"
+      userCountryCode &&
+      restrictedCountries.indexOf(userCountryCode) === -1 &&
+      restrictedCountries !== "banned"
           ? userCountryCode
           : undefined;
       return { countryCode, ip };
@@ -169,20 +173,19 @@ class RegisterForm extends Component {
 
       inputsArray.forEach(fieldName => {
           let isError = false;
-		  
+
           if (fieldName === "dateOfBirth") {
-			  console.log("Picked up date");
+              console.log("Picked up date");
               const dayOfBirth = fields.dayOfBirth.value,
                   monthOfBirth = fields.monthOfBirth.value,
-				  yearOfBirth = fields.yearOfBirth.value;
+                  yearOfBirth = fields.yearOfBirth.value;
 
               const birthDate = `${yearOfBirth}-${monthOfBirth}-${dayOfBirth}`;
-			
-			  isError = isFieldError("dateOfBirth", birthDate);
-		  }
-		  else {
-              isError = isFieldError(fieldName, fields[fieldName]);			
-		  }
+
+              isError = isFieldError("dateOfBirth", birthDate);
+          } else {
+              isError = isFieldError(fieldName, fields[fieldName]);
+          }
 
           if (isError) {
               errorObjects[`${fieldName}Error`].active = true;
@@ -203,19 +206,29 @@ class RegisterForm extends Component {
   };
 
   moveTo2ndStep = () => {
+	  const formFrame = this.formFrame;
       this.resetErrors(() => {
           this.validateFields(this.state.firstStepInputs, () => {
-              this.setState({
-                  step2: true
-              });
+              this.setState(
+                  {
+                      step2: true
+                  },
+                  () => {
+                      formFrame.scrollIntoView();
+                  }
+              );
           });
       });
   };
 
   moveTo1stStep = () => {
-      this.setState({
-          step2: false
-      });
+      const formFrame = this.formFrame;	  
+      this.setState(
+          {
+              step2: false
+          },
+          () => formFrame.scrollIntoView()
+      );
   };
 
   submitHandler = e => {
@@ -276,14 +289,14 @@ class RegisterForm extends Component {
   };
 
   render() {
-	  const { step2, fields, errorObjects, userCountryCode } = this.state;
-	  const {offer} = this.props;
+      const { step2, fields, errorObjects, userCountryCode } = this.state;
+      const { offer } = this.props;
 
       if (!step2)
           return (
-              <div className="frame form_frame-vert">
+              <div ref={frame => (this.formFrame = frame)} className="frame form_frame-vert">
                   <h4 className="frame_title">
-		  Register to place {offer.indexOf("freeticket") !== -1 ? <span>FREE</span> : ""} bet
+            Register to place {offer.indexOf("freeticket") !== -1 ? <span>FREE</span> : ""} bet
                   </h4>
                   <form className="form" autoComplete="false">
                       <div className="form_row">
@@ -360,7 +373,7 @@ class RegisterForm extends Component {
           );
       else
           return (
-              <div className="frame form_frame-vert">
+              <div  ref={frame => (this.formFrame = frame)} className="frame form_frame-vert">
                   <h4 className="frame_title">Register to place FREE bet</h4>
                   <form className="form" autoComplete="false" onSubmit={e => this.submitHandler(e)}>
                       <div className="form_row">
@@ -443,7 +456,7 @@ class RegisterForm extends Component {
                               />
                               <InputWithIcon
                                   inputHandler={this.inputHandler}
-                                  type="text"
+                                  type="tel"
                                   name="phoneNumber"
                                   icon="phone"
                                   placeholder="Phone"
@@ -472,7 +485,13 @@ class RegisterForm extends Component {
                           <button type="submit" className="btn-general btn-green form_submit-btn">
                               {offer.indexOf("freeticket") !== -1 ? "Claim free bet" : "Play Now"}
                           </button>
-						  {errorObjects.dateOfBirthError.active ? <p className="form_step2_bottom_error -shown">{errorObjects.dateOfBirthError.text}</p> : ""}						  
+                          {errorObjects.dateOfBirthError.active ? (
+                              <p className="form_step2_bottom_error -shown">
+                                  {errorObjects.dateOfBirthError.text}
+                              </p>
+                          ) : (
+                              ""
+                          )}
                           <p
                               className={`form_step2_bottom_error ${
                                   errorObjects.termsAgreedError.active ? "-shown" : ""
@@ -495,12 +514,27 @@ class RegisterForm extends Component {
                           <p>
                 I certify that I am at least 18 years old, or the legal minimum age in my country of
                 residence. I accept that the customer funds protection rating is ‘Medium’ as
-                outlined in the 
-								&nbsp;<a rel="noopener noreferrer" target="_blank" href="http://jinnilotto.com/terms-conditions/">Terms and Conditions</a> which I
-                				accept, along with the
-								&nbsp;<a rel="noopener noreferrer" target="_blank" href="https://jinnilotto.com/privacy-policy">Privacy Policy</a>. We believe in
-                				responsible gambling. You can set your deposit limit and preferences
-								&nbsp;<a rel="noopener noreferrer" target="_blank" href="https://jinnilotto.com/responsible-gaming-policy">here</a>.
+                outlined in the &nbsp;<a
+                                  rel="noopener noreferrer"
+                                  target="_blank"
+                                  href="http://jinnilotto.com/terms-conditions/"
+                              >
+                  Terms and Conditions
+                              </a>{" "}
+                which I accept, along with the &nbsp;<a
+                                  rel="noopener noreferrer"
+                                  target="_blank"
+                                  href="https://jinnilotto.com/privacy-policy"
+                              >
+                  Privacy Policy
+                              </a>. We believe in responsible gambling. You can set your deposit limit and
+                preferences &nbsp;<a
+                                  rel="noopener noreferrer"
+                                  target="_blank"
+                                  href="https://jinnilotto.com/responsible-gaming-policy"
+                              >
+                  here
+                              </a>.
                           </p>
                       </div>
                   </form>
@@ -510,8 +544,8 @@ class RegisterForm extends Component {
 }
 
 RegisterForm.propTypes = {
-	submitHandler: func.isRequired,
-	offer: string.isRequired
+    submitHandler: func.isRequired,
+    offer: string.isRequired
 };
 
 export default RegisterForm;
