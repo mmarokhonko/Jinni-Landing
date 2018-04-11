@@ -283,7 +283,7 @@ class RegisterForm extends Component {
           return (
               <div className="frame form_frame-vert">
                   <h4 className="frame_title">
-            Register to place <span>FREE</span> bet
+		  Register to place {offer.indexOf("freeticket") !== -1 ? <span>FREE</span> : ""} bet
                   </h4>
                   <form className="form" autoComplete="false">
                       <div className="form_row">

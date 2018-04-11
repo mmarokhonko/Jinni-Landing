@@ -15,8 +15,11 @@
 .header_people {
   position: absolute;
   top: 0;
-  right: 9%;
+  right: 0;
   height: 287px;
+  @media(max-width: 1450px) {
+	  display: none;
+  }
 }
 
 .header_title {

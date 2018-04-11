@@ -123,11 +123,6 @@ h5 {
   span {
     font-weight: 600;
   }
-  @media (min-width: 768px) {
-    span {
-      margin: 0 5px 0 10px;
-    }
-  }
   @media (max-width: 768px) {
     margin-left: -15px;
     margin-right: -15px;
