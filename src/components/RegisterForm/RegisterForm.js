@@ -374,7 +374,9 @@ class RegisterForm extends Component {
       else
           return (
               <div  ref={frame => (this.formFrame = frame)} className="frame form_frame-vert">
-                  <h4 className="frame_title">Register to place FREE bet</h4>
+                  <h4 className="frame_title">
+				  Register to place {offer.indexOf("freeticket") !== -1 ? <span>FREE</span> : ""} bet
+				  </h4>
                   <form className="form" autoComplete="false" onSubmit={e => this.submitHandler(e)}>
                       <div className="form_row">
                           <h5 className="form_row_title">Country</h5>
