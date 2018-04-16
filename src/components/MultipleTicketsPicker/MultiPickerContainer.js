@@ -82,8 +82,6 @@ class MultipleTicketsPickerContainer extends Component {
               <input
                   key={`ticket-${ticketIndex}-num-${x}`}
                   type="text"
-                  max="70"
-                  min="1"
                   className={`multi-picker_ticket_input -num ${value && "-filled"}`}
                   value={value ? value : ""}
                   onChange={e => this.onNumberChange(e, ticketIndex, x - 1)}
@@ -106,8 +104,6 @@ class MultipleTicketsPickerContainer extends Component {
               <input
                   key={`ticket-${ticketIndex}-num-${x}`}
                   type="text"
-                  max="70"
-                  min="1"
                   className={`multi-picker_ticket_input -bonus ${value && "-filled"}`}
                   value={value ? value : ""}
                   onChange={e => this.onBonusChange(e, ticketIndex, x - 1)}

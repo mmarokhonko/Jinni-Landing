@@ -39,6 +39,9 @@ module.exports = env => {
             filename: "main.js",
             publicPath: env.NODE_ENV === "production" ? productionVars.publicPath : ""
         },
+        node: {
+            fs: "empty"
+        },
         module: {
             rules: [
                 {

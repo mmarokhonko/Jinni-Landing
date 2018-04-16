@@ -1,0 +1,240 @@
+{
+  "AppText": {
+	  "notFilledTicketsError": "Whoops! You’ve forgotten the most important part – filling up your bonus tickets",
+	  "freeticketMainTitle": "Get your <u>FREE</u> bet line here:",
+	  "dataNotLoaded": "Data not loaded yet",
+	  "emailError": "The email address you have chosen is already in use. Try logging in with it. If you can't remember your password, just request a reset.",
+	  "generalRegError": "Whoops, an error occurred during registration. Please try again so we can start making your wishes come true."
+  },
+  "headerDesktopText": {
+    "freeticketTitle": "Play the next {{lotteryLogo}} draw for <span>FREE</span>",
+    "notfreeTitle":
+      "Get {{numberOfTickets}} {{lotteryLogo}} bet lines for the price of {{numberOfNotFree}}"
+  },
+  "headerMobileText": {
+    "freeticketTitle": "Play the next draw for <span>FREE</span>",
+    "notfreeTitle":
+      "Get <span>{{numberOfTickets}}</span> bet lines for the price of <span>{{numberOfNotFree}}</span> !",
+    "freeLabel": "FREE"
+  },
+  "helpSectionText": {
+    "title": "How to play {{lotteryName}}",
+    "firstStepTitle": "Pick your lucky numbers",
+    "firstStepText": {
+      "megamillions":
+        "Select {{numbersAmount}} numbers from 1-{{maxNumber}} <br className='hide-big' />+ {{bonusAmount}} {{bonusName}} from 1-{{maxBonus}}. <br className='hide-big' />Or we can randomly choose for you when you click <br className='hide-big' /> “Quick Pick”",
+      "euromillions":
+        "Select {{numbersAmount}} numbers + {{bonusAmount}} {{bonusName}} or simply <br className='hide-sm' /> click 'Quick Pick' for a random selection",
+      "eurojackpot":
+        "Choose {{numbersAmount}} numbers between 1 and {{maxNumber}} and {{bonusAmount}} {{bonusName}} between 1 and {{bonusAmount}} or simply click 'Quick Pick' for a random selection",
+      "powerball":
+        "Choose {{numbersAmount}} numbers between 1 and {{maxNumber}} and a Bonus or click 'Quick Pick' for a random selection",
+      "6aus49":
+        "Select {{numbersAmount}} lucky numbers + a {{bonusName}} or click 'Quick Pick' for a random selection"
+    },
+    "secondStep": {
+      "freeticket": {
+        "title": "Get your bet line for free",
+        "text": {
+          "desktop":
+            "Fill out the short form and then click 'Claim<br className='hide-sm' />Free Bet' to secure your bet line for free",
+          "mobile":
+            "To place your bet for free, just fill <br className='hide-sm' />out the short form and click <br className='hide-sm' /> “Claim Free Bet”"
+        }
+      },
+      "notfree": {
+        "title": "Get {{numberOfFreeLines}} free bet lines",
+        "text":
+          "Submit the form to place {{numberOfTickets}} bet lines<br className='hide-sm' />for the price of {{numberOfNotFree}}"
+      }
+    },
+    "thirdStep": {
+      "title": "Collect your winnings",
+      "text": {
+        "megamillions": {
+          "desktop":
+            "MegaMillions draws are held twice a week. To find out if you’re a winner, check the results after the next draw in <span className='help_timer'>{{timeRemains}}</span>",
+          "mobile":
+            "Wait for the upcoming draw that <br /> will take place in: <br /><span className='help_timer'>{{timeRemains}}</span> <br />to see how much you won"
+        },
+        "euromillions": {
+          "desktop":
+            "There are two EuroMillions draws every week. Be sure to check the results Follow the results of the next Euromillions draw on <span className='help_timer'>{{timeRemains}}</span> to find out if you’re a winner",
+          "mobile":
+            "There are two EuroMillions draws every week. Be sure to check the results Follow the results of the next Euromillions draw on <span className='help_timer'>{{timeRemains}}</span> to find out if you’re a winner"
+        },
+        "eurojackpot": {
+          "desktop":
+            "Follow the results of the next EuroJackpot <br/> draw on <span className='help_timer'>{{timeRemains}}</span> to find out if you’re <br/> a winner",
+          "mobile":
+            "Follow the results of the next <br/> EuroJackpot draw on<br/> <span className='help_timer'>{{timeRemains}}</span><br/>to find out if you’re a winner"
+        },
+        "powerball": {
+          "desktop":
+            "Wait for the next Powerball on <br/> <span className='help_timer'>{{timeRemains}}</span> to see if you’re a winner",
+          "mobile":
+            "Wait for the upcoming draw that will take place in <br/> <span className='help_timer'>{{timeRemains}}</span><br/> to see how much you won"
+        },
+        "6asu49": {
+          "desktop":
+            "Don't miss the next of two weekly draws on <br/> <span className='help_timer'>{{timeRemains}}</span> to see if you’re a winner",
+          "mobile":
+            "Wait for the upcoming draw that will take place in <br/> <span className='help_timer'>{{timeRemains}}</span><br/> to see how much you won"
+        }
+      }
+    }
+  },
+  "pickerData": {
+    "megamillions": {
+      "bonusName": "Bonus Number",
+      "pluralBonusName": "Bonus Numbers"
+    },
+    "euromillions": {
+      "bonusName": "Lucky Star",
+      "pluralBonusName": "Lucky Stars"
+    },
+    "eurojackpot": {
+      "bonusName": "Euro Ball",
+      "pluralBonusName": "Euro Balls"
+    },
+    "powerball": {
+      "bonusName": "bonus number",
+      "pluralBonusName": "bonus numbers"
+    },
+    "6aus49": {
+      "bonusName": "Superball",
+      "pluralBonusName": "Superballs"
+    }
+  },
+  "singlePickerText": {
+    "general": {
+      "numbersHeader": {
+        "oneNumber": "Select 1 number",
+        "multipleNumbers": "Select {{diff}} numbers",
+        "completed": "Line completed"
+      },
+      "bonusHeader": {
+        "oneBonus": "Select 1 {{bonusName}}!",
+        "multipleBonuses": "Select {{diff}} {{bonusName}}!",
+        "completed": "All done here!"
+      }
+    },
+    "desktop": {
+      "title": "Pick {{numbersAmount}} numbers <br />& {{bonusAmount}} {{bonusName}}",
+      "quickPickBtn": "Quick Pick"
+    },
+    "mobile": {
+      "frameTitle":
+        "Pick {{numbersAmount}} numbers from {{minNumber}}-{{maxNumber}}<br />& {{bonusAmount}} {{bonusName} from {{minBonus}}-{{maxBonus}}",
+      "or": "or",
+      "done": "Done",
+      "pickNumbersBtn": "pick numbers",
+      "headerCompleted": "All good here"
+    }
+  },
+  "multiPickerText": {
+    "title":
+      "Pick {{numbersAmount}} numbers from {{minNumber}}-{{maxNumber}} and <br/>{{bonusAmount}} {{bonusName} from {{minBonus}}-{{maxBonus}}",
+    "quickPickBtn": "Quick pick",
+    "freeLabel": "FREE",
+    "errorText":
+      "Oops! Looks like at least one of you numbers is not valid or a double! Please, choose another number.",
+    "or": "or",
+    "pickNumbersBtn": "pick numbers",
+    "done": "Done",
+    "modalTitle": "Pick {{numbersAmount}} numbers <br />& {{bonusAmount}} {{bonusName}}",
+    "modalTitleCompleted": "All good here"
+  },
+  "formText": {
+    "title": "Register to place {{free}} bet",
+    "rowTitles": {
+      "name": "Title and Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "password": "Password",
+      "country": "Country",
+      "cityCode": "City and Code",
+      "street": "Street",
+      "dateOfBirth": "Date of Birth",
+      "number": "Phone Number"
+    },
+    "placeholders": {
+      "name": "Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "password": "Password",
+      "city": "City",
+      "code": "Code",
+      "street": "Address",
+      "number": "Phone"
+    },
+    "goodLuck": "Good Luck!",
+    "buttons": {
+      "next": "Next",
+      "back": "back",
+      "freeticketSubmit": "Claim free bet",
+      "notfreeSubmit": "Play Now"
+    },
+    "terms":
+      "<p>I certify that I am at least 18 years old, or the legal minimum age in my country of residence. I accept that the customer funds protection rating is ‘Medium’ as outlined in the &nbsp;<a rel='noopener noreferrer' target='_blank' href='http://jinnilotto.com/terms-conditions/'>Terms and Conditions</a> which I accept, along with the &nbsp;<a rel='noopener noreferrer' target='_blank' href='https://jinnilotto.com/privacy-policy'>Privacy Policy</a>. We believe in responsible gambling. You can set your deposit limit and preferences &nbsp;<a rel='noopener noreferrer' target='_blank' href='https://jinnilotto.com/responsible-gaming-policy'>here</a>.</p>",
+    "errors": {
+      "firstName":
+        "First name must contain a minimum of 2 and a maximum of 24 characters. It must also not contain any numbers or special characters",
+      "lastName":
+        "Last name must contain a minimum of 2 and a maximum of 24 characters. It must also not contain any numbers or special characters",
+      "emailError": "Hmmm, this doesn't look like a valid email. Please double check.",
+      "passwordError": "For your security your password must have at least 8 characters",
+      "generalError": "Sorry, this field is not valid",
+      "termsAgreedError":
+        "Sorry, we know you're in a hurry to play but you have to accept our terms and conditions to register",
+      "dateOfBirthError":
+        "Your date of birth does not match our \"over the age of 18\" requirement. This is one wish that Jinni the Genie can't grant you."
+    },
+    "selectTitle": {
+      "Mr": "Mr.",
+      "Mrs": "Mrs.",
+      "Ms": "Ms."
+    },
+    "dateOfBirth": {
+      "months": [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "June",
+        "July",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+      ]
+    }
+  },
+  "factSectionText": {
+    "title": "Did you know?",
+    "facts": {
+      "megamillions": ["The largest MegaMillions jackpot was a life-changing $656 million."],
+      "euromillions": [
+        "In 2014, Castelo Branco won the maximum EuroMillions jackpot of €190 million."
+      ],
+      "eurojackpot": [
+        "EuroJackpot has 12 prize tiers and players are twice as likely to win compared to EuroMillions."
+      ],
+      "powerball": [
+        "Over half of all Powerball jackpots since 2012 exceed $100 million. Powerball doesn’t do small."
+      ],
+      "6aus49": ["6aus49 gives away over €5 billion in prizes every single year."]
+    }
+  },
+  "footerText": {
+    "title": "Terms & Conditions",
+    "textHtml": [
+      "<p>Jinni Lotto is operated by Jinni Tech Limited, a company registered in the Isle of Man with registered number 014940V and registered address <br class='hide-sm'> at P.O Box 227 Clinch's House Lord Street Douglas Isle of Man IM99 1RZ.</p>",
+      "<p>Jinni Tech Ltd is licensed and regulated by the Isle of Man Gambling Supervision Commission under a licence issued under the Online Gambling Regulation Act 2001<br class='hide-sm'> on [date and year]. jinnilotto.com domain and copyrights are owned by Jinni Tech Limited.</p>",
+      "<p>Please note, this license is not applicable to players residing in the UK. Jinni Tech Ltd does not operate a lottery. Members place bets on the outcome of national lotteries. Official lottery tickets and insurance are purchased based on the bets placed so that all winnings are equal to the cash option of national lottery winnings.</p>",
+      "<p>Copyright © 2017, Jinni Tech Ltd. All rights reserved. The National Lottery and Lotto are trademarks of the National Lottery Commission. EuroMillions is the trademark of Services aux Loteries en Europe. Jinni Tech Limited is not connected to or affiliated with any body or organisation related to the National Lottery or any other lottery.</p>"
+    ]
+  }
+}
