@@ -330,7 +330,7 @@ class MultipleTicketsPickerContainer extends Component {
   };
 
   render() {
-	  const {numbersAmount, bonusAmount, maxBonus, minBonus, maxNumber, minNumber, bonusName, ballsTheme, price } = this.state.pickerLottoData;
+	  const {numbersAmount, bonusAmount, maxBonus, minBonus, maxNumber, minNumber, bonusName, pluralBonusName, ballsTheme, price } = this.state.pickerLottoData;
 	  const {ticketModalToOpenFor, hasError, numberOfNotFree, isMobileModalOpen} = this.state;
       const { ticketsData } = this.props.pickerStore;
       const { pickedNums, pickedBonus } = this.props.pickerStore.ticketsData[ticketModalToOpenFor];
@@ -351,7 +351,8 @@ class MultipleTicketsPickerContainer extends Component {
                           maxNumber={maxNumber}
                           maxBonus={maxBonus}
                           minNumber={minNumber}
-                          bonusName={bonusName}
+						  bonusName={bonusName}
+						  pluralBonusName={pluralBonusName}
 						  ballsTheme={ballsTheme}
 						  price={price}
                           hasError={hasError}
@@ -365,7 +366,11 @@ class MultipleTicketsPickerContainer extends Component {
                           numbersAmount={numbersAmount}
                           bonusAmount={bonusAmount}
                           maxNumber={maxNumber}
-                          maxBonus={maxBonus}
+						  maxBonus={maxBonus}
+						  minBonus={minBonus}
+						  minNumber={minNumber}
+						  bonusName={bonusName}
+						  pluralBonusName={pluralBonusName}
                           ballsTheme={ballsTheme}
                           modalOpen={isMobileModalOpen}
                           ticketModalToOpenFor={ticketModalToOpenFor}

@@ -125,7 +125,7 @@
     },
     "mobile": {
       "frameTitle":
-        "Wähle {{numbersAmount}} Zahlen von {{minNumber}}-{{maxNumber}}<br />& {{bonusAmount}} {{bonusName} von {{minBonus}}-{{maxBonus}}",
+        "Wähle {{numbersAmount}} Zahlen von {{minNumber}}-{{maxNumber}}<br />& {{bonusAmount}} {{bonusName}} von {{minBonus}}-{{maxBonus}}",
       "or": "oder",
       "done": "Erledigt",
       "pickNumbersBtn": "Zahlen auswählen",
@@ -134,7 +134,7 @@
   },
   "multiPickerText": {
     "title":
-      "Wähle {{numbersAmount}} Zahlen von {{minNumber}}-{{maxNumber}} und <br/>{{bonusAmount}} {{bonusName} von {{minBonus}}-{{maxBonus}}",
+      "Wähle {{numbersAmount}} Zahlen von {{minNumber}}-{{maxNumber}} und <br/>{{bonusAmount}} {{bonusName}} von {{minBonus}}-{{maxBonus}}",
     "quickPickBtn": "Quicktipps",
     "freeLabel": "GRATIS",
     "errorText":

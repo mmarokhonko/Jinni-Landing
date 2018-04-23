@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { number, object, array, bool, string } from "prop-types";
+import {translate} from "react-i18next";
 
 import closeIcon from "../../assets/NumberPicker/icon/close.png";
 
@@ -11,25 +12,29 @@ const MultiPickerMobile = ({
     numbersAmount,
     bonusAmount,
     maxNumber,
+    minNumber,
     maxBonus,
+    minBonus,
     ballsTheme,
-    done}) => {
+    bonusName,
+    pluralBonusName,
+    done,
+    t}) => {
     return (
         <Fragment>
             <div className="frame picker-mob_frame">
-                <h4 className="frame_title">
-         		Pick {numbersAmount} numbers from 1-{maxNumber}
-                    <br />& {bonusAmount} bonus number{bonusAmount > 1 ? "s" : ""} from 1-{maxBonus}
+                <h4 className="frame_title" dangerouslySetInnerHTML={{__html: t("title", 
+                    {numbersAmount, minNumber, maxNumber, bonusAmount, bonusName: bonusAmount <= 1 ? bonusName : pluralBonusName, minBonus, maxBonus})}}> 
                 </h4>
                 <button className="btn-general btn-green picker_quick-btn" onClick={pickerMobileMethods.quickPickForAllMobile}> 
-				Quick Pick</button>
+                    {t("quickPickBtn")}</button>
                 <div className="picker-mob_frame_bottom">
-          			or{" "}
+                    {t("or")}{" "}
                     <button
                         className="picker-mob_pick-btn"
                         onClick={() => pickerMobileMethods.openMobileModal()}
                     >
-            pick numbers
+                        {t("pickNumbersBtn")}
                     </button>
                 </div>
             </div>
@@ -41,33 +46,31 @@ const MultiPickerMobile = ({
                             onClick={() => (done ? pickerMobileMethods.closeMobileModal() : false)}
                             className={done ? "picker-mob_modal_head_done" : ""}
                         >
-              				DONE
+              				{t("done")}
                         </p>
                     </div>
                     <div className="picker-mob_modal_body">
                         {!done ? (
                             <div className="picker-mob_head">
-                                <h4 className="picker-mob_head_title">
-                  				Pick {numbersAmount} numbers <br />& {bonusAmount} bonus number{bonusAmount > 1
-                                        ? "s"
-                                        : ""}
+                                <h4 className="picker-mob_head_title" dangerouslySetInnerHTML={{__html: t("title", 
+                                    {numbersAmount, bonusAmount, bonusName: bonusAmount <= 1 ? bonusName : pluralBonusName,})}}>
                                 </h4>
-                                <p className="picker-mob_head_pale-text">or</p>
+                                <p className="picker-mob_head_pale-text">{t("or")}</p>
                                 <button
                                     className="btn-general btn-green picker_quick-btn"
                                     onClick={() => pickerMethods.quickPick(ticketModalToOpenFor)}
                                 >
-                  				Quick Pick
+                  				{t("quickPickBtn")}
                                 </button>
                             </div>
                         ) : (
                             <div className="picker-mob_head">
-                                <h4 className="picker-mob_head_title">All good here</h4>
+                                <h4 className="picker-mob_head_title">{t("modalTitleCompleted")}</h4>
                                 <button
                                     className="btn-general btn-green picker_quick-btn"
                                     onClick={pickerMobileMethods.closeMobileModal}
                                 >
-                  				Done
+                  				{t("done")}
                                 </button>
                             </div>
                         )}
@@ -93,7 +96,7 @@ const MultiPickerMobile = ({
                                 onClick={pickerMobileMethods.closeMobileModal}
                                 className="picker-mob_modal_done-btn"
                             >
-                			DONE
+                			{t("done")}
                             </button>
                         )}
                     </div>
@@ -118,4 +121,4 @@ MultiPickerMobile.propTypes = {
     ticketModalToOpenFor: number.isRequired
 };
 
-export default MultiPickerMobile;
+export default translate("multiPickerText")(MultiPickerMobile);

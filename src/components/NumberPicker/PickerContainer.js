@@ -3,6 +3,7 @@ import shallowEqualArrays from "shallow-equal/arrays";
 import { string, object } from "prop-types";
 import Media from "react-media";
 import noScroll from "no-scroll";
+import {translate} from "react-i18next";
 
 import pickerLottoData from "./pickerLottoData";
 import NumberPicker from "./NumberPicker";
@@ -53,16 +54,17 @@ class PickerContainer extends Component {
 
   genNumbersHeader = () => {
 	  const {numbersAmount} = this.state.pickerLottoData;
+	  const {t} = this.props;
 	  const {pickedNums} = this.props.pickerStore.ticketsData[0];
 
       if (pickedNums.length === numbersAmount) {
-          return "Line completed";
+          return t("general.numbersHeader.completed");
       } else {
           const diff = numbersAmount - pickedNums.length;
           if (diff === 1) {
-              return "Select 1 number";
+              return t("general.numbersHeader.oneNumber");
           }
-          return `Select ${diff} numbers`;
+          return t("general.numbersHeader.oneNumber", {diff});
       }
   };
 
@@ -89,17 +91,18 @@ class PickerContainer extends Component {
   };
 
   genBonusHeader = () => {
-	  const {bonusAmount, bonusName} = this.state.pickerLottoData;
-	  const {pickedBonus} = this.props.pickerStore.ticketsData[0];	  
+	  const {bonusAmount, bonusName, pluralBonusName} = this.state.pickerLottoData;
+	  const {pickedBonus} = this.props.pickerStore.ticketsData[0];	
+	  const {t} = this.props;	    
 	  
       if (pickedBonus.length === bonusAmount) {
-          return "All done here!";
+          return t("general.bonusHeader.completed");
       } else {
           const diff = bonusAmount - pickedBonus.length;
           if (diff === 1) {
-              return `Select 1 ${bonusName}!`;
+              return t("general.bonusHeader.oneBonus", {bonusName});
           }
-          return `Select ${diff} ${bonusName}s!`;
+          return t("general.bonusHeader.multipleBonuses", {diff, bonusName: pluralBonusName});
       }	
   };
 
@@ -224,7 +227,7 @@ class PickerContainer extends Component {
   }
 
   render() {
-	  const { numbersAmount, bonusAmount, bonusName, maxBonus, maxNumber, ballsTheme} = this.state.pickerLottoData;
+	  const { numbersAmount, bonusAmount, bonusName, pluralBonusName, maxBonus, minBonus, maxNumber, ballsTheme} = this.state.pickerLottoData;
 	  const {pickedNums, pickedBonus} = this.props.pickerStore.ticketsData[0];
 
       const isDone = pickedNums.length === numbersAmount && pickedBonus.length === bonusAmount;
@@ -240,6 +243,7 @@ class PickerContainer extends Component {
 						  numbersAmount={numbersAmount}
 						  bonusAmount={bonusAmount}
 						  bonusName={bonusName}
+						  pluralBonusName={pluralBonusName}
 						  done={isDone}
 						  numberOfTickets={4}
                       />
@@ -253,6 +257,9 @@ class PickerContainer extends Component {
 						  bonusAmount={bonusAmount}
 						  maxNumber={maxNumber}						  						  
 						  maxBonus={maxBonus}
+						  minBonus={minBonus}
+						  bonusName={bonusName}
+						  pluralBonusName={pluralBonusName}
 						  ballsTheme={ballsTheme}
 						  modalOpen={this.state.isMobileModalOpen}
 						  done={isDone}						  
@@ -269,4 +276,4 @@ PickerContainer.propTypes = {
     pickerStore: object.isRequired
 };
 
-export default mobXConnect("pickerStore")(PickerContainer);
+export default translate("singlePickerText")(mobXConnect("pickerStore")(PickerContainer));

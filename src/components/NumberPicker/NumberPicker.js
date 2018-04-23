@@ -1,24 +1,26 @@
 import React from "react";
 import {number, object, array, string, bool, oneOfType} from "prop-types";
+import {translate} from "react-i18next";
 
-const NumberPicker = ({ 
-    pickedNums, 
-    pickedBonus, 
+const NumberPicker = ({  
     pickerMethods, 
     numbersAmount, 
     bonusAmount, 
-    bonusName, 
+    bonusName,
+    pluralBonusName,
+    t, 
     done }) => {	
     return (
         <div className="frame picker_frame-vert">
-            <h4 className="frame_title">
-          Pick {numbersAmount} numbers <br />& {bonusAmount} {bonusName}{bonusAmount > 1 ? "s" : ""}
+            <h4 className="frame_title" dangerouslySetInnerHTML={{__html: t("desktop.title", {
+                numbersAmount, bonusAmount, bonusName: bonusAmount <= 1 ? bonusName : pluralBonusName
+            })}}>
             </h4>
             <div className="picker">
                 <div className="picker_head">
                     {!done ? (
                         <button className="btn-general btn-green picker_quick-btn" onClick={pickerMethods.quickPick}>
-                Quick Pick
+                            {t("desktop.quickPickBtn")}
                         </button>
                     ) : (
                         <div className="picker_done" />
@@ -48,4 +50,4 @@ NumberPicker.propTypes = {
     done: bool
 }
 
-export default NumberPicker;
+export default translate("singlePickerText")(NumberPicker);

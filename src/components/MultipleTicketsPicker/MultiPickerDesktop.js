@@ -1,5 +1,6 @@
 import React from "react";
 import {string, number, bool, func, object} from "prop-types";
+import {translate} from "react-i18next";
 
 const MultiPickerDesktop = ({
     ticketsData, 
@@ -11,16 +12,18 @@ const MultiPickerDesktop = ({
     minBonus, 
     maxNumber, 
     minNumber, 
-    bonusName, 
+    bonusName,
+    pluralBonusName, 
     ballsTheme, 
     hasError, 
     ballsWrapRef, 
-    price}) => {
+    price,
+    t}) => {
+		console.log(pluralBonusName);
     return(
         <div className="frame multi-picker">
-            <h4 className="frame_title">
-			Pick {numbersAmount} numbers from {minNumber}-{maxNumber} and <br/>
-                {bonusAmount} {bonusAmount === 1 ? bonusName : `${bonusName}s`} from {minBonus}-{maxBonus}
+            <h4 className="frame_title" dangerouslySetInnerHTML={{__html: t("title", 
+                {numbersAmount, minNumber, maxNumber, bonusAmount, bonusName: bonusAmount <= 1 ? bonusName : pluralBonusName, minBonus, maxBonus})}}> 
             </h4>
             <div className="multi-picker_subwrap" ref={ballsWrapRef}>
                 {ticketsData.map((ticket, index) => {
@@ -28,7 +31,7 @@ const MultiPickerDesktop = ({
                         <button 
                             className="btn-general btn-green multi-picker_ticket_quick-btn"
                             onClick={() => pickerMethods.quickPick(index)}
-                        >Quick pick</button>
+                        >{t("quickPickBtn")}</button>
                         <div className={`multi-picker_ticket_subwrap -theme_${ballsTheme}`}>
                             {pickerMethods.generateNumbers(index)}
                             {pickerMethods.generateBonuses(index)}
@@ -39,14 +42,14 @@ const MultiPickerDesktop = ({
                             </div>
                         ) : (
                             <div className="multi-picker_ticket_price_wrap">
-                                <p className="multi-picker_ticket_price">FREE</p>
+                                <p className="multi-picker_ticket_price">{t("freeLabel")}</p>
                             </div>
                         )}
                     </div>)
                 })}
             </div>
             {hasError && <p className="multi-picker_error-text">
-			Oops! Looks like at least one of you numbers is not valid or a double! Please, choose another number.</p>}
+                {t("errorText")}</p>}
         </div>
     )
 }
@@ -68,4 +71,4 @@ MultiPickerDesktop.propTypes = {
     ballsWrapRef: func.isRequired
 }
 
-export default MultiPickerDesktop;
+export default translate("multiPickerText")(MultiPickerDesktop);

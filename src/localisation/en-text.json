@@ -134,7 +134,7 @@
   },
   "multiPickerText": {
     "title":
-      "Pick {{numbersAmount}} numbers from {{minNumber}}-{{maxNumber}} and <br/>{{bonusAmount}} {{bonusName} from {{minBonus}}-{{maxBonus}}",
+      "Pick {{numbersAmount}} numbers from {{minNumber}}-{{maxNumber}} and <br/>{{bonusAmount}} {{bonusName}} from {{minBonus}}-{{maxBonus}}",
     "quickPickBtn": "Quick pick",
     "freeLabel": "FREE",
     "errorText":
