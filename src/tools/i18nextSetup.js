@@ -1,13 +1,14 @@
 import i18n from "i18next";
 import enText from "../localisation/en-text.json";
 import deText from "../localisation/de-text.json";
+
 i18n.init({
     fallbackLng: "en",
     lng: "en",
-    keySeparator: false,
+	keySeparator: false,
     interpolation: {
         formatSeparator: ","
-	  },
+	},
     resources: {
         en: {
             AppText: enText.AppText,

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { mobXConnect } from "../../tools/toolFunctions";
+import {translate, Trans} from "react-i18next";
 
 import allLottoData from "./headerLottoData";
 
@@ -48,11 +49,15 @@ class DynamicHeader extends Component {
               <div className="cont-zone">
 			  {numberOfNotFree === 0 ? (
 				  <h2 className="header_title -with-logo">
-				  Play the next <img src={lottoData.logo} alt={lotto} /> draw for <span>FREE</span>
+				  <Trans i18nKey="freeticketTitle" lotteryLogo={<img src={lottoData.logo} alt={lotto} />}>
+				  	Play the next <img src={lottoData.logo} alt={lotto} /> draw for <span>FREE</span>
+				  </Trans>
                       </h2>
 			  )  : (
                       <h2 className="header_title -with-logo">
-				Get {ticketsData.length} <img src={lottoData.logo} alt={lotto} /> bet lines for the price of {numberOfNotFree}
+                          <Trans i18nKey="notfreeTitle" numberOfTickets={ticketsData.length} lotteryLogo={<img src={lottoData.logo} alt={lotto} />} numberOfNotFree={numberOfNotFree}>					  
+							Get {ticketsData.length} <img src={lottoData.logo} alt={lotto} /> bet lines for the price of {numberOfNotFree}
+                          </Trans>
 					  </h2>
 			  )}
                   <div
@@ -68,8 +73,8 @@ class DynamicHeader extends Component {
 DynamicHeader.propTypes = {
     lotto: PropTypes.string.isRequired,
     jackpot: PropTypes.string.isRequired,
-	pickerStore: PropTypes.object.isRequired,
-	numberOfNotFree: PropTypes.number.isRequired
+    pickerStore: PropTypes.object.isRequired,
+    numberOfNotFree: PropTypes.number.isRequired
 };
 
-export default mobXConnect("pickerStore")(DynamicHeader);
+export default translate("headerDesktopText")(mobXConnect("pickerStore")(DynamicHeader));

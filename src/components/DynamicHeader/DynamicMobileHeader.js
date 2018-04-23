@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {string, func, object, number} from "prop-types";
+import {translate, Trans} from "react-i18next";
 
 import headerLottoData from "./headerLottoData";
 import pickerLottoData from "../NumberPicker/pickerLottoData";
@@ -72,7 +73,7 @@ class DynamicMobileHeader extends Component {
   }
 
   render() {
-	  const { lotto, jackpot, modalOpenHandler, numberOfNotFree } = this.props;
+	  const { lotto, jackpot, modalOpenHandler, numberOfNotFree, t } = this.props;
 	  const {ticketsData, clearTicket} = this.props.pickerStore;
       const {lottoData, pickerLottoData} = this.state;
 	  const jackpotString = this.formatJackpot(jackpot);
@@ -83,11 +84,15 @@ class DynamicMobileHeader extends Component {
                   <img className="mob-header_logo" src={lottoData.logo} alt={lotto} />
 				  {numberOfNotFree === 0 ? (
 					  <h2 className="mob-header_title">
-					  Play the next draw for <span>FREE</span>
+                          <Trans i18nKey="freeticketTitle">
+							Play the next draw for <span>FREE</span>
+                          </Trans>
                       </h2>
 				  ) : (
                       <h2 className="mob-header_title">
-					  Get <span>{ticketsData.length}</span> bet lines for the price of <span>{numberOfNotFree}</span> !
+					  	<Trans i18nKey="notfreeTitle" numberOfTickets={ticketsData.length} numberOfNotFree={numberOfNotFree}>
+					  		Get <span>{ticketsData.length}</span> bet lines for the price of <span>{numberOfNotFree}</span>!
+                          </Trans>
                       </h2>
 				  )}
                   <h3 className="mob-header_jackpot">{`${lottoData.currency}${jackpotString}`}</h3>
@@ -97,7 +102,7 @@ class DynamicMobileHeader extends Component {
 				  		{this.generateBonusCircles(ticket.pickedBonus).map(circle => circle)}
                           <button className="numbers-widget_btn -edit-btn" onClick={() => modalOpenHandler(index)} />
 						  {numberOfNotFree === 0 ? <button className="numbers-widget_btn -clear-btn" onClick={() => clearTicket(index)} />
-						  : (index+1 > numberOfNotFree ? <p className="numbers-widget_text">FREE</p> : <p className="numbers-widget_text">{pickerLottoData.price}</p>)}
+						  : (index+1 > numberOfNotFree ? <p className="numbers-widget_text">{t("freeLabel")}</p> : <p className="numbers-widget_text">{pickerLottoData.price}</p>)}
                       </div>
 				  ))}
               </div>
@@ -114,4 +119,4 @@ DynamicMobileHeader.propTypes = {
     numberOfNotFree: number.isRequired
 };
 
-export default mobXConnect("pickerStore")(DynamicMobileHeader);
+export default translate("headerMobileText")(mobXConnect("pickerStore")(DynamicMobileHeader));
