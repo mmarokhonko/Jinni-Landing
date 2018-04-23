@@ -1,9 +1,8 @@
 {
   "AppText": {
 	  "notFilledTicketsError": "Hoppla! Du hast das Wichtigste vergessen – Dein Bonus-Tippfelds auszufüllen",
-	  "freeticketMainTitle": "Erhalte hier Dein <u>GRATIS</u> Tippfeld:",
+	  "freeticketMainTitle": "Erhalte hier Dein <1>GRATIS</1> Tippfeld:",
 	  "dataNotLoaded": "Daten noch nicht geladen",
-	  "emailError": "The email address you have chosen is already in use. Try logging in with it. If you can't remember your password, just request a reset.",
 	  "emailError": "Die eingegebene E-Mail-Adresse wird bereits verwendet. Versuche Dich damit einzuloggen. Falls Du Dich nicht mehr an Dein Passwort erinnern kannst, lasse es zurücksetzen.",
 	  "generalRegError": "Hoppla, bei der Registrierung ist ein Fehler aufgetreten. Bitte versuche es erneut, damit wir anfangen können Deine Wünsche zu erfüllen."
   },

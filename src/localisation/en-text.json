@@ -1,7 +1,7 @@
 {
   "AppText": {
 	  "notFilledTicketsError": "Whoops! You’ve forgotten the most important part – filling up your bonus tickets",
-	  "freeticketMainTitle": "Get your <u>FREE</u> bet line here:",
+	  "freeticketMainTitle": "Get your <1>FREE</1> bet line here:",
 	  "dataNotLoaded": "Data not loaded yet",
 	  "emailError": "The email address you have chosen is already in use. Try logging in with it. If you can't remember your password, just request a reset.",
 	  "generalRegError": "Whoops, an error occurred during registration. Please try again so we can start making your wishes come true."

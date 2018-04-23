@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import Media from "react-media";
 import { object } from "prop-types";
 import axios from "axios";
+import {translate, Trans} from "react-i18next";
 
 import DynamicHeader from "./components/DynamicHeader/DynamicHeader";
 import DynamicMobileHeader from "./components/DynamicHeader/DynamicMobileHeader";
@@ -83,6 +84,10 @@ class App extends Component {
       this.setNumberOfTicketsInStore(offer);
 	  this.setNumberOfNotfreetickets(offer);
 
+	  if (lang !== "en") {
+          this.props.i18n.changeLanguage(lang);
+	  }
+
       const urlData = {
           bTag,
           couponCode,
@@ -97,7 +102,7 @@ class App extends Component {
           packageId,
           redirectUrl,
           referral: referral.length > 0 ? referral : window.location.href
-      };
+	  };
 
       const newUrlData = Object.assign({}, this.state.urlData, urlData);
 
@@ -135,7 +140,8 @@ class App extends Component {
   passDataToSendingModule = (formData, errorNode) => {
       const { lottoData, urlData, pickerLottoData } = this.state;
       const { ticketsData } = this.props.pickerStore;
-      const { numbersAmount, bonusAmount } = pickerLottoData;
+	  const { numbersAmount, bonusAmount } = pickerLottoData;
+	  const {t} = this.props;
 
       if (
           this.numberPicker.wrappedInstance.state.hasError &&
@@ -155,8 +161,7 @@ class App extends Component {
       });
       if (ticketIsNotFilled) {
           errorNode.classList.add("-shown");
-          errorNode.innerHTML =
-        "Whoops! You’ve forgotten the most important part – filling up your bonus tickets";
+		  errorNode.innerHTML = t("notFilledTicketsError");
           return;
       }
 
@@ -174,14 +179,16 @@ class App extends Component {
   };
 
   render() {
-      const { lottoData, urlData } = this.state;
+	  const { lottoData, urlData } = this.state;
+	  const { t, i18n } = this.props;
       if (!lottoData) {
-          return <div>Data not loaded yet</div>;
-      }
+          return <Trans i18nKey="dataNotLoaded">Data not loaded yet</Trans>;
+	  }
 
-      const { offer } = urlData;
+	  const { offer } = urlData;
+	  console.log(t("freeticketMainTitle"));
 
-      const lottoName = lottoData.LotteryName.toLowerCase();
+	  const lottoName = lottoData.LotteryName.toLowerCase();
 
       return (
           <Fragment>
@@ -208,7 +215,9 @@ class App extends Component {
                   <div className="cont-zone">
                       {offer === "freeticket" && (
                           <h1 className="main_title">
-                Get your <u>FREE</u> bet line here:
+						  	<Trans i18nKey="freeticketMainTitle">
+							  Get your <u>FREE</u> bet line here:
+							  </Trans>
                           </h1>
                       )}
                       <div className={`main_subwrap ${offer !== "freeticket" ? "-vertical" : ""}`}>
@@ -242,4 +251,4 @@ App.propTypes = {
     pickerStore: object.isRequired
 };
 
-export default mobXConnect("pickerStore")(App);
+export default translate("AppText")(mobXConnect("pickerStore")(App));

@@ -3,6 +3,8 @@ import currentDevice from "current-device";
 import { detect } from "detect-browser";
 import "formdata-polyfill";
 
+import i18n from "./i18nextSetup";
+
 const sendDataModule = {
     prepareDataToSend: function(data, errorNode) {
         errorNode.classList.remove("-shown");            
@@ -98,13 +100,11 @@ const sendDataModule = {
         errorNode.classList.add("-shown");
         switch (errorId) {
         case "073":
-            errorNode.innerHTML = `The email address you have chosen is already in use. 
-            Try logging in with it. If you can't remember your password, just request a reset.`    
+            errorNode.innerHTML = i18n.t("AppText.emailError");   
             break;
         
         default:
-            errorNode.innerHTML = `Whoops, an error occurred during registration. 
-            Please try again so we can start making your wishes come true.`    
+            errorNode.innerHTML = i18n.t("AppText.generalRegError");     
             break;
         }
     },
