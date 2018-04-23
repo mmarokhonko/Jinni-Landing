@@ -1,0 +1,241 @@
+{
+  "AppText": {
+	  "notFilledTicketsError": "Hoppla! Du hast das Wichtigste vergessen – Dein Bonus-Tippfelds auszufüllen",
+	  "freeticketMainTitle": "Erhalte hier Dein <u>GRATIS</u> Tippfeld:",
+	  "dataNotLoaded": "Daten noch nicht geladen",
+	  "emailError": "The email address you have chosen is already in use. Try logging in with it. If you can't remember your password, just request a reset.",
+	  "emailError": "Die eingegebene E-Mail-Adresse wird bereits verwendet. Versuche Dich damit einzuloggen. Falls Du Dich nicht mehr an Dein Passwort erinnern kannst, lasse es zurücksetzen.",
+	  "generalRegError": "Hoppla, bei der Registrierung ist ein Fehler aufgetreten. Bitte versuche es erneut, damit wir anfangen können Deine Wünsche zu erfüllen."
+  },
+  "headerDesktopText": {
+    "freeticketTitle": "Nimm <span>GRATIS</span> an der nächsten {{lotteryLogo}}-Ziehung teil.",
+    "notfreeTitle":
+	  "Erhalte {{numberOfTickets}} {{lotteryLogo}} Tippfelder zum Preis von {{numberOfNotFree}}"
+  },
+  "headerMobileText": {
+    "freeticketTitle": "Nimm an der nächsten Ziehung <span>GRATIS</span> teil",
+    "notfreeTitle":
+      "Erhalte <span>{{numberOfTickets}}</span> Tippfelder zum Preis von <span>{{numberOfNotFree}}</span> !",
+    "freeLabel": "GRATIS"
+  },
+  "helpSectionText": {
+    "title": "Wie {{lotteryName}} funktioniert",
+    "firstStepTitle": "WÄHLE DEINE GLÜCKSZAHLEN",
+    "firstStepText": {
+      "megamillions":
+        "Wähle {{numbersAmount}} Zahlen von 1-{{maxNumber}} <br className='hide-big' />+ {{bonusAmount}} {{bonusName}} von 1-{{maxBonus}}. <br className='hide-big' />Oder erhalte eine zufällige Auswahl, wenn Du auf <br className='hide-big' /> “Quicktipp” klickst",
+      "euromillions":
+        "Wähle {{numbersAmount}} Zahlen + {{bonusAmount}} {{bonusName}} oder  <br className='hide-sm' /> klicke auf  'Quicktipps' für eine zufällige Auswahl.",
+      "eurojackpot":
+        "Wähle {{numbersAmount}} Zahlen zwischen 1 und {{maxNumber}} und {{bonusAmount}} {{bonusName}} zwischen 1 und {{bonusAmount}} oder klicke einfach auf 'Quicktipps' für eine zufällige Auswahl.",
+      "powerball":
+        "Wähle {{numbersAmount}} Zahlen zwischen 1 und {{maxNumber}} sowie einen Bonus oder klicke 'Quicktipp' für eine zufällige Auswahl",
+      "6aus49":
+        "Wähle {{numbersAmount}} Glückszahlen + eine {{bonusName}} oder klicke 'Quicktipp' für eine zufällige Auswahl"
+    },
+    "secondStep": {
+      "freeticket": {
+        "title": "ERHALTE DEINEN GRATISTIPP",
+        "text": {
+          "desktop":
+            " Fülle das kurze Formular aus und klicke auf '<br className='hide-sm' />Gratistipp anfordern' um Dir Dein kostenloses Tippfeld zu sichern",
+          "mobile":
+            "Fülle <br className='hide-sm' />dieses kurze Formular aus und klicke <br className='hide-sm' /> “Gratistipp anfordern”"
+        }
+      },
+      "notfree": {
+        "title": "Erhalte {{numberOfFreeLines}} Gratis-Tippfelder",
+        "text":
+          "Fülle das kurze Formular aus, um Dir {{numberOfTickets}} Tippfelder <br className='hide-sm' /> für den Preis von {{numberOfNotFree}} zu sichern."
+      } 
+    },
+    "thirdStep": {
+      "title": "Sammle deine Gewinne ein",
+      "text": {
+        "megamillions": {
+          "desktop":
+            "Die MegaMillions Ziehung findet zwei Mal wöchentlich statt. Um zu erfahren, ob Du gewonnen hast, sieh Dir die Gewinnzahlen der nächsten Ziehung an in <span className='help_timer'>{{timeRemains}}</span>",
+          "mobile":
+            "Warte die kommende Ziehung ab, die <br /> stattfindet in <br /><span className='help_timer'>{{timeRemains}}</span> <br />um zu sehen wie viel Du gewonnen hast"
+        },
+        "euromillions": {
+          "desktop":
+            "Es gibt zwei EuroMillions Ziehungen jede Woche. Stell sicher, dass Du die Ergebnisse der nächsten Ziehung nicht verpasst. Siehe nach den EuroMillions Gewinnzahlen in <span className='help_timer'>{{timeRemains}}</span> um herauszufinden, ob Du ein Gewinner bist",
+          "mobile":
+            "Es gibt zwei EuroMillions Ziehungen jede Woche. Stell sicher, dass Du die Ergebnisse der nächsten Ziehung nicht verpasst. Siehe nach den EuroMillions Gewinnzahlen in <span className='help_timer'>{{timeRemains}}</span> um herauszufinden, ob Du ein Gewinner bist"
+        },
+        "eurojackpot": {
+          "desktop":
+            "Verfolge die Gewinnzahlen der nächsten EuroJackpot <br/> Ziehung in <span className='help_timer'>{{timeRemains}}</span> um herauszufinden, ob Du <br/> ein Gewinner bist",
+          "mobile":
+            "Verfolge die Gewinnzahlen der nächsten EuroJackpot <br/> Ziehung in <span className='help_timer'>{{timeRemains}}</span> um herauszufinden, ob Du <br/> ein Gewinner bist"
+        },
+        "powerball": {
+          "desktop":
+            "Warte die nächste Powerball-Ziehung ab <br/> <span className='help_timer'>{{timeRemains}}</span> um zu sehen, ob Du gewonnen hast",
+          "mobile":
+            "Warte die kommende Ziehung ab, die stattfindet in <br/> <span className='help_timer'>{{timeRemains}}</span><br/> um zu erfahren, wie viel Du gewonnen hast"
+        },
+        "6asu49": {
+          "desktop":
+            "Verpasse nicht die nächste von zwei wöchentlichen Ziehungen in <br/> <span className='help_timer'>{{timeRemains}}</span> um zu erfahren, ob Du ein Gewinner bist",
+          "mobile":
+            "Warte die kommende Ziehung ab, die stattfindet in <br/> <span className='help_timer'>{{timeRemains}}</span><br/> to see how much you won"
+        }
+      }
+    }
+  },
+  "pickerData": {
+    "megamillions": {
+      "bonusName": "Bonuszahl",
+      "pluralBonusName": "Bonuszahlen"
+    },
+    "euromillions": {
+      "bonusName": "Sternzahl",
+      "pluralBonusName": "Sternzahlen"
+    },
+    "eurojackpot": {
+      "bonusName": "Eurozahl",
+      "pluralBonusName": "Eurozahlen"
+    },
+    "powerball": {
+      "bonusName": "Powerball",
+      "pluralBonusName": "Powerball"
+    },
+    "6aus49": {
+      "bonusName": "Superzahl",
+      "pluralBonusName": "Superzahlen"
+    }
+  },
+  "singlePickerText": {
+    "general": {
+      "numbersHeader": {
+        "oneNumber": "Wähle 1 Zahl",
+        "multipleNumbers": "Wähle {{diff}} Zahlen",
+        "completed": "Tippfeld ausgefüllt"
+      },
+      "bonusHeader": {
+        "oneBonus": "Wähle 1 {{bonusName}}!",
+        "multipleBonuses": "Wähle {{diff}} {{bonusName}}!",
+        "completed": "Alles erledigt!"
+      }
+    },
+    "desktop": {
+      "title": "Wähle {{numbersAmount}} Zahlen <br />& {{bonusAmount}} {{bonusName}}",
+      "quickPickBtn": "Quicktipps"
+    },
+    "mobile": {
+      "frameTitle":
+        "Wähle {{numbersAmount}} Zahlen von {{minNumber}}-{{maxNumber}}<br />& {{bonusAmount}} {{bonusName} von {{minBonus}}-{{maxBonus}}",
+      "or": "oder",
+      "done": "Erledigt",
+      "pickNumbersBtn": "Zahlen auswählen",
+      "headerCompleted": "Hier ist alles wunderbar."
+    }
+  },
+  "multiPickerText": {
+    "title":
+      "Wähle {{numbersAmount}} Zahlen von {{minNumber}}-{{maxNumber}} und <br/>{{bonusAmount}} {{bonusName} von {{minBonus}}-{{maxBonus}}",
+    "quickPickBtn": "Quicktipps",
+    "freeLabel": "GRATIS",
+    "errorText":
+      "Uups! Sieht so aus als wäre mindestens eine der Zahlen nicht gültig oder doppelt! Bitte wähle eine andere Zahl aus.",
+    "or": "oder",
+    "pickNumbersBtn": "Zahlen auswählen",
+    "done": "Erledigt",
+    "modalTitle": "Wähle {{numbersAmount}} Zahlen <br />& {{bonusAmount}} {{bonusName}}",
+    "modalTitleCompleted": "Hier ist alles wunderbar."
+  },
+  "formText": {
+    "title": "Regtriere Dich, um Dein {{Gratis}}-Tippfeld abzugeben",
+    "rowTitles": {
+      "name": "Anrede und Vorname",
+      "lastName": "Nachname",
+      "email": "Email",
+      "password": "Passwort",
+      "country": "Land",
+      "cityCode": "Stadt und PLZ",
+      "street": "Straße",
+      "dateOfBirth": "Geburtsdatum",
+      "number": "Telefonnummer"
+    },
+    "placeholders": {
+      "name": "Vorname",
+      "lastName": "Nachname",
+      "email": "Email",
+      "password": "Passwort",
+      "city": "Stadt",
+      "code": "PLZ",
+      "street": "Addresse",
+      "number": "Telefonnummer"
+    },
+    "goodLuck": "Viel Glück!",
+    "buttons": {
+      "next": "Vorwärts",
+      "back": "Zurück",
+      "freeticketSubmit": "Gratistipp anfordern",
+      "notfreeSubmit": "Jetzt Spielen"
+    },
+    "terms":
+      "<p>Ich versichere, dass ich mindestens 18 Jahre alt bin oder das gesetzliche Mindestalter meines Wohngebietes erfülle. Mir ist bekannt, dass die Guthabenschutz-Einstufung ‘Mittel’ entspricht, so wie es in den &nbsp;<a rel='noopener noreferrer' target='_blank' href='http://jinnilotto.com/terms-conditions/'>AGB</a>, welche ich neben den &nbsp;<a rel='noopener noreferrer' target='_blank' href='https://jinnilotto.com/privacy-policy'>Datenschutzbestimmungen</a> akzeptiere, aufgeführt ist. Wir nehmen Verantwortungsvolles Spielen sehr ernst. Du kannst Deinen Einzahlunglimit sowie Deine persönlichen Einstellungen &nbsp;<a rel='noopener noreferrer' target='_blank' href='https://jinnilotto.com/responsible-gaming-policy'>hier</a> vornehmen.</p>",
+    "errors": {
+      "firstName":
+        "Der Vorname muss aus mindestens 2 und maximal 24 Zeichen bestehen. Er darf außerdem keine Ziffern oder Sonderzeichen enthalten",
+      "lastName":
+        "Der Vorname muss aus mindestens 2 und maximal 24 Zeichen bestehen. Er darf außerdem keine Ziffern oder Sonderzeichen enthalten",
+      "emailError": "Hmmm, das sieht nicht nach einer gültigen E-Mail Adresse aus. Bitte nochmal prüfen.",
+      "passwordError": "Zu Deiner eignen Sicherheit muss Dein Passwort aus mindestens 8 Zeichen bestehen",
+      "generalError": "Tut uns leid, diese Eingabe ist nicht gültig",
+      "termsAgreedError":
+        "Entschuldige, wir wissen, dass Du es eilig hast zu spielen, aber Du musst unsere AGB akzeptieren, um Dich zu registrieren.",
+      "dateOfBirthError":
+        "Dein Geburtsdatum entspricht nicht unserer \"18+\" Bedingung. Dies ist einer der Wünsche, den Dir Jinni das Genie nicht gewähren kann."
+    },
+    "selectTitle": {
+      "Mr": "Herr",
+      "Mrs": "Frau",
+      "Ms": "Frau"
+    },
+    "dateOfBirth": {
+      "months": [
+        "Jan",
+        "Feb",
+        "Mär",
+        "Apr",
+        "Mai",
+        "Juni",
+        "Juli",
+        "Aug",
+        "Sep",
+        "Okt",
+        "Nov",
+        "Dez"
+      ]
+    }
+  },
+  "factSectionText": {
+    "title": "Wusstest Du das schon?",
+    "facts": {
+      "megamillions": ["Der größte MegaMillions Jackpot lag bei lebensverändernden $656 Millionen."],
+      "euromillions": [
+        "Im Jahr 2014 hat Castelo Branco den maximalen EuroMillions Jackpot von € 190 Millionen gewonnen.."
+      ],
+      "eurojackpot": [
+        "Der EuroJackpot hat 12 Gewinnklassen und Spieler gewinnen im Vergleich zu EuroMillions doppelt so oft."
+      ],
+      "powerball": [
+        "Über die Hälfte aller Powerball Jackpots seit 2012 haben die € 100 Millionen-Grenze überschritten. Der Powerball macht keine halben Sachen."
+      ],
+      "6aus49": ["6aus49 schüttet jedes Jahr 5 Milliarden Euro an Preisgeldern aus."]
+    }
+  },
+  "footerText": {
+    "title": "Geschäftsbedingungen",
+    "textHtml": [
+      "<p>Jinni Lotto wird betrieben von Jinni Tech Limited, ein Unternehmen auf der Isle of Man mit Registernummer 014940V und registrierter Adresse unter <br class='hide-sm'> at P.O Box 227 Clinch's House Lord Street Douglas Isle of Man IM99 1RZ.</p>",
+      "<p>Jinni Tech Ltd ist lizenziert und reguliert von der Isle of Man Gambling Supervision Commission unter der Lizenz vergeben von der Online Gambling Regulation Act 2001<br class='hide-sm'> am [date and year]. Die Domain jinnilotto.com sowie die Urheberrechte gehören Jinni Tech Limited.</p>",
+      "<p>Bitte beachte, dass diese Lizenz nicht für Spieler mit Sitz in UK gültig ist. Jinni Tech Ltd betreibt keine Lotterie. Mitglieder platzieren Ihre Wette auf die Ziehungsergebnisse. Offizielle Lotteriescheine und eine Versicherung werden basierend auf den platzierten Wetten gekauft, so dass alle Gewinne der Bargeldoption der nationalen Lotteriegewinne entsprechen.</p>",
+      "<p>Copyright © 2018, Jinni Tech Ltd. Alle Rechte vorbehalten. Die staatliche Lotterie und Lotto sind eingetragene Marken der staatlichen Lotto-Kommission. EuroMillions is die eingetragene Marke der Services aux Loteries en Europe. Jinni Tech Limited ist weder mit einer Organisation oder Schwesterngesellschaft verbunden, die mit der Staatlichen Lotterie oder einer anderen Lotterie in Verbindung steht. </p>"
+    ]
+  }
+}

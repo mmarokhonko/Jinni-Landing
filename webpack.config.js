@@ -9,14 +9,15 @@ module.exports = env => {
         new webpack.DefinePlugin({
             "process.env.NODE_ENV": JSON.stringify(env.NODE_ENV)
         }),
-        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+        new ExtractTextPlugin({
+            filename: "styles.css"
+        })
     ];
 
     const productionVars = {
         plugins: [
-            new ExtractTextPlugin({
-                filename: "styles.css"
-            })
+            
         ],
         publicPath: "/"
     };
@@ -57,13 +58,7 @@ module.exports = env => {
                 {
                     test: /\.scss$/,
                     exclude: /node_modules/,
-                    use:
-            env.NODE_ENV === "production"
-                ? ExtractTextPlugin.extract({
-                    fallback: "style-loader",
-                    use: ["css-loader", "postcss-loader", "sass-loader"]
-                })
-                : ["style-loader", "css-loader", "postcss-loader", "sass-loader"]
+                    use:["style-loader", "css-loader", "postcss-loader", "sass-loader"]
                 },
                 {
                     test: /\.(jpe?g|png|gif)$/i,

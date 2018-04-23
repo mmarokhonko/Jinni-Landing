@@ -9,6 +9,7 @@ import Help from "./components/Help/Help";
 import Fact from "./components/Fact/Fact";
 import NumberPicker from "./components/NumberPicker/PickerContainer";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
+import Footer from "./components/Footer/Footer";
 
 import MultipleTicketsPicker from "./components/MultipleTicketsPicker/MultiPickerContainer";
 
@@ -81,9 +82,6 @@ class App extends Component {
 
       this.setNumberOfTicketsInStore(offer);
 	  this.setNumberOfNotfreetickets(offer);
-	  if(!offer.includes("freeticket")) {
-		  document.querySelector(".footer_terms-link").setAttribute("href", "https://jinnilotto.com/four-for-one");
-	  }
 
       const urlData = {
           bTag,
@@ -234,6 +232,7 @@ class App extends Component {
                   drawDate={lottoData.DrawDate + " " + lottoData.TimeZone}
               />
               <Fact lotto={lottoName} />
+			  <Footer offer={offer} />
           </Fragment>
       );
   }
