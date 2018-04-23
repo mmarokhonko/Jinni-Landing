@@ -8,6 +8,7 @@ import SelectTitle from "./SelectTitle";
 import { SelectDayOfBirth, SelectMonthOfBirth, SelectYearOfBirth } from "./dateOfBirthComponents";
 import { SelectCountry, SelectPhoneCode } from "./countryComponents";
 import { isFieldError } from "./tools/validationFunctions";
+import {translate, Trans} from "react-i18next";
 
 import { restrictedCountries } from "./data/restrictedCountries.json";
 
@@ -35,55 +36,53 @@ class RegisterForm extends Component {
       errorObjects: {
           firstNameError: {
               text:
-          "First name must contain a minimum of 2 and a maximum of 24 characters. It must also not contain any numbers or special characters",
+          this.props.t("errors.firstName"),
               active: false,
               justEmpty: false
           },
           lastNameError: {
               text:
-          "Last name must contain a minimum of 2 and a maximum of 24 characters. It must also not contain any numbers or special characters",
+			  this.props.t("errors.lastName"),
               active: false,
               justEmpty: false
           },
           emailError: {
-              text: "Hmmm, this doesn't look like a valid email. Please double check.",
+              text: this.props.t("errors.emailError"),
               active: false,
               justEmpty: false
           },
           passwordError: {
-              text: "For your security your password must have at least 8 characters",
+              text: this.props.t("errors.passwordError"),
               active: false,
               justEmpty: false
           },
           cityError: {
-              text: "Sorry, this field is not valid",
+              text: this.props.t("errors.generalError"),
               active: false,
               justEmpty: false
           },
           codeError: {
-              text: "Sorry, this field is not valid",
+              text: this.props.t("errors.generalError"),
               active: false,
               justEmpty: false
           },
           streetError: {
-              text: "Sorry, this field is not valid",
+              text: this.props.t("errors.generalError"),
               active: false,
               justEmpty: false
           },
           phoneNumberError: {
-              text: "Sorry, this field is not valid",
+              text: this.props.t("errors.generalError"),
               active: false,
               justEmpty: false
           },
           termsAgreedError: {
-              text:
-          "Sorry, we know you're in a hurry to play but you have to accept our terms and conditions to register",
+              text: this.props.t("errors.termsAgreedError"),
               active: false,
               justEmpty: false
           },
           dateOfBirthError: {
-              text:
-          "Your date of birth does not match our \"over the age of 18\" requirement. This is one wish that Jinni the Genie can't grant you.",
+              text: this.props.t("errors.dateOfBirthError"),
               active: false,
               justEmpty: false
           }
@@ -290,66 +289,65 @@ class RegisterForm extends Component {
 
   render() {
       const { step2, fields, errorObjects, userCountryCode } = this.state;
-      const { offer } = this.props;
+      const { offer, t } = this.props;
 
       if (!step2)
           return (
               <div ref={frame => (this.formFrame = frame)} className="frame form_frame-vert">
-                  <h4 className="frame_title">
-            Register to place {offer.indexOf("freeticket") !== -1 ? <span>FREE</span> : ""} bet
+				  <h4 className="frame_title" dangerouslySetInnerHTML={{__html: offer.indexOf("freeticket") !== -1 ? t("titleFree") : t("titleNotFree")}}>
                   </h4>
                   <form className="form" autoComplete="false">
                       <div className="form_row">
-                          <h5 className="form_row_title">Title and Name</h5>
+                          <h5 className="form_row_title">{t("rowTitles.name")}</h5>
                           <div className="form_row_subwrap">
                               <SelectTitle value={fields.title} name="title" selectHandler={this.selectHandler} />
                               <InputWithIcon
                                   inputHandler={this.inputHandler}
                                   type="text"
                                   name="firstName"
-                                  placeholder="Name"
+                                  placeholder={t("placeholder.name")}
                                   value={fields.firstName}
                                   error={errorObjects.firstNameError}
                               />
                           </div>
                       </div>
                       <div className="form_row">
-                          <h5 className="form_row_title">Last Name</h5>
+                          <h5 className="form_row_title">{t("rowTitles.lastName")}</h5>
                           <div className="form_row_subwrap">
                               <InputWithIcon
                                   inputHandler={this.inputHandler}
                                   type="text"
                                   icon="profile"
                                   name="lastName"
-                                  placeholder="Last Name"
+                                  placeholder={t("placeholder.lastName")}
                                   value={fields.lastName}
                                   error={errorObjects.lastNameError}
                               />
                           </div>
                       </div>
                       <div className="form_row">
-                          <h5 className="form_row_title">Email</h5>
+                          <h5 className="form_row_title">{t("rowTitles.email")}</h5>
                           <div className="form_row_subwrap">
                               <InputWithIcon
                                   inputHandler={this.inputHandler}
                                   type="email"
                                   icon="email"
                                   name="email"
-                                  placeholder="email"
+                                  placeholder={t("placeholder.email")}
                                   value={fields.email}
                                   error={errorObjects.emailError}
                               />
                           </div>
                       </div>
                       <div className="form_row">
-                          <h5 className="form_row_title">Password</h5>
+                          <h5 className="form_row_title">{t("rowTitles.password")}</h5>
                           <div className="form_row_subwrap">
                               <InputWithIcon
                                   inputHandler={this.inputHandler}
                                   type="password"
                                   icon={window.innerWidth <= 768 ? "lockMob" : "lock"}
                                   name="password"
-                                  placeholder="Password"
+                                  placeholder={t("placeholder.password")}
                                   value={fields.password}
                                   error={errorObjects.passwordError}
                               />
@@ -361,22 +359,21 @@ class RegisterForm extends Component {
                               className="btn-general btn-green form_submit-btn form_confirm-btn"
                               onClick={this.moveTo2ndStep}
                           >
-                Next
+                {t("buttons.next")}
                           </button>
                       </div>
                   </form>
                   <div className="form_jinni">
                       <img src={jinniImg} alt="" />
-                      <p>Good Luck!</p>
+                      <p>{t("goodLuck")}</p>
                   </div>
               </div>
           );
       else
           return (
               <div  ref={frame => (this.formFrame = frame)} className="frame form_frame-vert">
-                  <h4 className="frame_title">
-				  Register to place {offer.indexOf("freeticket") !== -1 ? <span>FREE</span> : ""} bet
-				  </h4>
+                  <h4 className="frame_title" dangerouslySetInnerHTML={{__html: offer.indexOf("freeticket") !== -1 ? t("titleFree") : t("titleNotFree")}}>
+                  </h4>
                   <form className="form" autoComplete="false" onSubmit={e => this.submitHandler(e)}>
                       <div className="form_row">
                           <h5 className="form_row_title">Country</h5>
@@ -390,14 +387,14 @@ class RegisterForm extends Component {
                           </div>
                       </div>
                       <div className="form_row">
-                          <h5 className="form_row_title">City and Code</h5>
+                          <h5 className="form_row_title">{t("rowTitles.cityCode")}</h5>
                           <div className="form_row_subwrap">
                               <InputWithIcon
                                   inputHandler={this.inputHandler}
                                   type="text"
                                   name="city"
                                   icon="geo"
-                                  placeholder="City"
+                                  placeholder={t("placeholder.city")}
                                   value={fields.city}
                                   error={errorObjects.cityError}
                               />
@@ -406,28 +403,28 @@ class RegisterForm extends Component {
                                   type="text"
                                   name="code"
                                   icon="geo"
-                                  placeholder="Code"
+                                  placeholder={t("placeholder.code")}
                                   value={fields.code}
                                   error={errorObjects.codeError}
                               />
                           </div>
                       </div>
                       <div className="form_row">
-                          <h5 className="form_row_title">Street</h5>
+                          <h5 className="form_row_title">{t("rowTitles.street")}</h5>
                           <div className="form_row_subwrap">
                               <InputWithIcon
                                   inputHandler={this.inputHandler}
                                   type="text"
                                   name="street"
                                   icon="geo"
-                                  placeholder="Address"
+                                  placeholder={t("placeholder.street")}
                                   value={fields.street}
                                   error={errorObjects.streetError}
                               />
                           </div>
                       </div>
                       <div className="form_row">
-                          <h5 className="form_row_title">Date of Birth</h5>
+                          <h5 className="form_row_title">{t("rowTitles.dateOfBirth")}</h5>
                           <div className="form_row_subwrap">
                               <SelectDayOfBirth
                                   value={fields.dayOfBirth}
@@ -447,7 +444,7 @@ class RegisterForm extends Component {
                           </div>
                       </div>
                       <div className="form_row">
-                          <h5 className="form_row_title">Phone Number</h5>
+                          <h5 className="form_row_title">{t("rowTitles.number")}</h5>
                           <div className="form_row_subwrap">
                               <SelectPhoneCode
                                   value={fields.phoneCode}
@@ -461,7 +458,7 @@ class RegisterForm extends Component {
                                   type="tel"
                                   name="phoneNumber"
                                   icon="phone"
-                                  placeholder="Phone"
+                                  placeholder={t("placeholder.number")}
                                   value={fields.phoneNumber}
                                   error={errorObjects.phoneNumberError}
                               />
@@ -472,7 +469,7 @@ class RegisterForm extends Component {
                               {matches =>
                                   matches ? (
                                       <button type="button" className="form_back-btn" onClick={this.moveTo1stStep}>
-                      back
+                                          {t("buttons.back")}
                                       </button>
                                   ) : (
                                       <button
@@ -485,7 +482,7 @@ class RegisterForm extends Component {
                           </Media>
 
                           <button type="submit" className="btn-general btn-green form_submit-btn">
-                              {offer.indexOf("freeticket") !== -1 ? "Claim free bet" : "Play Now"}
+                              {offer.indexOf("freeticket") !== -1 ? t("buttons.freeticketSubmit") : t("buttons.notfreeSubmit")}
                           </button>
                           {errorObjects.dateOfBirthError.active ? (
                               <p className="form_step2_bottom_error -shown">
@@ -513,31 +510,8 @@ class RegisterForm extends Component {
                               />
                               <label htmlFor="terms" />
                           </div>
-                          <p>
-                I certify that I am at least 18 years old, or the legal minimum age in my country of
-                residence. I accept that the customer funds protection rating is ‘Medium’ as
-                outlined in the &nbsp;<a
-                                  rel="noopener noreferrer"
-                                  target="_blank"
-                                  href="http://jinnilotto.com/terms-conditions/"
-                              >
-                  Terms and Conditions
-                              </a>{" "}
-                which I accept, along with the &nbsp;<a
-                                  rel="noopener noreferrer"
-                                  target="_blank"
-                                  href="https://jinnilotto.com/privacy-policy"
-                              >
-                  Privacy Policy
-                              </a>. We believe in responsible gambling. You can set your deposit limit and
-                preferences &nbsp;<a
-                                  rel="noopener noreferrer"
-                                  target="_blank"
-                                  href="https://jinnilotto.com/responsible-gaming-policy"
-                              >
-                  here
-                              </a>.
-                          </p>
+						  <div dangerouslySetInnerHTML={{__html:t("terms")}}>
+						  </div>
                       </div>
                   </form>
               </div>
@@ -550,4 +524,4 @@ RegisterForm.propTypes = {
     offer: string.isRequired
 };
 
-export default RegisterForm;
+export default translate("formText")(RegisterForm);

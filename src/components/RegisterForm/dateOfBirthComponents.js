@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { string, func, object } from "prop-types";
 
 import SelectWithIcon from "./generalComponents/SelectWithIcon";
+import i18n from "../../tools/i18nextSetup";
 
 import bithdayIcon from "../../assets/RegisterForm/icons/birthday.png";
 
@@ -56,20 +57,7 @@ SelectDayOfBirth.propTypes = {
 };
 
 const generateMonthOfBirthOptions = () => {
-    const months = [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "June",
-        "July",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec"
-    ];
+    const months = i18n.t("formText:dateOfBirth.months", {returnObjects: true});
 
     const options = months.map((value, index) => {
         let mothnNumber = index+1 >=10 ? (index+1).toString() : `0${(index+1).toString()}`;

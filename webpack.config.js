@@ -58,7 +58,10 @@ module.exports = env => {
                 {
                     test: /\.scss$/,
                     exclude: /node_modules/,
-                    use:["style-loader", "css-loader", "postcss-loader", "sass-loader"]
+                    use:ExtractTextPlugin.extract({
+                        fallback: "style-loader",
+                        use: ["css-loader", "postcss-loader", "sass-loader"]
+                    })
                 },
                 {
                     test: /\.(jpe?g|png|gif)$/i,

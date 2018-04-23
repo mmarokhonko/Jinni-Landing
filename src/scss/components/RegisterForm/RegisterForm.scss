@@ -370,7 +370,7 @@
   border-top: 1px solid #d7e7ff;
   padding-top: 25px;
   display: flex;
-  & > p {
+  &_text {
     color: #97a5b8;
     font-size: 12px;
     line-height: 16px;
@@ -384,7 +384,7 @@
   }
   @media (max-width: 768px) {
     margin-top: 20px;
-    & > p {
+    &_text {
       font-size: 11px;
       line-height: 20px;
       a {

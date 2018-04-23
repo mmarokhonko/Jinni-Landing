@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {string, func, object} from "prop-types";
+import i18n from "../../tools/i18nextSetup";
 
 import SelectWithIcon from "./generalComponents/SelectWithIcon";
 
@@ -9,13 +10,13 @@ class SelectTitle extends Component {
     state = {
         options: [
             {
-                label: "Mr.", value:"Mr."
+                label: i18n.t("formText:selectTitle.Mr"), value:"Mr."
             },
             {
-                label: "Mrs.", value:"Mrs."
+                label: i18n.t("formText:selectTitle.Mrs"), value:"Mrs."
             },
             {
-                label: "Ms.", value:"Ms."
+                label: i18n.t("formText:selectTitle.Ms"), value:"Ms."
             }
         ]
     }

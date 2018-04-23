@@ -146,7 +146,8 @@
     "modalTitleCompleted": "Hier ist alles wunderbar."
   },
   "formText": {
-    "title": "Regtriere Dich, um Dein {{Gratis}}-Tippfeld abzugeben",
+	"titleFree": "Regtriere Dich, um Dein <span>GRATIS</span> Tippfeld abzugeben",
+	"titleNotFree": "Regtriere Dich, um Dein Tippfeld abzugeben",
     "rowTitles": {
       "name": "Anrede und Vorname",
       "lastName": "Nachname",
@@ -176,7 +177,7 @@
       "notfreeSubmit": "Jetzt Spielen"
     },
     "terms":
-      "<p>Ich versichere, dass ich mindestens 18 Jahre alt bin oder das gesetzliche Mindestalter meines Wohngebietes erfülle. Mir ist bekannt, dass die Guthabenschutz-Einstufung ‘Mittel’ entspricht, so wie es in den &nbsp;<a rel='noopener noreferrer' target='_blank' href='http://jinnilotto.com/terms-conditions/'>AGB</a>, welche ich neben den &nbsp;<a rel='noopener noreferrer' target='_blank' href='https://jinnilotto.com/privacy-policy'>Datenschutzbestimmungen</a> akzeptiere, aufgeführt ist. Wir nehmen Verantwortungsvolles Spielen sehr ernst. Du kannst Deinen Einzahlunglimit sowie Deine persönlichen Einstellungen &nbsp;<a rel='noopener noreferrer' target='_blank' href='https://jinnilotto.com/responsible-gaming-policy'>hier</a> vornehmen.</p>",
+      "<p class='form_terms_text'>Ich versichere, dass ich mindestens 18 Jahre alt bin oder das gesetzliche Mindestalter meines Wohngebietes erfülle. Mir ist bekannt, dass die Guthabenschutz-Einstufung ‘Mittel’ entspricht, so wie es in den &nbsp;<a rel='noopener noreferrer' target='_blank' href='http://jinnilotto.com/terms-conditions/'>AGB</a>, welche ich neben den &nbsp;<a rel='noopener noreferrer' target='_blank' href='https://jinnilotto.com/privacy-policy'>Datenschutzbestimmungen</a> akzeptiere, aufgeführt ist. Wir nehmen Verantwortungsvolles Spielen sehr ernst. Du kannst Deinen Einzahlunglimit sowie Deine persönlichen Einstellungen &nbsp;<a rel='noopener noreferrer' target='_blank' href='https://jinnilotto.com/responsible-gaming-policy'>hier</a> vornehmen.</p>",
     "errors": {
       "firstName":
         "Der Vorname muss aus mindestens 2 und maximal 24 Zeichen bestehen. Er darf außerdem keine Ziffern oder Sonderzeichen enthalten",
@@ -193,7 +194,7 @@
     "selectTitle": {
       "Mr": "Herr",
       "Mrs": "Frau",
-      "Ms": "Frau"
+      "Ms": "Fräulein"
     },
     "dateOfBirth": {
       "months": [
