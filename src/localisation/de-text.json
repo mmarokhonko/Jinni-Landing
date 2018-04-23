@@ -7,7 +7,7 @@
 	  "generalRegError": "Hoppla, bei der Registrierung ist ein Fehler aufgetreten. Bitte versuche es erneut, damit wir anfangen können Deine Wünsche zu erfüllen."
   },
   "headerDesktopText": {
-    "freeticketTitle": "Nimm <3>GRATIS</3> an der nächsten <1>{{lotteryLogo}}</1>-Ziehung teil.",
+    "freeticketTitle": "Nimm <3>GRATIS</3> an der nächsten <1>{{lotteryLogo}}</1>Ziehung teil.",
     "notfreeTitle":
 	  "Erhalte <1>{{numberOfTickets}}</1> <3>{{lotteryLogo}}</3> Tippfelder zum Preis von <5>{{numberOfNotFree}}</5>"
   },
@@ -22,11 +22,11 @@
     "firstStepTitle": "WÄHLE DEINE GLÜCKSZAHLEN",
     "firstStepText": {
       "megamillions":
-        "Wähle {{numbersAmount}} Zahlen von 1-{{maxNumber}} <br className='hide-big' />+ {{bonusAmount}} {{bonusName}} von 1-{{maxBonus}}. <br className='hide-big' />Oder erhalte eine zufällige Auswahl, wenn Du auf <br className='hide-big' /> “Quicktipp” klickst",
+        "Wähle {{numbersAmount}} Zahlen von 1-{{maxNumber}} <br className='hide-big' />+ {{bonusAmount}} {{bonusName}} von 1-{{maxBonus}}. <br className='hide-big' />Oder erhalte eine zufällige Auswahl, wenn Du auf “Quicktipp” klickst",
       "euromillions":
         "Wähle {{numbersAmount}} Zahlen + {{bonusAmount}} {{bonusName}} oder  <br className='hide-sm' /> klicke auf  'Quicktipps' für eine zufällige Auswahl.",
       "eurojackpot":
-        "Wähle {{numbersAmount}} Zahlen zwischen 1 und {{maxNumber}} und {{bonusAmount}} {{bonusName}} zwischen 1 und {{bonusAmount}} oder klicke einfach auf 'Quicktipps' für eine zufällige Auswahl.",
+        "Wähle {{numbersAmount}} Zahlen zwischen 1 und {{maxNumber}} und {{bonusAmount}} {{bonusName}} zwischen 1 und {{maxBonus}} oder klicke einfach auf 'Quicktipps' für eine zufällige Auswahl.",
       "powerball":
         "Wähle {{numbersAmount}} Zahlen zwischen 1 und {{maxNumber}} sowie einen Bonus oder klicke 'Quicktipp' für eine zufällige Auswahl",
       "6aus49":
@@ -75,7 +75,7 @@
           "mobile":
             "Warte die kommende Ziehung ab, die stattfindet in <br/> <span className='help_timer'>{{timeRemains}}</span><br/> um zu erfahren, wie viel Du gewonnen hast"
         },
-        "6asu49": {
+        "6aus49": {
           "desktop":
             "Verpasse nicht die nächste von zwei wöchentlichen Ziehungen in <br/> <span className='help_timer'>{{timeRemains}}</span> um zu erfahren, ob Du ein Gewinner bist",
           "mobile":
@@ -213,12 +213,12 @@
     }
   },
   "factSectionText": {
-    "title": "Wusstest Du das schon?",
+	"title": "Wusstest Du das schon?",
     "facts": {
       "megamillions": ["Der größte MegaMillions Jackpot lag bei lebensverändernden $656 Millionen."],
-      "euromillions": [
-        "Im Jahr 2014 hat Castelo Branco den maximalen EuroMillions Jackpot von € 190 Millionen gewonnen.."
-      ],
+      "euromillions": 
+        ["Im Jahr 2014 hat Castelo Branco den maximalen EuroMillions Jackpot von € 190 Millionen gewonnen.."]
+      ,
       "eurojackpot": [
         "Der EuroJackpot hat 12 Gewinnklassen und Spieler gewinnen im Vergleich zu EuroMillions doppelt so oft."
       ],
@@ -232,7 +232,7 @@
     "title": "Geschäftsbedingungen",
     "textHtml": [
       "<p>Jinni Lotto wird betrieben von Jinni Tech Limited, ein Unternehmen auf der Isle of Man mit Registernummer 014940V und registrierter Adresse unter <br class='hide-sm'> at P.O Box 227 Clinch's House Lord Street Douglas Isle of Man IM99 1RZ.</p>",
-      "<p>Jinni Tech Ltd ist lizenziert und reguliert von der Isle of Man Gambling Supervision Commission unter der Lizenz vergeben von der Online Gambling Regulation Act 2001<br class='hide-sm'> am [date and year]. Die Domain jinnilotto.com sowie die Urheberrechte gehören Jinni Tech Limited.</p>",
+      "<p>Jinni Tech Ltd ist lizenziert und reguliert von der Isle of Man Gambling Supervision Commission unter der Lizenz vergeben von der Online Gambling Regulation Act 2001<br class='hide-sm'> am [date and year]. <b>Spielschulden sind auf der Isle of Man gesetzlich einklagbar.</b> Die Domain jinnilotto.com sowie die Urheberrechte gehören Jinni Tech Limited.</p>",
       "<p>Bitte beachte, dass diese Lizenz nicht für Spieler mit Sitz in UK gültig ist. Jinni Tech Ltd betreibt keine Lotterie. Mitglieder platzieren Ihre Wette auf die Ziehungsergebnisse. Offizielle Lotteriescheine und eine Versicherung werden basierend auf den platzierten Wetten gekauft, so dass alle Gewinne der Bargeldoption der nationalen Lotteriegewinne entsprechen.</p>",
       "<p>Copyright © 2018, Jinni Tech Ltd. Alle Rechte vorbehalten. Die staatliche Lotterie und Lotto sind eingetragene Marken der staatlichen Lotto-Kommission. EuroMillions is die eingetragene Marke der Services aux Loteries en Europe. Jinni Tech Limited ist weder mit einer Organisation oder Schwesterngesellschaft verbunden, die mit der Staatlichen Lotterie oder einer anderen Lotterie in Verbindung steht. </p>"
     ]

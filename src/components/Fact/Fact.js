@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {string} from "prop-types";
+import {translate} from "react-i18next";
 
 import lottoDataFacts from "./factLottoData";
 
@@ -12,12 +13,13 @@ class Fact extends Component {
 
     render() {
         const {text} = this.state;
+        const {t} = this.props;
 
         return (
             <section className="fact">
                 <div className="cont-zone">
                     <img src={iconQuestion} alt="" className="fact_icon"/>
-                    <h4 className="fact_title">Did you know?</h4>
+                    <h4 className="fact_title">{t("title")}</h4>
                     <p className="fact_text">{text}</p>
                 </div>
             </section>
@@ -29,4 +31,4 @@ Fact.propTypes = {
     lotto: string.isRequired
 }
 
-export default Fact;
+export default translate("factSectionText")(Fact);

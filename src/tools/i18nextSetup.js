@@ -1,14 +1,15 @@
 import i18n from "i18next";
 import enText from "../localisation/en-text.json";
 import deText from "../localisation/de-text.json";
+import {getParamFromURL} from "./toolFunctions";
 
 i18n.init({
     fallbackLng: "en",
-    lng: "en",
-	keySeparator: false,
+    lng: getParamFromURL("lang") || "en",
+    keySeparator: ".",
     interpolation: {
         formatSeparator: ","
-	},
+    },
     resources: {
         en: {
             AppText: enText.AppText,

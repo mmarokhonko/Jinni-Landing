@@ -1,3 +1,5 @@
+import i18n from "../../tools/i18nextSetup";
+
 const lottoData = {
     "megamillions": {
         maxNumber: 70,
@@ -6,7 +8,8 @@ const lottoData = {
         minBonus:1,
         numbersAmount: 5,
         bonusAmount: 1,
-        bonusName: "Bonus Number",
+        bonusName: i18n.t("pickerData:megamillions.bonusName"),
+        pluralBonusName: i18n.t("pickerData:megamillions.pluralBonusName"),
         ballsTheme: "blue-yellow",
         price: "€2.80"
     },
@@ -17,7 +20,8 @@ const lottoData = {
         minBonus:1,
         numbersAmount: 5,
         bonusAmount: 2,
-        bonusName: "Lucky Star",
+        bonusName: i18n.t("pickerData:euromillions.bonusName"),
+        pluralBonusName: i18n.t("pickerData:euromillions.pluralBonusName"),
         ballsTheme: "blue-yellow",
         price: "€2.50"			
     },
@@ -28,7 +32,8 @@ const lottoData = {
         minBonus:1,
         numbersAmount: 5,
         bonusAmount: 2,
-        bonusName: "Euro Ball",
+        bonusName: i18n.t("pickerData:eurojackpot.bonusName"),
+        pluralBonusName: i18n.t("pickerData:eurojackpot.pluralBonusName"),
         ballsTheme: "yellow-red",
         price: "€2.00"			
     },
@@ -39,7 +44,8 @@ const lottoData = {
         minBonus:1,
         numbersAmount: 5,
         bonusAmount: 1,
-        bonusName: "bonus number",
+        bonusName: i18n.t("pickerData:powerball.bonusName"),
+        pluralBonusName: i18n.t("pickerData:powerball.pluralBonusName"),
         ballsTheme: "red-yellow",
         price: "€2.80"			
     },
@@ -50,7 +56,8 @@ const lottoData = {
         minBonus:0,
         numbersAmount: 6,
         bonusAmount: 1,
-        bonusName: "Superball",
+        bonusName: i18n.t("pickerData:6aus49.bonusName"),
+        pluralBonusName: i18n.t("pickerData:6aus49.pluralBonusName"),
         ballsTheme: "red-yellow",
         price: "€1.00"			
     }

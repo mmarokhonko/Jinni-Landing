@@ -72,7 +72,7 @@ class App extends Component {
           mc = getParamFromCookieOrUrl("mc"),
           jlpid = getParamFromCookieOrUrl("jlpid"),
           lotteryOrientation = getParamFromURL("lottery").toLowerCase() || "euromillions",
-          lang = getParamFromURL("lang") || "EN",
+          lang = getParamFromURL("lang") || "en",
           offer = getParamFromURL("offer").toLowerCase() || "freeticket",
           redirectUrl = getParamFromURL("redirectUrl") || "/cart",
           affiliateId = bTag.length > 0 ? bTag.substring(0, bTag.indexOf("_")) : "",
@@ -83,10 +83,6 @@ class App extends Component {
 
       this.setNumberOfTicketsInStore(offer);
 	  this.setNumberOfNotfreetickets(offer);
-
-	  if (lang !== "en") {
-          this.props.i18n.changeLanguage(lang);
-	  }
 
       const urlData = {
           bTag,
