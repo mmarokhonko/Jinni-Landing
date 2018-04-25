@@ -1,5 +1,5 @@
 import React from "react";
-import { string, number, object } from "prop-types";
+import { string, number, object, func } from "prop-types";
 import Media from "react-media";
 import { mobXConnect } from "../../tools/toolFunctions";
 import {translate} from "react-i18next";
@@ -73,6 +73,7 @@ Help.propTypes = {
     offer: string.isRequired,
     pickerStore: object.isRequired,
     numberOfNotFree: number.isRequired,
+    t: func.isRequired
 };
 
 export default translate("helpSectionText")(mobXConnect("pickerStore")(Help));

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import Media from "react-media";
-import { object } from "prop-types";
+import { object, func } from "prop-types";
 import axios from "axios";
 import {translate} from "react-i18next";
 
@@ -258,7 +258,8 @@ class App extends Component {
 }
 
 App.propTypes = {
-    pickerStore: object.isRequired
+    pickerStore: object.isRequired,
+    t:func.isRequired
 };
 
 export default translate("AppText")(mobXConnect("pickerStore")(App));

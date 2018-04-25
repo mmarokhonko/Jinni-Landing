@@ -19,7 +19,7 @@ const MultiPickerDesktop = ({
     ballsWrapRef, 
     price,
     t}) => {
-		console.log(pluralBonusName);
+    console.log(pluralBonusName);
     return(
         <div className="frame multi-picker">
             <h4 className="frame_title" dangerouslySetInnerHTML={{__html: t("title", 
@@ -64,11 +64,13 @@ MultiPickerDesktop.propTypes = {
     minBonus: number.isRequired,
     maxNumber: number.isRequired,
     minNumber: number.isRequired,
-    bonusName: string.isRequired,
+	bonusName: string.isRequired,
+	pluralBonusName: string.isRequired,
     ballsTheme: string.isRequired,
     price: string.isRequired,
     hasError: bool.isRequired,
-    ballsWrapRef: func.isRequired
+    ballsWrapRef: func.isRequired,
+    t:func.isRequired
 }
 
 export default translate("multiPickerText")(MultiPickerDesktop);

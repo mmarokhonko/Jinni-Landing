@@ -1,5 +1,5 @@
 import React from "react";
-import {string} from "prop-types";
+import {string, func} from "prop-types";
 import {translate} from "react-i18next";
 
 const Footer = ({offer, t}) => {
@@ -40,7 +40,8 @@ const Footer = ({offer, t}) => {
 }
 
 Footer.propTypes = {
-    offer: string
+    offer: string,
+    t: func.isRequired
 }
 
 export default translate("footerText")(Footer);

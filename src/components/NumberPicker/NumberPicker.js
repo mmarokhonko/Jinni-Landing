@@ -1,5 +1,5 @@
 import React from "react";
-import {number, object, array, string, bool, oneOfType} from "prop-types";
+import {number, object, array, string, bool, func, oneOfType} from "prop-types";
 import {translate} from "react-i18next";
 
 const NumberPicker = ({  
@@ -47,7 +47,9 @@ NumberPicker.propTypes = {
     numbersAmount: number.isRequired,
     bonusAmount: number.isRequired,
     bonusName: string.isRequired,
-    done: bool
+    pluralBonusName: string.isRequired,
+    done: bool,
+    t:func.isRequired
 }
 
 export default translate("singlePickerText")(NumberPicker);

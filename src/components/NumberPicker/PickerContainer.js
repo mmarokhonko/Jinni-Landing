@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import shallowEqualArrays from "shallow-equal/arrays";
-import { string, object } from "prop-types";
+import { string, object, func } from "prop-types";
 import Media from "react-media";
 import noScroll from "no-scroll";
 import {translate} from "react-i18next";
@@ -274,7 +274,8 @@ class PickerContainer extends Component {
 
 PickerContainer.propTypes = {
     lotto: string.isRequired,
-    pickerStore: object.isRequired
+    pickerStore: object.isRequired,
+    t:func.isRequired
 };
 
 export default translate("singlePickerText", {withRef: true})(mobXConnect("pickerStore")(PickerContainer));

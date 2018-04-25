@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { number, object, array, bool, string, oneOfType } from "prop-types";
+import { number, object, array, bool, string, func, oneOfType } from "prop-types";
 import {translate} from "react-i18next";
 
 import closeIcon from "../../assets/NumberPicker/icon/close.png";
@@ -99,6 +99,11 @@ NumberPickerMobile.propTypes = {
     bonusAmount: number.isRequired,
     maxNumber: number.isRequired,
     maxBonus: number.isRequired,
+    minNumber: number.isRequired,
+    minBonus: number.isRequired,
+    bonusName: string.isRequired,
+    pluralBonusName: string.isRequired,
+    t:func.isRequired,
     ballsTheme: string.isRequired,
     modalOpen: bool,
     done: bool

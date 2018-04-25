@@ -111,7 +111,8 @@ DynamicMobileHeader.propTypes = {
     jackpot: string.isRequired,
     modalOpenHandler: func.isRequired,
     pickerStore: object.isRequired,
-    numberOfNotFree: number.isRequired
+    numberOfNotFree: number.isRequired,
+    t:func.isRequired
 };
 
 export default translate("headerMobileText")(mobXConnect("pickerStore")(DynamicMobileHeader));

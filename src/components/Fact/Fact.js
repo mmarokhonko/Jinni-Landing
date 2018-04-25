@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {string} from "prop-types";
+import {string, func} from "prop-types";
 import {translate} from "react-i18next";
 
 import lottoDataFacts from "./factLottoData";
@@ -28,7 +28,8 @@ class Fact extends Component {
 }
 
 Fact.propTypes = {
-    lotto: string.isRequired
+    lotto: string.isRequired,
+    t: func.isRequired
 }
 
 export default translate("factSectionText")(Fact);

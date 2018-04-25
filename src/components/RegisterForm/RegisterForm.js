@@ -521,7 +521,8 @@ class RegisterForm extends Component {
 
 RegisterForm.propTypes = {
     submitHandler: func.isRequired,
-    offer: string.isRequired
+	offer: string.isRequired,
+	t: func.isRequired
 };
 
 export default translate("formText")(RegisterForm);

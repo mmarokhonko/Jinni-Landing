@@ -70,7 +70,8 @@ DynamicHeader.propTypes = {
     lotto: PropTypes.string.isRequired,
     jackpot: PropTypes.string.isRequired,
     pickerStore: PropTypes.object.isRequired,
-    numberOfNotFree: PropTypes.number.isRequired
+    numberOfNotFree: PropTypes.number.isRequired,
+    t: PropTypes.func.isRequired
 };
 
 export default translate("headerDesktopText")(mobXConnect("pickerStore")(DynamicHeader));
