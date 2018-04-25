@@ -2,7 +2,7 @@ import React from "react";
 import { string, number, object } from "prop-types";
 import Media from "react-media";
 import { mobXConnect } from "../../tools/toolFunctions";
-import {translate, Trans} from "react-i18next";
+import {translate} from "react-i18next";
 
 import Timer from "./Timer";
 

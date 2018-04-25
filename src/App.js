@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import Media from "react-media";
 import { object } from "prop-types";
 import axios from "axios";
-import {translate, Trans} from "react-i18next";
+import {translate} from "react-i18next";
 
 import DynamicHeader from "./components/DynamicHeader/DynamicHeader";
 import DynamicMobileHeader from "./components/DynamicHeader/DynamicMobileHeader";
@@ -193,9 +193,9 @@ class App extends Component {
 
   render() {
 	  const { lottoData, urlData } = this.state;
-	  const { t, i18n } = this.props;
+	  const { t } = this.props;
       if (!lottoData) {
-          return <Trans i18nKey="dataNotLoaded">Data not loaded yet</Trans>;
+          return <p>{t("dataNotLoaded")}</p>;
 	  }
 
 	  const { offer } = urlData;
@@ -227,10 +227,7 @@ class App extends Component {
               <main className="main">
                   <div className="cont-zone">
                       {offer === "freeticket" && (
-                          <h1 className="main_title">
-						  	<Trans i18nKey="freeticketMainTitle">
-							  Get your <u>FREE</u> bet line here:
-							  </Trans>
+                          <h1 className="main_title" dangerouslySetInnerHTML={{__html: t("freeticketMainTitle")}}>
                           </h1>
                       )}
                       <div className={`main_subwrap ${offer !== "freeticket" ? "-vertical" : ""}`}>

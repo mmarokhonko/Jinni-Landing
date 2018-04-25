@@ -1,20 +1,20 @@
 {
   "AppText": {
 	  "notFilledTicketsError": "Hoppla! Du hast das Wichtigste vergessen – Dein Bonus-Tippfelds auszufüllen",
-	  "freeticketMainTitle": "Erhalte hier Dein <1>GRATIS</1> Tippfeld:",
+	  "freeticketMainTitle": "Erhalte hier Dein <u>GRATIS</u> Tippfeld:",
 	  "dataNotLoaded": "Daten noch nicht geladen",
 	  "emailError": "Die eingegebene E-Mail-Adresse wird bereits verwendet. Versuche Dich damit einzuloggen. Falls Du Dich nicht mehr an Dein Passwort erinnern kannst, lasse es zurücksetzen.",
 	  "generalRegError": "Hoppla, bei der Registrierung ist ein Fehler aufgetreten. Bitte versuche es erneut, damit wir anfangen können Deine Wünsche zu erfüllen."
   },
   "headerDesktopText": {
-    "freeticketTitle": "Nimm <3>GRATIS</3> an der nächsten <1>{{lotteryLogo}}</1>Ziehung teil.",
+    "freeticketTitle": "Nimm <span>GRATIS</span> an der nächsten <img src='{{lotteryLogo}}' alt='{{lotteryName}}' />Ziehung teil.",
     "notfreeTitle":
-	  "Erhalte <1>{{numberOfTickets}}</1> <3>{{lotteryLogo}}</3> Tippfelder zum Preis von <5>{{numberOfNotFree}}</5>"
+	  "Erhalte {{numberOfTickets}} <img src='{{lotteryLogo}}' alt='{{lotteryName}}' /> Tippfelder zum Preis von {{numberOfNotFree}}"
   },
   "headerMobileText": {
-    "freeticketTitle": "Nimm an der nächsten Ziehung <1>GRATIS</1> teil",
+    "freeticketTitle": "Nimm an der nächsten Ziehung <span>GRATIS</span> teil",
     "notfreeTitle":
-      "Erhalte <1><0>{{numberOfTickets}}</0></1> Tippfelder zum Preis von <3><0>{{numberOfNotFree}}</0></3> !",
+      "Erhalte <span>{{numberOfTickets}}</span> Tippfelder zum Preis von <span>{{numberOfNotFree}}</span> !",
     "freeLabel": "GRATIS"
   },
   "helpSectionText": {

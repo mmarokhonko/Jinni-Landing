@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {string, func, object, number} from "prop-types";
-import {translate, Trans} from "react-i18next";
+import {translate} from "react-i18next";
 
 import headerLottoData from "./headerLottoData";
 import pickerLottoData from "../NumberPicker/pickerLottoData";
@@ -83,16 +83,11 @@ class DynamicMobileHeader extends Component {
               <div className="cont-zone">
                   <img className="mob-header_logo" src={lottoData.logo} alt={lotto} />
 				  {numberOfNotFree === 0 ? (
-					  <h2 className="mob-header_title">
-                          <Trans i18nKey="freeticketTitle">
-							Play the next draw for <span>FREE</span>
-                          </Trans>
+					  <h2 className="mob-header_title" dangerouslySetInnerHTML={{__html: t("freeticketTitle")}}>
                       </h2>
 				  ) : (
-                      <h2 className="mob-header_title">
-					  	<Trans i18nKey="notfreeTitle" numberOfTickets={ticketsData.length} numberOfNotFree={numberOfNotFree}>
-					  		Get <span>{ticketsData.length}</span> bet lines for the price of <span>{numberOfNotFree}</span>!
-                          </Trans>
+					  <h2 className="mob-header_title" dangerouslySetInnerHTML={{__html: t("notfreeTitle", 
+					  {numberOfTickets:ticketsData.length, numberOfNotFree})}}>
                       </h2>
 				  )}
                   <h3 className="mob-header_jackpot">{`${lottoData.currency}${jackpotString}`}</h3>

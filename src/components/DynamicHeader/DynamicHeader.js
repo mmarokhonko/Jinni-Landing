@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { mobXConnect } from "../../tools/toolFunctions";
-import {translate, Trans} from "react-i18next";
+import {translate} from "react-i18next";
 
 import allLottoData from "./headerLottoData";
 
@@ -37,7 +37,7 @@ class DynamicHeader extends Component {
 
 
   render() {
-	  const { lotto, jackpot, numberOfNotFree } = this.props;
+	  const { lotto, jackpot, numberOfNotFree, t } = this.props;
 	  const {ticketsData} = this.props.pickerStore;
       const lottoData = this.state.lottoData;
 
@@ -48,16 +48,12 @@ class DynamicHeader extends Component {
               <img src={lottoData.people} alt="" className="header_people" />
               <div className="cont-zone">
 			  {numberOfNotFree === 0 ? (
-				  <h2 className="header_title -with-logo">
-				  <Trans i18nKey="freeticketTitle" lotteryLogo={<img src={lottoData.logo} alt={lotto} />}>
-				  	Play the next <img src={lottoData.logo} alt={lotto} /> draw for <span>FREE</span>
-				  </Trans>
+				  <h2 className="header_title -with-logo" dangerouslySetInnerHTML={{__html:t("freeticketTitle", 
+				  {lotteryLogo: lottoData.logo, lotteryName: lotto})}}>
                       </h2>
 			  )  : (
-                      <h2 className="header_title -with-logo">
-                          <Trans i18nKey="notfreeTitle" numberOfTickets={ticketsData.length} lotteryLogo={<img src={lottoData.logo} alt={lotto} />} numberOfNotFree={numberOfNotFree}>					  
-							Get {ticketsData.length} <img src={lottoData.logo} alt={lotto} /> bet lines for the price of {numberOfNotFree}
-                          </Trans>
+					  <h2 className="header_title -with-logo" dangerouslySetInnerHTML={{__html:t("notfreeTitle",
+					  {numberOfTickets:ticketsData.length, lotteryLogo: lottoData.logo, lotteryName: lotto, numberOfNotFree})}} >
 					  </h2>
 			  )}
                   <div

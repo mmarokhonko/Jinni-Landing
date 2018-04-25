@@ -1,20 +1,20 @@
 {
   "AppText": {
 	  "notFilledTicketsError": "Whoops! You’ve forgotten the most important part – filling up your bonus tickets",
-	  "freeticketMainTitle": "Get your <1>FREE</1> bet line here:",
+	  "freeticketMainTitle": "Get your <u>FREE</u> bet line here:",
 	  "dataNotLoaded": "Data not loaded yet",
 	  "emailError": "The email address you have chosen is already in use. Try logging in with it. If you can't remember your password, just request a reset.",
 	  "generalRegError": "Whoops, an error occurred during registration. Please try again so we can start making your wishes come true."
   },
   "headerDesktopText": {
-    "freeticketTitle": "Play the next <1>{{lotteryLogo}}</1> draw for <3>FREE</3>",
+    "freeticketTitle": "Play the next <img src='{{lotteryLogo}}' alt='{{lotteryName}}' /> draw for <spab>FREE</span>",
     "notfreeTitle":
-      "Get <1>{{numberOfTickets}}</1> <3>{{lotteryLogo}}</3> bet lines for the price of <5>{{numberOfNotFree}}</5>"
+      "Get {{numberOfTickets}} <img src='{{lotteryLogo}}' alt='{{lotteryName}}' /> bet lines for the price of {{numberOfNotFree}}"
   },
   "headerMobileText": {
-    "freeticketTitle": "Play the next draw for <1>FREE</1>",
+    "freeticketTitle": "Play the next draw for <span>FREE</span>",
     "notfreeTitle":
-      "Get <1><0>{{numberOfTickets}}</0></1> bet lines for the price of <3><0>{{numberOfNotFree}}</0></3> !",
+      "Get <span>{{numberOfTickets}}</span> bet lines for the price of <span>{{numberOfNotFree}}</span> !",
     "freeLabel": "FREE"
   },
   "helpSectionText": {

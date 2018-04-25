@@ -8,7 +8,7 @@ import SelectTitle from "./SelectTitle";
 import { SelectDayOfBirth, SelectMonthOfBirth, SelectYearOfBirth } from "./dateOfBirthComponents";
 import { SelectCountry, SelectPhoneCode } from "./countryComponents";
 import { isFieldError } from "./tools/validationFunctions";
-import {translate, Trans} from "react-i18next";
+import {translate} from "react-i18next";
 
 import { restrictedCountries } from "./data/restrictedCountries.json";
 
