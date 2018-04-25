@@ -22,9 +22,9 @@
     "firstStepTitle": "Pick your lucky numbers",
     "firstStepText": {
       "megamillions":
-        "Select {{numbersAmount}} numbers from 1-{{maxNumber}} <br className='hide-big' />+ {{bonusAmount}} {{bonusName}} from 1-{{maxBonus}}. <br className='hide-big' />Or we can randomly choose for you when you click <br className='hide-big' /> “Quick Pick”",
+        "Select {{numbersAmount}} numbers from 1-{{maxNumber}} <br class='hide-big' />+ {{bonusAmount}} {{bonusName}} from 1-{{maxBonus}}. <br class='hide-big' />Or we can randomly choose for you when you click <br class='hide-big' /> “Quick Pick”",
       "euromillions":
-        "Select {{numbersAmount}} numbers + {{bonusAmount}} {{bonusName}} or simply <br className='hide-sm' /> click 'Quick Pick' for a random selection",
+        "Select {{numbersAmount}} numbers + {{bonusAmount}} {{bonusName}} or simply <br class='hide-sm' /> click 'Quick Pick' for a random selection",
       "eurojackpot":
         "Choose {{numbersAmount}} numbers between 1 and {{maxNumber}} and {{bonusAmount}} {{bonusName}} between 1 and {{bonusAmount}} or simply click 'Quick Pick' for a random selection",
       "powerball":
@@ -37,15 +37,15 @@
         "title": "Get your bet line for free",
         "text": {
           "desktop":
-            "Fill out the short form and then click 'Claim<br className='hide-sm' />Free Bet' to secure your bet line for free",
+            "Fill out the short form and then click 'Claim<br class='hide-sm' />Free Bet' to secure your bet line for free",
           "mobile":
-            "To place your bet for free, just fill <br className='hide-sm' />out the short form and click <br className='hide-sm' /> “Claim Free Bet”"
+            "To place your bet for free, just fill <br class='hide-sm' />out the short form and click <br class='hide-sm' /> “Claim Free Bet”"
         }
       },
       "notfree": {
         "title": "Get {{numberOfFreeLines}} free bet lines",
         "text":
-          "Submit the form to place {{numberOfTickets}} bet lines<br className='hide-sm' />for the price of {{numberOfNotFree}}"
+          "Submit the form to place {{numberOfTickets}} bet lines<br class='hide-sm' />for the price of {{numberOfNotFree}}"
       }
     },
     "thirdStep": {
@@ -53,33 +53,33 @@
       "text": {
         "megamillions": {
           "desktop":
-            "MegaMillions draws are held twice a week. To find out if you’re a winner, check the results after the next draw in <span className='help_timer'>{{timeRemains}}</span>",
+            "MegaMillions draws are held twice a week. To find out if you’re a winner, check the results after the next draw in <span class='help_timer'>{{timeRemains}}</span>",
           "mobile":
-            "Wait for the upcoming draw that <br /> will take place in: <br /><span className='help_timer'>{{timeRemains}}</span> <br />to see how much you won"
+            "Wait for the upcoming draw that <br /> will take place in: <br /><span class='help_timer'>{{timeRemains}}</span> <br />to see how much you won"
         },
         "euromillions": {
           "desktop":
-            "There are two EuroMillions draws every week. Be sure to check the results Follow the results of the next Euromillions draw on <span className='help_timer'>{{timeRemains}}</span> to find out if you’re a winner",
+            "There are two EuroMillions draws every week. Be sure to check the results Follow the results of the next Euromillions draw on <span class='help_timer'>{{timeRemains}}</span> to find out if you’re a winner",
           "mobile":
-            "There are two EuroMillions draws every week. Be sure to check the results Follow the results of the next Euromillions draw on <span className='help_timer'>{{timeRemains}}</span> to find out if you’re a winner"
+            "There are two EuroMillions draws every week. Be sure to check the results Follow the results of the next Euromillions draw on <span class='help_timer'>{{timeRemains}}</span> to find out if you’re a winner"
         },
         "eurojackpot": {
           "desktop":
-            "Follow the results of the next EuroJackpot <br/> draw on <span className='help_timer'>{{timeRemains}}</span> to find out if you’re <br/> a winner",
+            "Follow the results of the next EuroJackpot <br/> draw on <span class='help_timer'>{{timeRemains}}</span> to find out if you’re <br/> a winner",
           "mobile":
-            "Follow the results of the next <br/> EuroJackpot draw on<br/> <span className='help_timer'>{{timeRemains}}</span><br/>to find out if you’re a winner"
+            "Follow the results of the next <br/> EuroJackpot draw on<br/> <span class='help_timer'>{{timeRemains}}</span><br/>to find out if you’re a winner"
         },
         "powerball": {
           "desktop":
-            "Wait for the next Powerball on <br/> <span className='help_timer'>{{timeRemains}}</span> to see if you’re a winner",
+            "Wait for the next Powerball on <br/> <span class='help_timer'>{{timeRemains}}</span> to see if you’re a winner",
           "mobile":
-            "Wait for the upcoming draw that will take place in <br/> <span className='help_timer'>{{timeRemains}}</span><br/> to see how much you won"
+            "Wait for the upcoming draw that will take place in <br/> <span class='help_timer'>{{timeRemains}}</span><br/> to see how much you won"
         },
         "6asu49": {
           "desktop":
-            "Don't miss the next of two weekly draws on <br/> <span className='help_timer'>{{timeRemains}}</span> to see if you’re a winner",
+            "Don't miss the next of two weekly draws on <br/> <span class='help_timer'>{{timeRemains}}</span> to see if you’re a winner",
           "mobile":
-            "Wait for the upcoming draw that will take place in <br/> <span className='help_timer'>{{timeRemains}}</span><br/> to see how much you won"
+            "Wait for the upcoming draw that will take place in <br/> <span class='help_timer'>{{timeRemains}}</span><br/> to see how much you won"
         }
       }
     }
@@ -125,7 +125,7 @@
     },
     "mobile": {
       "frameTitle":
-        "Pick {{numbersAmount}} numbers from {{minNumber}}-{{maxNumber}}<br />& {{bonusAmount}} {{bonusName} from {{minBonus}}-{{maxBonus}}",
+        "Pick {{numbersAmount}} numbers from {{minNumber}}-{{maxNumber}}<br />& {{bonusAmount}} {{bonusName}} from {{minBonus}}-{{maxBonus}}",
       "or": "or",
       "done": "Done",
       "pickNumbersBtn": "pick numbers",

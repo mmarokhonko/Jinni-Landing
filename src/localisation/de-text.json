@@ -22,9 +22,9 @@
     "firstStepTitle": "WÄHLE DEINE GLÜCKSZAHLEN",
     "firstStepText": {
       "megamillions":
-        "Wähle {{numbersAmount}} Zahlen von 1-{{maxNumber}} <br className='hide-big' />+ {{bonusAmount}} {{bonusName}} von 1-{{maxBonus}}. <br className='hide-big' />Oder erhalte eine zufällige Auswahl, wenn Du auf “Quicktipp” klickst",
+        "Wähle {{numbersAmount}} Zahlen von 1-{{maxNumber}} <br class='hide-big' />+ {{bonusAmount}} {{bonusName}} von 1-{{maxBonus}}. <br class='hide-big' />Oder erhalte eine zufällige Auswahl, wenn Du auf “Quicktipp” klickst",
       "euromillions":
-        "Wähle {{numbersAmount}} Zahlen + {{bonusAmount}} {{bonusName}} oder  <br className='hide-sm' /> klicke auf  'Quicktipps' für eine zufällige Auswahl.",
+        "Wähle {{numbersAmount}} Zahlen + {{bonusAmount}} {{bonusName}} oder  <br class='hide-sm' /> klicke auf  'Quicktipps' für eine zufällige Auswahl.",
       "eurojackpot":
         "Wähle {{numbersAmount}} Zahlen zwischen 1 und {{maxNumber}} und {{bonusAmount}} {{bonusName}} zwischen 1 und {{maxBonus}} oder klicke einfach auf 'Quicktipps' für eine zufällige Auswahl.",
       "powerball":
@@ -37,15 +37,15 @@
         "title": "ERHALTE DEINEN GRATISTIPP",
         "text": {
           "desktop":
-            " Fülle das kurze Formular aus und klicke auf '<br className='hide-sm' />Gratistipp anfordern' um Dir Dein kostenloses Tippfeld zu sichern",
+            " Fülle das kurze Formular aus und klicke auf '<br class='hide-sm' />Gratistipp anfordern' um Dir Dein kostenloses Tippfeld zu sichern",
           "mobile":
-            "Fülle <br className='hide-sm' />dieses kurze Formular aus und klicke <br className='hide-sm' /> “Gratistipp anfordern”"
+            "Fülle <br class='hide-sm' />dieses kurze Formular aus und klicke <br class='hide-sm' /> “Gratistipp anfordern”"
         }
       },
       "notfree": {
         "title": "Erhalte {{numberOfFreeLines}} Gratis-Tippfelder",
         "text":
-          "Fülle das kurze Formular aus, um Dir {{numberOfTickets}} Tippfelder <br className='hide-sm' /> für den Preis von {{numberOfNotFree}} zu sichern."
+          "Fülle das kurze Formular aus, um Dir {{numberOfTickets}} Tippfelder <br class='hide-sm' /> für den Preis von {{numberOfNotFree}} zu sichern."
       } 
     },
     "thirdStep": {
@@ -53,33 +53,33 @@
       "text": {
         "megamillions": {
           "desktop":
-            "Die MegaMillions Ziehung findet zwei Mal wöchentlich statt. Um zu erfahren, ob Du gewonnen hast, sieh Dir die Gewinnzahlen der nächsten Ziehung an in <span className='help_timer'>{{timeRemains}}</span>",
+            "Die MegaMillions Ziehung findet zwei Mal wöchentlich statt. Um zu erfahren, ob Du gewonnen hast, sieh Dir die Gewinnzahlen der nächsten Ziehung an in <span class='help_timer'>{{timeRemains}}</span>",
           "mobile":
-            "Warte die kommende Ziehung ab, die <br /> stattfindet in <br /><span className='help_timer'>{{timeRemains}}</span> <br />um zu sehen wie viel Du gewonnen hast"
+            "Warte die kommende Ziehung ab, die <br /> stattfindet in <br /><span class='help_timer'>{{timeRemains}}</span> <br />um zu sehen wie viel Du gewonnen hast"
         },
         "euromillions": {
           "desktop":
-            "Es gibt zwei EuroMillions Ziehungen jede Woche. Stell sicher, dass Du die Ergebnisse der nächsten Ziehung nicht verpasst. Siehe nach den EuroMillions Gewinnzahlen in <span className='help_timer'>{{timeRemains}}</span> um herauszufinden, ob Du ein Gewinner bist",
+            "Es gibt zwei EuroMillions Ziehungen jede Woche. Stell sicher, dass Du die Ergebnisse der nächsten Ziehung nicht verpasst. Siehe nach den EuroMillions Gewinnzahlen in <span class='help_timer'>{{timeRemains}}</span> um herauszufinden, ob Du ein Gewinner bist",
           "mobile":
             "Es gibt zwei EuroMillions Ziehungen jede Woche. Stell sicher, dass Du die Ergebnisse der nächsten Ziehung nicht verpasst. Siehe nach den EuroMillions Gewinnzahlen in <span className='help_timer'>{{timeRemains}}</span> um herauszufinden, ob Du ein Gewinner bist"
         },
         "eurojackpot": {
           "desktop":
-            "Verfolge die Gewinnzahlen der nächsten EuroJackpot <br/> Ziehung in <span className='help_timer'>{{timeRemains}}</span> um herauszufinden, ob Du <br/> ein Gewinner bist",
+            "Verfolge die Gewinnzahlen der nächsten EuroJackpot <br/> Ziehung in <span class='help_timer'>{{timeRemains}}</span> um herauszufinden, ob Du <br/> ein Gewinner bist",
           "mobile":
-            "Verfolge die Gewinnzahlen der nächsten EuroJackpot <br/> Ziehung in <span className='help_timer'>{{timeRemains}}</span> um herauszufinden, ob Du <br/> ein Gewinner bist"
+            "Verfolge die Gewinnzahlen der nächsten EuroJackpot <br/> Ziehung in <span class='help_timer'>{{timeRemains}}</span> um herauszufinden, ob Du <br/> ein Gewinner bist"
         },
         "powerball": {
           "desktop":
-            "Warte die nächste Powerball-Ziehung ab <br/> <span className='help_timer'>{{timeRemains}}</span> um zu sehen, ob Du gewonnen hast",
+            "Warte die nächste Powerball-Ziehung ab <br/> <span class='help_timer'>{{timeRemains}}</span> um zu sehen, ob Du gewonnen hast",
           "mobile":
-            "Warte die kommende Ziehung ab, die stattfindet in <br/> <span className='help_timer'>{{timeRemains}}</span><br/> um zu erfahren, wie viel Du gewonnen hast"
+            "Warte die kommende Ziehung ab, die stattfindet in <br/> <span class='help_timer'>{{timeRemains}}</span><br/> um zu erfahren, wie viel Du gewonnen hast"
         },
         "6aus49": {
           "desktop":
-            "Verpasse nicht die nächste von zwei wöchentlichen Ziehungen in <br/> <span className='help_timer'>{{timeRemains}}</span> um zu erfahren, ob Du ein Gewinner bist",
+            "Verpasse nicht die nächste von zwei wöchentlichen Ziehungen in <br/> <span class='help_timer'>{{timeRemains}}</span> um zu erfahren, ob Du ein Gewinner bist",
           "mobile":
-            "Warte die kommende Ziehung ab, die stattfindet in <br/> <span className='help_timer'>{{timeRemains}}</span><br/> to see how much you won"
+            "Warte die kommende Ziehung ab, die stattfindet in <br/> <span class='help_timer'>{{timeRemains}}</span><br/> to see how much you won"
         }
       }
     }

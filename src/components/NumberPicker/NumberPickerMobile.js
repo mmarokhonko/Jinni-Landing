@@ -13,16 +13,18 @@ const NumberPickerMobile = ({
     maxNumber, 
     maxBonus, 
     minBonus,
+    minNumber,
     bonusName,
     pluralBonusName,
     ballsTheme, 
     done,
     t }) => {
+    const openModal = pickerMobileMethods.openMobileModal;
     return (
         <Fragment>
             <div className="frame picker-mob_frame">
                 <h4 className="frame_title" dangerouslySetInnerHTML={{__html: t("mobile.frameTitle",
-                    {numbersAmount, maxNumber, bonusAmount, bonusName:bonusAmount <= 1 ? bonusName : pluralBonusName, maxBonus, minBonus})}}>
+                    {numbersAmount, maxNumber, minNumber, bonusAmount, bonusName: bonusAmount <= 1 ? bonusName : pluralBonusName, maxBonus, minBonus})}}>
                 </h4>
                 <button
                     className="btn-general btn-green picker_quick-btn"
@@ -31,7 +33,7 @@ const NumberPickerMobile = ({
                     {t("desktop.quickPickBtn")}
                 </button>
                 <div className="picker-mob_frame_bottom">
-                    {t("mobile.or")} <button className="picker-mob_pick-btn" onClick={() => pickerMobileMethods.openMobileModal()}>{t("mobile.pickNumbersBtn")}</button>
+                    {t("mobile.or")} <button className="picker-mob_pick-btn" onClick={() => openModal()}>{t("mobile.pickNumbersBtn")}</button>
                 </div>
             </div>
             {modalOpen && (
@@ -49,7 +51,7 @@ const NumberPickerMobile = ({
                         {!done ? (
                             <div className="picker-mob_head">
                                 <h4 className="picker-mob_head_title" dangerouslySetInnerHTML={{__html: t("mobile.frameTitle",
-                                    {numbersAmount, bonusAmount, bonusName:bonusAmount <= 1 ? bonusName : pluralBonusName})}}>
+                                    {numbersAmount, bonusAmount, maxNumber, minNumber, maxBonus, minBonus, bonusName: bonusAmount <= 1 ? bonusName : pluralBonusName})}}>
                                 </h4>
                                 <p className="picker-mob_head_pale-text">{t("mobile.or")}</p>
                                 <button

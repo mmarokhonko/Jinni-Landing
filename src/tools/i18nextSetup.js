@@ -5,7 +5,7 @@ import {getParamFromURL} from "./toolFunctions";
 
 i18n.init({
     fallbackLng: "en",
-    lng: getParamFromURL("lang") || "en",
+    lng: getParamFromURL("lang").toLowerCase() || "en",
     keySeparator: ".",
     interpolation: {
         formatSeparator: ","

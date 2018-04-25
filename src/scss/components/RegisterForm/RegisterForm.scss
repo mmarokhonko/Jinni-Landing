@@ -19,6 +19,8 @@
 		margin-top: unset;
 		margin-left: -15px;
 		margin-right: -15px;
+		padding-left: 2%;
+		padding-right: 2%;
 	}
   }
 }
@@ -110,7 +112,6 @@
   width: 180px;
   font-size: 16px;
   font-weight: bold;
-  line-height: 26px;
   @media (max-width: 768px) {
     margin: 20px auto 0;
   }
@@ -329,7 +330,7 @@
 }
 
 .select-title {
-  max-width: 120px;
+  max-width: 160px;
   flex: 1;
   .selwi_value {
     border-radius: 5px 0 0 5px;

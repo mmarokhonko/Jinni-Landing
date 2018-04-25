@@ -100,11 +100,11 @@ const sendDataModule = {
         errorNode.classList.add("-shown");
         switch (errorId) {
         case "073":
-            errorNode.innerHTML = i18n.t("AppText.emailError");   
+            errorNode.innerHTML = i18n.t("AppText:emailError");   
             break;
         
         default:
-            errorNode.innerHTML = i18n.t("AppText.generalRegError");     
+            errorNode.innerHTML = i18n.t("AppText:generalRegError");     
             break;
         }
     },

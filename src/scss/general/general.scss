@@ -17,7 +17,7 @@ h5 {
 
 .hide-sm {
   @media (max-width: 768px) {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -116,8 +116,8 @@ h5 {
 .frame_title {
   margin-bottom: 19px;
   font-size: 22px;
-  line-height: 26px;
-  min-height: 52px;
+  line-height: 30px;
+  height: 70px;
   text-align: center;
   text-indent: 10px;
   span {
@@ -128,7 +128,8 @@ h5 {
     margin-right: -15px;
     font-size: 16px;
     line-height: 1.2;
-    min-height: unset;
+	min-height: unset;
+	height: unset;
     padding-bottom: 20px;
     border-bottom: 1px solid #d7e7ff;
     span {

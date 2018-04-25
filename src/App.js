@@ -131,7 +131,14 @@ class App extends Component {
       });
   };
 
-  openModal = index => this.numberPicker.wrappedInstance.openMobileModal(index);
+  openModal = index => {
+	  if(this.numberPicker.getWrappedInstance) {
+          this.numberPicker.getWrappedInstance().wrappedInstance.openMobileModal(index); 
+	  }
+	  else {
+          this.numberPicker.wrappedInstance.openMobileModal(index);		
+	  }
+  }
 
   passDataToSendingModule = (formData, errorNode) => {
       const { lottoData, urlData, pickerLottoData } = this.state;
@@ -139,9 +146,19 @@ class App extends Component {
 	  const { numbersAmount, bonusAmount } = pickerLottoData;
 	  const {t} = this.props;
 
+	  let pickerInstance = undefined;
+
+	  if(this.numberPicker.getWrappedInstance) {
+          pickerInstance = this.numberPicker.getWrappedInstance().wrappedInstance; 
+      }
+      else {
+          pickerInstance = this.numberPicker.wrappedInstance;		
+      }
+
+
       if (
-          this.numberPicker.wrappedInstance.state.hasError &&
-      this.numberPicker.wrappedInstance.state.hasEmpty
+          pickerInstance.state.hasError &&
+		pickerInstance.state.hasEmpty
       ) {
           return;
       }
@@ -221,10 +238,10 @@ class App extends Component {
                               <MultipleTicketsPicker
                                   lotto={lottoName}
                                   numberOfNotFree={this.state.numberOfNotFree}
-                                  ref={picker => (this.numberPicker = picker)}
+                                  ref={picker => this.numberPicker = picker}
                               />
                           ) : (
-                              <NumberPicker lotto={lottoName} ref={picker => (this.numberPicker = picker)} />
+                              <NumberPicker lotto={lottoName} ref={picker => this.numberPicker = picker} />
                           )}
                           <RegisterForm offer={offer} submitHandler={this.passDataToSendingModule} />
                       </div>

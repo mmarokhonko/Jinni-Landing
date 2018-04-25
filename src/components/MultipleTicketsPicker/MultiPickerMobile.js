@@ -53,7 +53,7 @@ const MultiPickerMobile = ({
                         {!done ? (
                             <div className="picker-mob_head">
                                 <h4 className="picker-mob_head_title" dangerouslySetInnerHTML={{__html: t("title", 
-                                    {numbersAmount, bonusAmount, bonusName: bonusAmount <= 1 ? bonusName : pluralBonusName,})}}>
+                                    {numbersAmount, bonusAmount, maxNumber, minNumber, maxBonus, minBonus, bonusName: bonusAmount <= 1 ? bonusName : pluralBonusName,})}}>
                                 </h4>
                                 <p className="picker-mob_head_pale-text">{t("or")}</p>
                                 <button

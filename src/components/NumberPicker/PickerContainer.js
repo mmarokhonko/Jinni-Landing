@@ -64,7 +64,7 @@ class PickerContainer extends Component {
           if (diff === 1) {
               return t("general.numbersHeader.oneNumber");
           }
-          return t("general.numbersHeader.oneNumber", {diff});
+          return t("general.numbersHeader.multipleNumbers", {diff});
       }
   };
 
@@ -227,7 +227,7 @@ class PickerContainer extends Component {
   }
 
   render() {
-	  const { numbersAmount, bonusAmount, bonusName, pluralBonusName, maxBonus, minBonus, maxNumber, ballsTheme} = this.state.pickerLottoData;
+	  const { numbersAmount, bonusAmount, bonusName, pluralBonusName, maxBonus, minBonus, maxNumber, minNumber, ballsTheme} = this.state.pickerLottoData;
 	  const {pickedNums, pickedBonus} = this.props.pickerStore.ticketsData[0];
 
       const isDone = pickedNums.length === numbersAmount && pickedBonus.length === bonusAmount;
@@ -258,6 +258,7 @@ class PickerContainer extends Component {
 						  maxNumber={maxNumber}						  						  
 						  maxBonus={maxBonus}
 						  minBonus={minBonus}
+						  minNumber={minNumber}
 						  bonusName={bonusName}
 						  pluralBonusName={pluralBonusName}
 						  ballsTheme={ballsTheme}
@@ -276,4 +277,4 @@ PickerContainer.propTypes = {
     pickerStore: object.isRequired
 };
 
-export default translate("singlePickerText")(mobXConnect("pickerStore")(PickerContainer));
+export default translate("singlePickerText", {withRef: true})(mobXConnect("pickerStore")(PickerContainer));

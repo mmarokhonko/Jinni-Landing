@@ -305,7 +305,7 @@ class RegisterForm extends Component {
                                   inputHandler={this.inputHandler}
                                   type="text"
                                   name="firstName"
-                                  placeholder={t("placeholder.name")}
+                                  placeholder={t("placeholders.name")}
                                   value={fields.firstName}
                                   error={errorObjects.firstNameError}
                               />
@@ -319,7 +319,7 @@ class RegisterForm extends Component {
                                   type="text"
                                   icon="profile"
                                   name="lastName"
-                                  placeholder={t("placeholder.lastName")}
+                                  placeholder={t("placeholders.lastName")}
                                   value={fields.lastName}
                                   error={errorObjects.lastNameError}
                               />
@@ -333,7 +333,7 @@ class RegisterForm extends Component {
                                   type="email"
                                   icon="email"
                                   name="email"
-                                  placeholder={t("placeholder.email")}
+                                  placeholder={t("placeholders.email")}
                                   value={fields.email}
                                   error={errorObjects.emailError}
                               />
@@ -347,7 +347,7 @@ class RegisterForm extends Component {
                                   type="password"
                                   icon={window.innerWidth <= 768 ? "lockMob" : "lock"}
                                   name="password"
-                                  placeholder={t("placeholder.password")}
+                                  placeholder={t("placeholders.password")}
                                   value={fields.password}
                                   error={errorObjects.passwordError}
                               />
@@ -394,7 +394,7 @@ class RegisterForm extends Component {
                                   type="text"
                                   name="city"
                                   icon="geo"
-                                  placeholder={t("placeholder.city")}
+                                  placeholder={t("placeholders.city")}
                                   value={fields.city}
                                   error={errorObjects.cityError}
                               />
@@ -403,7 +403,7 @@ class RegisterForm extends Component {
                                   type="text"
                                   name="code"
                                   icon="geo"
-                                  placeholder={t("placeholder.code")}
+                                  placeholder={t("placeholders.code")}
                                   value={fields.code}
                                   error={errorObjects.codeError}
                               />
@@ -417,7 +417,7 @@ class RegisterForm extends Component {
                                   type="text"
                                   name="street"
                                   icon="geo"
-                                  placeholder={t("placeholder.street")}
+                                  placeholder={t("placeholders.street")}
                                   value={fields.street}
                                   error={errorObjects.streetError}
                               />
@@ -458,7 +458,7 @@ class RegisterForm extends Component {
                                   type="tel"
                                   name="phoneNumber"
                                   icon="phone"
-                                  placeholder={t("placeholder.number")}
+                                  placeholder={t("placeholders.number")}
                                   value={fields.phoneNumber}
                                   error={errorObjects.phoneNumberError}
                               />
