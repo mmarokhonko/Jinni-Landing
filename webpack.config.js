@@ -43,12 +43,6 @@ module.exports = env => {
         node: {
             fs: "empty"
         },
-        resolve: {
-            alias: {
-                "react": "preact-compat",
-                "react-dom": "preact-compat"
-            }
-        },
         module: {
             rules: [
                 {

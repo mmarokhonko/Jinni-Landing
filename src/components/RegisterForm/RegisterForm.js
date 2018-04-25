@@ -280,7 +280,7 @@ class RegisterForm extends Component {
       formData.birthDate = `${yearOfBirth}-${monthOfBirth}-${dayOfBirth}`;
 
       formData.address = `${fields.city}, ${fields.street}, ${fields.code}`;
-      formData.phoneNumber = `${fields.phoneCode.value}-${fields.phoneNumber}`;
+      formData.phoneNumber = `${fields.phoneCode.value.replace(/\s/g, "")}-${fields.phoneNumber}`;
 
       formData.ip = userIp;
 
@@ -359,7 +359,7 @@ class RegisterForm extends Component {
                               className="btn-general btn-green form_submit-btn form_confirm-btn"
                               onClick={this.moveTo2ndStep}
                           >
-                {t("buttons.next")}
+                              {t("buttons.next")}
                           </button>
                       </div>
                   </form>
@@ -521,8 +521,8 @@ class RegisterForm extends Component {
 
 RegisterForm.propTypes = {
     submitHandler: func.isRequired,
-	offer: string.isRequired,
-	t: func.isRequired
+    offer: string.isRequired,
+    t: func.isRequired
 };
 
 export default translate("formText")(RegisterForm);
