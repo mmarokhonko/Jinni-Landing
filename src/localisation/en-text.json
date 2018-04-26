@@ -7,12 +7,14 @@
 	  "generalRegError": "Whoops, an error occurred during registration. Please try again so we can start making your wishes come true."
   },
   "headerDesktopText": {
-    "freeticketTitle": "Play the next <img src='{{lotteryLogo}}' alt='{{lotteryName}}' /> draw for <spab>FREE</span>",
+	"freeticketTitle": "Play the next <img src='{{lotteryLogo}}' alt='{{lotteryName}}' /> draw for <spab>FREE</span>",
+	"million": "million",
     "notfreeTitle":
       "Get {{numberOfTickets}} <img src='{{lotteryLogo}}' alt='{{lotteryName}}' /> bet lines for the price of {{numberOfNotFree}}"
   },
   "headerMobileText": {
-    "freeticketTitle": "Play the next draw for <span>FREE</span>",
+	"freeticketTitle": "Play the next draw for <span>FREE</span>",
+	"million": "million",	
     "notfreeTitle":
       "Get <span>{{numberOfTickets}}</span> bet lines for the price of <span>{{numberOfNotFree}}</span> !",
     "freeLabel": "FREE"
@@ -49,7 +51,8 @@
       }
     },
     "thirdStep": {
-      "title": "Collect your winnings",
+	  "title": "Collect your winnings",
+	  "timerTemplate": "{{days}}d {{hours}}h {{minutes}}m {{seconds}}s",
       "text": {
         "megamillions": {
           "desktop":
@@ -75,7 +78,7 @@
           "mobile":
             "Wait for the upcoming draw that will take place in <br/> <span class='help_timer'>{{timeRemains}}</span><br/> to see how much you won"
         },
-        "6asu49": {
+        "6aus49": {
           "desktop":
             "Don't miss the next of two weekly draws on <br/> <span class='help_timer'>{{timeRemains}}</span> to see if you’re a winner",
           "mobile":
@@ -114,7 +117,7 @@
         "completed": "Line completed"
       },
       "bonusHeader": {
-        "oneBonus": "Select 1 {{bonusName}}!",
+        "oneBonus": "Select 1 {{bonusName}}",
         "multipleBonuses": "Select {{diff}} {{bonusName}}!",
         "completed": "All done here!"
       }

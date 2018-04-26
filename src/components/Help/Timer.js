@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { string } from "prop-types";
+import { string, func } from "prop-types";
 import moment from "moment";
 import Media from "react-media";
+import {translate} from "react-i18next";
 
 import lottoData from "./helpLottoData";
 
@@ -15,7 +16,7 @@ class Timer extends Component {
 
   componentDidMount() {
       this.tick();
-      this.interval = setInterval(this.tick, 1000);
+	  this.interval = setInterval(this.tick, 1000);
   }
 
   componentWillUnmount() {
@@ -23,7 +24,8 @@ class Timer extends Component {
   }
 
   tick = () => {
-      const { drawDate, currDate } = this.state;
+	  const { drawDate, currDate } = this.state;
+	  const { t } = this.props;
       let diff = drawDate.diff(currDate);
       if (diff <= 0) {
           clearInterval(this.interval);
@@ -33,12 +35,15 @@ class Timer extends Component {
           });
       }
 
-      diff = moment.duration(diff);
-      const timeRemains = `
-			${diff.days() != 0 ? diff.days() + "d" : ""} 
-			${diff.hours() != 0 ? diff.hours() + "h" : ""}
-			${diff.minutes() != 0 ? diff.minutes() + "m" : ""}
-			${diff.seconds() != 0 ? diff.seconds() + "s" : ""}`;
+	  diff = moment.duration(diff);
+
+      const timeRemains = t("thirdStep.timerTemplate", { 
+		 days: diff.days() || "0", 
+		 hours: diff.hours() || "0", 
+		 minutes: diff.minutes() || "0", 
+		 seconds: diff.seconds() || "0" 
+	  });
+
       this.setState({
           timeRemains: timeRemains,
           currDate: moment()
@@ -47,7 +52,6 @@ class Timer extends Component {
 
   render() {
 	  const { timeRemains, lottoData } = this.state;
-
       return (
           <Media query="(min-width: 768px)">
               {matches =>
@@ -61,7 +65,8 @@ class Timer extends Component {
 
 Timer.propTypes = {
     drawDate: string.isRequired,
-    lotto: string.isRequired	
+    lotto: string.isRequired,
+    t: func.isRequired	
 };
 
-export default Timer;
+export default translate("helpSectionText")(Timer);

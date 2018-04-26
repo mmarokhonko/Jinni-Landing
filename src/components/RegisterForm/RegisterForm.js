@@ -376,7 +376,7 @@ class RegisterForm extends Component {
                   </h4>
                   <form className="form" autoComplete="false" onSubmit={e => this.submitHandler(e)}>
                       <div className="form_row">
-                          <h5 className="form_row_title">Country</h5>
+                          <h5 className="form_row_title">{t("rowTitles.country")}</h5>
                           <div className="form_row_subwrap">
                               <SelectCountry
                                   value={fields.country}
