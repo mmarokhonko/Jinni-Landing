@@ -14,8 +14,10 @@ import symbolL from "../../assets/Header/jackpot-font/L.png";
 import symbolO from "../../assets/Header/jackpot-font/O.png";
 import symbolN from "../../assets/Header/jackpot-font/N.png";
 import symbolS from "../../assets/Header/jackpot-font/S.png";
+import symbolE from "../../assets/Header/jackpot-font/E.png";
 import symbolDot from "../../assets/Header/jackpot-font/Dot.png";
 import symbolEuro from "../../assets/Header/jackpot-font/Euro.png";
+import i18n from "../../tools/i18nextSetup";
 
 const symbols = {
     1: symbol1,
@@ -34,6 +36,7 @@ const symbols = {
     o: symbolO,
     n: symbolN,
     s: symbolS,
+    e: symbolE,
     dot: symbolDot,
     euro: symbolEuro
 }
@@ -76,12 +79,14 @@ const mapStringToImages = string => {
             src="${symbols[symbol]}" alt="${symbol}"/>`);
     });
 
-    mappedSymbols.push(
+    mappedSymbols.unshift(
         `<img class="header_jackpot_symbol -currency" src="${symbols["euro"]}" alt="euro"/>`
-    );
+	);
+	
+	const millionString = i18n.t("headerDesktopText:million");
 
-    for (let x = 0; x < "million".length; x++) {
-        const letter = "million".charAt(x);
+    for (let x = 0; x < millionString.length; x++) {
+        const letter = millionString.charAt(x);
         mappedSymbols.unshift(
             `<img class="header_jackpot_symbol -number ${x === 0 ? "-first-letter" : ""}" 
           src="${symbols[letter]}" alt="${letter}"/>`

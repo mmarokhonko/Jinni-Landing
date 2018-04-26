@@ -14,25 +14,29 @@ class DynamicMobileHeader extends Component {
   };
 
   formatJackpot = jackpot => {
-      let jackpotReversed = reverseString(jackpot);
+	  const {lottoData} = this.state;
+	  const {t} = this.props;
+
+	  let jackpotReversed = reverseString(jackpot);
       
       const decimalString = jackpotReversed.slice(4,6);
 	  const roundedDecimalString = roundDecimal(decimalString);
 
       if (jackpotReversed.length > 6) {
-          const millionsString = jackpotReversed.slice(6);
+		  const millionsString = jackpotReversed.slice(6);
+		  
 
           if (millionsString.length >= 3 || Number(roundedDecimalString) >= 10 || Number(roundedDecimalString) === 0) {
 			  const roundedMillionsString = roundMillions(millionsString, roundedDecimalString);
-			  return(`${reverseString(roundedMillionsString)} million`);
+			  return(`${reverseString(roundedMillionsString)}${lottoData.currency} ${t("million")}`);
           }
 
           else {
-              return `${reverseString(roundedDecimalString.charAt(0) + "." + millionsString)} million`;
+              return `${reverseString(roundedDecimalString.charAt(0) + "." + millionsString)}${lottoData.currency} ${t("million")}`;
           }
       }
       else {
-          return `${reverseString(roundedDecimalString.charAt(0) + ".0")} million`;
+          return `${reverseString(roundedDecimalString.charAt(0) + ".0")}${lottoData.currency} ${t("million")}`;
       }
   }
 
@@ -44,7 +48,8 @@ class DynamicMobileHeader extends Component {
           if (actualIndex % 3 === 0 && actualIndex !== reversedJackpotArray.length) {
               reversedJackpotArray[index] = `,${symbol}`;
           }
-      });
+	  });
+	  
       return reversedJackpotArray.reverse().join("");
   };
   
@@ -90,7 +95,7 @@ class DynamicMobileHeader extends Component {
 					  {numberOfTickets:ticketsData.length, numberOfNotFree})}}>
                       </h2>
 				  )}
-                  <h3 className="mob-header_jackpot">{`${lottoData.currency}${jackpotString}`}</h3>
+                  <h3 className="mob-header_jackpot">{`${jackpotString}`}</h3>
 				  {ticketsData.map((ticket,index) => (
 					  <div key={`ticket-widget-${index}`} className={`numbers-widget -theme_${pickerLottoData.ballsTheme}`}>
 				  		{this.generateNumsCircles(ticket.pickedNums).map(circle => circle)}
