@@ -149,8 +149,8 @@
     "modalTitleCompleted": "Hier ist alles wunderbar."
   },
   "formText": {
-	"titleFree": "Regtriere Dich, um Dein <span>GRATIS</span> Tippfeld abzugeben",
-	"titleNotFree": "Regtriere Dich, um Dein Tippfeld abzugeben",
+	"titleFree": "Registriere Dich, um Dein <span>GRATIS</span> Tippfeld abzugeben",
+	"titleNotFree": "Registriere Dich, um Dein Tippfeld abzugeben",
     "rowTitles": {
       "name": "Anrede und Vorname",
       "lastName": "Nachname",
