@@ -78,12 +78,21 @@ const mapStringToImages = string => {
             `<img class="header_jackpot_symbol ${symbol === "dot" ? "-dot" : "-number"}" 
             src="${symbols[symbol]}" alt="${symbol}"/>`);
     });
-
-    mappedSymbols.unshift(
-        `<img class="header_jackpot_symbol -currency" src="${symbols["euro"]}" alt="euro"/>`
-	);
 	
-	const millionString = i18n.t("headerDesktopText:million");
+    const isCurrSignBefore = i18n.language === "en";	
+
+    if(isCurrSignBefore) {
+        mappedSymbols.push(
+            `<img class="header_jackpot_symbol -currency" src="${symbols["euro"]}" alt="euro"/>`
+        );
+    }
+    else {
+        mappedSymbols.unshift(
+            `<img class="header_jackpot_symbol -currency" src="${symbols["euro"]}" alt="euro"/>`
+        );
+    }
+	
+    const millionString = i18n.t("headerDesktopText:million");
 
     for (let x = 0; x < millionString.length; x++) {
         const letter = millionString.charAt(x);

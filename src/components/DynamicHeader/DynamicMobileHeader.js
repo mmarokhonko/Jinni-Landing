@@ -15,28 +15,38 @@ class DynamicMobileHeader extends Component {
 
   formatJackpot = jackpot => {
 	  const {lottoData} = this.state;
-	  const {t} = this.props;
+	  const {t, i18n} = this.props;
 
 	  let jackpotReversed = reverseString(jackpot);
       
       const decimalString = jackpotReversed.slice(4,6);
 	  const roundedDecimalString = roundDecimal(decimalString);
 
+	  const isCurrSignBefore = i18n.language === "en";
+
       if (jackpotReversed.length > 6) {
 		  const millionsString = jackpotReversed.slice(6);
 		  
-
           if (millionsString.length >= 3 || Number(roundedDecimalString) >= 10 || Number(roundedDecimalString) === 0) {
 			  const roundedMillionsString = roundMillions(millionsString, roundedDecimalString);
-			  return(`${reverseString(roundedMillionsString)}${lottoData.currency} ${t("million")}`);
+			  return(`${isCurrSignBefore ? lottoData.currency : ""}
+			  ${reverseString(roundedMillionsString)}
+			  ${!isCurrSignBefore ? lottoData.currency : ""} 
+			  ${t("million")}`);
           }
 
           else {
-              return `${reverseString(roundedDecimalString.charAt(0) + "." + millionsString)}${lottoData.currency} ${t("million")}`;
+			  return `${isCurrSignBefore ? lottoData.currency : ""}
+			  ${reverseString(roundedDecimalString.charAt(0) + "." + millionsString)}${lottoData.currency}
+			  ${!isCurrSignBefore ? lottoData.currency : ""}
+			  ${t("million")}`;
           }
       }
       else {
-          return `${reverseString(roundedDecimalString.charAt(0) + ".0")}${lottoData.currency} ${t("million")}`;
+		  return `${isCurrSignBefore ? lottoData.currency : ""}
+		  ${reverseString(roundedDecimalString.charAt(0) + ".0")}${lottoData.currency}
+		  ${!isCurrSignBefore ? lottoData.currency : ""} 
+		  ${t("million")}`;
       }
   }
 
@@ -117,7 +127,8 @@ DynamicMobileHeader.propTypes = {
     modalOpenHandler: func.isRequired,
     pickerStore: object.isRequired,
     numberOfNotFree: number.isRequired,
-    t:func.isRequired
+    t:func.isRequired,
+    i18n: object.isRequired
 };
 
 export default translate("headerMobileText")(mobXConnect("pickerStore")(DynamicMobileHeader));
