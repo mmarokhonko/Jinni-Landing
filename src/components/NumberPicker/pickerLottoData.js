@@ -10,8 +10,7 @@ const lottoData = {
         bonusAmount: 1,
         bonusName: i18n.t("pickerData:megamillions.bonusName"),
         pluralBonusName: i18n.t("pickerData:megamillions.pluralBonusName"),
-        ballsTheme: "blue-yellow",
-        price: "€2.80"
+        ballsTheme: "blue-yellow"
     },
     "euromillions": {
         maxNumber: 50,
@@ -22,8 +21,7 @@ const lottoData = {
         bonusAmount: 2,
         bonusName: i18n.t("pickerData:euromillions.bonusName"),
         pluralBonusName: i18n.t("pickerData:euromillions.pluralBonusName"),
-        ballsTheme: "blue-yellow",
-        price: "€2.50"			
+        ballsTheme: "blue-yellow"		
     },
     "eurojackpot": {
         maxNumber: 50,
@@ -34,8 +32,7 @@ const lottoData = {
         bonusAmount: 2,
         bonusName: i18n.t("pickerData:eurojackpot.bonusName"),
         pluralBonusName: i18n.t("pickerData:eurojackpot.pluralBonusName"),
-        ballsTheme: "yellow-red",
-        price: "€2.00"			
+        ballsTheme: "yellow-red"		
     },
     "powerball": {
         maxNumber: 69,
@@ -46,8 +43,7 @@ const lottoData = {
         bonusAmount: 1,
         bonusName: i18n.t("pickerData:powerball.bonusName"),
         pluralBonusName: i18n.t("pickerData:powerball.pluralBonusName"),
-        ballsTheme: "red-yellow",
-        price: "€2.80"			
+        ballsTheme: "red-yellow"		
     },
     "6aus49": {
         maxNumber: 49,
@@ -58,8 +54,7 @@ const lottoData = {
         bonusAmount: 1,
         bonusName: i18n.t("pickerData:6aus49.bonusName"),
         pluralBonusName: i18n.t("pickerData:6aus49.pluralBonusName"),
-        ballsTheme: "red-yellow",
-        price: "€1.00"			
+        ballsTheme: "red-yellow"	
     }
 }
 

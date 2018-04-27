@@ -88,7 +88,7 @@ class DynamicMobileHeader extends Component {
   }
 
   render() {
-	  const { lotto, jackpot, modalOpenHandler, numberOfNotFree, t } = this.props;
+	  const { lotto, jackpot, modalOpenHandler, numberOfNotFree, price, t } = this.props;
 	  const {ticketsData, clearTicket} = this.props.pickerStore;
       const {lottoData, pickerLottoData} = this.state;
 	  const jackpotString = this.formatJackpot(jackpot);
@@ -112,7 +112,7 @@ class DynamicMobileHeader extends Component {
 				  		{this.generateBonusCircles(ticket.pickedBonus).map(circle => circle)}
                           <button className="numbers-widget_btn -edit-btn" onClick={() => modalOpenHandler(index)} />
 						  {numberOfNotFree === 0 ? <button className="numbers-widget_btn -clear-btn" onClick={() => clearTicket(index)} />
-						  : (index+1 > numberOfNotFree ? <p className="numbers-widget_text">{t("freeLabel")}</p> : <p className="numbers-widget_text">{pickerLottoData.price}</p>)}
+						  : (index+1 > numberOfNotFree ? <p className="numbers-widget_text">{t("freeLabel")}</p> : <p className="numbers-widget_text">{price}</p>)}
                       </div>
 				  ))}
               </div>
@@ -124,6 +124,7 @@ class DynamicMobileHeader extends Component {
 DynamicMobileHeader.propTypes = {
     lotto: string.isRequired,
     jackpot: string.isRequired,
+    price: string,
     modalOpenHandler: func.isRequired,
     pickerStore: object.isRequired,
     numberOfNotFree: number.isRequired,

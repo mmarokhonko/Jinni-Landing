@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import Media from "react-media";
 import { object, func } from "prop-types";
 import axios from "axios";
-import {translate} from "react-i18next";
+import { translate } from "react-i18next";
 
 import DynamicHeader from "./components/DynamicHeader/DynamicHeader";
 import DynamicMobileHeader from "./components/DynamicHeader/DynamicMobileHeader";
@@ -16,11 +16,7 @@ import MultipleTicketsPicker from "./components/MultipleTicketsPicker/MultiPicke
 
 import lottoParamsData from "./tools/lottoParamsData";
 import allPickerLottoData from "./components/NumberPicker/pickerLottoData";
-import {
-    getParamFromCookieOrUrl,
-    getParamFromURL,
-    mobXConnect
-} from "./tools/toolFunctions";
+import { getParamFromCookieOrUrl, getParamFromURL, mobXConnect } from "./tools/toolFunctions";
 import sendDataModule from "./tools/sendDataModule";
 
 class App extends Component {
@@ -40,23 +36,26 @@ class App extends Component {
       numberOfNotFree: null
   };
 
-  componentDidMount() {
-      this.setUrlData();
+  async componentDidMount() {
+      await this.setUrlData();
 
       let feedObject = {};
-      axios.get("https://feed.jinnilotto.com/feed.json").then(response => {
-          feedObject = response;
-          this.selectLottoData(feedObject.data);
-      }).catch(error => {
-		  console.log("feed.json retrieving error")
-          console.log(error);
-	  });
+      axios
+          .get("https://feed.jinnilotto.com/feed.json")
+          .then(response => {
+              feedObject = response;
+              this.selectLottoData(feedObject.data);
+          })
+          .catch(error => {
+              console.log("feed.json retrieving error");
+              console.log(error);
+          });
   }
 
   selectLottoData = data => {
       let lottoData = data.filter(
           object => object.LotteryName.toLowerCase() === this.state.urlData.lotteryOrientation
-	  )[0];
+      )[0];
       let pickerLottoData = allPickerLottoData[this.state.urlData.lotteryOrientation];
       this.setState({
           lottoData,
@@ -64,7 +63,7 @@ class App extends Component {
       });
   };
 
-  setUrlData = () => {
+  setUrlData = async () => {
       const bTag = getParamFromCookieOrUrl("btag"),
           campaign = getParamFromCookieOrUrl("campaign"),
           couponCode = getParamFromCookieOrUrl("couponCode"),
@@ -84,6 +83,8 @@ class App extends Component {
       this.setNumberOfTicketsInStore(offer);
 	  this.setNumberOfNotfreetickets(offer);
 
+	  const price = await this.getPrice(packageId);
+
       const urlData = {
           bTag,
           couponCode,
@@ -98,13 +99,23 @@ class App extends Component {
           packageId,
           redirectUrl,
           referral: referral.length > 0 ? referral : window.location.href
-	  };
+      };
 
       const newUrlData = Object.assign({}, this.state.urlData, urlData);
 
       this.setState({
-          urlData: newUrlData
+		  urlData: newUrlData,
+		  price
       });
+  };
+
+  getPrice = async (packageId) => {
+	  const resp = await axios.get(`https://api.jinnilotto.com/affiliate/getPackage/response.json?packageId=${packageId}`);
+      const data = resp.data;
+      const price = data.OnlinePrice;
+	  const currencySign = data.Items[0].draws.currency;
+	  
+      return `${currencySign}${price}`;
   };
 
   setNumberOfTicketsInStore = offer => {
@@ -132,34 +143,28 @@ class App extends Component {
   };
 
   openModal = index => {
-	  if(this.numberPicker.getWrappedInstance) {
-          this.numberPicker.getWrappedInstance().wrappedInstance.openMobileModal(index); 
-	  }
-	  else {
-          this.numberPicker.wrappedInstance.openMobileModal(index);		
-	  }
-  }
+      if (this.numberPicker.getWrappedInstance) {
+          this.numberPicker.getWrappedInstance().wrappedInstance.openMobileModal(index);
+      } else {
+          this.numberPicker.wrappedInstance.openMobileModal(index);
+      }
+  };
 
   passDataToSendingModule = (formData, errorNode) => {
       const { lottoData, urlData, pickerLottoData } = this.state;
       const { ticketsData } = this.props.pickerStore;
-	  const { numbersAmount, bonusAmount } = pickerLottoData;
-	  const {t} = this.props;
+      const { numbersAmount, bonusAmount } = pickerLottoData;
+      const { t } = this.props;
 
-	  let pickerInstance = undefined;
+      let pickerInstance = undefined;
 
-	  if(this.numberPicker.getWrappedInstance) {
-          pickerInstance = this.numberPicker.getWrappedInstance().wrappedInstance; 
+      if (this.numberPicker.getWrappedInstance) {
+          pickerInstance = this.numberPicker.getWrappedInstance().wrappedInstance;
+      } else {
+          pickerInstance = this.numberPicker.wrappedInstance;
       }
-      else {
-          pickerInstance = this.numberPicker.wrappedInstance;		
-      }
 
-
-      if (
-          pickerInstance.state.hasError &&
-		pickerInstance.state.hasEmpty
-      ) {
+      if (pickerInstance.state.hasError && pickerInstance.state.hasEmpty) {
           return;
       }
 
@@ -174,7 +179,7 @@ class App extends Component {
       });
       if (ticketIsNotFilled) {
           errorNode.classList.add("-shown");
-		  errorNode.innerHTML = t("notFilledTicketsError");
+          errorNode.innerHTML = t("notFilledTicketsError");
           return;
       }
 
@@ -192,16 +197,16 @@ class App extends Component {
   };
 
   render() {
-	  const { lottoData, urlData } = this.state;
-	  const { t } = this.props;
+      const { lottoData, urlData } = this.state;
+      const { t } = this.props;
       if (!lottoData) {
           return <p>{t("dataNotLoaded")}</p>;
-	  }
+      }
 
-	  const { offer } = urlData;
-	  console.log(t("freeticketMainTitle"));
+      const { offer } = urlData;
+      console.log(t("freeticketMainTitle"));
 
-	  const lottoName = lottoData.LotteryName.toLowerCase();
+      const lottoName = lottoData.LotteryName.toLowerCase();
 
       return (
           <Fragment>
@@ -209,17 +214,18 @@ class App extends Component {
                   {matches =>
                       matches ? (
                           <DynamicHeader
-							  lotto={lottoName}
+                              lotto={lottoName}
                               jackpot={lottoData.Jackpot.toString()}
                               offer={offer}
                               numberOfNotFree={this.state.numberOfNotFree}
                           />
                       ) : (
                           <DynamicMobileHeader
-							  lotto={lottoName}
+                              lotto={lottoName}
                               jackpot={lottoData.Jackpot.toString()}
                               modalOpenHandler={this.openModal}
-                              numberOfNotFree={this.state.numberOfNotFree}
+							  numberOfNotFree={this.state.numberOfNotFree}
+							  price={this.state.price}
                           />
                       )
                   }
@@ -227,18 +233,21 @@ class App extends Component {
               <main className="main">
                   <div className="cont-zone">
                       {offer === "freeticket" && (
-                          <h1 className="main_title" dangerouslySetInnerHTML={{__html: t("freeticketMainTitle")}}>
-                          </h1>
+                          <h1
+                              className="main_title"
+                              dangerouslySetInnerHTML={{ __html: t("freeticketMainTitle") }}
+                          />
                       )}
                       <div className={`main_subwrap ${offer !== "freeticket" ? "-vertical" : ""}`}>
                           {offer !== "freeticket" ? (
                               <MultipleTicketsPicker
                                   lotto={lottoName}
                                   numberOfNotFree={this.state.numberOfNotFree}
-                                  ref={picker => this.numberPicker = picker}
+								  ref={picker => (this.numberPicker = picker)}
+								  price={this.state.price}
                               />
                           ) : (
-                              <NumberPicker lotto={lottoName} ref={picker => this.numberPicker = picker} />
+                              <NumberPicker lotto={lottoName} ref={picker => (this.numberPicker = picker)} />
                           )}
                           <RegisterForm offer={offer} submitHandler={this.passDataToSendingModule} />
                       </div>
@@ -251,7 +260,7 @@ class App extends Component {
                   drawDate={lottoData.DrawDate + " " + lottoData.TimeZone}
               />
               <Fact lotto={lottoName} />
-			  <Footer offer={offer} />
+              <Footer offer={offer} />
           </Fragment>
       );
   }
@@ -259,7 +268,7 @@ class App extends Component {
 
 App.propTypes = {
     pickerStore: object.isRequired,
-    t:func.isRequired
+    t: func.isRequired
 };
 
 export default translate("AppText")(mobXConnect("pickerStore")(App));

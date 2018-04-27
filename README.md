@@ -16,7 +16,6 @@ To add new lottery to the supported list following files should be modified:<br>
 *max/minNumber* and *max/minBonus* are self-explanatory;<br> *numbersAmount* and *bonusAmount* determine maximum number of picked numbers and bonuses accordingly;<br>
 *bonusName* - bonus name to display on picker specific for a lottery;<br>
 *ballsTheme* - color theme for picker balls. Implemented values are ***blue-yellow***, ***red-yellow***, ***yellow-red***. To add new themes support, add new classes ***-theme_THEME-NAME*** in files MultiPicker.scss, NumberPickerMobile.scss and DynamicHeader.scss<br>
-*price* - price string to show on not free tickets in the multipicker.
 4. */src/components/Fact/factLottoData.js* - contains fact about lotteries to show in "Did you know" section
 5. */src/components/Help/helpLottoData.js* - contains lottery-specific texts in "How to play" section. <br> 
 *firstStep* - p-tag for the first step;<br>
@@ -26,8 +25,11 @@ To add new lottery to the supported list following files should be modified:<br>
 ### HOW TO add support for new versions of the "offer" url-parameter
 The multipicker takes number of tickets directly from the parameter, so only thing to add is new packageId and incentiveCode values in */src/tools/lottoParamsData.js* file.
 
-### HOW TO change displayed price on not free tickets.
-Just change *price* property of a lottery's object in */src/components/NumberPicker/pickerLottoData.js*
+### HOW TO add new localisation
+To add support for new languages you should take next steps:
+1. Add new text json to *src/localisation* folder. New file should exactly follow the structure of already existing files, all tags and templates (for example, {{*slotName*}}) should be preserved and not translated.
+2. In *src/tools/i18nextSetup.js* add new translation to i18n config object, using existing ones as example.
+3. If you need currency sing to appear before jackpot number in header, modify *isCurrSignBefore* related checks in files *src/components/DynamicHeader/DynamicMobileHeader.js* and *src/components/DynamicHeader/jackpotTools.js*
 
 ### HOW TO apply changes.
 Rebuild the app with _npm run build_ command and copy */dist* folder contents to the hosting. 
