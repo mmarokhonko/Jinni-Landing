@@ -7,7 +7,7 @@
 	  "generalRegError": "Whoops, an error occurred during registration. Please try again so we can start making your wishes come true."
   },
   "headerDesktopText": {
-	"freeticketTitle": "Play the next <img src='{{lotteryLogo}}' alt='{{lotteryName}}' /> draw for <spab>FREE</span>",
+	"freeticketTitle": "Play the next <img src='{{lotteryLogo}}' alt='{{lotteryName}}' /> draw for <span>FREE</span>",
 	"million": "million",
     "notfreeTitle":
       "Get {{numberOfTickets}} <img src='{{lotteryLogo}}' alt='{{lotteryName}}' /> bet lines for the price of {{numberOfNotFree}}"
