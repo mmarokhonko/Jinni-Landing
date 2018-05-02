@@ -64,6 +64,9 @@ const sendDataModule = {
                 console.log(pair[0]+ ", " + pair[1]); 
             }
         }
+		
+        const redirectDomain = window.location.hostname.includes("lp.jinnilotto.com") ? "jinnilotto.com" :"stage.jinnilotto.com"
+
         axios({
             url: "https://api.jinnilotto.com/affiliate/welcome/response.json",
             method: "post",
@@ -77,7 +80,7 @@ const sendDataModule = {
                 if (resp.data.ErrorID) {
                     return this.handleBackendError(resp.data.ErrorID, errorNode)
                 }
-                return window.location = `https://stage.jinnilotto.com/?init=lp&redirectUrl=${redirectUrl}&memberId=${resp.data.MemberID}&sessionId=${resp.data.SessionID}`;
+                return window.location = `https://${redirectDomain}/?init=lp&redirectUrl=${redirectUrl}&memberId=${resp.data.MemberID}&sessionId=${resp.data.SessionID}`;
             })
             .catch(err => {
                 console.log(err);

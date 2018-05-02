@@ -80,10 +80,10 @@ class App extends Component {
         "free_ticket_em",
           packageId = lottoParamsData[lotteryOrientation.toLowerCase()][`${offer}_packageId`] || "255";
 
-      this.setNumberOfTicketsInStore(offer);
+      const numberOfTickets = this.setNumberOfTicketsInStore(offer);
 	  this.setNumberOfNotfreetickets(offer);
 
-	  const price = await this.getPrice(packageId);
+	  const price = await this.getPrice(packageId, numberOfTickets);
 
       const urlData = {
           bTag,
@@ -109,10 +109,10 @@ class App extends Component {
       });
   };
 
-  getPrice = async (packageId) => {
+  getPrice = async (packageId, numberOfTickets = 1) => {
 	  const resp = await axios.get(`https://api.jinnilotto.com/affiliate/getPackage/response.json?packageId=${packageId}`);
       const data = resp.data;
-      const price = data.OnlinePrice;
+      const price = parseFloat(data.OnlinePrice)/numberOfTickets;
 	  const currencySign = data.Items[0].draws.currency;
 	  
       return `${currencySign}${price}`;
@@ -126,7 +126,8 @@ class App extends Component {
           number = parseInt(offer.substring(0, offer.indexOf("for")));
       }
 
-      setNumberOfEmptyTickets(number);
+	  setNumberOfEmptyTickets(number);
+	  return number;
   };
 
   setNumberOfNotfreetickets = offer => {
