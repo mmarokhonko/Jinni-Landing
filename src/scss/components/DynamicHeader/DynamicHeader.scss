@@ -36,7 +36,11 @@
     img {
       margin: 0 28px 0 18px;
       height: 100px;
-      width: 100px;
+	  width: 100px;
+	  &[src$="euromillions.png"] {
+		border-radius: 100%;
+		box-shadow: 0 0 30px 15px rgba(255,255,255,0.6);
+	  }
     }
   }
   span {

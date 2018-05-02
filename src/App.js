@@ -23,7 +23,7 @@ class App extends Component {
   state = {
       lotteryOrientation: "megamillions",
       pickerLottoData: null,
-      lottoData: null,
+	  lottoData: null,
       urlData: {
           bTag: undefined,
           referral: undefined,
@@ -78,7 +78,11 @@ class App extends Component {
           incentiveCode =
         lottoParamsData[lotteryOrientation.toLowerCase()][`${offer}_incentiveCode`] ||
         "free_ticket_em",
-          packageId = lottoParamsData[lotteryOrientation.toLowerCase()][`${offer}_packageId`] || "255";
+		  packageId = lottoParamsData[lotteryOrientation.toLowerCase()][`${offer}_packageId`] || "255";
+		  
+		  console.log("IncentiveCode and packageID");
+		  console.log(incentiveCode);
+		  console.log(packageId);
 
       const numberOfTickets = this.setNumberOfTicketsInStore(offer);
 	  this.setNumberOfNotfreetickets(offer);
@@ -112,7 +116,7 @@ class App extends Component {
   getPrice = async (packageId, numberOfTickets = 1) => {
 	  const resp = await axios.get(`https://api.jinnilotto.com/affiliate/getPackage/response.json?packageId=${packageId}`);
       const data = resp.data;
-      const price = parseFloat(data.OnlinePrice)/numberOfTickets;
+      const price = (parseFloat(data.OnlinePrice)/numberOfTickets).toFixed(2);
 	  const currencySign = data.Items[0].draws.currency;
 	  
       return `${currencySign}${price}`;
@@ -201,7 +205,7 @@ class App extends Component {
       const { lottoData, urlData } = this.state;
       const { t } = this.props;
       if (!lottoData) {
-          return <p>{t("dataNotLoaded")}</p>;
+          return <div className="loader"></div>;
       }
 
       const { offer } = urlData;
