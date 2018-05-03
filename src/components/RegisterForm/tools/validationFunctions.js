@@ -2,8 +2,10 @@ import isEmail from "validator/lib/isEmail";
 import isLength from "validator/lib/isLength";
 import isEmpty from "validator/lib/isEmpty";
 import isNumeric from "validator/lib/isNumeric";
-import isAlpha from "validator/lib/isAlpha";
 import moment from "moment";
+import XRegExp from "xregexp";
+
+const unicodeWorld = XRegExp("^\\pL+$");
 
 const isFieldError = (name, value) => {
     if(name === "termsAgreed") {
@@ -22,10 +24,10 @@ const isFieldError = (name, value) => {
         return !isEmail(value);
 
     case "firstName":
-        return !isAlpha(value) || !isLength(value, {min:2, max:24});
+        return !unicodeWorld.test(value) || !isLength(value, {min:2, max:24});
     
     case "lastName":
-        return !isAlpha(value) || !isLength(value, {min:2, max:24});
+        return !unicodeWorld.test(value)  || !isLength(value, {min:2, max:24});
     
     case "password":
         return !isLength(value, {min:8});

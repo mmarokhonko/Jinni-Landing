@@ -185,7 +185,7 @@
       "firstName":
         "Der Vorname muss aus mindestens 2 und maximal 24 Zeichen bestehen. Er darf außerdem keine Ziffern oder Sonderzeichen enthalten",
       "lastName":
-        "Der Vorname muss aus mindestens 2 und maximal 24 Zeichen bestehen. Er darf außerdem keine Ziffern oder Sonderzeichen enthalten",
+        "Der Nachname muss aus mindestens 2 und maximal 24 Zeichen bestehen. Er darf außerdem keine Ziffern oder Sonderzeichen enthalten",
       "emailError": "Hmmm, das sieht nicht nach einer gültigen E-Mail Adresse aus. Bitte nochmal prüfen.",
       "passwordError": "Zu Deiner eignen Sicherheit muss Dein Passwort aus mindestens 8 Zeichen bestehen",
       "generalError": "Tut uns leid, diese Eingabe ist nicht gültig",
