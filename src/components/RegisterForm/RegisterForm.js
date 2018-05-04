@@ -279,7 +279,8 @@ class RegisterForm extends Component {
 
       formData.birthDate = `${yearOfBirth}-${monthOfBirth}-${dayOfBirth}`;
 
-      formData.address = `${fields.city}, ${fields.street}, ${fields.code}`;
+	  formData.address = `${fields.city}, ${fields.street}, ${fields.code}`;
+	  formData.postCode = fields.code;
       formData.phoneNumber = `${fields.phoneCode.value.replace(/\s/g, "")}-${fields.phoneNumber}`;
 
       formData.ip = userIp;
