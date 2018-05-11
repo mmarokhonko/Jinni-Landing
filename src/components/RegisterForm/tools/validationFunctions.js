@@ -5,8 +5,7 @@ import isNumeric from "validator/lib/isNumeric";
 import moment from "moment";
 import XRegExp from "xregexp";
 
-const unicodeWorld = XRegExp("^\\pL+$");
-
+const unicodeWorld = XRegExp("^(?:\\p{L}|\\p{L}[ '-]\\p{L})+$");
 const isFieldError = (name, value) => {
     if(name === "termsAgreed") {
         return !value;
@@ -17,7 +16,9 @@ const isFieldError = (name, value) => {
             active: true,
             justEmpty: true
         }
-		}
+    }
+
+    value = value.trim();
 		
     switch (name) {
     case "email":

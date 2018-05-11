@@ -90,10 +90,8 @@ const sendDataModule = {
 
     getUserData: function() {
         const device = `${currentDevice.type} ${currentDevice.os}`;
-
         const browserDetected = detect(),
             browser = `${browserDetected.name} ${browserDetected.version}`;
-
         const userData = { device, browser };
 
         return userData;
