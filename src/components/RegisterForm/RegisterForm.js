@@ -125,7 +125,7 @@ class RegisterForm extends Component {
       const value = e.target.value;
       let newFields = this.state.fields;
 
-      newFields[name] = value;
+      newFields[name] = value.trim();
 
       this.setState({
           fields: newFields

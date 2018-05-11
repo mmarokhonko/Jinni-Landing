@@ -17,8 +17,8 @@ const isFieldError = (name, value) => {
             active: true,
             justEmpty: true
         }
-    }
-
+		}
+		
     switch (name) {
     case "email":
         return !isEmail(value);
@@ -27,7 +27,7 @@ const isFieldError = (name, value) => {
         return !unicodeWorld.test(value) || !isLength(value, {min:2, max:24});
     
     case "lastName":
-        return !unicodeWorld.test(value)  || !isLength(value, {min:2, max:24});
+        return !unicodeWorld.test(value) || !isLength(value, {min:2, max:24});
     
     case "password":
         return !isLength(value, {min:8});

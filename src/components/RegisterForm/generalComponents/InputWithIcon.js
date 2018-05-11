@@ -43,7 +43,7 @@ class InputWithIcon extends Component {
                   className={`inpwi${!icon ? " -no-icon" : ""}${error.active ? " -error" : ""}`}
 				  type={type}
 				  placeholder={window.innerWidth <=768 ? placeholder : ""}
-                  style={{ backgroundImage: `url(${icons[icon]})` }}
+                  style={{ backgroundImage: icons[icon] ? `url(${icons[icon]})` : undefined }}
               />
               {(error.active && !error.justEmpty) && <div className="inpwi_error-text"><p>{error.text}</p></div>}
           </div>
