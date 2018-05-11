@@ -160,6 +160,8 @@ class App extends Component {
       const { ticketsData } = this.props.pickerStore;
       const { numbersAmount, bonusAmount } = pickerLottoData;
       const { t } = this.props;
+			
+      Object.keys(formData).forEach(key => formData[key].trim());
 
       let pickerInstance = undefined;
 
