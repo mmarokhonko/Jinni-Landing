@@ -6,21 +6,15 @@ import SelectWithIcon from "./generalComponents/SelectWithIcon";
 
 import profileIcon from "../../assets/RegisterForm/icons/profile.png";
 
+const TitleOptions = i18n.language === "de" ? 
+[{label: i18n.t("formText:selectTitle.Mr"), value:"Mr."},{label: i18n.t("formText:selectTitle.Mrs"), value:"Mrs."}] :
+[{label: i18n.t("formText:selectTitle.Mr"), value:"Mr."},{label: i18n.t("formText:selectTitle.Mrs"), value:"Mrs."},{label: i18n.t("formText:selectTitle.Ms"), value:"Ms."}]
+
 class SelectTitle extends Component {
     state = {
-        options: [
-            {
-                label: i18n.t("formText:selectTitle.Mr"), value:"Mr."
-            },
-            {
-                label: i18n.t("formText:selectTitle.Mrs"), value:"Mrs."
-            },
-            {
-                label: i18n.t("formText:selectTitle.Ms"), value:"Ms."
-            }
-        ]
+        options: TitleOptions
     }
-
+		
     componentDidMount() {
         this.selectHandler(this.state.options[0])
     }
