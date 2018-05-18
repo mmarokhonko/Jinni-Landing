@@ -65,7 +65,7 @@ const sendDataModule = {
             }
         }
 		
-        const redirectDomain = window.location.hostname.includes("lp.jinnilotto.com") ? "jinnilotto.com" :"stage.jinnilotto.com"
+        const redirectDomain = window.location.hostname.includes("lp.jinnilotto.com") ? "jinnilotto.com" :"stage-api.jinnilotto.com";
 
         axios({
             url: "https://api.jinnilotto.com/affiliate/welcome/response.json",
