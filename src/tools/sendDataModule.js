@@ -66,10 +66,10 @@ const sendDataModule = {
         }
 		
         const redirectDomain = window.location.hostname.includes("lp.jinnilotto.com") ? "jinnilotto.com" :"stage.jinnilotto.com"
-        const apiURL = `https://${window.location.hostname.includes("lp.jinnilotto.com") ? "api.jinnilotto.com" : "stage-api.jinnilotto.com"}/affiliate/welcome/response.json`;
+        const apiURL = window.location.hostname.includes("lp.jinnilotto.com") ? "api.jinnilotto.com" : "stage-api.jinnilotto.com";
 
         axios({
-            url: apiURL,
+            url: `https://${apiURL}/affiliate/welcome/response.json`,
             method: "post",
             data,
             headers: { "Content-Type": "multipart/form-data" }
