@@ -79,10 +79,6 @@ class App extends Component {
         lottoParamsData[lotteryOrientation.toLowerCase()][`${offer}_incentiveCode`] ||
         "free_ticket_em",
 		  packageId = lottoParamsData[lotteryOrientation.toLowerCase()][`${offer}_packageId`] || "255";
-		  
-		  console.log("IncentiveCode and packageID");
-		  console.log(incentiveCode);
-		  console.log(packageId);
 
       const numberOfTickets = this.setNumberOfTicketsInStore(offer);
 	  this.setNumberOfNotfreetickets(offer);
@@ -211,7 +207,6 @@ class App extends Component {
       }
 
       const { offer } = urlData;
-      console.log(t("freeticketMainTitle"));
 
       const lottoName = lottoData.LotteryName.toLowerCase();
 

@@ -59,12 +59,6 @@ const sendDataModule = {
     },
 
     sendData: function(data, errorNode) {
-        if(data.entries) {
-            for (let pair of data.entries()) {
-                console.log(pair[0]+ ", " + pair[1]); 
-            }
-        }
-		
         const redirectDomain = window.location.hostname.includes("lp.jinnilotto.com") ? "jinnilotto.com" :"stage.jinnilotto.com";
         const apiURL = window.location.hostname.includes("lp.jinnilotto.com") ? "api.jinnilotto.com" : "stage-api.jinnilotto.com";
 
@@ -75,9 +69,7 @@ const sendDataModule = {
             headers: { "Content-Type": "multipart/form-data" }
         })
             .then(resp => {
-                console.log(resp.data); 
-                const redirectUrl = data.get("redirectUrl");
-                console.log(`Redirect url ${redirectUrl}`);            
+                const redirectUrl = data.get("redirectUrl");          
                 if (resp.data.ErrorID) {
                     return this.handleBackendError(resp.data.ErrorID, errorNode)
                 }

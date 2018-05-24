@@ -52,7 +52,6 @@ class DynamicMobileHeader extends Component {
   };
 
   formatJackpotString = jackpotString => {
-      console.log(jackpotString);
       let reversedJackpotArray = jackpotString.split("").reverse();
 
       reversedJackpotArray.forEach((symbol, index) => {

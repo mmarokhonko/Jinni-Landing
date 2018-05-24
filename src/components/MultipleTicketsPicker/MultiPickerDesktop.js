@@ -19,7 +19,6 @@ const MultiPickerDesktop = ({
     ballsWrapRef, 
     price,
     t}) => {
-    console.log(pluralBonusName);
     return(
         <div className="frame multi-picker">
             <h4 className="frame_title" dangerouslySetInnerHTML={{__html: t("title", 

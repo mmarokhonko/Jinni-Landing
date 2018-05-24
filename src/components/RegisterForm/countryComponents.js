@@ -54,7 +54,6 @@ class SelectCountry extends Component {
   selectUserCountry = code => {
       const allOptions = this.state.options;
       const country = allOptions.filter(option => option.countryCode === code)[0];
-      console.log(country);
       if (country) {
           this.selectHandler(country);
       } else {

@@ -98,9 +98,7 @@ class RegisterForm extends Component {
           "https://api.jinnilotto.com/affiliate/getCountry/response.json"
       );
       const ip = ipAndCountryObject.data.ip;
-      console.log(`USER IP: ${ip}`);
       const userCountryCode = ipAndCountryObject.data.countryCode;
-      console.log(`COUNTRY CODE: ${userCountryCode}`);
       const countryCode =
       userCountryCode &&
       restrictedCountries.indexOf(userCountryCode) === -1 &&
@@ -174,7 +172,6 @@ class RegisterForm extends Component {
           let isError = false;
 
           if (fieldName === "dateOfBirth") {
-              console.log("Picked up date");
               const dayOfBirth = fields.dayOfBirth.value,
                   monthOfBirth = fields.monthOfBirth.value,
                   yearOfBirth = fields.yearOfBirth.value;
