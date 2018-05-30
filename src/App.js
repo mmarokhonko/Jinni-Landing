@@ -232,7 +232,7 @@ class App extends Component {
                       )
                   }
               </Media>
-              <main className="main">
+              <div className="main">
                   <div className="cont-zone">
                       {offer === "freeticket" && (
                           <h1
@@ -254,7 +254,7 @@ class App extends Component {
                           <RegisterForm offer={offer} submitHandler={this.passDataToSendingModule} />
                       </div>
                   </div>
-              </main>
+              </div>
               <Help
                   offer={offer}
                   numberOfNotFree={this.state.numberOfNotFree}

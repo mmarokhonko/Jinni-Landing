@@ -20,10 +20,10 @@
 
 .help_subwrap {
     display: flex;
-	justify-content: space-between;
+  justify-content: space-between;
+  align-items: center;
 	@media(max-width: 768px) {
 		flex-direction: column;
-		align-items: center;
 	}
 }
 
@@ -74,7 +74,8 @@
 .help_step_text {
     margin-top: 14px;
     font-size: 16px;
-	line-height: 25px;
+  line-height: 25px;
+  max-width: 100%;
 	@media(max-width: 768px) {
 		margin-top: 8px;
 		font-size: 16px;

@@ -9,8 +9,14 @@
     "deploy": "webpack --env.NODE_ENV=production --progress -p && firebase deploy",
     "analyze": "webpack --env.NODE_ENV=production --env.ANALYZE_BUNDLE=true --progress -p"
   },
+  "browserslist": [
+    "last 2 versions",    
+    "> 0.5%",
+    "Safari > 9"
+  ],
   "dependencies": {
     "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
     "current-device": "^0.7.2",
     "detect-browser": "^2.2.0",
     "formdata-polyfill": "^3.0.9",
