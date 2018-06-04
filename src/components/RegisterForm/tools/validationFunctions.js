@@ -19,6 +19,8 @@ const isFieldError = (name, value) => {
     }
 
     value = value.trim();
+    console.log(name);
+    console.log(value);
 		
     switch (name) {
     case "email":
@@ -29,6 +31,9 @@ const isFieldError = (name, value) => {
     
     case "lastName":
         return !unicodeWorld.test(value) || !isLength(value, {min:2, max:24});
+
+    case "code":
+        return !isLength(value, {min:1, max:10});
     
     case "password":
         return !isLength(value, {min:8});

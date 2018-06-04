@@ -188,6 +188,7 @@
         "Der Nachname muss aus mindestens 2 und maximal 24 Zeichen bestehen. Er darf außerdem keine Ziffern oder Sonderzeichen enthalten",
       "emailError": "Hmmm, das sieht nicht nach einer gültigen E-Mail Adresse aus. Bitte nochmal prüfen.",
       "passwordError": "Zu Deiner eignen Sicherheit muss Dein Passwort aus mindestens 8 Zeichen bestehen",
+      "codeError": "Die PLZ muss aus maximal 10 Zeichen bestehen",
       "generalError": "Tut uns leid, diese Eingabe ist nicht gültig",
       "termsAgreedError":
         "Entschuldige, wir wissen, dass Du es eilig hast zu spielen, aber Du musst unsere AGB akzeptieren, um Dich zu registrieren.",

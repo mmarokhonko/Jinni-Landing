@@ -62,7 +62,7 @@ class RegisterForm extends Component {
               justEmpty: false
           },
           codeError: {
-              text: this.props.t("errors.generalError"),
+              text: this.props.t("errors.codeError"),
               active: false,
               justEmpty: false
           },
