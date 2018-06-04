@@ -21,14 +21,15 @@
 .help_subwrap {
     display: flex;
   justify-content: space-between;
-  align-items: center;
 	@media(max-width: 768px) {
-		flex-direction: column;
+    flex-direction: column;
+    align-items: center;
 	}
 }
 
 .help_arrow {
-	transform: translateY(-15%);
+  align-self: center;
+	transform: translateY(-50px);
 	@media(max-width: 768px) {
 		display: none;
 	}
@@ -40,10 +41,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-	text-align: center;
+  text-align: center;
+  flex-basis: 357px;  
 	@media(max-width: 768px) {
 		margin-top: 20px;
-		max-width: 260px;
+    max-width: 260px;
+    flex-basis: auto;    
 		&:not(:first-child) {
 			margin-top: 42px;
 		}
