@@ -18,14 +18,16 @@ class MultipleTicketsPickerContainer extends Component {
   };
 
   onNumberChange = (event, ticketIndex, numberIndex) => {
-      const value = event.target.value;
+      let value = event.target.value;
+      value = value.replace(/^0*(?=\d)/, "");
       const { addNumber } = this.props.pickerStore;
 
       addNumber(value, ticketIndex, numberIndex);
   };
 
   onBonusChange = (event, ticketIndex, bonusIndex) => {
-      const value = event.target.value;
+      let value = event.target.value;
+      value = value.replace(/^0*(?=\d)/, "");
       const { addBonus } = this.props.pickerStore;
 
       addBonus(value, ticketIndex, bonusIndex);
