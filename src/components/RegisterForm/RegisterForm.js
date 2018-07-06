@@ -90,7 +90,7 @@ class RegisterForm extends Component {
       firstStepInputs: ["firstName", "lastName", "email", "password"],
       secondStepInputs: ["city", "code", "street", "phoneNumber", "termsAgreed", "dateOfBirth"],
       userCountryCode: undefined,
-      step2: true
+      step2: false
   };
 
   fetchUserCountryCode = async () => {
