@@ -90,7 +90,7 @@ class SelectWithIcon extends Component {
               >
                   <div
                       tabIndex="0"
-                      onBlur={() => !allowFilter && this.closeList}
+                      onBlur={() => !allowFilter && this.closeList()}
                       className={this.generateValueClasses()}
                       style={icon === "flag" ? {} : { backgroundImage: `url(${icon})` }}
                   >
