@@ -1995,7 +1995,8 @@
       "gle"
     ],
     "name": "Ireland",
-    "status": "assigned"
+    "status": "assigned",
+    "disabledChange": true
   },
   {
     "alpha2": "IL",

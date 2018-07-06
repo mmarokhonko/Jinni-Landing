@@ -5,19 +5,27 @@ import ClickOutHandler from "react-onclickout";
 class SelectWithIcon extends Component {
   state = {
       open: false,
+      disabledChange: false,
       options: this.props.options || [],
-	  filterString: "",
-	  allowFilter: this.props.options.length > 5
+	    filterString: "",
+      allowFilter: this.props.options.length > 5
   };
 
-  toggleOpen = () => {
-      const open = this.state.open;
+  componentDidUpdate(prevProps) {
+      if(!prevProps.value) {
+          this.setState({
+              disabledChange: this.props.value.disabledChange
+          })
+      }
+  }
+
+  openList = () => {
       this.setState({
-          open: !open
+          open: !this.state.disabledChange
       });
   };
 
-  ClickOutClose = () => {
+  closeList = () => {
       this.setState({
           open: false
       });
@@ -70,14 +78,20 @@ class SelectWithIcon extends Component {
 
   render() {
       const { value, icon } = this.props;
-	  const { open, options, filterString, allowFilter } = this.state;
+	  const { open, options, filterString, allowFilter, disabledChange } = this.state;
 
       return (
-          <ClickOutHandler onClickOut={this.ClickOutClose}>
-              <div className={`selwi_wrap ${open ? "-open" : ""}`}>
+          <ClickOutHandler onClickOut={this.closeList}>
+              <div
+                  ref = {selectWrap => this.selectWrap = selectWrap}
+                  className={`selwi_wrap ${open ? "-open" : ""} ${disabledChange ? "-disabled" : ""}`}
+                  onFocus={this.openList}
+                  onClick={this.openList}                     
+              >
                   <div
+                      tabIndex="0"
+                      onBlur={() => !allowFilter && this.closeList}
                       className={this.generateValueClasses()}
-                      onClick={this.toggleOpen}
                       style={icon === "flag" ? {} : { backgroundImage: `url(${icon})` }}
                   >
                       {value.label}
@@ -89,6 +103,7 @@ class SelectWithIcon extends Component {
                               type="text"
                               value={filterString}
                               onChange={e => this.changeFilterFromInput(e)}
+                              onBlur={this.closeList}
                           />
                       </div>
                   )}
@@ -100,7 +115,7 @@ class SelectWithIcon extends Component {
                                       ? `-flag-icon flag flag-${option.countryCode.toLowerCase()}`
                                       : ""
                               }
-                              onClick={() => this.selectHandler(option)}
+                              onMouseDown={() => this.selectHandler(option)}
                               key={i}
                           >
                               {option.label}

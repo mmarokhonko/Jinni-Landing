@@ -330,6 +330,13 @@
   }
 }
 
+.selwi_wrap.-disabled {
+  pointer-events: none;
+  .selwi_value:after {
+    content: none;
+  }
+}
+
 .select-title {
   max-width: 140px;
   flex: 1;

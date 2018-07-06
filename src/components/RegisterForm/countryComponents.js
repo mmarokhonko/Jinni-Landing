@@ -13,7 +13,8 @@ const generateCountryOptions = () => {
     const options = filteredCountries.map(country => ({
         label: country.name,
         value: country.alpha2,
-        countryCode: country.alpha2
+        countryCode: country.alpha2,
+        disabledChange: country.disabledChange
     }));
 
     const sortedOptions = options.sort((a, b) => {
@@ -31,8 +32,8 @@ class SelectCountry extends Component {
 
   async componentDidMount() {
       const { userCountryCode, value } = this.props;
-	  const { options } = this.state;
-	  const firstOption = options[0];	  
+	    const { options } = this.state;
+      const firstOption = options[0];
 
 	  if (Object.keys(value).length === 0) {
           if (firstOption && !userCountryCode) {
