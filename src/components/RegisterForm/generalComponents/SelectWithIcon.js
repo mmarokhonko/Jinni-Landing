@@ -5,14 +5,23 @@ import ClickOutHandler from "react-onclickout";
 class SelectWithIcon extends Component {
   state = {
       open: false,
+      disabledChange: false,
       options: this.props.options || [],
-	  filterString: "",
-      allowFilter: this.props.options.length > 5,
+	    filterString: "",
+      allowFilter: this.props.options.length > 5
   };
+
+  componentDidUpdate(prevProps) {
+      if(!prevProps.value) {
+          this.setState({
+              disabledChange: this.props.value.disabledChange
+          })
+      }
+  }
 
   openList = () => {
       this.setState({
-          open: true
+          open: !this.state.disabledChange
       });
   };
 
@@ -69,18 +78,19 @@ class SelectWithIcon extends Component {
 
   render() {
       const { value, icon } = this.props;
-	  const { open, options, filterString, allowFilter } = this.state;
+	  const { open, options, filterString, allowFilter, disabledChange } = this.state;
 
       return (
           <ClickOutHandler onClickOut={this.closeList}>
               <div
                   ref = {selectWrap => this.selectWrap = selectWrap}
-                  className={`selwi_wrap ${open ? "-open" : ""}`}
+                  className={`selwi_wrap ${open ? "-open" : ""} ${disabledChange ? "-disabled" : ""}`}
                   onFocus={this.openList}
                   onClick={this.openList}                     
               >
                   <div
                       tabIndex="0"
+                      onBlur={() => !allowFilter && this.closeList}
                       className={this.generateValueClasses()}
                       style={icon === "flag" ? {} : { backgroundImage: `url(${icon})` }}
                   >
