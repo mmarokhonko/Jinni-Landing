@@ -12,7 +12,7 @@ class SelectWithIcon extends Component {
   };
 
   componentDidUpdate(prevProps) {
-      if(!prevProps.value) {
+      if(Object.keys(prevProps.value).length === 0) {
           this.setState({
               disabledChange: this.props.value.disabledChange
           })
