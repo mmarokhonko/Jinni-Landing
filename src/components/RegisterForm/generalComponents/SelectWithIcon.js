@@ -12,7 +12,7 @@ class SelectWithIcon extends Component {
   };
 
   componentDidUpdate(prevProps) {
-      if(!prevProps.value) {
+      if(Object.keys(prevProps.value).length === 0) {
           this.setState({
               disabledChange: this.props.value.disabledChange
           })
@@ -77,7 +77,7 @@ class SelectWithIcon extends Component {
   };
 
   render() {
-      const { value, icon } = this.props;
+    const { value, icon } = this.props;
 	  const { open, options, filterString, allowFilter, disabledChange } = this.state;
 
       return (
