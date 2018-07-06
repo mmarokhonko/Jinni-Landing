@@ -107,6 +107,10 @@
     "6aus49": {
       "bonusName": "Superball",
       "pluralBonusName": "Superballs"
+    },
+    "irishlottery": {
+      "bonusName": "Superball",
+      "pluralBonusName": "Superballs"
     }
   },
   "singlePickerText": {

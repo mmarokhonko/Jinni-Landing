@@ -88,7 +88,24 @@ const lottoData = {
                 {timeRemains})}}>
             </p>
         )
-    }
+    },
+    irishlottery: {
+        firstStep: pickerData => (
+            <p className="help_step_text" dangerouslySetInnerHTML={{__html: i18n.t("helpSectionText:firstStepText.eurojackpot", 
+                {numbersAmount: pickerData.numbersAmount, maxNumber: pickerData.maxNumber})}}>
+            </p>
+        ),
+        desktop: timeRemains => (
+            <p className="help_step_text" dangerouslySetInnerHTML={{__html: i18n.t("helpSectionText:thirdStep.text.powerball.desktop", 
+                {timeRemains})}}>
+            </p>
+        ),
+        mobile: timeRemains => (
+            <p className="help_step_text" dangerouslySetInnerHTML={{__html: i18n.t("helpSectionText:thirdStep.text.powerball.mobile", 
+                {timeRemains})}}>
+            </p>
+        )
+    },
 };
 
 export default lottoData;

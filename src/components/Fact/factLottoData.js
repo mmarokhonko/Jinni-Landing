@@ -6,7 +6,8 @@ const lottoData = {
     "euromillions": factsData.euromillions,
     "eurojackpot": factsData.eurojackpot,
     "powerball": factsData.powerball,
-    "6aus49": factsData["6aus49"]
+    "6aus49": factsData["6aus49"],
+    "irishlottery": factsData.irishlottery
 }
 
 

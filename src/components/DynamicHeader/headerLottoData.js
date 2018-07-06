@@ -23,6 +23,11 @@ import lotto6aus49BGMob from "../../assets/Header/mob-bg/powerball.png";
 import lotto6aus49People from "../../assets/Header/people/6aus49.png";
 import lotto6aus49Logo from "../../assets/Header/logo/6aus49.png";
 
+import irishlottoBG from "../../assets/Header/bg/irishlotto.jpg";
+import irishlottoBGMob from "../../assets/Header/mob-bg/irishlotto.jpg";
+import irishlottoPeople from "../../assets/Header/people/irishlotto.png";
+import irishlottoLogo from "../../assets/Header/logo/irishlotto.png";
+
 const allLottoData = {
     ["megamillions"]: {
         bg: megaBG,
@@ -58,6 +63,13 @@ const allLottoData = {
         currency: "€",
         bgMob: lotto6aus49BGMob,
         people: lotto6aus49People
+    },
+    ["irishlottery"]: {
+        bg: irishlottoBG,
+        logo: irishlottoLogo,
+        currency: "€",
+        bgMob: irishlottoBGMob,
+        people: irishlottoPeople
     },
 }
 

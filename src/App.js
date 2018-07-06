@@ -54,7 +54,9 @@ class App extends Component {
 
   selectLottoData = data => {
       let lottoData = data.filter(
-          object => object.LotteryName.toLowerCase() === this.state.urlData.lotteryOrientation
+          object => {
+              return object.LotteryName.toLowerCase().replace(/\s/g, "") === this.state.urlData.lotteryOrientation
+          }
       )[0];
       let pickerLottoData = allPickerLottoData[this.state.urlData.lotteryOrientation];
       this.setState({
@@ -110,7 +112,7 @@ class App extends Component {
   };
 
   getPrice = async (packageId, numberOfTickets = 1) => {
-	  const resp = await axios.get(`https://api.jinnilotto.com/affiliate/getPackage/response.json?packageId=${packageId}`);
+	  const resp = await axios.get(`https://stage-api.jinnilotto.com/affiliate/getPackage/response.json?packageId=${packageId}`);
       const data = resp.data;
       const price = (parseFloat(data.OnlinePrice)/numberOfTickets).toFixed(2);
 	  const currencySign = data.Items[0].draws.currency;
@@ -208,7 +210,7 @@ class App extends Component {
 
       const { offer } = urlData;
 
-      const lottoName = lottoData.LotteryName.toLowerCase();
+      const lottoName = lottoData.LotteryName.toLowerCase().replace(/\s/g, "");
 
       return (
           <Fragment>
@@ -258,7 +260,7 @@ class App extends Component {
               <Help
                   offer={offer}
                   numberOfNotFree={this.state.numberOfNotFree}
-                  lotto={lottoData.LotteryName}
+                  lotto={lottoName}
                   drawDate={lottoData.DrawDate + " " + lottoData.TimeZone}
               />
               <Fact lotto={lottoName} />

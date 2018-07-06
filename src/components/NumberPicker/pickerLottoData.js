@@ -55,7 +55,18 @@ const lottoData = {
         bonusName: i18n.t("pickerData:6aus49.bonusName"),
         pluralBonusName: i18n.t("pickerData:6aus49.pluralBonusName"),
         ballsTheme: "red-yellow"	
-    }
+    },
+    "irishlottery": {
+        maxNumber: 49,
+        maxBonus: 9,
+        minNumber: 1,
+        minBonus:0,
+        numbersAmount: 6,
+        bonusAmount: 1,
+        bonusName: i18n.t("pickerData:irishlottery.bonusName"),
+        pluralBonusName: i18n.t("pickerData:irishlottery.pluralBonusName"),
+        ballsTheme: "yellow-red"		
+    },
 }
 
 export default lottoData
