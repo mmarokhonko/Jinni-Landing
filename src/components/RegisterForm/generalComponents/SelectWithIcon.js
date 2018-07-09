@@ -77,7 +77,7 @@ class SelectWithIcon extends Component {
   };
 
   render() {
-      const { value, icon } = this.props;
+    const { value, icon } = this.props;
 	  const { open, options, filterString, allowFilter, disabledChange } = this.state;
 
       return (

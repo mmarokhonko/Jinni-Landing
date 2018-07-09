@@ -19,8 +19,6 @@ const isFieldError = (name, value) => {
     }
 
     value = value.trim();
-    console.log(name);
-    console.log(value);
 		
     switch (name) {
     case "email":

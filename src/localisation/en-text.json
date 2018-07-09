@@ -32,7 +32,9 @@
       "powerball":
         "Choose {{numbersAmount}} numbers between 1 and {{maxNumber}} and a Bonus or click 'Quick Pick' for a random selection",
       "6aus49":
-        "Select {{numbersAmount}} lucky numbers + a {{bonusName}} or click 'Quick Pick' for a random selection"
+        "Select {{numbersAmount}} lucky numbers + a {{bonusName}} or click 'Quick Pick' for a random selection",
+      "irishlottery":
+        "Select {{numbersAmount}} numbers or simply click “Quick Pick” for a random selection."
     },
     "secondStep": {
       "freeticket": {
@@ -83,6 +85,11 @@
             "Don't miss the next of two weekly draws on <br/> <span class='help_timer'>{{timeRemains}}</span> to see if you’re a winner",
           "mobile":
             "Wait for the upcoming draw that will take place in <br/> <span class='help_timer'>{{timeRemains}}</span><br/> to see how much you won"
+        },
+        "irishlottery": {
+          "desktop": "There are two Irish Lotto draws every week. Be sure to check the results Follow the results of the next Irish Lotto draw on <span class='help_timer'>{{timeRemains}}</span> to find out if you’re a winner.",
+          "mobile":
+            "Wait for the upcoming draw that will take place in <br/> <span class='help_timer'>{{timeRemains}}</span><br/> to see how much you won"
         }
       }
     }
@@ -107,6 +114,10 @@
     "6aus49": {
       "bonusName": "Superball",
       "pluralBonusName": "Superballs"
+    },
+    "irishlottery": {
+      "bonusName": "Superball",
+      "pluralBonusName": "Superballs"
     }
   },
   "singlePickerText": {
@@ -124,11 +135,13 @@
     },
     "desktop": {
       "title": "Pick {{numbersAmount}} numbers <br />& {{bonusAmount}} {{bonusName}}",
+      "titleNoBonus": "Pick {{numbersAmount}} numbers",
       "quickPickBtn": "Quick Pick"
     },
     "mobile": {
       "frameTitle":
         "Pick {{numbersAmount}} numbers from {{minNumber}}-{{maxNumber}}<br />& {{bonusAmount}} {{bonusName}} from {{minBonus}}-{{maxBonus}}",
+      "frameTitleNoBonus": "Pick {{numbersAmount}} numbers from {{minNumber}}-{{maxNumber}}",
       "or": "or",
       "done": "Done",
       "pickNumbersBtn": "pick numbers",
@@ -138,6 +151,7 @@
   "multiPickerText": {
     "title":
       "Pick {{numbersAmount}} numbers from {{minNumber}}-{{maxNumber}} and <br/>{{bonusAmount}} {{bonusName}} from {{minBonus}}-{{maxBonus}}",
+    "titleNoBonus":"Pick {{numbersAmount}} numbers from {{minNumber}}-{{maxNumber}}",  
     "quickPickBtn": "Quick pick",
     "freeLabel": "FREE",
     "errorText":
@@ -146,6 +160,7 @@
     "pickNumbersBtn": "pick numbers",
     "done": "Done",
     "modalTitle": "Pick {{numbersAmount}} numbers <br />& {{bonusAmount}} {{bonusName}}",
+    "modalTitleNoBonus":"Pick {{numbersAmount}} numbers",
     "modalTitleCompleted": "All good here"
   },
   "formText": {
@@ -230,14 +245,16 @@
       "powerball": [
         "Over half of all Powerball jackpots since 2012 exceed $100 million. Powerball doesn’t do small."
       ],
-      "6aus49": ["6aus49 gives away over €5 billion in prizes every single year."]
+      "6aus49": ["6aus49 gives away over €5 billion in prizes every single year."],
+      "irishlottery": ["The Irish Lotto has one of the highest chances of winning (1 in 10,737,573) and has very few roll overs with an averaging Jackpot of 4 Million euros in 2018"]
     }
   },
   "footerText": {
     "title": "Terms & Conditions",
     "textHtml": [
       "<p>Jinni Lotto is operated by Jinni Tech Limited, a company registered in the Isle of Man with registered number 014940V and registered address <br class='hide-sm'> at P.O Box 227 Clinch's House Lord Street Douglas Isle of Man IM99 1RZ.</p>",
-      "<p>Jinni Tech Ltd is licensed and regulated by the Isle of Man Gambling Supervision Commission under a licence issued under the Online Gambling Regulation Act 2001<br class='hide-sm'> on April 26th, 2018. <b>Gambling debts are enforceable in law in the Isle of Man.</b> jinnilotto.com domain and copyrights are owned by Jinni Tech Limited.</p>",
+      "<p>Jinni Tech Ltd is licensed and regulated by the Isle of Man Gambling Supervision Commission under a licence issued under the Online Gambling Regulation Act 2001<br class='hide-sm'> on April 26th, 2018. Gambling debts are enforceable in law in the Isle of Man. jinnilotto.com domain and copyrights are owned by Jinni Tech Limited.</p>",
+      "<p>Jinni Tech LTD is licensed by the Irish National Excise Licence Office (Reference number 1014315).</p>",
       "<p>Please note, this license is not applicable to players residing in the UK. Jinni Tech Ltd does not operate a lottery. Members place bets on the outcome of national lotteries. Official lottery tickets and insurance are purchased based on the bets placed so that all winnings are equal to the cash option of national lottery winnings.</p>",
       "<p>Copyright © 2017, Jinni Tech Ltd. All rights reserved. The National Lottery and Lotto are trademarks of the National Lottery Commission. EuroMillions is the trademark of Services aux Loteries en Europe. Jinni Tech Limited is not connected to or affiliated with any body or organisation related to the National Lottery or any other lottery.</p>"
     ]

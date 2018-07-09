@@ -23,8 +23,12 @@ const NumberPickerMobile = ({
     return (
         <Fragment>
             <div className="frame picker-mob_frame">
-                <h4 className="frame_title" dangerouslySetInnerHTML={{__html: t("mobile.frameTitle",
-                    {numbersAmount, maxNumber, minNumber, bonusAmount, bonusName: bonusAmount <= 1 ? bonusName : pluralBonusName, maxBonus, minBonus})}}>
+                <h4 className="frame_title" dangerouslySetInnerHTML={{__html: bonusAmount > 0 ?
+                    t("mobile.frameTitle",
+                        {numbersAmount, maxNumber, minNumber, bonusAmount, bonusName: bonusAmount <= 1 ? bonusName : pluralBonusName, maxBonus, minBonus})
+                    :  t("mobile.frameTitleNoBonus",
+                        {numbersAmount, maxNumber, minNumber})
+                }}>
                 </h4>
                 <button
                     className="btn-general btn-green picker_quick-btn"
@@ -50,8 +54,12 @@ const NumberPickerMobile = ({
                     <div className="picker-mob_modal_body">
                         {!done ? (
                             <div className="picker-mob_head">
-                                <h4 className="picker-mob_head_title" dangerouslySetInnerHTML={{__html: t("mobile.frameTitle",
-                                    {numbersAmount, bonusAmount, maxNumber, minNumber, maxBonus, minBonus, bonusName: bonusAmount <= 1 ? bonusName : pluralBonusName})}}>
+                                <h4 className="picker-mob_head_title" dangerouslySetInnerHTML={{__html: bonusAmount > 0 ?
+                                    t("mobile.frameTitle",
+                                        {numbersAmount, bonusAmount, maxNumber, minNumber, maxBonus, minBonus, bonusName: bonusAmount <= 1 ? bonusName : pluralBonusName})
+                                    :  t("mobile.frameTitle",
+                                        {numbersAmount, bonusAmount, maxNumber, minNumber})
+                                }}>
                                 </h4>
                                 <p className="picker-mob_head_pale-text">{t("mobile.or")}</p>
                                 <button
@@ -77,10 +85,12 @@ const NumberPickerMobile = ({
                                 <div className="picker-mob_nums_head">{pickerMobileMethods.genNumbersMobileHeader().map(item => item)}</div>
                                 <div className="picker_nums_subwrap">{pickerMethods.generateNumbers()}</div>
                             </div>
-                            <div className="picker_bonus">
-                                <h5 className="picker_nums_title">{pickerMethods.genBonusHeader()}</h5>
-                                <div className="picker_bonus_subwrap">{pickerMethods.generateBonusNums()}</div>
-                            </div>
+                            {bonusAmount > 0 && (
+                                <div className="picker_bonus">
+                                    <h5 className="picker_nums_title">{pickerMethods.genBonusHeader()}</h5>
+                                    <div className="picker_bonus_subwrap">{pickerMethods.generateBonusNums()}</div>
+                                </div>
+                            )}
                         </div>
                         {done && <button onClick={pickerMobileMethods.closeMobileModal} className="picker-mob_modal_done-btn">{t("mobile.done")}</button>}						
                     </div>

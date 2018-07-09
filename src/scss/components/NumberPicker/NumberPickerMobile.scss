@@ -234,6 +234,21 @@
   }
 }
 
+.picker-mob_modal_frame.-theme_green {
+  .-num-circle.-filled {
+    background-image: url("./assets/Header/icons/ball_green.png");
+  }
+  .-bonus-circle.-filled {
+    background-image: url("./assets/Header/icons/ball_green.png");
+  }
+  .picker_nums_num.-picked {
+    background-color: #34B81C;
+  }
+  .picker_bonus_num.-picked {
+    background-image: url("./assets/NumberPicker/icon/star_fill-orange.png");
+  }
+}
+
 .picker-mob_modal_frame > .picker_bonus {
   border-top: 1px solid #d7e7ff;
   padding: 16px 19px 0;

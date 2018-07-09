@@ -93,6 +93,15 @@
   }
 }
 
+.multi-picker_ticket_subwrap.-theme_green {
+  .-num.-filled {
+    background-image: url("./assets/Header/icons/ball_green.png");
+  }
+  .-bonus.-filled {
+    background-image: url("./assets/Header/icons/ball_green.png");
+  }
+}
+
 .multi-picker_ticket_price_wrap {
   margin-left: 21px;
   width: 60px;

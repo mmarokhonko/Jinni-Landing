@@ -15,8 +15,11 @@ import iconGet from "../../assets/Help/icons/ic_get.svg";
 import iconCollect from "../../assets/Help/icons/ic_collect.svg";
 
 const Help = ({ drawDate, lotto, offer, pickerStore, numberOfNotFree, t }) => {
-    const currHelpLottoData = helpLottoData[lotto.toLowerCase()];
-    const currPickerLottoData = pickerLottoData[lotto.toLowerCase()];
+
+    const lottoSelector = lotto.toLowerCase().replace(/\s/g, "");
+
+    const currHelpLottoData = helpLottoData[lottoSelector];
+    const currPickerLottoData = pickerLottoData[lottoSelector];
 
     return (
         <section className="help">
@@ -59,7 +62,7 @@ const Help = ({ drawDate, lotto, offer, pickerStore, numberOfNotFree, t }) => {
                     <div className="help_step">
                         <img src={iconCollect} alt="" className="help_step_icon" />
                         <h4 className="help_step_title">{t("thirdStep.title")}</h4>
-                        <Timer lotto={lotto.toLowerCase()} drawDate={drawDate} />
+                        <Timer lotto={lottoSelector} drawDate={drawDate} />
                     </div>
                 </div>
             </div>

@@ -4,6 +4,7 @@ import { detect } from "detect-browser";
 import "formdata-polyfill";
 
 import i18n from "./i18nextSetup";
+import {apiHost, redirectHost} from "./envSettings";
 
 const sendDataModule = {
     prepareDataToSend: function(data, errorNode) {
@@ -59,8 +60,8 @@ const sendDataModule = {
     },
 
     sendData: function(data, errorNode) {
-        const redirectDomain = window.location.hostname.includes("lp.jinnilotto.com") ? "jinnilotto.com" :"stage.jinnilotto.com";
-        const apiURL = window.location.hostname.includes("lp.jinnilotto.com") ? "api.jinnilotto.com" : "stage-api.jinnilotto.com";
+        const redirectDomain = redirectHost;
+        const apiURL = apiHost;
 
         axios({
             url: `https://${apiURL}/affiliate/welcome/response.json`,

@@ -23,8 +23,12 @@ const MultiPickerMobile = ({
     return (
         <Fragment>
             <div className="frame picker-mob_frame">
-                <h4 className="frame_title" dangerouslySetInnerHTML={{__html: t("title", 
-                    {numbersAmount, minNumber, maxNumber, bonusAmount, bonusName: bonusAmount <= 1 ? bonusName : pluralBonusName, minBonus, maxBonus})}}> 
+                <h4 className="frame_title" dangerouslySetInnerHTML={{__html: bonusAmount > 0 ? 
+                    t("title", 
+                        {numbersAmount, minNumber, maxNumber, bonusAmount, bonusName: bonusAmount <= 1 ? bonusName : pluralBonusName, minBonus, maxBonus})
+                    : t("titleNoBonus", 
+                        {numbersAmount, minNumber, maxNumber})
+                }}> 
                 </h4>
                 <button className="btn-general btn-green picker_quick-btn" onClick={pickerMobileMethods.quickPickForAllMobile}> 
                     {t("quickPickBtn")}</button>
@@ -52,8 +56,12 @@ const MultiPickerMobile = ({
                     <div className="picker-mob_modal_body">
                         {!done ? (
                             <div className="picker-mob_head">
-                                <h4 className="picker-mob_head_title" dangerouslySetInnerHTML={{__html: t("title", 
-                                    {numbersAmount, bonusAmount, maxNumber, minNumber, maxBonus, minBonus, bonusName: bonusAmount <= 1 ? bonusName : pluralBonusName,})}}>
+                                <h4 className="picker-mob_head_title" dangerouslySetInnerHTML={{__html: bonusAmount > 0 ? 
+                                    t("title", 
+                                        {numbersAmount, bonusAmount, maxNumber, minNumber, maxBonus, minBonus, bonusName: bonusAmount <= 1 ? bonusName : pluralBonusName,})
+                                    : t("titleNoBonus", 
+                                        {numbersAmount, bonusAmount, maxNumber, minNumber})
+                                }}>
                                 </h4>
                                 <p className="picker-mob_head_pale-text">{t("or")}</p>
                                 <button
@@ -84,12 +92,14 @@ const MultiPickerMobile = ({
                                     {pickerMobileMethods.generateNumbersMobile(maxNumber)}
                                 </div>
                             </div>
-                            <div className="picker_bonus">
-                                {/* <h5 className="picker_nums_title">{pickerMethods.genBonusHeader()}</h5> */}
-                                <div className="picker_bonus_subwrap">
-                                    {pickerMobileMethods.generateBonusNumsMobile(maxBonus)}
+                            {bonusAmount > 0 && (
+                                <div className="picker_bonus">
+                                    {/* <h5 className="picker_nums_title">{pickerMethods.genBonusHeader()}</h5> */}
+                                    <div className="picker_bonus_subwrap">
+                                        {pickerMobileMethods.generateBonusNumsMobile(maxBonus)}
+                                    </div>
                                 </div>
-                            </div>
+                            )}
                         </div>
                         {done && (
                             <button
