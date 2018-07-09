@@ -57,8 +57,8 @@ const lottoData = {
         ballsTheme: "red-yellow"	
     },
     "irishlottery": {
-        maxNumber: 49,
-        maxBonus: 9,
+        maxNumber: 47,
+        maxBonus: 0,
         minNumber: 1,
         minBonus:0,
         numbersAmount: 6,

@@ -85,10 +85,12 @@ const NumberPickerMobile = ({
                                 <div className="picker-mob_nums_head">{pickerMobileMethods.genNumbersMobileHeader().map(item => item)}</div>
                                 <div className="picker_nums_subwrap">{pickerMethods.generateNumbers()}</div>
                             </div>
-                            <div className="picker_bonus">
-                                <h5 className="picker_nums_title">{pickerMethods.genBonusHeader()}</h5>
-                                <div className="picker_bonus_subwrap">{pickerMethods.generateBonusNums()}</div>
-                            </div>
+                            {bonusAmount > 0 && (
+                                <div className="picker_bonus">
+                                    <h5 className="picker_nums_title">{pickerMethods.genBonusHeader()}</h5>
+                                    <div className="picker_bonus_subwrap">{pickerMethods.generateBonusNums()}</div>
+                                </div>
+                            )}
                         </div>
                         {done && <button onClick={pickerMobileMethods.closeMobileModal} className="picker-mob_modal_done-btn">{t("mobile.done")}</button>}						
                     </div>

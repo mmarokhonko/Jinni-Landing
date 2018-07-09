@@ -92,12 +92,14 @@ const MultiPickerMobile = ({
                                     {pickerMobileMethods.generateNumbersMobile(maxNumber)}
                                 </div>
                             </div>
-                            <div className="picker_bonus">
-                                {/* <h5 className="picker_nums_title">{pickerMethods.genBonusHeader()}</h5> */}
-                                <div className="picker_bonus_subwrap">
-                                    {pickerMobileMethods.generateBonusNumsMobile(maxBonus)}
+                            {bonusAmount > 0 && (
+                                <div className="picker_bonus">
+                                    {/* <h5 className="picker_nums_title">{pickerMethods.genBonusHeader()}</h5> */}
+                                    <div className="picker_bonus_subwrap">
+                                        {pickerMobileMethods.generateBonusNumsMobile(maxBonus)}
+                                    </div>
                                 </div>
-                            </div>
+                            )}
                         </div>
                         {done && (
                             <button

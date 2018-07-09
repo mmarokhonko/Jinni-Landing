@@ -260,7 +260,7 @@ class App extends Component {
               <Help
                   offer={offer}
                   numberOfNotFree={this.state.numberOfNotFree}
-                  lotto={lottoName}
+                  lotto={lottoData.LotteryName}
                   drawDate={lottoData.DrawDate + " " + lottoData.TimeZone}
               />
               <Fact lotto={lottoName} />
