@@ -14,10 +14,12 @@ import Footer from "./components/Footer/Footer";
 
 import MultipleTicketsPicker from "./components/MultipleTicketsPicker/MultiPickerContainer";
 
-import lottoParamsData from "./tools/lottoParamsData";
+import {lottoParamsData, apiHost} from "./tools/envSettings";
 import allPickerLottoData from "./components/NumberPicker/pickerLottoData";
 import { getParamFromCookieOrUrl, getParamFromURL, mobXConnect } from "./tools/toolFunctions";
 import sendDataModule from "./tools/sendDataModule";
+
+console.log(lottoParamsData);
 
 class App extends Component {
   state = {
@@ -112,7 +114,7 @@ class App extends Component {
   };
 
   getPrice = async (packageId, numberOfTickets = 1) => {
-	  const resp = await axios.get(`https://stage-api.jinnilotto.com/affiliate/getPackage/response.json?packageId=${packageId}`);
+	  const resp = await axios.get(`https://${apiHost}/affiliate/getPackage/response.json?packageId=${packageId}`);
       const data = resp.data;
       const price = (parseFloat(data.OnlinePrice)/numberOfTickets).toFixed(2);
 	  const currencySign = data.Items[0].draws.currency;
