@@ -5,7 +5,7 @@
   max-width: 533px;
   flex: 1;
   .frame_title {
-    margin-top: 5px;
+    // margin-top: 5px;
     margin-left: 27px;
     margin-right: 0;
   }
@@ -27,7 +27,7 @@
 }
 
 .form {
-  margin-top: -17px;
+  // margin-top: -17px;
   @media (max-width: 768px) {
     display: flex;
     flex-direction: column;
@@ -36,10 +36,12 @@
 }
 
 .form_row {
-  margin-top: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  &:not(:first-child) {
+  margin-top: 20px;
+  }
 }
 
 .form_row_title {
