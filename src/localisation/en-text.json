@@ -32,7 +32,9 @@
       "powerball":
         "Choose {{numbersAmount}} numbers between 1 and {{maxNumber}} and a Bonus or click 'Quick Pick' for a random selection",
       "6aus49":
-        "Select {{numbersAmount}} lucky numbers + a {{bonusName}} or click 'Quick Pick' for a random selection"
+        "Select {{numbersAmount}} lucky numbers + a {{bonusName}} or click 'Quick Pick' for a random selection",
+      "irishlottery":
+        "Select {{numbersAmount}} numbers or simply click “Quick Pick” for a random selection."
     },
     "secondStep": {
       "freeticket": {
@@ -83,6 +85,11 @@
             "Don't miss the next of two weekly draws on <br/> <span class='help_timer'>{{timeRemains}}</span> to see if you’re a winner",
           "mobile":
             "Wait for the upcoming draw that will take place in <br/> <span class='help_timer'>{{timeRemains}}</span><br/> to see how much you won"
+        },
+        "irishlottery": {
+          "desktop": "There are two Irish Lotto draws every week. Be sure to check the results Follow the results of the next Irish Lotto draw on <span class='help_timer'>{{timeRemains}}</span> to find out if you’re a winner.",
+          "mobile":
+            "Wait for the upcoming draw that will take place in <br/> <span class='help_timer'>{{timeRemains}}</span><br/> to see how much you won"
         }
       }
     }
@@ -128,11 +135,13 @@
     },
     "desktop": {
       "title": "Pick {{numbersAmount}} numbers <br />& {{bonusAmount}} {{bonusName}}",
+      "titleNoBonus": "Pick {{numbersAmount}} numbers",
       "quickPickBtn": "Quick Pick"
     },
     "mobile": {
       "frameTitle":
         "Pick {{numbersAmount}} numbers from {{minNumber}}-{{maxNumber}}<br />& {{bonusAmount}} {{bonusName}} from {{minBonus}}-{{maxBonus}}",
+      "frameTitleNoBonus": "Pick {{numbersAmount}} numbers from {{minNumber}}-{{maxNumber}}",
       "or": "or",
       "done": "Done",
       "pickNumbersBtn": "pick numbers",
@@ -142,6 +151,7 @@
   "multiPickerText": {
     "title":
       "Pick {{numbersAmount}} numbers from {{minNumber}}-{{maxNumber}} and <br/>{{bonusAmount}} {{bonusName}} from {{minBonus}}-{{maxBonus}}",
+    "titleNoBonus":"Pick {{numbersAmount}} numbers from {{minNumber}}-{{maxNumber}}",  
     "quickPickBtn": "Quick pick",
     "freeLabel": "FREE",
     "errorText":
@@ -150,6 +160,7 @@
     "pickNumbersBtn": "pick numbers",
     "done": "Done",
     "modalTitle": "Pick {{numbersAmount}} numbers <br />& {{bonusAmount}} {{bonusName}}",
+    "modalTitleNoBonus":"Pick {{numbersAmount}} numbers",
     "modalTitleCompleted": "All good here"
   },
   "formText": {

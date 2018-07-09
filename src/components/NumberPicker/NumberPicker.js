@@ -12,9 +12,14 @@ const NumberPicker = ({
     done }) => {	
     return (
         <div className="frame picker_frame-vert">
-            <h4 className="frame_title" dangerouslySetInnerHTML={{__html: t("desktop.title", {
-                numbersAmount, bonusAmount, bonusName: bonusAmount <= 1 ? bonusName : pluralBonusName
-            })}}>
+            <h4 className="frame_title" dangerouslySetInnerHTML={{__html: bonusAmount > 0 ? 
+                t("desktop.title", {
+                    numbersAmount, bonusAmount, bonusName: bonusAmount <= 1 ? bonusName : pluralBonusName
+                })
+                : t("desktop.titleNoBonus", {
+                    numbersAmount
+                })
+            }}>
             </h4>
             <div className="picker">
                 <div className="picker_head">

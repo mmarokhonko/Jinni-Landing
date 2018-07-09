@@ -21,8 +21,12 @@ const MultiPickerDesktop = ({
     t}) => {
     return(
         <div className="frame multi-picker">
-            <h4 className="frame_title" dangerouslySetInnerHTML={{__html: t("title", 
-                {numbersAmount, minNumber, maxNumber, bonusAmount, bonusName: bonusAmount <= 1 ? bonusName : pluralBonusName, minBonus, maxBonus})}}> 
+            <h4 className="frame_title" dangerouslySetInnerHTML={{__html: bonusAmount > 0 ?
+                t("title", 
+                    {numbersAmount, minNumber, maxNumber, bonusAmount, bonusName: bonusAmount <= 1 ? bonusName : pluralBonusName, minBonus, maxBonus})
+                :  t("titleNoBonus", 
+                    {numbersAmount, minNumber, maxNumber})
+            }}> 
             </h4>
             <div className="multi-picker_subwrap" ref={ballsWrapRef}>
                 {ticketsData.map((ticket, index) => {
@@ -63,8 +67,8 @@ MultiPickerDesktop.propTypes = {
     minBonus: number.isRequired,
     maxNumber: number.isRequired,
     minNumber: number.isRequired,
-	bonusName: string.isRequired,
-	pluralBonusName: string.isRequired,
+    bonusName: string.isRequired,
+    pluralBonusName: string.isRequired,
     ballsTheme: string.isRequired,
     price: string.isRequired,
     hasError: bool.isRequired,

@@ -19,8 +19,6 @@ import allPickerLottoData from "./components/NumberPicker/pickerLottoData";
 import { getParamFromCookieOrUrl, getParamFromURL, mobXConnect } from "./tools/toolFunctions";
 import sendDataModule from "./tools/sendDataModule";
 
-console.log(lottoParamsData);
-
 class App extends Component {
   state = {
       lotteryOrientation: "megamillions",
