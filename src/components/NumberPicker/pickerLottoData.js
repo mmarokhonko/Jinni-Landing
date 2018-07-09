@@ -65,7 +65,7 @@ const lottoData = {
         bonusAmount: 1,
         bonusName: i18n.t("pickerData:irishlottery.bonusName"),
         pluralBonusName: i18n.t("pickerData:irishlottery.pluralBonusName"),
-        ballsTheme: "yellow-red"		
+        ballsTheme: "green"		
     },
 }
 

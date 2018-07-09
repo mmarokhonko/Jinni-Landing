@@ -199,6 +199,15 @@
   }
 }
 
+.numbers-widget.-theme_green {
+  .-num-circle.-filled {
+    background-image: url("./assets/Header/icons/ball_green.png");
+  }
+  .-bonus-circle.-filled {
+    background-image: url("./assets/Header/icons/ball_green.png");
+  }
+}
+
 .numbers-widget_btn {
   cursor: pointer;
   height: 20px;
