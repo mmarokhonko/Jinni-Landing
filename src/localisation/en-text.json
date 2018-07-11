@@ -10,13 +10,13 @@
 	"freeticketTitle": "Play the next <img src='{{lotteryLogo}}' alt='{{lotteryName}}' /> draw for <span>FREE</span>",
 	"million": "million",
     "notfreeTitle":
-      "Get {{numberOfTickets}} <img src='{{lotteryLogo}}' alt='{{lotteryName}}' /> bet lines for the price of {{numberOfNotFree}}"
+      "Get {{numberOfTickets}} <img src='{{lotteryLogo}}' alt='{{lotteryName}}' /> lines for the price of {{numberOfNotFree}}"
   },
   "headerMobileText": {
 	"freeticketTitle": "Play the next draw for <span>FREE</span>",
 	"million": "million",	
     "notfreeTitle":
-      "Get <span>{{numberOfTickets}}</span> bet lines for the price of <span>{{numberOfNotFree}}</span> !",
+      "Get <span>{{numberOfTickets}}</span> lines for the price of <span>{{numberOfNotFree}}</span> !",
     "freeLabel": "FREE"
   },
   "helpSectionText": {

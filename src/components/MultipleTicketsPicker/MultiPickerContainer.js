@@ -11,11 +11,17 @@ import { mobXConnect } from "../../tools/toolFunctions";
 class MultipleTicketsPickerContainer extends Component {
   state = {
       pickerLottoData: pickerLottoData[this.props.lotto],
-      quickPickDelay: 150,
+      quickPickDelay: 75,
       numberOfNotFree: this.props.numberOfNotFree,
       ticketModalToOpenFor: 0,
       hasError: false
   };
+
+  componentDidMount () {
+      this.props.pickerStore.ticketsData.forEach((ticket, index) => {
+          this.quickPick(index);
+      })
+  }
 
   onNumberChange = (event, ticketIndex, numberIndex) => {
       let value = event.target.value;

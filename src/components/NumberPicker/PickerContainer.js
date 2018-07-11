@@ -13,7 +13,7 @@ import { mobXConnect } from "../../tools/toolFunctions";
 class PickerContainer extends Component {
   state = {
       pickerLottoData: pickerLottoData[this.props.lotto],
-	  quickPickDelay: 150,
+	  quickPickDelay: 75,
 	  isMobileModalOpen: false
   };
 
