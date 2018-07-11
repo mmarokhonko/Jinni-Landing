@@ -2,6 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
 
 module.exports = env => {
     let plugins = [
@@ -12,6 +13,13 @@ module.exports = env => {
         new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
         new ExtractTextPlugin({
             filename: "styles.css"
+        }),
+        new BrowserSyncPlugin({
+            host: "localhost",
+            port: 3001,
+            proxy: "http://localhost:9000/"
+        }, {
+            reload: false
         })
     ];
 

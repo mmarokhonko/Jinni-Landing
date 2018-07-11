@@ -38,6 +38,15 @@ class SelectWithIcon extends Component {
       });
   };
 
+  selectHandlerMobile = event => {
+      const selectedValue = event.target.value;
+      const selectedOption = this.state.options.find(option => option.value === selectedValue);
+      this.props.selectHandler(selectedOption);
+      this.setState({
+          open: false
+      });
+  };
+
   changeFilterFromInput = event => {
       this.setState(
           {
@@ -77,7 +86,7 @@ class SelectWithIcon extends Component {
   };
 
   render() {
-    const { value, icon } = this.props;
+      const { value, icon } = this.props;
 	  const { open, options, filterString, allowFilter, disabledChange } = this.state;
 
       return (
@@ -96,7 +105,7 @@ class SelectWithIcon extends Component {
                   >
                       {value.label}
                   </div>
-                  {allowFilter && (
+                  {window.innerWidth > 768 && allowFilter && (
                       <div className="selwi_filter-input">
                           <input
                               placeholder="Filter"
@@ -107,21 +116,29 @@ class SelectWithIcon extends Component {
                           />
                       </div>
                   )}
-                  <ul className="selwi_options">
-                      {options.map((option, i) => (
-                          <li
-                              className={
-                                  option.countryCode
-                                      ? `-flag-icon flag flag-${option.countryCode.toLowerCase()}`
-                                      : ""
-                              }
-                              onMouseDown={() => this.selectHandler(option)}
-                              key={i}
-                          >
-                              {option.label}
-                          </li>
-                      ))}
-                  </ul>
+                  {window.innerWidth > 768 ? (
+                      <ul className="selwi_options">
+                          {options.map((option, i) => (
+                              <li
+                                  className={
+                                      option.countryCode
+                                          ? `-flag-icon flag flag-${option.countryCode.toLowerCase()}`
+                                          : ""
+                                  }
+                                  onMouseDown={() => this.selectHandler(option)}
+                                  key={i}
+                              >
+                                  {option.label}
+                              </li>
+                          ))}
+                      </ul>
+                  ) : (
+                      <select className="selwi_mob-select" onChange={this.selectHandlerMobile}>
+                          {options.map((option, i) => (
+                              <option key={i} value={option.value}>{option.label}</option>
+                          ))}
+                      </select>
+                  )}
               </div>
           </ClickOutHandler>
       );
