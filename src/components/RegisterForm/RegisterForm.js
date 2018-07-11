@@ -5,7 +5,7 @@ import Media from "react-media";
 
 import InputWithIcon from "./generalComponents/InputWithIcon";
 import SelectTitle from "./SelectTitle";
-import { SelectDayOfBirth, SelectMonthOfBirth, SelectYearOfBirth } from "./dateOfBirthComponents";
+import { SelectDayOfBirth, SelectMonthOfBirth, SelectYearOfBirth, DateOfBirthMobile } from "./dateOfBirthComponents";
 import { SelectCountry, SelectPhoneCode } from "./countryComponents";
 import { isFieldError } from "./tools/validationFunctions";
 import {translate} from "react-i18next";
@@ -90,7 +90,7 @@ class RegisterForm extends Component {
       firstStepInputs: ["firstName", "lastName", "email", "password"],
       secondStepInputs: ["city", "code", "street", "phoneNumber", "termsAgreed", "dateOfBirth"],
       userCountryCode: undefined,
-      step2: true
+      step2: false
   };
 
   fetchUserCountryCode = async () => {
@@ -421,26 +421,41 @@ class RegisterForm extends Component {
                               />
                           </div>
                       </div>
-                      <div className="form_row">
-                          <h5 className="form_row_title">{t("rowTitles.dateOfBirth")}</h5>
-                          <div className="form_row_subwrap">
-                              <SelectDayOfBirth
-                                  value={fields.dayOfBirth}
-                                  name="dayOfBirth"
-                                  selectHandler={this.selectHandler}
-                              />
-                              <SelectMonthOfBirth
-                                  value={fields.monthOfBirth}
-                                  name="monthOfBirth"
-                                  selectHandler={this.selectHandler}
-                              />
-                              <SelectYearOfBirth
-                                  value={fields.yearOfBirth}
-                                  name="yearOfBirth"
-                                  selectHandler={this.selectHandler}
-                              />
-                          </div>
-                      </div>
+                      <Media query="(min-width: 768px)">
+                          {matches => {
+                              return matches ? (
+                                  <div className="form_row">
+                                      <h5 className="form_row_title">{t("rowTitles.dateOfBirth")}</h5>
+                                      <div className="form_row_subwrap">
+                                          <SelectDayOfBirth
+                                              value={fields.dayOfBirth}
+                                              name="dayOfBirth"
+                                              selectHandler={this.selectHandler}
+                                          />
+                                          <SelectMonthOfBirth
+                                              value={fields.monthOfBirth}
+                                              name="monthOfBirth"
+                                              selectHandler={this.selectHandler}
+                                          />
+                                          <SelectYearOfBirth
+                                              value={fields.yearOfBirth}
+                                              name="yearOfBirth"
+                                              selectHandler={this.selectHandler}
+                                          />
+                                      </div>
+                                  </div>
+                              ) : (
+                                  <div className="form_row">
+                                      <DateOfBirthMobile 
+                                          year={fields.yearOfBirth.value}
+                                          month={fields.monthOfBirth.value}
+                                          day={fields.dayOfBirth.value}
+                                          selectHandler={this.selectHandler} 
+                                      />
+                                  </div>
+                              )
+                          }}
+                      </Media>
                       <div className="form_row">
                           <h5 className="form_row_title">{t("rowTitles.number")}</h5>
                           <div className="form_row_subwrap">

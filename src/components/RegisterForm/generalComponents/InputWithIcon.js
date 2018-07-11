@@ -21,7 +21,7 @@ class InputWithIcon extends Component {
       error: this.props.error
   };
 
-  componentWillReceiveProps(newProps) {
+  UNSAFE_componentWillReceiveProps(newProps) {
       this.setState({
           error: newProps.error
       })

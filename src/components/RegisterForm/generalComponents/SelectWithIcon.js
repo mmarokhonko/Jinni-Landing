@@ -1,5 +1,6 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { string, array, func, object, bool, oneOfType } from "prop-types";
+import Media from "react-media";
 import ClickOutHandler from "react-onclickout";
 
 class SelectWithIcon extends Component {
@@ -105,40 +106,44 @@ class SelectWithIcon extends Component {
                   >
                       {value.label}
                   </div>
-                  {window.innerWidth > 768 && allowFilter && (
-                      <div className="selwi_filter-input">
-                          <input
-                              placeholder="Filter"
-                              type="text"
-                              value={filterString}
-                              onChange={e => this.changeFilterFromInput(e)}
-                              onBlur={this.closeList}
-                          />
-                      </div>
-                  )}
-                  {window.innerWidth > 768 ? (
-                      <ul className="selwi_options">
-                          {options.map((option, i) => (
-                              <li
-                                  className={
-                                      option.countryCode
-                                          ? `-flag-icon flag flag-${option.countryCode.toLowerCase()}`
-                                          : ""
-                                  }
-                                  onMouseDown={() => this.selectHandler(option)}
-                                  key={i}
-                              >
-                                  {option.label}
-                              </li>
-                          ))}
-                      </ul>
-                  ) : (
-                      <select className="selwi_mob-select" onChange={this.selectHandlerMobile}>
-                          {options.map((option, i) => (
-                              <option key={i} value={option.value}>{option.label}</option>
-                          ))}
-                      </select>
-                  )}
+                  <Media query="(min-width: 768px)">
+                      {matches => matches ? (
+                          <Fragment>
+                              {allowFilter && (
+                                  <div className="selwi_filter-input">
+                                      <input
+                                          placeholder="Filter"
+                                          type="text"
+                                          value={filterString}
+                                          onChange={e => this.changeFilterFromInput(e)}
+                                          onBlur={this.closeList}
+                                      />
+                                  </div>
+                              )}
+                              <ul className="selwi_options">
+                                  {options.map((option, i) => (
+                                      <li
+                                          className={
+                                              option.countryCode
+                                                  ? `-flag-icon flag flag-${option.countryCode.toLowerCase()}`
+                                                  : ""
+                                          }
+                                          onMouseDown={() => this.selectHandler(option)}
+                                          key={i}
+                                      >
+                                          {option.label}
+                                      </li>
+                                  ))}
+                              </ul>
+                          </Fragment>
+                      ) : (
+                          <select className="selwi_mob-select" onChange={this.selectHandlerMobile}>
+                              {options.map((option, i) => (
+                                  <option key={i} value={option.value}>{option.label}</option>
+                              ))}
+                          </select>
+                      )}
+                  </Media>
               </div>
           </ClickOutHandler>
       );

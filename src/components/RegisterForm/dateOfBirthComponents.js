@@ -4,7 +4,7 @@ import { string, func, object } from "prop-types";
 import SelectWithIcon from "./generalComponents/SelectWithIcon";
 import i18n from "../../tools/i18nextSetup";
 
-import bithdayIcon from "../../assets/RegisterForm/icons/birthday.png";
+import birthdayIcon from "../../assets/RegisterForm/icons/birthday.png";
 
 const generateDayOfBirthOptions = () => {
     let options = [];
@@ -22,13 +22,45 @@ const generateDayOfBirthOptions = () => {
     return options;
 };
 
+const generateMonthOfBirthOptions = () => {
+    const months = i18n.t("formText:dateOfBirth.months", {returnObjects: true});
+
+    const options = months.map((value, index) => {
+        let monthNumber = index+1 >=10 ? (index+1).toString() : `0${(index+1).toString()}`;
+        return {label: value, value: monthNumber}
+    });
+
+    return options;
+};
+
+const generateYearOfBirthOptions = () => {
+    const currYear = new Date().getFullYear();
+    let options = [];
+
+    for (let x = currYear - 18; x >= currYear - 100; x--) {
+        const value = x.toString();
+
+        options.push({ label: value, value });
+    }
+
+    return options;
+};
+
+const allOptions = {
+    days: generateDayOfBirthOptions(),
+    months: generateMonthOfBirthOptions(),
+    years: generateYearOfBirthOptions()
+}
+
 class SelectDayOfBirth extends Component {
   state = {
-      options: generateDayOfBirthOptions()
+      options: allOptions.days
   };
 
   componentDidMount() {
-      this.selectHandler(this.state.options[0]);
+      if (Object.keys(this.props.value).length === 0) {
+          this.selectHandler(this.state.options[0]);
+      }
   }
 
   selectHandler = option => {
@@ -42,7 +74,7 @@ class SelectDayOfBirth extends Component {
       return (
           <SelectWithIcon
               value={value}
-              icon={window.innerWidth >= 768 && bithdayIcon}
+              icon={window.innerWidth >= 768 && birthdayIcon}
               options={options}
               selectHandler={this.selectHandler}
           />
@@ -56,24 +88,15 @@ SelectDayOfBirth.propTypes = {
     name: string.isRequired
 };
 
-const generateMonthOfBirthOptions = () => {
-    const months = i18n.t("formText:dateOfBirth.months", {returnObjects: true});
-
-    const options = months.map((value, index) => {
-        let mothnNumber = index+1 >=10 ? (index+1).toString() : `0${(index+1).toString()}`;
-        return {label: value, value: mothnNumber}
-    });
-
-    return options;
-};
-
 class SelectMonthOfBirth extends Component {
   state = {
-      options: generateMonthOfBirthOptions()
+      options: allOptions.months
   };
 
   componentDidMount() {
-      this.selectHandler(this.state.options[0]);
+      if (Object.keys(this.props.value).length === 0) {
+          this.selectHandler(this.state.options[0]);
+      }
   }
 
   selectHandler = option => {
@@ -94,26 +117,15 @@ SelectMonthOfBirth.propTypes = {
     name: string.isRequired
 };
 
-const generateYearOfBirthOptions = () => {
-    const currYear = new Date().getFullYear();
-    let options = [];
-
-    for (let x = currYear - 18; x >= currYear - 100; x--) {
-        const value = x.toString();
-
-        options.push({ label: value, value });
-    }
-
-    return options;
-};
-
 class SelectYearOfBirth extends Component {
   state = {
-      options: generateYearOfBirthOptions()
+      options: allOptions.years
   };
 
   componentDidMount() {
-      this.selectHandler(this.state.options[0]);
+      if (Object.keys(this.props.value).length === 0) {
+          this.selectHandler(this.state.options[0]);
+      }
   }
 
   selectHandler = option => {
@@ -134,8 +146,43 @@ SelectYearOfBirth.propTypes = {
     name: string.isRequired
 };
 
+class DateOfBirthMobile extends Component {
+  state = {
+      maxDate: `${allOptions.years[0].value}-12-31`,
+      minDate: `${allOptions.years[allOptions.years.length - 1].value}-01-01`
+  }
+
+  handleChange = event => {
+      const value = event.target.value;
+      const date = new Date(value);
+      const day = date.getDate() >= 10 ? date.getDate() : `0${date.getDate()}`;
+      const month = date.getMonth() + 1 >= 10 ? date.getMonth() + 1 : `0${date.getMonth() + 1}`;
+      const year = date.getFullYear();
+      
+      this.props.selectHandler("dayOfBirth", allOptions.days.find(option => option.value == day));
+      this.props.selectHandler("monthOfBirth", allOptions.months.find(option => option.value == month));
+      this.props.selectHandler("yearOfBirth", allOptions.years.find(option => option.value == year));
+  }
+
+  render(){
+      const {year, month, day} = this.props;
+      const {maxDate, minDate} = this.state;
+
+      const value = !year || !month || !day ? undefined : `${year}-${month}-${day}`;
+
+      const valueClasses = `birthday-mob_value${!value ? " -placeholder" : ""}`
+      return(
+          <div className="birthday-mob">
+              <div className={valueClasses}>{value ? value : "Date of birth"}</div>
+              <input max={maxDate} min={minDate} className="birthday-mob_input" type="date" onChange={this.handleChange}/>
+          </div>
+      )
+  }
+}
+
 module.exports = {
     SelectDayOfBirth,
     SelectMonthOfBirth,
-    SelectYearOfBirth
+    SelectYearOfBirth,
+    DateOfBirthMobile
 };
