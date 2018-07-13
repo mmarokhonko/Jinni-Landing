@@ -151,41 +151,66 @@ SelectYearOfBirth.propTypes = {
 class DateOfBirthMobile extends Component {
   state = {
       maxDate: `${allOptions.years[0].value}-12-31`,
-      minDate: `${allOptions.years[allOptions.years.length - 1].value}-01-01`
+      minDate: `${allOptions.years[allOptions.years.length - 1].value}-01-01`,
+      datePickerWidth: "0"
+  }
+
+  componentDidMount(){
+      this.setDatePickerWidth();
+      window.addEventListener("resize", this.setDatePickerWidth);
+  }
+
+  componentWillUnmount() {
+      window.removeEventListener("resize", this.setDatePickerWidth);
+  }
+
+  //to handle Safari quirk about not making the datepicker 100% width
+  setDatePickerWidth = () => {
+      if(!this.wrap) {
+          return
+      }
+
+      const wrapWidth = this.wrap.offsetWidth;
+      this.setState({
+          datePickerWidth: wrapWidth
+      })
   }
 
   handleChange = event => {
       const value = event.target.value;
       const date = new Date(value);
-      const day = addLeadingZero(date.getDate());
-      const month = addLeadingZero(date.getMonth());
-      const year = date.getFullYear();
+      const day = addLeadingZero(date.getDate()) || {};
+      const month = addLeadingZero(date.getMonth() + 1) || {};
+      const year = date.getFullYear() || {};
       
       this.props.selectHandler("dayOfBirth", allOptions.days.find(option => option.value == day));
       this.props.selectHandler("monthOfBirth", allOptions.months.find(option => option.value == month));
       this.props.selectHandler("yearOfBirth", allOptions.years.find(option => option.value == year));
   }
 
-  render(){
-      const {year, month, day} = this.props;
-      const {maxDate, minDate} = this.state;
+  valueIsSet = value => value ? Object.keys(value).length > 0 : false;
 
-      const value = !year || !month || !day ? undefined : `${year}-${month}-${day}`;
+  render(){
+      const {year, month, day, error} = this.props;
+      const {maxDate, minDate, datePickerWidth} = this.state;
+
+      const value = !this.valueIsSet(year)|| !this.valueIsSet(month) || !this.valueIsSet(day) ? undefined : `${year.value}-${month.value}-${day.value}`;
 
       const valueClasses = `birthday-mob_value${!value ? " -placeholder" : ""}`
       return(
-          <div className="birthday-mob">
+          <div ref={wrap => this.wrap = wrap} className={`birthday-mob${error.active ? " -error" : ""}`}>
               <div className={valueClasses}>{value ? value : "Date of birth"}</div>
-              <input max={maxDate} min={minDate} className="birthday-mob_input" type="date" onChange={this.handleChange}/>
+              <input max={maxDate} min={minDate} style={{width: datePickerWidth}} className="birthday-mob_input" type="date" onChange={this.handleChange}/>
           </div>
       )
   }
 }
 
 DateOfBirthMobile.propTypes = {
-    year: string,
-    month: string,
-    day: string,
+    year: object,
+    month: object,
+    day: object,
+    error: object.isRequired,
     selectHandler: func.isRequired
 }
 

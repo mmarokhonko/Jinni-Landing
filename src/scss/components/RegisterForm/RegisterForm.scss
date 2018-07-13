@@ -150,7 +150,7 @@
   width: 100%;
   padding-left: calc(20px + 29px);
   font-size: 16px;
-  line-height: 21px;
+  line-height: normal;
   background-repeat: no-repeat;
   background-position: 15px 50%;
   box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.1), 0 2px 10px 0 rgba(127, 177, 223, 0.1);
@@ -331,6 +331,7 @@
     width: 100%;
     opacity: 0;
     z-index: 10;
+    font-size: 16px;
   }
 }
 
@@ -359,6 +360,9 @@
 .birthday-mob {
   position: relative;
   width: 100%;
+  &.-error {
+    outline: 1px solid #fa3232;
+  }
 }
 
 .birthday-mob_value {
@@ -385,10 +389,13 @@
   position: absolute;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
   display: block;
   height: 50px;
   width: 100%;
   opacity: 0;
+  font-size: 16px;
 }
 
 .select-title {

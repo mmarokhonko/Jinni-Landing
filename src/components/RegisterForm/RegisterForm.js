@@ -176,9 +176,14 @@ class RegisterForm extends Component {
                   monthOfBirth = fields.monthOfBirth.value,
                   yearOfBirth = fields.yearOfBirth.value;
 
-              const birthDate = `${yearOfBirth}-${monthOfBirth}-${dayOfBirth}`;
+              if(!yearOfBirth || !monthOfBirth || !dayOfBirth) {
+                  isError = true
+              }
+              else {
+                  const birthDate = `${yearOfBirth}-${monthOfBirth}-${dayOfBirth}`;
 
-              isError = isFieldError("dateOfBirth", birthDate);
+                  isError = isFieldError("dateOfBirth", birthDate);
+              }      
           } else {
               isError = isFieldError(fieldName, fields[fieldName]);
           }
@@ -447,10 +452,11 @@ class RegisterForm extends Component {
                               ) : (
                                   <div className="form_row">
                                       <DateOfBirthMobile 
-                                          year={fields.yearOfBirth.value}
-                                          month={fields.monthOfBirth.value}
-                                          day={fields.dayOfBirth.value}
-                                          selectHandler={this.selectHandler} 
+                                          year={fields.yearOfBirth}
+                                          month={fields.monthOfBirth}
+                                          day={fields.dayOfBirth}
+                                          selectHandler={this.selectHandler}
+                                          error={errorObjects.dateOfBirthError} 
                                       />
                                   </div>
                               )
