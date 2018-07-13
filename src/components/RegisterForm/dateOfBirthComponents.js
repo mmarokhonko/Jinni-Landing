@@ -6,12 +6,14 @@ import i18n from "../../tools/i18nextSetup";
 
 import birthdayIcon from "../../assets/RegisterForm/icons/birthday.png";
 
+const addLeadingZero = number => number >=10 ? number.toString() : `0${number.toString()}`;
+
 const generateDayOfBirthOptions = () => {
     let options = [];
 
     for (let x = 1; x <= 31; x++) {
         const label = x.toString();
-        const number = x >=10 ? x.toString() : `0${x.toString()}`;
+        const number = addLeadingZero(x.toString());
 
         options.push({
             label: label,
@@ -26,7 +28,7 @@ const generateMonthOfBirthOptions = () => {
     const months = i18n.t("formText:dateOfBirth.months", {returnObjects: true});
 
     const options = months.map((value, index) => {
-        let monthNumber = index+1 >=10 ? (index+1).toString() : `0${(index+1).toString()}`;
+        let monthNumber = addLeadingZero(index+1);
         return {label: value, value: monthNumber}
     });
 
@@ -155,8 +157,8 @@ class DateOfBirthMobile extends Component {
   handleChange = event => {
       const value = event.target.value;
       const date = new Date(value);
-      const day = date.getDate() >= 10 ? date.getDate() : `0${date.getDate()}`;
-      const month = date.getMonth() + 1 >= 10 ? date.getMonth() + 1 : `0${date.getMonth() + 1}`;
+      const day = addLeadingZero(date.getDate());
+      const month = addLeadingZero(date.getMonth());
       const year = date.getFullYear();
       
       this.props.selectHandler("dayOfBirth", allOptions.days.find(option => option.value == day));
@@ -178,6 +180,13 @@ class DateOfBirthMobile extends Component {
           </div>
       )
   }
+}
+
+DateOfBirthMobile.propTypes = {
+    year: string,
+    month: string,
+    day: string,
+    selectHandler: func.isRequired
 }
 
 module.exports = {
