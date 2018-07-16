@@ -39,7 +39,7 @@ const generateYearOfBirthOptions = () => {
     const currYear = new Date().getFullYear();
     let options = [];
 
-    for (let x = currYear - 18; x >= currYear - 100; x--) {
+    for (let x = currYear - 18; x >= currYear - 150; x--) {
         const value = x.toString();
 
         options.push({ label: value, value });
@@ -76,7 +76,7 @@ class SelectDayOfBirth extends Component {
       return (
           <SelectWithIcon
               value={value}
-              icon={window.innerWidth >= 768 && birthdayIcon}
+              icon={birthdayIcon}
               options={options}
               selectHandler={this.selectHandler}
           />
@@ -152,7 +152,8 @@ class DateOfBirthMobile extends Component {
   state = {
       maxDate: `${allOptions.years[0].value}-12-31`,
       minDate: `${allOptions.years[allOptions.years.length - 1].value}-01-01`,
-      datePickerWidth: "0"
+      datePickerWidth: "0",
+      placeholderText: "Date of birth"
   }
 
   componentDidMount(){
@@ -182,6 +183,14 @@ class DateOfBirthMobile extends Component {
       const day = addLeadingZero(date.getDate()) || {};
       const month = addLeadingZero(date.getMonth() + 1) || {};
       const year = date.getFullYear() || {};
+
+      const yearOption = allOptions.years.find(option => option.value == year);
+
+      if(!yearOption) {
+        return this.setState({
+          placeholderText: "At least 18 year old"
+        })
+      }
       
       this.props.selectHandler("dayOfBirth", allOptions.days.find(option => option.value == day));
       this.props.selectHandler("monthOfBirth", allOptions.months.find(option => option.value == month));
@@ -192,14 +201,14 @@ class DateOfBirthMobile extends Component {
 
   render(){
       const {year, month, day, error} = this.props;
-      const {maxDate, minDate, datePickerWidth} = this.state;
+      const {maxDate, minDate, datePickerWidth, placeholderText} = this.state;
 
       const value = !this.valueIsSet(year)|| !this.valueIsSet(month) || !this.valueIsSet(day) ? undefined : `${year.value}-${month.value}-${day.value}`;
 
       const valueClasses = `birthday-mob_value${!value ? " -placeholder" : ""}`
       return(
           <div ref={wrap => this.wrap = wrap} className={`birthday-mob${error.active ? " -error" : ""}`}>
-              <div className={valueClasses}>{value ? value : "Date of birth"}</div>
+              <div className={valueClasses}>{value ? value : placeholderText}</div>
               <input max={maxDate} min={minDate} style={{width: datePickerWidth}} className="birthday-mob_input" type="date" onChange={this.handleChange}/>
           </div>
       )

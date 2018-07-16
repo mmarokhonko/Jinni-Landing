@@ -57,7 +57,7 @@ const NumberPickerMobile = ({
                                 <h4 className="picker-mob_head_title" dangerouslySetInnerHTML={{__html: bonusAmount > 0 ?
                                     t("mobile.frameTitle",
                                         {numbersAmount, bonusAmount, maxNumber, minNumber, maxBonus, minBonus, bonusName: bonusAmount <= 1 ? bonusName : pluralBonusName})
-                                    :  t("mobile.frameTitle",
+                                    :  t("mobile.frameTitleNoBonus",
                                         {numbersAmount, bonusAmount, maxNumber, minNumber})
                                 }}>
                                 </h4>
