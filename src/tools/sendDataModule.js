@@ -63,6 +63,11 @@ const sendDataModule = {
         const redirectDomain = redirectHost;
         const apiURL = apiHost;
 
+        //Inspect data for debug
+        // for (let pair of data.entries()) {
+        //     console.log(pair[0]+ ", " + pair[1]); 
+        // }
+
         axios({
             url: `https://${apiURL}/affiliate/welcome/response.json`,
             method: "post",
@@ -104,7 +109,6 @@ const sendDataModule = {
         }
     },
 
-    //Temporary Implementation
     parseOrder: function(ticketsData) {
         let orderData = [];
 

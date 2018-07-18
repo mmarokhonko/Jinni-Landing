@@ -185,7 +185,8 @@
       "city": "City",
       "code": "Code",
       "street": "Address",
-      "number": "Phone"
+      "number": "Phone",
+      "dateOfBirth18": "Sorry, you must be 18"
     },
     "goodLuck": "Good Luck!",
     "buttons": {

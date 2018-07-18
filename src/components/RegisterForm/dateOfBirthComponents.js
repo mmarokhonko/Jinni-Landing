@@ -153,7 +153,7 @@ class DateOfBirthMobile extends Component {
       maxDate: `${allOptions.years[0].value}-12-31`,
       minDate: `${allOptions.years[allOptions.years.length - 1].value}-01-01`,
       datePickerWidth: "0",
-      placeholderText: "Date of birth"
+      placeholderText: i18n.t("formText:rowTitles.dateOfBirth")
   }
 
   componentDidMount(){
@@ -187,9 +187,9 @@ class DateOfBirthMobile extends Component {
       const yearOption = allOptions.years.find(option => option.value == year);
 
       if(!yearOption) {
-        return this.setState({
-          placeholderText: "At least 18 year old"
-        })
+          return this.setState({
+              placeholderText: i18n.t("formText:placeholders.dateOfBirth18")
+          })
       }
       
       this.props.selectHandler("dayOfBirth", allOptions.days.find(option => option.value == day));
@@ -203,7 +203,7 @@ class DateOfBirthMobile extends Component {
       const {year, month, day, error} = this.props;
       const {maxDate, minDate, datePickerWidth, placeholderText} = this.state;
 
-      const value = !this.valueIsSet(year)|| !this.valueIsSet(month) || !this.valueIsSet(day) ? undefined : `${year.value}-${month.value}-${day.value}`;
+      const value = !this.valueIsSet(year)|| !this.valueIsSet(month) || !this.valueIsSet(day) ? undefined : `${day.value}/${month.value}/${year.value}`;
 
       const valueClasses = `birthday-mob_value${!value ? " -placeholder" : ""}`
       return(

@@ -161,7 +161,8 @@
       "city": "Stadt",
       "code": "PLZ",
       "street": "Addresse",
-      "number": "Telefonnummer"
+      "number": "Telefonnummer",
+      "dateOfBirth18": "Du musst volljährig sein"
     },
     "goodLuck": "Viel Glück!",
     "buttons": {
