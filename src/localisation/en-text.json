@@ -28,7 +28,7 @@
       "euromillions":
         "Select {{numbersAmount}} numbers + {{bonusAmount}} {{bonusName}} or simply <br class='hide-sm' /> click 'Quick Pick' for a random selection",
       "eurojackpot":
-        "Choose {{numbersAmount}} numbers between 1 and {{maxNumber}} and {{bonusAmount}} {{bonusName}} between 1 and {{bonusAmount}} or simply click 'Quick Pick' for a random selection",
+        "Choose {{numbersAmount}} numbers between 1 and {{maxNumber}} and {{bonusAmount}} {{bonusName}} between {{minBonus}} and {{maxBonus}} or simply click 'Quick Pick' for a random selection",
       "powerball":
         "Choose {{numbersAmount}} numbers between 1 and {{maxNumber}} and a Bonus or click 'Quick Pick' for a random selection",
       "6aus49":
@@ -108,8 +108,8 @@
       "pluralBonusName": "Euro Balls"
     },
     "powerball": {
-      "bonusName": "bonus number",
-      "pluralBonusName": "bonus numbers"
+      "bonusName": "Powerball",
+      "pluralBonusName": "Powerballs"
     },
     "6aus49": {
       "bonusName": "Superball",

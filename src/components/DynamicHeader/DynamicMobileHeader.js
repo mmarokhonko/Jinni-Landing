@@ -86,7 +86,7 @@ class DynamicMobileHeader extends Component {
 
       for (let x = 1; x <= bonusAmount; x++) {
           const number = pickedBonus.length >= x ? pickedBonus[x - 1] : undefined;
-          const classString = `numbers-widget_circle -bonus-circle${number ? " -filled" : ""}`;
+          const classString = `numbers-widget_circle -bonus-circle${isFinite(number) ? " -filled" : ""}`;
           numCircles.push(
               <div key={x} className={classString}>
                   {number}

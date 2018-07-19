@@ -63,7 +63,7 @@
         },
         "6aus49": {
           "desktop": "Verpasse nicht die nächste von zwei wöchentlichen Ziehungen in <br/> <span class='help_timer'>{{timeRemains}}</span> um zu erfahren, ob Du ein Gewinner bist",
-          "mobile": "Warte die kommende Ziehung ab, die stattfindet in <br/> <span class='help_timer'>{{timeRemains}}</span><br/> to see how much you won"
+          "mobile": "Warte die kommende Ziehung ab, die stattfindet in <br/> <span class='help_timer'>{{timeRemains}}</span><br/> um zu sehen wie viel Du gewonnen has"
         },
         "irishlottery": {
           "desktop": "There are two Irish Lotto draws every week. Be sure to check the results Follow the results of the next Irish Lotto draw on <span class='help_timer'>{{timeRemains}}</span> to find out if you’re a winner.",

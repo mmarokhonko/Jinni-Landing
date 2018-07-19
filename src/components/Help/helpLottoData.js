@@ -58,7 +58,7 @@ const lottoData = {
     powerball: {
         firstStep: pickerData => (
             <p className="help_step_text" dangerouslySetInnerHTML={{__html: i18n.t("helpSectionText:firstStepText.eurojackpot", 
-                {numbersAmount: pickerData.numbersAmount, maxNumber: pickerData.maxNumber})}}>
+                {numbersAmount: pickerData.numbersAmount, maxNumber: pickerData.maxNumber, bonusName:pickerData.bonusName, maxBonus: pickerData.maxBonus, minBonus: pickerData.minBonus})}}>
             </p>
         ),
         desktop: timeRemains => (
@@ -75,7 +75,7 @@ const lottoData = {
     ["6aus49"]: {
         firstStep: pickerData => (
             <p className="help_step_text" dangerouslySetInnerHTML={{__html: i18n.t("helpSectionText:firstStepText.eurojackpot", 
-                {numbersAmount: pickerData.numbersAmount, bonusName: pickerData.bonusAmount <= 1 ? pickerData.bonusName : pickerData.pluralBonusName})}}>
+                {numbersAmount: pickerData.numbersAmount, maxNumber: pickerData.maxNumber, bonusName: pickerData.bonusAmount <= 1 ? pickerData.bonusName : pickerData.pluralBonusName, maxBonus:pickerData.maxBonus, minBonus: pickerData.minBonus})}}>
             </p>
         ),
         desktop: timeRemains => (

@@ -71,7 +71,7 @@ class PickerContainer extends Component {
   genNumbersMobileHeader = () => {
 	  const numCircles = [];
 	  const {numbersAmount, bonusAmount} = this.state.pickerLottoData;
-	  const {pickedNums, pickedBonus} = this.props.pickerStore.ticketsData[0];
+    const {pickedNums, pickedBonus} = this.props.pickerStore.ticketsData[0];
   
       for(let x = 1; x <= numbersAmount; x++) {
           const number = pickedNums.length >= x && pickedNums[x-1];
@@ -82,8 +82,8 @@ class PickerContainer extends Component {
       const bonusCircles = [];
   
       for(let x = 1; x <= bonusAmount; x++) {
-		  const number = pickedBonus.length >= x && pickedBonus[x-1];
-          const classString = `picker-mob_nums_head_circle -bonus-circle${number ? " -filled" : ""}`;
+      const number = pickedBonus.length >= x && pickedBonus[x-1];
+          const classString = `picker-mob_nums_head_circle -bonus-circle${isFinite(number) ? " -filled" : ""}`;
           bonusCircles.push(<div key={`b-${x}`} className={classString}>{number}</div>)
 	  }
 	  

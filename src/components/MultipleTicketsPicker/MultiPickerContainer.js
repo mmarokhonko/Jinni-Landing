@@ -268,7 +268,7 @@ class MultipleTicketsPickerContainer extends Component {
 
       for (let x = 1; x <= bonusAmount; x++) {
           const number = pickedBonus.length >= x ? pickedBonus[x - 1] : undefined;
-          const classString = `picker-mob_nums_head_circle -bonus-circle${number ? " -filled" : ""}`;
+          const classString = `picker-mob_nums_head_circle -bonus-circle${isFinite(number) ? " -filled" : ""}`;
           bonusCircles.push(
               <div key={`b-${x}`} className={classString}>
                   {number}
