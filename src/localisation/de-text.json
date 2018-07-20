@@ -22,8 +22,8 @@
     "firstStepTitle": "WÄHLE DEINE GLÜCKSZAHLEN",
     "firstStepText": {
       "megamillions": "Wähle {{numbersAmount}} Zahlen von 1-{{maxNumber}} <br class='hide-big' />+ {{bonusAmount}} {{bonusName}} von 1-{{maxBonus}}. <br class='hide-big' />Oder erhalte eine zufällige Auswahl, wenn Du auf <br class='hide-big' /> “Quicktipp” klickst",
-      "euromillions": "Wähle {{numbersAmount}} Zahlen + {{bonusAmount}} {{bonusName}} oder  <br class='hide-sm' /> klicke auf  'Quicktipp' für eine zufällige Auswahl.",
-      "eurojackpot": "Wähle {{numbersAmount}} Zahlen zwischen 1 und {{maxNumber}} und {{bonusAmount}} {{bonusName}} zwischen 1 und {{bonusAmount}} oder klicke einfach auf 'Quicktipp' für eine zufällige Auswahl.",
+      "euromillions": "Wähle {{numbersAmount}} Zahlen + {{bonusAmount}} {{bonusName}} oder  <br class='hide-sm' /> klicke auf 'Quicktipp' für eine zufällige Auswahl.",
+      "eurojackpot": "Wähle {{numbersAmount}} Zahlen zwischen 1 und {{maxNumber}} und {{bonusAmount}} {{bonusName}} zwischen {{minBonus}} und {{maxBonus}} oder klicke einfach auf 'Quicktipp' für eine zufällige Auswahl.",
       "powerball": "Wähle {{numbersAmount}} Zahlen zwischen 1 und {{maxNumber}} sowie einen Bonus oder klicke 'Quicktipp' für eine zufällige Auswahl",
       "6aus49": "Wähle {{numbersAmount}} Glückszahlen + eine {{bonusName}} oder klicke 'Quicktipp' für eine zufällige Auswahl",
       "irishlottery": "Select {{numbersAmount}} numbers or simply click “Quick Pick” for a random selection."

@@ -1,8 +1,7 @@
 const liveHost = "lp.jinnilotto.com";
 
 const liveApi = "api.jinnilotto.com";
-const stageApi = "api.jinnilotto.com";
-// const stageApi = "stage-api.jinnilotto.com";
+const stageApi = "stage-api.jinnilotto.com";
 
 const liveRedirect = "jinnilotto.com";
 const stageRedirect = "stage.jinnilotto.com";
