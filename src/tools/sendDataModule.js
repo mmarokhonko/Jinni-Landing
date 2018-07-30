@@ -7,6 +7,8 @@ import i18n from "./i18nextSetup";
 import {apiHost, redirectHost} from "./envSettings";
 
 const sendDataModule = {
+    dataIsSending: false,
+
     prepareDataToSend: function(data, errorNode) {
         errorNode.classList.remove("-shown");            
 
@@ -68,23 +70,28 @@ const sendDataModule = {
         //     console.log(pair[0]+ ", " + pair[1]); 
         // }
 
-        axios({
-            url: `https://${apiURL}/affiliate/welcome/response.json`,
-            method: "post",
-            data,
-            headers: { "Content-Type": "multipart/form-data" }
-        })
-            .then(resp => {
-                const redirectUrl = data.get("redirectUrl");          
-                if (resp.data.ErrorID) {
-                    return this.handleBackendError(resp.data.ErrorID, errorNode)
-                }
-                return window.location = `https://${redirectDomain}/?init=lp&redirectUrl=${redirectUrl}&memberId=${resp.data.MemberID}&sessionId=${resp.data.SessionID}`;
+        if(!this.dataIsSending) {
+            this.dataIsSending = true;
+            axios({
+                url: `https://${apiURL}/affiliate/welcome/response.json`,
+                method: "post",
+                data,
+                headers: { "Content-Type": "multipart/form-data" }
             })
-            .catch(err => {
-                console.log(err);
-                alert("Error while sending! Check console");
-            });
+                .then(resp => {
+                    this.dataIsSending = false;
+                    const redirectUrl = data.get("redirectUrl");          
+                    if (resp.data.ErrorID) {
+                        return this.handleBackendError(resp.data.ErrorID, errorNode)
+                    }
+                    return window.location = `https://${redirectDomain}/?init=lp&redirectUrl=${redirectUrl}&memberId=${resp.data.MemberID}&sessionId=${resp.data.SessionID}`;
+                })
+                .catch(err => {
+                    this.dataIsSending = false;
+                    console.log(err);
+                    alert("Error while sending! Check console");
+                });
+        }
     },
 
     getUserData: function() {
