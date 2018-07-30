@@ -17,6 +17,13 @@ class PickerContainer extends Component {
 	  isMobileModalOpen: false
   };
 
+  componentDidMount() {
+      /* Scroll to form on Desktop */
+      if(window.outerWidth > 768) {
+          setTimeout(this.props.scrollAppToForm, 2000);  
+      }
+  }
+
   toggleNum = num => {
 	  const {numbersAmount} = this.state.pickerLottoData;
 	  const {addNumber, removeNumber} = this.props.pickerStore;
@@ -71,7 +78,7 @@ class PickerContainer extends Component {
   genNumbersMobileHeader = () => {
 	  const numCircles = [];
 	  const {numbersAmount, bonusAmount} = this.state.pickerLottoData;
-    const {pickedNums, pickedBonus} = this.props.pickerStore.ticketsData[0];
+      const {pickedNums, pickedBonus} = this.props.pickerStore.ticketsData[0];
   
       for(let x = 1; x <= numbersAmount; x++) {
           const number = pickedNums.length >= x && pickedNums[x-1];
@@ -82,7 +89,7 @@ class PickerContainer extends Component {
       const bonusCircles = [];
   
       for(let x = 1; x <= bonusAmount; x++) {
-      const number = pickedBonus.length >= x && pickedBonus[x-1];
+          const number = pickedBonus.length >= x && pickedBonus[x-1];
           const classString = `picker-mob_nums_head_circle -bonus-circle${isFinite(number) ? " -filled" : ""}`;
           bonusCircles.push(<div key={`b-${x}`} className={classString}>{number}</div>)
 	  }
@@ -135,7 +142,8 @@ class PickerContainer extends Component {
 	  let pickedBonuses = pickedBonus.slice();
 	  
 	  if (pickedBonuses.length === bonusAmount) {
-		  return;
+          this.props.scrollAppToForm();
+          return;
 	  }
 
       let ranBonus = Math.floor(Math.random() * maxBonus) + minBonus;
@@ -151,7 +159,6 @@ class PickerContainer extends Component {
 
   quickPick = () => {
 	  const {clearTicket} = this.props.pickerStore;
-
       clearTicket(0, () => {
           this.genRandomNumber();
       });
@@ -233,7 +240,7 @@ class PickerContainer extends Component {
       const isDone = pickedNums.length === numbersAmount && pickedBonus.length === bonusAmount;
 	
       return (
-          <Media query="(min-width: 768px)">
+          <Media query="(min-width: 769px)">
               {matcher =>
                   matcher ? (
                       <NumberPicker

@@ -3,6 +3,7 @@ import Media from "react-media";
 import { object, func } from "prop-types";
 import axios from "axios";
 import { translate } from "react-i18next";
+import easyScroll from "easy-scroll";
 
 import DynamicHeader from "./components/DynamicHeader/DynamicHeader";
 import DynamicMobileHeader from "./components/DynamicHeader/DynamicMobileHeader";
@@ -23,7 +24,7 @@ class App extends Component {
   state = {
       lotteryOrientation: "megamillions",
       pickerLottoData: null,
-	  lottoData: null,
+	    lottoData: null,
       urlData: {
           bTag: undefined,
           referral: undefined,
@@ -35,6 +36,8 @@ class App extends Component {
       },
       numberOfNotFree: null
   };
+
+  formRef = React.createRef()
 
   async componentDidMount() {
       await this.setUrlData();
@@ -49,7 +52,7 @@ class App extends Component {
           .catch(error => {
               console.log("feed.json retrieving error");
               console.log(error);
-          });
+          }); 
   }
 
   selectLottoData = data => {
@@ -155,7 +158,7 @@ class App extends Component {
 
   passDataToSendingModule = (formData, errorNode) => {
       const { lottoData, urlData, pickerLottoData } = this.state;
-      const { ticketsData } = this.props.pickerStore;
+      const { ticketsData, checkIfAllTicketsAreFilled } = this.props.pickerStore;
       const { numbersAmount, bonusAmount } = pickerLottoData;
       const { t } = this.props;
 			
@@ -173,16 +176,8 @@ class App extends Component {
           return;
       }
 
-      let ticketIsNotFilled = false;
-      ticketsData.forEach(ticket => {
-          if (ticketIsNotFilled) {
-              return;
-          }
-          if (ticket.pickedNums.length < numbersAmount || ticket.pickedBonus.length < bonusAmount) {
-              ticketIsNotFilled = true;
-          }
-      });
-      if (ticketIsNotFilled) {
+
+      if (!checkIfAllTicketsAreFilled()) {
           errorNode.classList.add("-shown");
           errorNode.innerHTML = t("notFilledTicketsError");
           return;
@@ -200,6 +195,18 @@ class App extends Component {
       );
       sendDataModule.prepareDataToSend(data, errorNode);
   };
+
+  scrollToForm = () => {
+      const formFrame = this.formRef.current.getWrappedInstance().formFrame.current;
+      
+      easyScroll({
+          scrollableDomEle: window,
+          direction: "bottom",
+          duration: 500,
+          easingPreset: "easeInQuad",
+          scrollAmount: formFrame.offsetTop - window.scrollY
+      })
+  }
 
   render() {
       const { lottoData, urlData } = this.state;
@@ -245,15 +252,17 @@ class App extends Component {
                       <div className={`main_subwrap ${offer !== "freeticket" ? "-vertical" : ""}`}>
                           {offer !== "freeticket" ? (
                               <MultipleTicketsPicker
+                                  scrollAppToForm={this.scrollToForm}
                                   lotto={lottoName}
                                   numberOfNotFree={this.state.numberOfNotFree}
-								  ref={picker => (this.numberPicker = picker)}
-								  price={this.state.price}
+								                  ref={picker => (this.numberPicker = picker)}
+                                  price={this.state.price}
                               />
                           ) : (
-                              <NumberPicker lotto={lottoName} ref={picker => (this.numberPicker = picker)} />
+                              <NumberPicker scrollAppToForm={this.scrollToForm} lotto={lottoName} ref={picker => (this.numberPicker = picker)} />
                           )}
-                          <RegisterForm offer={offer} submitHandler={this.passDataToSendingModule} />
+                          <RegisterForm ref={this.formRef} offer={offer} submitHandler={this.passDataToSendingModule}
+                          />
                       </div>
                   </div>
               </div>

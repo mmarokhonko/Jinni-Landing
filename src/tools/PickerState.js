@@ -14,7 +14,6 @@ class PickerState {
       for (let x = 1; x <= number; x++) {
           ticketsData.push(new Ticket());
       }
-
       this.ticketsData = ticketsData;
   };
 
@@ -112,6 +111,19 @@ class PickerState {
 
       callback && callback();
   };
+
+  checkIfAllTicketsAreFilled = (numbersAmount, bonusAmount) => {
+      let ticketsAreFilled = true;
+      this.ticketsData.forEach(ticket => {
+          if (!ticketsAreFilled) {
+              return;
+          }
+          if (ticket.pickedNums.length < numbersAmount || ticket.pickedBonus.length < bonusAmount) {
+              ticketsAreFilled = false;
+          }
+      });
+      return ticketsAreFilled;
+  }
 }
 
 decorate(PickerState, {ticketsData: observable})

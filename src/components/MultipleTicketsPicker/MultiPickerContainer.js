@@ -18,9 +18,10 @@ class MultipleTicketsPickerContainer extends Component {
   };
 
   componentDidMount () {
-      this.props.pickerStore.ticketsData.forEach((ticket, index) => {
-          this.quickPick(index);
-      })
+  /* auto quick pick on mounting */  
+  //     this.props.pickerStore.ticketsData.forEach((ticket, index) => {
+  //         this.quickPick(index);
+  //     })
   }
 
   onNumberChange = (event, ticketIndex, numberIndex) => {
@@ -155,13 +156,16 @@ class MultipleTicketsPickerContainer extends Component {
   };
 
   quickPickBonus = (singleTicketData, ticketIndex) => {
-	  const { maxBonus, minBonus, bonusAmount } = this.state.pickerLottoData;
-	  const {quickPickDelay} = this.state;
-      const { addBonus } = this.props.pickerStore;
+	    const { maxBonus, minBonus, bonusAmount, numbersAmount } = this.state.pickerLottoData;
+	    const {quickPickDelay} = this.state;
+      const { addBonus, checkIfAllTicketsAreFilled } = this.props.pickerStore;
 
       if (singleTicketData.pickedBonus.length === bonusAmount) {
           if (window.innerWidth > 768) {
               this.checkIfErrorsPresent();
+          }
+          if(checkIfAllTicketsAreFilled(numbersAmount, bonusAmount)) {
+              this.props.scrollAppToForm()
           }
           return;
       }

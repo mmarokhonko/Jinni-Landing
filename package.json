@@ -19,6 +19,7 @@
     "babel-polyfill": "^6.26.0",
     "current-device": "^0.7.2",
     "detect-browser": "^2.2.0",
+    "easy-scroll": "^0.5.1",
     "formdata-polyfill": "^3.0.9",
     "i18next": "^11.2.3",
     "js-cookie": "^2.2.0",

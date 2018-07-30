@@ -99,6 +99,8 @@ class RegisterForm extends Component {
       step2: false
   };
 
+  formFrame = React.createRef();
+
   fetchUserCountryCode = async () => {
       let ipAndCountryObject = await axios.get(
           "https://api.jinnilotto.com/affiliate/getCountry/response.json"
@@ -212,7 +214,7 @@ class RegisterForm extends Component {
   };
 
   moveTo2ndStep = () => {
-      const formFrame = this.formFrame;
+      const formFrame = this.formFrame.current;
       this.resetErrors(() => {
           this.validateFields(this.state.firstStepInputs, () => {
               this.setState(
@@ -228,7 +230,7 @@ class RegisterForm extends Component {
   };
 
   moveTo1stStep = () => {
-      const formFrame = this.formFrame;
+      const formFrame = this.formFrame.current;
       this.setState(
           {
               step2: false
@@ -301,7 +303,7 @@ class RegisterForm extends Component {
 
       if (!step2)
           return (
-              <div ref={frame => (this.formFrame = frame)} className="frame form_frame-vert">
+              <div ref={this.formFrame} className="frame form_frame-vert">
                   <h4
                       className="frame_title"
                       dangerouslySetInnerHTML={{
@@ -382,7 +384,7 @@ class RegisterForm extends Component {
           );
       else
           return (
-              <div ref={frame => (this.formFrame = frame)} className="frame form_frame-vert">
+              <div ref={this.formFrame} className="frame form_frame-vert">
                   <h4
                       className="frame_title"
                       dangerouslySetInnerHTML={{
@@ -579,4 +581,4 @@ RegisterForm.propTypes = {
     t: func.isRequired
 };
 
-export default translate("formText")(RegisterForm);
+export default translate("formText", {withRef: true})(RegisterForm);
