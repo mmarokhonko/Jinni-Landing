@@ -172,7 +172,7 @@ class App extends Component {
           pickerInstance = this.numberPicker.wrappedInstance;
       }
 
-      if (pickerInstance.state.hasError && pickerInstance.state.hasEmpty) {
+      if (pickerInstance.state.hasError || pickerInstance.state.hasEmpty) {
           return;
       }
 
