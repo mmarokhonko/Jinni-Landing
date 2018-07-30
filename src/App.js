@@ -177,7 +177,7 @@ class App extends Component {
       }
 
 
-      if (!checkIfAllTicketsAreFilled()) {
+      if (!checkIfAllTicketsAreFilled(numbersAmount,bonusAmount)) {
           errorNode.classList.add("-shown");
           errorNode.innerHTML = t("notFilledTicketsError");
           return;
