@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import { string, func, object, number } from "prop-types";
-import { translate } from "react-i18next";
+import React, {Component} from "react";
+import {string, func, object, number} from "prop-types";
+import {translate} from "react-i18next";
 
 import headerLottoData from "./headerLottoData";
 import pickerLottoData from "../NumberPicker/pickerLottoData";
-import { roundDecimal, roundMillions, reverseString } from "./jackpotTools";
-import { mobXConnect } from "../../tools/toolFunctions";
+import {roundDecimal, roundMillions, reverseString} from "./jackpotTools";
+import {mobXConnect} from "../../tools/toolFunctions";
 
 class DynamicMobileHeader extends Component {
   state = {
@@ -14,15 +14,13 @@ class DynamicMobileHeader extends Component {
   };
 
   formatJackpot = jackpot => {
-      const { lottoData } = this.state;
-      const { t, i18n } = this.props;
+      const {lottoData} = this.state;
+      const {t, i18n} = this.props;
 
       let jackpotReversed = reverseString(jackpot);
 
       const decimalString = jackpotReversed.slice(4, 6);
       const roundedDecimalString = roundDecimal(decimalString);
-
-      const isCurrSignBefore = i18n.language === "en";
 
       if (jackpotReversed.length > 6) {
           const millionsString = jackpotReversed.slice(6);
@@ -33,21 +31,15 @@ class DynamicMobileHeader extends Component {
         Number(roundedDecimalString) === 0
           ) {
               const roundedMillionsString = roundMillions(millionsString, roundedDecimalString);
-              return `${isCurrSignBefore ? lottoData.currency : ""}
-			  ${reverseString(roundedMillionsString)}
-			  ${!isCurrSignBefore ? lottoData.currency : ""} 
-			  ${t("million")}`;
+              return `${lottoData.currency}
+			  ${reverseString(roundedMillionsString)} ${t("million")}`;
           } else {
-              return `${isCurrSignBefore ? lottoData.currency : ""}
-			  ${reverseString(roundedDecimalString.charAt(0) + "." + millionsString)}
-			  ${!isCurrSignBefore ? lottoData.currency : ""}
-			  ${t("million")}`;
+              return `${lottoData.currency}
+			  ${reverseString(roundedDecimalString.charAt(0) + "." + millionsString)} ${t("million")}`;
           }
       } else {
-          return `${isCurrSignBefore ? lottoData.currency : ""}
-		  ${reverseString(roundedDecimalString.charAt(0) + ".0")}
-		  ${!isCurrSignBefore ? lottoData.currency : ""} 
-		  ${t("million")}`;
+          return `${lottoData.currency}
+		  ${reverseString(roundedDecimalString.charAt(0) + ".0")} ${t("million")}`;
       }
   };
 
@@ -66,7 +58,7 @@ class DynamicMobileHeader extends Component {
 
   generateNumsCircles = pickedNums => {
       const numCircles = [];
-      const { numbersAmount } = this.state.pickerLottoData;
+      const {numbersAmount} = this.state.pickerLottoData;
 
       for (let x = 1; x <= numbersAmount; x++) {
           const number = pickedNums.length >= x ? pickedNums[x - 1] : undefined;
@@ -82,11 +74,13 @@ class DynamicMobileHeader extends Component {
 
   generateBonusCircles = pickedBonus => {
       const numCircles = [];
-      const { bonusAmount } = this.state.pickerLottoData;
+      const {bonusAmount} = this.state.pickerLottoData;
 
       for (let x = 1; x <= bonusAmount; x++) {
           const number = pickedBonus.length >= x ? pickedBonus[x - 1] : undefined;
-          const classString = `numbers-widget_circle -bonus-circle${isFinite(number) ? " -filled" : ""}`;
+          const classString = `numbers-widget_circle -bonus-circle${
+              isFinite(number) ? " -filled" : ""
+          }`;
           numCircles.push(
               <div key={x} className={classString}>
                   {number}
@@ -97,25 +91,25 @@ class DynamicMobileHeader extends Component {
   };
 
   render() {
-      const { lotto, jackpot, modalOpenHandler, numberOfNotFree, price, t } = this.props;
-      const { ticketsData, clearTicket } = this.props.pickerStore;
-      const { lottoData, pickerLottoData } = this.state;
+      const {lotto, jackpot, modalOpenHandler, numberOfNotFree, price, t} = this.props;
+      const {ticketsData, clearTicket} = this.props.pickerStore;
+      const {lottoData, pickerLottoData} = this.state;
       const jackpotString = this.formatJackpot(jackpot);
 
       return (
-          <header className="mob-header" style={{ backgroundImage: `url(${lottoData.bgMob})` }}>
+          <header className="mob-header" style={{backgroundImage: `url(${lottoData.bgMob})`}}>
               <div className="cont-zone">
                   <img className="mob-header_logo" src={lottoData.logo} alt={lotto} />
                   {numberOfNotFree === 0 ? (
                       <h2
                           className="mob-header_title"
-                          dangerouslySetInnerHTML={{ __html: t("freeticketTitle") }}
+                          dangerouslySetInnerHTML={{__html: t("freeticketTitle")}}
                       />
                   ) : (
                       <h2
                           className="mob-header_title"
                           dangerouslySetInnerHTML={{
-                              __html: t("notfreeTitle", { numberOfTickets: ticketsData.length, numberOfNotFree })
+                              __html: t("notfreeTitle", {numberOfTickets: ticketsData.length, numberOfNotFree})
                           }}
                       />
                   )}
@@ -123,8 +117,7 @@ class DynamicMobileHeader extends Component {
                   {ticketsData.map((ticket, index) => (
                       <div
                           key={`ticket-widget-${index}`}
-                          className={`numbers-widget -theme_${pickerLottoData.ballsTheme}`}
-                      >
+                          className={`numbers-widget -theme_${pickerLottoData.ballsTheme}`}>
                           {this.generateNumsCircles(ticket.pickedNums).map(circle => circle)}
                           {this.generateBonusCircles(ticket.pickedBonus).map(circle => circle)}
                           <button

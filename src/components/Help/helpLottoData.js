@@ -41,7 +41,7 @@ const lottoData = {
     eurojackpot: {
         firstStep: pickerData => (
             <p className="help_step_text" dangerouslySetInnerHTML={{__html: i18n.t("helpSectionText:firstStepText.eurojackpot", 
-                {numbersAmount: pickerData.numbersAmount, bonusAmount: pickerData.bonusAmount, maxNumber: pickerData.maxNumber, maxBonus:pickerData.maxBonus, bonusName: pickerData.bonusAmount <= 1 ? pickerData.bonusName : pickerData.pluralBonusName})}}>
+                {numbersAmount: pickerData.numbersAmount, bonusAmount: pickerData.bonusAmount, maxNumber: pickerData.maxNumber, maxBonus:pickerData.maxBonus, minBonus: pickerData.minBonus, bonusName: pickerData.bonusAmount <= 1 ? pickerData.bonusName : pickerData.pluralBonusName})}}>
             </p>
         ),
         desktop: timeRemains => (

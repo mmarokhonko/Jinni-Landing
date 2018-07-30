@@ -282,7 +282,8 @@ class PickerContainer extends Component {
 PickerContainer.propTypes = {
     lotto: string.isRequired,
     pickerStore: object.isRequired,
-    t:func.isRequired
+    t:func.isRequired,
+    scrollAppToForm: func.isRequired
 };
 
 export default translate("singlePickerText", {withRef: true})(mobXConnect("pickerStore")(PickerContainer));
