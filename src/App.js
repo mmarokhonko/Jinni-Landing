@@ -211,7 +211,11 @@ class App extends Component {
       }
 
       const {offer} = urlData;
-      const lottoName = urlData.lotteryOrientation;
+      const lottoName = lottoData.LotteryName ? lottoData.LotteryName.toLowerCase().replace(/\s/g, "") : urlData.lotteryOrientation;
+      const lottoNameOrginal = lottoData.LotteryName ? lottoData.LotteryName : "";
+      // const lottoName = urlData.lotteryOrientation;
+
+      console.log(lottoName);
 
       const drawDateString = lottoData.DrawDate
           ? `${lottoData.DrawDate} ${lottoData.TimeZone}`
@@ -276,6 +280,7 @@ class App extends Component {
                   offer={offer}
                   numberOfNotFree={this.state.numberOfNotFree}
                   lotto={lottoName}
+                  lottoOriginal={lottoNameOrginal}
                   drawDate={drawDateString}
               />
               <Fact lotto={lottoName} />
