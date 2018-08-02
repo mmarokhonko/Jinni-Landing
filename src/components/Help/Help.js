@@ -71,7 +71,7 @@ const Help = ({ drawDate, lotto, offer, pickerStore, numberOfNotFree, t }) => {
 };
 
 Help.propTypes = {
-    drawDate: string.isRequired,
+    drawDate: string,
     lotto: string.isRequired,
     offer: string.isRequired,
     pickerStore: object.isRequired,

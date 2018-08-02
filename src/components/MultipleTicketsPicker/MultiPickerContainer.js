@@ -400,7 +400,7 @@ MultipleTicketsPickerContainer.propTypes = {
     pickerStore: object.isRequired,
     numberOfNotFree: number,
     lotto: string.isRequired,
-    price: string.isRequired,
+    price: string,
     scrollAppToForm: func.isRequired
 };
 

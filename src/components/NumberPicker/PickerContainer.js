@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import shallowEqualArrays from "shallow-equal/arrays";
 import { string, object, func } from "prop-types";
 import Media from "react-media";
 import noScroll from "no-scroll";

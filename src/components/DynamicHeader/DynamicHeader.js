@@ -41,7 +41,7 @@ class DynamicHeader extends Component {
 	  const {ticketsData} = this.props.pickerStore;
       const lottoData = this.state.lottoData;
 
-      this.constructJackpot(jackpot);
+      const jackpotDisplay = jackpot ? this.constructJackpot(jackpot) : undefined;
 
       return (
           <header className="header" style={{ backgroundImage: `url(${lottoData.bg})` }}>
@@ -58,7 +58,7 @@ class DynamicHeader extends Component {
 			  )}
                   <div
                       className="header_jackpot"
-                      dangerouslySetInnerHTML={{ __html: this.constructJackpot(jackpot) }}
+                      dangerouslySetInnerHTML={{ __html: jackpotDisplay }}
                   />
               </div>
           </header>
@@ -68,7 +68,7 @@ class DynamicHeader extends Component {
 
 DynamicHeader.propTypes = {
     lotto: PropTypes.string.isRequired,
-    jackpot: PropTypes.string.isRequired,
+    jackpot: PropTypes.string,
     pickerStore: PropTypes.object.isRequired,
     numberOfNotFree: PropTypes.number.isRequired,
     t: PropTypes.func.isRequired

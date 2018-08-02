@@ -70,7 +70,7 @@ MultiPickerDesktop.propTypes = {
     bonusName: string.isRequired,
     pluralBonusName: string.isRequired,
     ballsTheme: string.isRequired,
-    price: string.isRequired,
+    price: string,
     hasError: bool.isRequired,
     ballsWrapRef: func.isRequired,
     t:func.isRequired

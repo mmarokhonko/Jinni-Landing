@@ -15,7 +15,7 @@ class DynamicMobileHeader extends Component {
 
   formatJackpot = jackpot => {
       const {lottoData} = this.state;
-      const {t, i18n} = this.props;
+      const {t} = this.props;
 
       let jackpotReversed = reverseString(jackpot);
 
@@ -94,7 +94,7 @@ class DynamicMobileHeader extends Component {
       const {lotto, jackpot, modalOpenHandler, numberOfNotFree, price, t} = this.props;
       const {ticketsData, clearTicket} = this.props.pickerStore;
       const {lottoData, pickerLottoData} = this.state;
-      const jackpotString = this.formatJackpot(jackpot);
+      const jackpotString = jackpot ? this.formatJackpot(jackpot) : undefined;
 
       return (
           <header className="mob-header" style={{backgroundImage: `url(${lottoData.bgMob})`}}>
@@ -144,7 +144,7 @@ class DynamicMobileHeader extends Component {
 
 DynamicMobileHeader.propTypes = {
     lotto: string.isRequired,
-    jackpot: string.isRequired,
+    jackpot: string,
     price: string,
     modalOpenHandler: func.isRequired,
     pickerStore: object.isRequired,

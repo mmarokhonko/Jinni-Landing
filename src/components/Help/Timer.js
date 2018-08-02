@@ -8,15 +8,29 @@ import lottoData from "./helpLottoData";
 
 class Timer extends Component {
   state = {
-      drawDate: moment(this.props.drawDate, "YYYY-MM-DD HH:mm:ss ZZ").local(),
+      drawDate: this.props.drawDate ? this.props.drawDate : null,
       currDate: moment(),
-	  timeRemains: "HH:MM:SS",
-	  lottoData: lottoData[this.props.lotto]
+	    timeRemains: "HH:MM:SS",
+	    lottoData: lottoData[this.props.lotto]
   };
 
   componentDidMount() {
-      this.tick();
-	  this.interval = setInterval(this.tick, 1000);
+      if (this.props.drawDate) {
+          this.tick();
+	        this.interval = setInterval(this.tick, 1000);
+      }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+      const {drawDate} = this.props;
+      if(drawDate && drawDate !== prevState.drawDate) {
+          this.setState({
+              drawDate
+          }, () => {
+              this.tick();
+	            this.interval = setInterval(this.tick, 1000);
+          })
+      }
   }
 
   componentWillUnmount() {
@@ -24,9 +38,10 @@ class Timer extends Component {
   }
 
   tick = () => {
-	  const { drawDate, currDate } = this.state;
-	  const { t } = this.props;
-      let diff = drawDate.diff(currDate);
+      const { drawDate, currDate } = this.state;
+      const drawDateMoment = moment(drawDate, "YYYY-MM-DD HH:mm:ss ZZ").local();
+      const { t } = this.props;
+      let diff = drawDateMoment.diff(currDate);
       if (diff <= 0) {
           clearInterval(this.interval);
           return this.setState({
@@ -64,7 +79,7 @@ class Timer extends Component {
 }
 
 Timer.propTypes = {
-    drawDate: string.isRequired,
+    drawDate: string,
     lotto: string.isRequired,
     t: func.isRequired	
 };
