@@ -106,7 +106,7 @@ const lottoData = {
         "6for3_incentiveCode": "6f3_irish_reg",
         "10for5_packageId": 463,
         "10for5_incentiveCode": "10f5_irish_reg",
-        "5for2_packageId": 261,
+        "5for2_packageId": 461,
         "5for2_incentiveCode": "5f2_irish_reg"
     }
 }
