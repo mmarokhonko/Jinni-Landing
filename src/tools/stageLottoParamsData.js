@@ -16,6 +16,8 @@ const lottoData = {
         "10for5_incentiveCode": "10f5_mm_reg",
         "4for2_packageId": 251,
         "4for2_incentiveCode": "4f2_mm_reg",
+        "5for2_packageId": 265,
+        "5for2_incentiveCode": "5f2_mm_reg"
     },
     "euromillions": {
         freeticket_packageId: 255,
@@ -34,6 +36,8 @@ const lottoData = {
         "10for5_incentiveCode": "10f5_em_reg",
         "4for2_packageId": 248,
         "4for2_incentiveCode": "4f2_em_reg",
+        "5for2_packageId": 266,
+        "5for2_incentiveCode": "5f2_em_reg"
     },
     "eurojackpot": {
         freeticket_packageId: 258,
@@ -52,6 +56,8 @@ const lottoData = {
         "10for5_incentiveCode": "10f5_ej_reg",
         "4for2_packageId": 249,
         "4for2_incentiveCode": "4f2_ej_reg",
+        "5for2_packageId": 264,
+        "5for2_incentiveCode": "5f2_ej_reg"
     },
     "powerball": {
         freeticket_packageId: 257,
@@ -70,6 +76,8 @@ const lottoData = {
         "10for5_incentiveCode": "10f5_pb_reg",
         "4for2_packageId": 250,
         "4for2_incentiveCode": "4f2_pb_reg",
+        "5for2_packageId": 267,
+        "5for2_incentiveCode": "5f2_pb_reg"
     },
     "6aus49": {
         freeticket_packageId: 259,
@@ -88,6 +96,8 @@ const lottoData = {
         "10for5_incentiveCode": "10f5_6aus49_reg",
         "4for2_packageId": 252,
         "4for2_incentiveCode": "4f2_6aus49_reg",
+        "5for2_packageId": 269,
+        "5for2_incentiveCode": "5f2_6aus49_reg"
     },
     "irishlottery": {
         freeticket_packageId: 456,
@@ -106,6 +116,8 @@ const lottoData = {
         "10for5_incentiveCode": "10f5_irish_reg",
         "4for2_packageId": 459,
         "4for2_incentiveCode": "4f2_irish_reg",
+        "5for2_packageId": 260,
+        "5for2_incentiveCode": "5f2_irish_reg"
     }
 }
 
