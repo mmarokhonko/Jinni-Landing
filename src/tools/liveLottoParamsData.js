@@ -34,6 +34,8 @@ const lottoData = {
         "6for3_incentiveCode": "6f3_em_reg",
         "10for5_packageId": 400,
         "10for5_incentiveCode": "10f5_em_reg",
+        "4for2_packageId": 248,
+        "4for2_incentiveCode": "4f2_em_reg",
         "5for2_packageId": 266,
         "5for2_incentiveCode": "5f2_em_reg"
     },
@@ -52,6 +54,8 @@ const lottoData = {
         "6for3_incentiveCode": "6f3_ej_reg",
         "10for5_packageId": 401,
         "10for5_incentiveCode": "10f5_ej_reg",
+        "4for2_packageId": 249,
+        "4for2_incentiveCode": "4f2_ej_reg",
         "5for2_packageId": 264,
         "5for2_incentiveCode": "5f2_ej_reg"
     },
@@ -70,6 +74,8 @@ const lottoData = {
         "6for3_incentiveCode": "6f3_pb_reg",
         "10for5_packageId": 402,
         "10for5_incentiveCode": "10f5_pb_reg",
+        "4for2_packageId": 250,
+        "4for2_incentiveCode": "4f2_pb_reg",
         "5for2_packageId": 267,
         "5for2_incentiveCode": "5f2_pb_reg"
     },
@@ -88,6 +94,8 @@ const lottoData = {
         "6for3_incentiveCode": "6f3_6aus49_reg",
         "10for5_packageId": 404,
         "10for5_incentiveCode": "10f5_6aus49_reg",
+        "4for2_packageId": 252,
+        "4for2_incentiveCode": "4f2_6aus49_reg",
         "5for2_packageId": 269,
         "5for2_incentiveCode": "5f2_6aus49_reg"
     },
@@ -106,6 +114,8 @@ const lottoData = {
         "6for3_incentiveCode": "6f3_irish_reg",
         "10for5_packageId": 463,
         "10for5_incentiveCode": "10f5_irish_reg",
+        "4for2_packageId": 460,
+        "4for2_incentiveCode": "4f2_irish_reg",
         "5for2_packageId": 461,
         "5for2_incentiveCode": "5f2_irish_reg"
     }
