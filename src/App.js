@@ -215,8 +215,6 @@ class App extends Component {
       const lottoNameOrginal = lottoData.LotteryName ? lottoData.LotteryName : "";
       // const lottoName = urlData.lotteryOrientation;
 
-      console.log(lottoName);
-
       const drawDateString = lottoData.DrawDate
           ? `${lottoData.DrawDate} ${lottoData.TimeZone}`
           : undefined;

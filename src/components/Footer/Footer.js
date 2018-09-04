@@ -2,7 +2,21 @@ import React from "react";
 import {string, func} from "prop-types";
 import {translate} from "react-i18next";
 
-const Footer = ({offer, t}) => {
+const Footer = ({offer, t, i18n}) => {
+    const termsPages = {
+        "freeticket": "1-ticket-free",
+        "freeticketv2": "1-ticket-free",
+        "4for1": "four-for-one",
+        "4for2": "four-for-two",
+        "3for1": "three-for-one",
+        "2for1": "two-for-one",
+        "6for3": "six-for-three",
+        "10for5": "ten-for-five",
+        "5for2": "five-for-two"
+    }
+
+    const linkLang = i18n.language;
+
     return (
         <footer className="footer">
             <section className="footer_affiliates">
@@ -31,7 +45,7 @@ const Footer = ({offer, t}) => {
             </section>
             <section className="footer_copyright">
                 <div className="cont-zone">
-                    <a className="footer_terms-link" href={!offer.includes("freeticket") ? "https://jinnilotto.com/four-for-one" :"https://jinnilotto.com/1-ticket-free"} target="_blank"><h6>{t("title")}</h6></a>
+                    <a className="footer_terms-link" href={`https://jinnilotto.com/${linkLang}/${termsPages[offer]}`} target="_blank"><h6>{t("title")}</h6></a>
                     <div dangerouslySetInnerHTML={{__html:t("textHtml", {returnObjects: true}).join("")}}></div>
                 </div>
             </section>
