@@ -13,6 +13,7 @@ import iconArrow from "../../assets/Help/icons/ic_arrow.svg";
 import iconPick from "../../assets/Help/icons/ic_pick.svg";
 import iconGet from "../../assets/Help/icons/ic_get.svg";
 import iconCollect from "../../assets/Help/icons/ic_collect.svg";
+import iconScratch from "../../assets/Help/icons/ic_lotto.png";
 
 const Help = ({ drawDate, lotto, lottoOriginal, offer, pickerStore, numberOfNotFree, t }) => {
 
@@ -20,7 +21,7 @@ const Help = ({ drawDate, lotto, lottoOriginal, offer, pickerStore, numberOfNotF
 
     const currHelpLottoData = helpLottoData[lottoSelector];
     const currPickerLottoData = pickerLottoData[lottoSelector];
-
+    console.log(lottoSelector)
     return (
         <section className="help">
             <div className="cont-zone">
@@ -28,21 +29,21 @@ const Help = ({ drawDate, lotto, lottoOriginal, offer, pickerStore, numberOfNotF
                 <div className="help_subwrap">
                     <div className="help_step">
                         <img src={iconPick} alt="" className="help_step_icon" />
-                        <h4 className="help_step_title">{t("firstStepTitle")}</h4>
+                        <h4 className="help_step_title">{lotto !== 'scratchcards' ? t("firstStepTitle") : t("firstStepScratchTitle")}</h4>
                         {currHelpLottoData.firstStep(currPickerLottoData)}
                     </div>
                     <img src={iconArrow} alt="next" className="help_arrow" />
                     {offer.indexOf("freeticket") !== -1 ? (
                         <div className="help_step">
-                            <img src={iconGet} alt="" className="help_step_icon" />
-                            <h4 className="help_step_title">{t("secondStep.freeticket.title")}</h4>
+                            <img src={lotto !== 'scratchcards' ? iconGet : iconScratch} alt="" className="help_step_icon" />
+                            <h4 className="help_step_title">{lotto !== 'scratchcards' ? t("secondStep.freeticket.title") : t("secondStep.ScratchSecondStep.title")}</h4>
                             <Media query="(min-width: 768px)">
                                 {matches =>
                                     matches ? (
-                                        <p className="help_step_text" dangerouslySetInnerHTML={{__html: t("secondStep.freeticket.text.desktop")}}>
+                                        <p className="help_step_text" dangerouslySetInnerHTML={{__html: lotto !== 'scratchcards' ? t("secondStep.freeticket.text.desktop") : t("secondStep.ScratchSecondStep.text")}}>
                                         </p>
                                     ) : (
-                                        <p className="help_step_text" dangerouslySetInnerHTML={{__html: t("secondStep.freeticket.text.mobile")}}>
+                                        <p className="help_step_text" dangerouslySetInnerHTML={{__html: lotto !== 'scratchcards' ? t("secondStep.freeticket.text.mobile") : t("secondStep.ScratchSecondStep.text")}}>
                                         </p>
                                     )
                                 }
@@ -50,18 +51,20 @@ const Help = ({ drawDate, lotto, lottoOriginal, offer, pickerStore, numberOfNotF
                         </div>
                     ) : (
                         <div className="help_step">
-                            <img src={iconGet} alt="" className="help_step_icon" />
+                            <img src={lotto !== 'scratchcards' ? iconGet : iconScratch} alt="" className="help_step_icon" />
                             <h4 className="help_step_title">
-                                {t("secondStep.notfree.title", {numberOfFreeLines: pickerStore.ticketsData.length - numberOfNotFree})}
+                                {lotto !== 'scratchcards' ? t("secondStep.notfree.title", {numberOfFreeLines: pickerStore.ticketsData.length - numberOfNotFree}) : t("secondStep.ScratchSecondStep.title")}
                             </h4>
-                            <p className="help_step_text" dangerouslySetInnerHTML={{__html: t("secondStep.notfree.text", {numberOfTickets: pickerStore.ticketsData.length, numberOfNotFree:numberOfNotFree})}}>
+                            <p className="help_step_text" dangerouslySetInnerHTML={{__html: lotto !== 'scratchcards' ? (
+                                t("secondStep.notfree.text", {numberOfTickets: pickerStore.ticketsData.length, numberOfNotFree:numberOfNotFree})
+                                ) : t("secondStep.ScratchSecondStep.text")}}>
                             </p>
                         </div>
                     )}
                     <img src={iconArrow} alt="next" className="help_arrow" />
                     <div className="help_step">
                         <img src={iconCollect} alt="" className="help_step_icon" />
-                        <h4 className="help_step_title">{t("thirdStep.title")}</h4>
+                        <h4 className="help_step_title">{lotto !== 'scratchcards' ? t("thirdStep.title") : t("thirdStep.thirdScratchTitle")}</h4>
                         <Timer lotto={lottoSelector} drawDate={drawDate} />
                     </div>
                 </div>

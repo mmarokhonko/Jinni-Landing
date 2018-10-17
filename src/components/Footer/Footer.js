@@ -2,7 +2,7 @@ import React from "react";
 import {string, func} from "prop-types";
 import {translate} from "react-i18next";
 
-const Footer = ({offer, t, i18n}) => {
+const Footer = ({offer, t, i18n, lotto}) => {
     const termsPages = {
         "freeticket": "1-ticket-free",
         "freeticketv2": "1-ticket-free",
@@ -40,7 +40,15 @@ const Footer = ({offer, t, i18n}) => {
                         <div className="hide-sm">
                             <img src="./assets/logo/logo_secure.png" alt="Secure SSL encryption" />
                         </div>
+                        {/*<div className="footer-logo">*/}
+                          {/*<img src="./assets/logo/logo_jinni-loto.svg" alt="Logo"/>*/}
+                        {/*</div>*/}
                     </div>
+                    {lotto === 'scratchcards' ? (
+                        <div className='helpLogo__container'>
+                            <img src='./assets/logo/footer_logo.png' alt='logo' className='helpLogo'/>
+                        </div>
+                    ) : ''}
                 </div>
             </section>
             <section className="footer_copyright">
@@ -51,11 +59,11 @@ const Footer = ({offer, t, i18n}) => {
             </section>
         </footer>
     )
-}
+};
 
 Footer.propTypes = {
     offer: string,
     t: func.isRequired
-}
+};
 
 export default translate("footerText")(Footer);

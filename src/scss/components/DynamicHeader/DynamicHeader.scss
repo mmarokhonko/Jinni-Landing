@@ -1,3 +1,10 @@
+.headerWrapper {
+
+  &--hidden {
+    display: none;
+  }
+}
+
 .header {
   position: relative;
   width: 100%;
@@ -236,4 +243,269 @@
   line-height: 16px;
   color: #afb6d2;
   text-transform: uppercase;
+}
+
+
+/* ------------ SCRATCHCARDS HEADER ---------------------- */
+
+.header-scratch {
+  position: relative;
+  width: 100%;
+  height: 900px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+.logo-scratch {
+width: 106px;
+display: block;
+margin: 0 auto;
+padding-top: 32px;
+padding-bottom: 32px;
+}
+.scrath-text p {
+/* Style for "JINNI’S SC" */
+background: linear-gradient(180deg, #fffefc 0%, #fbe8cb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+color: #fccf92;
+font-family: Poppins;
+font-size: 18px;
+font-weight: 700;
+line-height: 52px;
+text-transform: uppercase;
+text-align: center;
+}
+.title-scratch p{
+/* Style for "9 GAMES AT" */
+background: linear-gradient(180deg, #ffffff 0%, #fcf8d2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+color: #ffffff;
+font-family: Poppins;
+font-size: 44px;
+font-weight: 700;
+line-height: 35px;
+text-transform: uppercase;
+text-align: center;
+margin: 23px 0 23px 0;
+}
+.under-title-text p {
+  background: linear-gradient(180deg, #ffffff 0%, #fcf8d2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+color: #ffffff;
+font-family: "Poppins";
+font-size: 20px;
+font-weight: 500;
+line-height: 30px;
+padding-bottom: 17px;
+
+}
+.under-title-text p {
+  text-align: center;
+
+}
+
+.under-title-text span {
+/* Text style for "€100.000" */
+font-family: Poppins;
+font-weight: 700;
+}
+.scratch-price {
+display: flex;
+flex-direction: row;
+-ms-align-items: center;
+align-items: center;
+justify-content: center;
+}
+
+.curent-price {
+  margin-left: 30px;
+}
+
+
+.scratch-price  .text {
+color: #ffffff;
+font-family: Poppins;
+font-size: 20px;
+font-weight: 400;
+/* Text style for "was" */
+letter-spacing: -0.3px;
+text-align: center;
+}
+.old-preice .price {
+/* Style for "€21.00" */
+
+color: #ffffff;
+font-family: Poppins;
+font-size: 26px;
+font-weight: 400;
+text-decoration: line-through;
+}
+
+.curent-price .price {
+  /* Style for "€8.00" */
+  background: linear-gradient(180deg, #ffffff 0%, #fcf8d2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+color: #ffffff;
+font-family: Poppins;
+font-size: 34px;
+font-weight: 700;
+line-height: 35px;
+text-transform: uppercase;
+}
+
+.scratch-button a {
+color: #ffffff;
+font-family: "Poppins";
+font-size: 22px;
+font-weight: 600;
+text-transform: uppercase;
+text-align: center;
+width: 252px;
+border-radius: 30px;
+background-color: #46cf00;
+display: block;
+margin: 30px auto;
+text-decoration: none;
+padding:13px 0 13px 0;
+}
+
+.scratch-tickets {
+width: 750px;
+display: block;
+margin: 0 auto;
+}
+
+.ticket:nth-child(1) {
+  transform: rotate(340deg);
+  top: 350px;
+  position: relative;
+  left: 20px;
+}
+
+
+.ticket:nth-child(2) {
+  transform: rotate(357deg);
+  top: 378px;
+  left: 180px;
+  position: relative;
+}
+
+.ticket:nth-child(3)  {
+  transform: rotate(375deg);
+  top: 450px;
+  left: 320px;
+  position: relative;
+}
+
+.ticket-item img{
+ position: absolute;
+ bottom: 30px;
+ transform: rotate(70deg);
+ transform-origin: center center;
+}
+
+@media (max-width: 767px){
+  .title-scratch p {
+    font-size: 30px;
+  }
+  .under-title-text p {
+    font-size: 16px;
+  }
+
+  .scratch-tickets {
+    display: block;
+    margin: 0 auto;
+    width: 450px;
+  }
+
+  .ticket:nth-child(1) {
+    transform: rotate(340deg) scale(0.8);
+    top: 390px;
+    position: relative;
+    left: 0px;
+  }
+
+
+  .ticket:nth-child(2) {
+    transform: rotate(357deg) scale(0.8);
+    top: 380px;
+    left: 10px;
+    position: relative;
+  }
+
+  .ticket:nth-child(3)  {
+    transform: rotate(375deg) scale(0.8);
+    top: 387px;
+    left: 40px;
+    position: relative;
+  }
+
+}
+@media (max-width: 450px){
+  .title-scratch p {
+    font-size: 30px;
+  }
+  .under-title-text p {
+    font-size: 16px;
+  }
+
+  .scratch-tickets {
+    display: block;
+    margin: 0 auto;
+    //width: 320px;
+  }
+
+  .ticket:nth-child(1) {
+    transform: rotate(340deg) scale(0.6);
+    top: 350px;
+    position: relative;
+    left: 0px;
+  }
+
+
+  .ticket:nth-child(2) {
+    transform: rotate(357deg) scale(0.6);
+    top: 340px;
+    left: 10px;
+    position: relative;
+  }
+
+  .ticket:nth-child(3)  {
+    transform: rotate(375deg) scale(0.6);
+    top: 347px;
+    left: 40px;
+    position: relative;
+  }
+
+}
+
+@media (max-width: 412px){
+  .scratch-tickets {
+    position: relative;
+    left: -5%;
+  }
+}
+
+@media (max-width: 376px){
+  .scratch-tickets {
+    position: relative;
+    left: -10%;
+  }
+}
+@media (max-width: 361px){
+  .scratch-tickets {
+    position: relative;
+    left: -13%;
+  }
+}
+
+@media (max-width: 321px){
+  .scratch-tickets {
+    position: relative;
+    left: -20%;
+  }
 }
